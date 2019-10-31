@@ -1,0 +1,12 @@
+- if !f.object.deleted?
+  .abstractor_object_value_variant.nested-fields
+    .value
+      = f.label :value, 'Variant Value'
+      = f.text_field :value, disabled: f.object.used?
+      - if validation_errors?(f.object, :value)
+        %p.error= format_validation_errors(f.object, :value)
+    .case_sensitive
+      = f.label :case_sensitive, 'Case Sensitive?'
+      = f.check_box :case_sensitive, disabled: f.object.used?
+    .abstractor_object_value_variant_remove
+      = link_to_remove_association 'Delete', f, data: { confirm: 'Are you sure?' }, class: 'abstractor_object_value_variant_delete_link'

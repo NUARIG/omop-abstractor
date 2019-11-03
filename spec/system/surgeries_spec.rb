@@ -14,7 +14,7 @@ RSpec.feature 'Editing surgery: User should be able to edit surgery information'
     OmopAbstractor::SpecSetup.imaging_exam
   end
 
-  scenario 'User editing an abstraction with indirect sources', js: true, focus: false do
+  scenario 'User editing an abstraction with indirect sources', js: true, focus: true do
     pending "Expected to fail: Need to figure out if we want to support indirect sources."
     create_surgical_procedures([{'Surgery Case ID' => 100, 'Description' => 'Left temporal lobe resection',  'Modifier' => 'Left' }, { 'Surgery Case ID' => 100, 'Description' => 'Insert shunt',  'Modifier' => 'Left' }])
     create_surgeries([ { 'Surgery Case ID' => 100, 'Surgery Case Number' => 'OR-123',  'Patient ID' => 1 }])
@@ -74,7 +74,7 @@ RSpec.feature 'Editing surgery: User should be able to edit surgery information'
     expect(all('.indirect_source', text: 'Indirect Source: Imaging exam')[0]).to have_css(%{select.indirect_source_list option[selected="selected"][value="#{imaging_exam.id}"]})
   end
 
-  scenario 'User editing an abstraction with a suggestion against a complex source', js: true, focus: false do
+  scenario 'User editing an abstraction with a suggestion against a complex source', js: true, focus: true do
     pending "Expected to fail: Need to figure out if we want to support complex sources."
     create_surgical_procedures([{'Surgery Case ID' => 100, 'Description' => 'Left temporal lobe resection',  'Modifier' => 'Left' }, { 'Surgery Case ID' => 100, 'Description' => 'Insert shunt',  'Modifier' => 'Left' }])
     create_surgeries([ { 'Surgery Case ID' => 100, 'Surgery Case Number' => 'OR-123',  'Patient ID' => 1 }])

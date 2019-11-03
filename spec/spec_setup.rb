@@ -23,7 +23,7 @@ module OmopAbstractor
       sites = CSV.new(File.open('lib/omop_abstractor/setup/data/ICD-O-3_CSV-metadata/Topoenglish.csv'), headers: true, col_sep:',', return_headers: false)
       sites.each do |row|
         if Site.where(icdo3_code: row.to_hash['Kode'], name: row.to_hash['Title'].downcase).empty?
-          Site.create!(icdo3_code: row.to_hash['Kode'], level: Setup.map_site_level(row.to_hash['Lvl']), name: row.to_hash['Title'].downcase, synonym: Setup.site_synonym?(row.to_hash['Lvl'])) if (row.to_hash['Lvl'] == '3' || row.to_hash['Lvl'] == '4' ||  row.to_hash['Lvl'] == 'incl')
+          Site.create!(icdo3_code: row.to_hash['Kode'], level: SpecSetup.map_site_level(row.to_hash['Lvl']), name: row.to_hash['Title'].downcase, synonym: SpecSetup.site_synonym?(row.to_hash['Lvl'])) if (row.to_hash['Lvl'] == '3' || row.to_hash['Lvl'] == '4' ||  row.to_hash['Lvl'] == 'incl')
         else
           puts 'little my says it already exists!'
         end
@@ -104,12 +104,12 @@ module OmopAbstractor
       radio_button_list_object_type = Abstractor::AbstractorObjectType.where(value: 'radio button list').first
       source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
       v_rule = Abstractor::AbstractorRuleType.where(name: 'value').first
-      anatomical_location_abstractor_abstraction_schema = Setup.abstractor_abstraction_schema_anatomical_location
+      anatomical_location_abstractor_abstraction_schema = SpecSetup.abstractor_abstraction_schema_anatomical_location
       location_group  = Abstractor::AbstractorSubjectGroup.create(name: 'Anatomical Location', enable_workflow_status: true, workflow_status_submit: 'Submit', workflow_status_pend: 'Remove')
       abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: anatomical_location_abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_radiation_therapy_prescription.id)
       Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', abstractor_rule_type: v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
       Abstractor::AbstractorSubjectGroupMember.create(abstractor_subject: abstractor_subject, abstractor_subject_group: location_group, display_order: 1)
-      laterality_abstractor_abstraction_schema = Setup.abstractor_abstraction_schema_laterality
+      laterality_abstractor_abstraction_schema = SpecSetup.abstractor_abstraction_schema_laterality
       abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: laterality_abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_radiation_therapy_prescription.id)
       Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', abstractor_rule_type: v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
       Abstractor::AbstractorSubjectGroupMember.create(abstractor_subject: abstractor_subject, abstractor_subject_group: location_group, display_order: 2)
@@ -233,7 +233,7 @@ module OmopAbstractor
       source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
       surgery_anatomical_location_group  = Abstractor::AbstractorSubjectGroup.create(name: 'Surgery Anatomical Location')
 
-      anatomical_location_abstractor_abstraction_schema = Setup.abstractor_abstraction_schema_anatomical_location
+      anatomical_location_abstractor_abstraction_schema = SpecSetup.abstractor_abstraction_schema_anatomical_location
       abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: anatomical_location_abstractor_abstraction_schema)
       Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'surgical_procedure_notes', abstractor_rule_type: value_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
       Abstractor::AbstractorSubjectGroupMember.create(abstractor_subject: abstractor_subject, abstractor_subject_group: surgery_anatomical_location_group, display_order: 1)
@@ -296,7 +296,7 @@ module OmopAbstractor
       Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: dat_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
       Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
 
-      anatomical_location_abstractor_abstraction_schema = Setup.abstractor_abstraction_schema_anatomical_location
+      anatomical_location_abstractor_abstraction_schema = SpecSetup.abstractor_abstraction_schema_anatomical_location
       abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: anatomical_location_abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_imaging_exams_1.id)
       Abstractor::AbstractorSubjectGroupMember.create(abstractor_subject: abstractor_subject, abstractor_subject_group: dat_group, display_order: 2)
       Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', abstractor_rule_type: v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)

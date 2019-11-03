@@ -44,7 +44,7 @@ module Abstractor
               end
 
               if abstractor_suggestion
-                format.html { redirect_to(abstractor_abstraction_path(@abstractor_abstraction)) }
+                format.html { render "abstractor_abstractions/show", layout: false }
               else
                 format.json { render json: "Error processing request to create abstractor suggestion", status: :unprocessable_entity }
               end

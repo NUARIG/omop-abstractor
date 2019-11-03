@@ -16,7 +16,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     FactoryGirl.create(:relationship, relationship_id: 'Has proc context', relationship_name: 'Has procedure context (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Proc context of', relationship_concept_id: 44818790)
   end
 
-  scenario 'Viewing an abstraction with an actual suggestion', js: true, focus: false do
+  scenario 'Viewing an abstraction with an actual suggestion', js: true, focus: true do
     [{'Note Text' => 'Looking good. KPS: 100'}].each_with_index do |encounter_note_hash, i|
       note = FactoryGirl.create(:note, person: @person, note_text: encounter_note_hash['Note Text'])
       note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -48,7 +48,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.has_karnofsky_performance_status_date .custom_explanation .explanation_text')).to have_content('A bit of custom logic')
   end
 
-  scenario 'Viewing an abstraction with an unknown suggestion', js: true, focus: false do
+  scenario 'Viewing an abstraction with an unknown suggestion', js: true, focus: true do
     [{'Note Text' => 'Hello, I have no idea what is your KPS.'}].each_with_index do |encounter_note_hash, i|
       note = FactoryGirl.create(:note, person: @person, note_text: encounter_note_hash['Note Text'])
       note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -71,7 +71,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.has_karnofsky_performance_status_date .custom_explanation .explanation_text')).to have_content('A bit of custom logic')
   end
 
-  scenario 'Accepting a suggestion for an abstraction', js: true, focus: false do
+  scenario 'Accepting a suggestion for an abstraction', js: true, focus: true do
     [{'Note Text' => 'Looking good. KPS: 100'}].each_with_index do |encounter_note_hash, i|
       note = FactoryGirl.create(:note, person: @person, note_text: encounter_note_hash['Note Text'])
       note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -99,7 +99,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.has_karnofsky_performance_status')).to have_content('CLEAR')
   end
 
-  scenario 'Accepting a suggestion for an abstraction having multiple suggestions', js: true, focus: false do
+  scenario 'Accepting a suggestion for an abstraction having multiple suggestions', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Looking good. KPS: 90.  I recommended an appointment in 6 months.  I hope his kps will be 100 then.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -138,7 +138,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario 'Editing an abstraction with an actual suggestion', js: true, focus: false do
+  scenario 'Editing an abstraction with an actual suggestion', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Looking good. KPS: 100'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -163,7 +163,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario 'Editing an abstraction with an unknown suggestion', js: true, focus: false do
+  scenario 'Editing an abstraction with an unknown suggestion', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, I have no idea what is your KPS.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -203,7 +203,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario 'Viewing source for suggestion with source and match value', js: true, focus: false do
+  scenario 'Viewing source for suggestion with source and match value', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'The patient is looking good.  KPS: 100'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -219,7 +219,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
 
-  scenario 'Viewing source for suggestion with source containing characters needing to be escaped and match value', js: true, focus: false do
+  scenario 'Viewing source for suggestion with source containing characters needing to be escaped and match value', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'The patient is looking good & fit. Much > than I would have thought.  KPS: 100'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -235,7 +235,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
 
-  scenario 'Viewing source for suggestion with a source and no match value', js: true, focus: false do
+  scenario 'Viewing source for suggestion with a source and no match value', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, your KPS is something. Have a great day!'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -247,7 +247,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.abstractor_source_tab_content')).to have_content('Hello, your KPS is something. Have a great day!')
   end
 
-  scenario 'Viewing source for suggestion with source containing characters needing to be escaped and no match value', js: true, focus: false do
+  scenario 'Viewing source for suggestion with source containing characters needing to be escaped and no match value', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'The patient is looking good & fit. Much > than I would have thought. The KPS is something. Have a great day!'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -259,7 +259,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good & fit. Much > than I would have thought. The KPS is something. Have a great day!')
   end
 
-  scenario 'Viewing source for suggestion with source and multiple match values', js: true, focus: false do
+  scenario 'Viewing source for suggestion with source and multiple match values', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, your KPS is 100%. Have a great day! Yes, KPS is 100%! And then I elaborated.  KPS: 100.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -274,7 +274,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
 
-  scenario 'User clearing an abstraction', js: true, focus: false do
+  scenario 'User clearing an abstraction', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, your KPS is 100%.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -324,7 +324,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario 'User creating abstraction when matching suggestion exists', js: true, focus: false do
+  scenario 'User creating abstraction when matching suggestion exists', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, you look good to me. KPS: 100'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -351,7 +351,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario 'User setting the value of an abstraction schema with a date object type', js: true, focus: false do
+  scenario 'User setting the value of an abstraction schema with a date object type', js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, I have no idea what is your KPS.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -374,7 +374,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario "User setting all the values to 'not applicable' for an abstractable entity", js: true, focus: false do
+  scenario "User setting all the values to 'not applicable' for an abstractable entity", js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, I have no idea what is your KPS.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -400,7 +400,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
-  scenario "User setting all the values to 'unknown' for an abstractable entity", js: true, focus: false do
+  scenario "User setting all the values to 'unknown' for an abstractable entity", js: true, focus: true do
     create_encounter_notes([{'Note Text' => 'Hello, I have no idea what is your KPS.'}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
@@ -421,7 +421,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.has_karnofsky_performance_status_date')).to have_content('unknown')
   end
 
-  scenario "Viewing source for suggestion with source and match value with the match malue requiring scroll to.", js: true, focus: false do
+  scenario "Viewing source for suggestion with source and match value with the match malue requiring scroll to.", js: true, focus: true do
     note_text = "Little my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\n The patient is looking good.  KPS: 100"
     create_encounter_notes([{'Note Text' => note_text}])
     @note = Note.last

@@ -432,7 +432,7 @@ Abstractor.AbstractionGroupUI = ->
 
   return
 
-$(document).on 'DOMContentLoaded', (e) ->
+$(document).on 'turbolinks:load', ->
   new Abstractor.AbstractionUI()
   new Abstractor.AbstractionSuggestionUI()
   new Abstractor.AbstractionGroupUI()

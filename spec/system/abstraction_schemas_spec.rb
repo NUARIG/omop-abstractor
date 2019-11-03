@@ -14,7 +14,7 @@ RSpec.feature 'Abstractor Schemas', type: :system do
     OmopAbstractor::SpecSetup.imaging_exam
   end
 
-  scenario 'Viewing a list of abstraction schemas', js: true, focus: false do
+  scenario 'Viewing a list of abstraction schemas', js: true, focus: true do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Anatomical location')

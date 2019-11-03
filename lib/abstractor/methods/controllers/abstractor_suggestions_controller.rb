@@ -29,7 +29,7 @@ module Abstractor
         def update
           respond_to do |format|
             if @abstractor_suggestion.update_attributes(abstractor_suggestion_params)
-              format.html { redirect_to(abstractor_abstraction_path(@abstractor_abstraction)) }
+              format.html { render "abstractor_abstractions/show", layout: false }
             else
               format.html { render "abstractor_abstractions/show" }
             end

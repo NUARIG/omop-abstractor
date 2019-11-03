@@ -22,7 +22,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     @abstractor_namespace_imaging_exams_3 = Abstractor::AbstractorNamespace.where(name: 'Imaging Exams 3').first
   end
 
-  scenario 'Editing abstractions in one namespace', js: true, focus: false do
+  scenario 'Editing abstractions in one namespace', js: true, focus: true do
     create_imaging_exams([{'Note Text' => 'Hello, you look good to me.', 'Date' => '1/1/2014', 'Namespace' => Abstractor::AbstractorNamespace.to_s, 'Namespace ID' => @abstractor_namespace_imaging_exams_1.id}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1.id))
@@ -36,7 +36,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(page).to_not have_content('Favorite minor Moomin character')
   end
 
-  scenario 'Editing abstractions in another namespace', js: true, focus: false do
+  scenario 'Editing abstractions in another namespace', js: true, focus: true do
     create_imaging_exams([{'Note Text' => 'Hello, you look good to me.', 'Date' => '1/1/2014', 'Namespace' => Abstractor::AbstractorNamespace.to_s, 'Namespace ID' => @abstractor_namespace_imaging_exams_2.id}])
     @note = Note.last
     visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_2.id))
@@ -49,7 +49,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(page).to_not have_content('Favorite major Moomin character')
   end
 
-  scenario 'Editing abstractions on an imaging exam in multiple namespaces', js: true, focus: false do
+  scenario 'Editing abstractions on an imaging exam in multiple namespaces', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1.id)
@@ -79,7 +79,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
 #RECIST response criteria
 #Diagnosis
 
-  scenario 'Groups displayed in UI should maintain namespace', js: true, focus: false do
+  scenario 'Groups displayed in UI should maintain namespace', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1.id)
@@ -93,7 +93,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.abstractor_subject_groups_container')[1].all('.has_diagnosis').size).to eq(0)
   end
 
-  scenario 'Groups displayed in UI should contain only abstractions related to selected namespace', js: true, focus: false do
+  scenario 'Groups displayed in UI should contain only abstractions related to selected namespace', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1)
@@ -109,7 +109,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.abstractor_subject_groups_container')[0].all('.has_dopamine_transporter_level').size).to eq(0)
   end
 
-  scenario 'Adding groups in UI should add only abstractions related to selected namespace', js: true, focus: false do
+  scenario 'Adding groups in UI should add only abstractions related to selected namespace', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1)
@@ -124,7 +124,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.abstractor_subject_groups_container')[1]).to have_content('DELETE DIAGNOSIS')
   end
 
-  scenario 'Editing groups in UI should edit only abstractions related to selected namespace', js: true, focus: false do
+  scenario 'Editing groups in UI should edit only abstractions related to selected namespace', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1)
@@ -151,7 +151,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.has_diagnosis').size).to eq(0)
   end
 
-  scenario 'Adding groups in UI should respect group cardinality', js: true, focus: false do
+  scenario 'Adding groups in UI should respect group cardinality', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_3.id)
@@ -176,7 +176,7 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.abstractor_subject_groups_container')[0].all('.has_score_1').size).to eq(1)
   end
 
-  scenario 'New group of abstractions displays valid sources', js: true, focus: false do
+  scenario 'New group of abstractions displays valid sources', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: "I like little my the best!\nfavorite moomin:\nThe groke is the bomb!", note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1.id)

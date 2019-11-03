@@ -13,7 +13,7 @@ RSpec.feature 'Listing and searching abstractor object values.  User should be a
     OmopAbstractor::SpecSetup.imaging_exam
   end
 
-  scenario 'Viewing and searching a list of abstractor object values', js: true, focus: false do
+  scenario 'Viewing and searching a list of abstractor object values', js: true, focus: true do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first
@@ -33,7 +33,7 @@ RSpec.feature 'Listing and searching abstractor object values.  User should be a
     match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 2)
   end
 
-  scenario 'Deleting an abstractor object value', js: true, focus: false do
+  scenario 'Deleting an abstractor object value', js: true, focus: true do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first

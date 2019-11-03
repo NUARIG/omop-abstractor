@@ -20,7 +20,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     @abstractor_namespace_radiation_therapy_prescription = Abstractor::AbstractorNamespace.where(name: 'Radiation Therapy Prescription', subject_type: NoteStableIdentifier.to_s, joins_clause: '', where_clause: '').first
   end
 
-  scenario 'Editing an abstraction with radio button list', js: true, focus: false do
+  scenario 'Editing an abstraction with radio button list', js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -62,7 +62,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(find('.has_laterality')).to_not have_content('bilateral')
   end
 
-  scenario 'Adding and removing abstraction groups', js: true, focus: false do
+  scenario 'Adding and removing abstraction groups', js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -89,7 +89,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(page).to have_content('ADD ANATOMICAL LOCATION')
   end
 
-  scenario 'Viewing abstraction groups with no suggestions', js: true, focus: false do
+  scenario 'Viewing abstraction groups with no suggestions', js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -105,7 +105,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_anatomical_location')[0]).to have_content('unknown')
   end
 
-  scenario 'Viewing abstraction groups with suggestions', js: true, focus: false do
+  scenario 'Viewing abstraction groups with suggestions', js: true, focus: true do
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -123,7 +123,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(page).to_not have_content('DELETE ANATOMICAL LOCATION')
   end
 
-  scenario 'Adding abstraction groups to abstraction groups with suggestions', js: true, focus: false do
+  scenario 'Adding abstraction groups to abstraction groups with suggestions', js: true, focus: true do
     note_text = "treat the temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -144,7 +144,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_anatomical_location')[1]).to have_unchecked_field('temporal lobe', visible: false)
   end
 
-  scenario 'User setting the value of an abstraction schema with a date object type in a group', js: true, focus: false do
+  scenario 'User setting the value of an abstraction schema with a date object type in a group', js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -163,7 +163,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_radiation_therapy_prescription_date')[0]).to have_checked_field('2014-06-03', visible: false)
   end
 
-  scenario "User setting all the values to 'not applicable' in an abstraction group", js: true, focus: false do
+  scenario "User setting all the values to 'not applicable' in an abstraction group", js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -186,7 +186,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_radiation_therapy_prescription_date')[0]).to have_checked_field('not applicable', visible: false)
   end
 
-  scenario "User setting all the values to 'unknown' in an abstraction group", js: true, focus: false do
+  scenario "User setting all the values to 'unknown' in an abstraction group", js: true, focus: true do
     note_text = "Vague blather."
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -209,7 +209,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_radiation_therapy_prescription_date')[0]).to have_content('unknown')
   end
 
-  scenario 'Updating the workflowstatus of a group', js: true, focus: false do
+  scenario 'Updating the workflowstatus of a group', js: true, focus: true do
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -278,7 +278,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.abstraction_workflow_status_form')[1]).to_not have_button('Remove')
   end
 
-  scenario 'Removing the workflowstatus of a radiation therapy when it is not fully set', js: true, focus: false do
+  scenario 'Removing the workflowstatus of a radiation therapy when it is not fully set', js: true, focus: true do
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -313,7 +313,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.abstractor_abstraction_group')[0]).to_not have_button('Remove')
   end
 
-  scenario 'User editing an abstraction for a fully set radiation therapy prescription', js: true, focus: false do
+  scenario 'User editing an abstraction for a fully set radiation therapy prescription', js: true, focus: true do
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -340,7 +340,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.abstractor_abstraction_group')[0]).to_not have_button('Remove')
   end
 
-  scenario 'Submitting and discarding across an entire radiation therapy prescription', js: true, focus: false do
+  scenario 'Submitting and discarding across an entire radiation therapy prescription', js: true, focus: true do
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -501,7 +501,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('a.abstractor_group_add_link', text: 'ADD ANATOMICAL LOCATION').size).to eq(1)
   end
 
-  scenario 'Autocompleter filtering', js: true, focus: false do
+  scenario 'Autocompleter filtering', js: true, focus: true do
     pending "Expected to fail: Need to migrate to an autocompleter."
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "Vague blather."

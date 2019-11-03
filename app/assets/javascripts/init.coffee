@@ -34,6 +34,12 @@ OmopAbstractor.init = ->
     escapeMarkup: (markup) ->
       markup
     minimumInputLength: 2
-$(document).ready ->
+
+OmopAbstractor.destroy = ->
+  $('.sidenav').sidenav('destroy')
+
+$(document).on 'turbolinks:load', ->
   OmopAbstractor.init()
-  return
+
+$(document).on 'turbolinks:before-cache', ->
+  OmopAbstractor.destroy()

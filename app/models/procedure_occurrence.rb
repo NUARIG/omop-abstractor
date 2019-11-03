@@ -39,7 +39,6 @@ class ProcedureOccurrence < ApplicationRecord
 
     def get_procedures(options={})
       domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
-      # relationship_has_proc_context = Relationship.where(relationship_id: 'Has proc context').first
       relationship_has_proc_context = Relationship.where(relationship_id: 'Proc context of').first
       procedure_occurence_ids = FactRelationship.where(domain_concept_id_1: domain_concept_procedure.concept_id, fact_id_1: self.procedure_occurrence_id, domain_concept_id_2: domain_concept_procedure.concept_id, relationship_concept_id: relationship_has_proc_context.relationship_concept_id).map(&:fact_id_2)
       procedures = SqlAudit.find_and_audit(options[:username], ProcedureOccurrence.where(procedure_occurrence_id: procedure_occurence_ids))

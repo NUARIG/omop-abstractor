@@ -30,7 +30,7 @@ class NoteStableIdentifier < ApplicationRecord
 
     if secondary_providers.present?
       s = s.where("EXISTS (SELECT 1
-                     FROM note JOIN note_stable_identifie ON note.note_id = note_stable_identifier.note_id
+                     FROM note JOIN note_stable_identifier ON note.note_id = note_stable_identifier.note_id
                                JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
                                JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id
                                JOIN fact_relationship AS fr2 ON fr2.domain_concept_id_1 = 10 AND fr2.fact_id_1 = procedure_occurrence.procedure_occurrence_id AND fr2.relationship_concept_id = 44818888

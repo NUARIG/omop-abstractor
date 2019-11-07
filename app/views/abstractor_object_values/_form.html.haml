@@ -1,0 +1,45 @@
+- if @abstractor_object_value.new_record?
+  - path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_values_path(@abstractor_abstraction_schema))
+  %h2
+    %b
+      New Value
+- else
+  - path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, @abstractor_object_value))
+  %h2
+    %b
+      Edit Value
+#abstractor_object_value
+  = form_for @abstractor_object_value, url: path do |f|
+    .value
+      %label{ for: 'abstractor_abstractor_object_value_value' }
+        Value
+      = f.text_field :value, disabled: @abstractor_object_value.used?
+      - if validation_errors?(@abstractor_object_value, :value)
+        %p.error= format_validation_errors(@abstractor_object_value, :value)
+    .vocabulary_code
+      %label{ for: 'abstractor_abstractor_object_value_vocabulary_code' }
+        Vocabulary Code
+      = f.text_field :vocabulary_code, disabled: @abstractor_object_value.used?
+      - if validation_errors?(@abstractor_object_value, :vocabulary_code)
+        %p.error= format_validation_errors(@abstractor_object_value, :vocabulary_code)
+    .case_sensitive
+      %label{ for: 'abstractor_abstractor_object_value_case_sensitive' }
+        = f.check_box :case_sensitive, disabled: @abstractor_object_value.used?
+        %span
+          Case Sensitive?
+    .comments
+      %label{ for: 'abstractor_abstractor_object_value_comments' }
+        Comments
+      = f.text_area :comments
+    %h4
+      %b
+        Variant Values
+    #abstractor_object_value_variants
+      = f.fields_for :abstractor_object_value_variants do |ff|
+        = render 'abstractor_object_value_variant_fields', f: ff
+      .links
+        = link_to_add_association f, :abstractor_object_value_variants, class: 'abstractor_object_value_variant_add_link' do
+          Add variant
+    .navigation
+      = f.submit 'Save'
+      = link_to 'Cancel', Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_values_path(@abstractor_abstraction_schema)), class: 'new_abstractor_abstraction_schema_abstractor_object_value_link'

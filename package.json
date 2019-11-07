@@ -1,0 +1,11 @@
+{
+  "name": "omop-abstractor",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "stimulus": "^1.1.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.9.0"
+  }
+}

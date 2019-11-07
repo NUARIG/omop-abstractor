@@ -1,0 +1,19 @@
+#abstractor_abstraction_schemas
+  .abstractor_abstraction_schemas_header
+    %h2
+      %b
+        Abstractor abstraction schemas
+  .abstractor_abstraction_schemas_list
+    %table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+      %tbody
+        - @abstractor_abstraction_schemas.each do |abstractor_abstraction_schema|
+          = content_tag_for(:tr, abstractor_abstraction_schema) do
+            %td.abstractor_abstraction_schema_display_name
+              = abstractor_abstraction_schema.display_name
+            %td.abstractor_abstraction_schema_controls
+              = link_to 'Values', Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_values_path(abstractor_abstraction_schema)), class: 'abstractor_abstraction_schema_values_index_link'

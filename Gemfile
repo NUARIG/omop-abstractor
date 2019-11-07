@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.3'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# gem 'abstractor', path: 'lib/abstractor'
+# Application Gems
 gem 'american_date'
 gem 'bulk_insert'
 gem 'cocoon'
@@ -51,7 +51,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'material_icons'
 gem 'materialize-sass', '~> 1.0.0'
-gem 'mini_racer'
 gem 'stanford-core-nlp-abstractor'
 gem 'simple_token_authentication'
 gem 'paper_trail'

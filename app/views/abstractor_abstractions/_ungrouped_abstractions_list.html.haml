@@ -13,5 +13,6 @@
         - ungrouped_subjects.each_with_index do |ungrouped_subject, index|
           - abstractor_abstractions = ungrouped_subject.abstractor_abstractions.not_deleted.where(:about_id => about.id)
           - abstractor_abstractions.each do |abstractor_abstraction|
-            %div{ class: "abstractor_abstraction #{Abstractor::Utility.dehumanize(abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate)} #{'abstractor_bottom_border' if index < ungrouped_subjects.length - 1}" }
+            %div{ class: "abstractor_abstraction #{Abstractor::Utility.dehumanize(abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate)} #{'abstractor_bottom_border' if index < ungrouped_subjects.length - 1}", "data-controller" => "abstractor-abstraction" }
               = render :partial => 'abstractor_abstractions/fields', :locals => {:abstractor_abstraction => abstractor_abstraction}
+

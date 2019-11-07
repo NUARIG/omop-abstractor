@@ -4,7 +4,7 @@
 .abstractor_abstractions_grouped
   - abstractor_subject_groups = about.class.abstractor_subject_groups(namespace_type: namespace_type, namespace_id: namespace_id)
   - abstractor_subject_groups.each do |abstractor_subject_group|
-    .abstractor_subject_groups_container
+    .abstractor_subject_groups_container{ "data-controller" => "abstractor-abstraction-groups" }
       %h4
         =abstractor_subject_group.name
       - if abstractor_subject_group.cardinality
@@ -23,4 +23,4 @@
           - abstractor_abstraction_groups.each do |abstractor_abstraction_group|
             = render partial: 'abstractor_abstraction_groups/form', locals: {abstractor_abstraction_group: abstractor_abstraction_group, namespace_type: namespace_type, namespace_id: namespace_id}
         - unless abstractor_subject_group.cardinality == 1 || about.discarded? || about.submitted?
-          = link_to "Add #{abstractor_subject_group.name}", Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_groups_path(about_id: about.id, about_type: about.class.name, abstractor_subject_group_id: abstractor_subject_group.id, namespace_type: namespace_type, namespace_id: namespace_id)), method: :post, class: 'waves-effect waves-light btn abstractor_group_add_link', remote: true, style: "#{'display: none;' if about.abstractor_subject_group_complete?(abstractor_subject_group.id, {namespace_type: namespace_type, namespace_id: namespace_id})}"
+          = link_to "Add #{abstractor_subject_group.name}", Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_groups_path(about_id: about.id, about_type: about.class.name, abstractor_subject_group_id: abstractor_subject_group.id, namespace_type: namespace_type, namespace_id: namespace_id)), method: :post, class: 'waves-effect waves-light btn abstractor_group_add_link', remote: true, style: "#{'display: none;' if about.abstractor_subject_group_complete?(abstractor_subject_group.id, {namespace_type: namespace_type, namespace_id: namespace_id})}", data: { confirm: 'Are you sure?', action: 'ajax:complete->abstractor-abstraction-groups#add' }

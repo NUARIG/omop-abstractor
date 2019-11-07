@@ -73,7 +73,9 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     sleep(1)
     expect(page).to_not have_content('DELETE ANATOMICAL LOCATION')
     expect(page).to have_content('ADD ANATOMICAL LOCATION')
-    click_link('Add Anatomical Location')
+    accept_confirm do
+      click_link('Add Anatomical Location')
+    end
     sleep(1)
     expect(all('.has_anatomical_location').size).to eq(2)
     expect(page).to have_content('DELETE ANATOMICAL LOCATION')
@@ -82,7 +84,9 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_radiation_therapy_prescription.id))
     expect(page).to have_content('DELETE ANATOMICAL LOCATION')
     expect(all('.has_anatomical_location')[1]).to have_content('unknown')
-    click_link('Delete Anatomical Location')
+    accept_confirm do
+      click_link('Delete Anatomical Location')
+    end
     sleep(1)
     expect(all('.has_anatomical_location').size).to eq(1)
     expect(all('.has_anatomical_location')[0]).to have_content('unknown')
@@ -133,7 +137,9 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     scroll_to_bottom_of_the_page
     sleep(1)
     expect(all('.abstractor_abstraction_group .has_anatomical_location').size).to eq(1)
-    click_link('Add Anatomical Location')
+    accept_confirm do
+      click_link('Add Anatomical Location')
+    end
     scroll_to_bottom_of_the_page
     sleep(1)
     expect(all('.abstractor_abstraction_group .has_anatomical_location').size).to eq(2)
@@ -209,7 +215,8 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_radiation_therapy_prescription_date')[0]).to have_content('unknown')
   end
 
-  scenario 'Updating the workflowstatus of a group', js: true, focus: true do
+  #mgurley Come Back To Me
+  scenario 'Updating the workflowstatus of a group', js: true, focus: true  do
     workflow_status_is_enabled("Anatomical Location", "Submit", "Remove")
     note_text = "right temporal lobe"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -229,6 +236,7 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     sleep(1)
     expect(all('.abstractor_abstraction_group')[0]).to have_button('Submit', disabled: false)
     all('.has_anatomical_location')[0].click_link('Clear')
+    sleep(1)
     expect(all('.abstractor_abstraction_group')[0]).to have_button('Submit', disabled: true)
     all('.has_anatomical_location')[0].check('temporal lobe', allow_label_click: true)
     sleep(1)
@@ -269,8 +277,9 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.has_laterality')[0]).to have_checked_field('right', visible: false, disabled: true)
     expect(all('.has_radiation_therapy_prescription_date')[0]).to have_checked_field('2014-06-03', visible: false, disabled: true)
     sleep(1)
-
-    all('.abstractor_subject_groups_container')[0].click_link('Add Anatomical Location')
+    accept_confirm do
+      all('.abstractor_subject_groups_container')[0].click_link('Add Anatomical Location')
+    end
     sleep(1)
     scroll_to_bottom_of_the_page
 
@@ -353,7 +362,9 @@ RSpec.feature 'Editing radiation therapy prescription: User should be able to ed
     expect(all('.abstractor_abstraction_group')[0]).to have_button('Submit', disabled: true)
     expect(all('.abstractor_abstraction_group')[0]).to_not have_button('Remove')
     expect(all('a.abstractor_group_add_link', text: 'ADD ANATOMICAL LOCATION').size).to eq(1)
-    click_link('Add Anatomical Location')
+    accept_confirm do
+      click_link('Add Anatomical Location')
+    end
     sleep(1)
     all('.has_anatomical_location')[0].check('temporal lobe', allow_label_click: true)
     all('.has_laterality')[0].check('right', allow_label_click: true)

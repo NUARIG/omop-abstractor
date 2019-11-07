@@ -5,6 +5,7 @@ OmopAbstractor.init = ->
   $('.datepicker').datepicker(format: 'mm/dd/yyyy')
   $('.sidenav').sidenav(edge: 'right')
   $('.modal').modal()
+
   if $('.abstractor_footer').length > 0
     $('.abstractor_abstractions').css('margin-top', $('.abstractor_footer').height()*-1)
   providersUrl = $('#providers_url').attr('href')

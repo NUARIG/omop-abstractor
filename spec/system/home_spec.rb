@@ -6,7 +6,7 @@ RSpec.feature 'Home', type: :system do
     sleep(1)
   end
 
-  scenario 'works', js: true, focus: false do
+  scenario 'works', js: true, focus: true do
     expect(page).to have_css('#home', text: 'OMOP Abstractor')
   end
 end

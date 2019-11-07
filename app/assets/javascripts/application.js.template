@@ -13,10 +13,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
-//= require cocoon
-//= require materialize-sprockets
-//= require cable
-//= require select2/select2.full
-//= require select2/i18n/en
-//= require_directory ./abstractor
+//= require_tree .

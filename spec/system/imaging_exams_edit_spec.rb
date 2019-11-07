@@ -117,7 +117,9 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     logs_in('mjg994', 'secret')
     scroll_to_bottom_of_the_page
     sleep(1)
-    click_link('Add Diagnosis')
+    accept_confirm do
+      click_link('Add Diagnosis')
+    end
     sleep(1)
     scroll_to_bottom_of_the_page
     expect(all('.abstractor_subject_groups_container')[1].all('.has_diagnosis').size).to eq(2)
@@ -132,7 +134,9 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     logs_in('mjg994', 'secret')
     scroll_to_bottom_of_the_page
     sleep(1)
-    click_link('Add Diagnosis')
+    accept_confirm do
+      click_link('Add Diagnosis')
+    end
     sleep(1)
     all('.has_diagnosis')[1].find(:css, '.edit_link').click
     sleep(1)
@@ -162,7 +166,9 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(all('.has_score_1')[0]).to have_content('Score 1')
     expect(all('.has_falls')[0]).to have_content('Falls')
     expect(all('.abstractor_subject_groups_container')[0]).to have_content('ADD SCORES')
-    click_link('Add Scores')
+    accept_confirm do
+      click_link('Add Scores')
+    end
     sleep(1)
     expect(all('.has_score_1').size).to eq(2)
     expect(all('.abstractor_subject_groups_container')[1]).to_not have_content('ADD SCORES')
@@ -170,7 +176,9 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     sleep(1)
     expect(all('.abstractor_subject_groups_container')[0].all('.has_score_1').size).to eq(2)
     expect(all('.abstractor_subject_groups_container')[0]).to_not have_content('ADD SCORES')
-    click_link('Delete Scores')
+    accept_confirm do
+      click_link('Delete Scores')
+    end
     sleep(1)
     expect(all('.abstractor_subject_groups_container')[0]).to have_content('ADD SCORES')
     expect(all('.abstractor_subject_groups_container')[0].all('.has_score_1').size).to eq(1)
@@ -183,7 +191,9 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_imaging_exams_1.id))
     logs_in('mjg994', 'secret')
     scroll_to_bottom_of_the_page
-    click_link('Add Diagnosis')
+    accept_confirm do
+      click_link('Add Diagnosis')
+    end
     sleep(1)
     all('.has_favorite_major_moomin_character span.abstractor_abstraction_source_tooltip_img')[0].click
     sleep(1)

@@ -31,7 +31,7 @@
             %td.abstractor_object_value_vocabulary_code
               = abstractor_object_value.vocabulary_code
             %td.abstractor_object_value_edit
-              = link_to 'Edit', Abstractor::UserInterface.abstractor_relative_path(edit_abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, abstractor_object_value)), class: 'edit_abstractor_abstraction_schema_abstractor_object_value_link'
+              = link_to 'Edit', Abstractor::UserInterface.abstractor_relative_path(edit_abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, abstractor_object_value)), class: 'edit_abstraction_schema_abstractor_object_value_link'
             %td.abstractor_object_value_delete
               = link_to 'Delete', Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, abstractor_object_value)), method: :delete, class: 'delete_abstractor_abstraction_schema_abstractor_object_value_link', data: { confirm: 'Are you sure?' }
     = will_paginate @abstractor_object_values

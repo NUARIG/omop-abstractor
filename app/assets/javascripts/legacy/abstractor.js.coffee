@@ -200,6 +200,7 @@ Abstractor.AbstractionUI = ->
         return
     })
 
+  #not migrated
   $(document).on "click", ".abstractor_abstractions .show_hide_abstractor_history_link", (e) ->
     e.preventDefault()
     if $(this).hasClass('show_abstractor_history')
@@ -331,6 +332,7 @@ Abstractor.AbstractionUI = ->
 
     return
 
+  #not migrated
   $(document).on "change", "select.indirect_source_list", ->
     source_type = $(this).attr("rel")
     value = $(this).find("option:selected").prop("value")

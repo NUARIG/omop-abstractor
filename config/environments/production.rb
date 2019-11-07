@@ -12,8 +12,6 @@ Rails.application.configure do
     "jollyday.jar",
     "bridge.jar"
   ]
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-  config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -111,7 +109,7 @@ Rails.application.configure do
   ENV['JAVA_HOME'] = '/usr/lib/jvm/java-openjdk'
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'smtprelay.northwestern.edu', port: 25, domain: 'northwestern.edu' }
+  config.action_mailer.smtp_settings = { address: '', port: 25, domain: '' }
   config.action_mailer.default_url_options = { host: Rails.application.credentials.servers[Rails.env.to_sym][:server_name] }
 
   config.middleware.use ExceptionNotification::Rack,

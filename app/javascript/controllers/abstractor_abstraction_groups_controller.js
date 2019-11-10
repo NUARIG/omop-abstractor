@@ -21,6 +21,21 @@ export default class AbstractorAbstractionGroupsController extends Controller {
     }
   }
 
+  add() {
+    var controller, currentTarget, abstractor_subject_groups_container, abstractor_abstraction_group, detail, status, xhr;
+    controller = this;
+    currentTarget = event.currentTarget;
+    detail = event.detail;
+    xhr = detail[0];
+    status = detail[1];
+
+    abstractor_subject_groups_container = $(event.currentTarget).closest(".abstractor_subject_groups_container");
+    abstractor_subject_groups_container.find(".abstractor_subject_groups").append(xhr.responseText);
+    controller.validateCardinality(abstractor_subject_groups_container);
+    WorkflowStatus.toggleWorkflowStatus();
+    return;
+  }
+
   delete() {
     var controller, currentTarget, abstractor_subject_groups_container, abstractor_abstraction_group, detail, status, xhr;
     controller = this;
@@ -32,21 +47,6 @@ export default class AbstractorAbstractionGroupsController extends Controller {
     abstractor_subject_groups_container = $(event.currentTarget).closest(".abstractor_subject_groups_container");
     abstractor_abstraction_group = $(event.currentTarget).closest(".abstractor_abstraction_group");
     abstractor_abstraction_group.html(xhr.responseText);
-    controller.validateCardinality(abstractor_subject_groups_container);
-    WorkflowStatus.toggleWorkflowStatus();
-    return;
-  }
-
-  add() {
-    var controller, currentTarget, abstractor_subject_groups_container, abstractor_abstraction_group, detail, status, xhr;
-    controller = this;
-    currentTarget = event.currentTarget;
-    detail = event.detail;
-    xhr = detail[0];
-    status = detail[1];
-
-    abstractor_subject_groups_container = $(event.currentTarget).closest(".abstractor_subject_groups_container");
-    abstractor_subject_groups_container.find(".abstractor_subject_groups").append(xhr.responseText);
     controller.validateCardinality(abstractor_subject_groups_container);
     WorkflowStatus.toggleWorkflowStatus();
     return;

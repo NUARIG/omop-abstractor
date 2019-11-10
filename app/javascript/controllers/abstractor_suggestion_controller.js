@@ -204,7 +204,9 @@ export default class AbstractorSuggestionController extends Controller {
       controller.restoreRange(serializedRange);
       serializedRange = null;
       sel = window.getSelection();
-      range = sel.getRangeAt(0);
+      if (sel.rangeCount > 0) {
+        range = sel.getRangeAt(0);
+      }
       if (is_ie) {
         range.commonAncestorContainer.contentEditable = true;
       }
@@ -218,6 +220,7 @@ export default class AbstractorSuggestionController extends Controller {
         document.designMode = 'off';
       }
     }
+    $('.abstractor_highlight span').css("background-color", "white");
   }
 
   highlightWithColor (colour) {

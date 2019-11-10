@@ -87,5 +87,5 @@ def logs_in(username, password)
 end
 
 def click_the_back_button
-  page.evaluate_script('window.history.back()')
+  page.go_back
 end

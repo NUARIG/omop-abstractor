@@ -447,7 +447,7 @@ RSpec.feature 'Editing encounter note', type: :system do
   describe 'Navigating to a page with the back button' do
     before(:each) do
       @procedure_occurrence = FactoryGirl.create(:procedure_occurrence, person_id: @person.id)
-      @note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+      @note = FactoryGirl.create(:note, person: @person, note_text: 'The patient is looking good.  KPS: 100')
       @note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: @note)
       @note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  @abstractor_namespace_encoutner_note.id)
       @other_note = FactoryGirl.create(:note, person: @person, note_text: 'Another note.', note_title: 'Another note title')
@@ -473,8 +473,33 @@ RSpec.feature 'Editing encounter note', type: :system do
       sleep(1)
       expect(all('#procedure_occurrences .note')[0].find('.note_text')).to have_content('Another note.')
     end
-  end
 
+    scenario 'Highlighting text when there is currently highlighted text', js: true, focus: true do
+      pending 'This should pass: It appears that Capybara does not really simulate clicking the back button.'
+      visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+      logs_in('mjg994', 'secret')
+      scroll_to_bottom_of_the_page
+      sleep(1)
+      find(:css, '.has_karnofsky_performance_status span.abstractor_abstraction_source_tooltip_img').click
+      within('.abstractor_source_tab') do
+        expect(page).to have_css("[style*='background-color: yellow;']")
+      end
+      expect(find('.abstractor_source_tab label')).to have_content('Note text')
+      expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+      match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+      sleep(1)
+      visit(root_path())
+      sleep(1)
+      click_the_back_button
+      sleep(1)
+      within('.abstractor_source_tab') do
+        expect(page).to have_css("[style*='background-color: yellow;']")
+      end
+      expect(find('.abstractor_source_tab label')).to have_content('Note text')
+      expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+      match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+    end
+  end
 end
 
 def create_encounter_notes(encountr_notes)
@@ -483,15 +508,6 @@ def create_encounter_notes(encountr_notes)
     note = FactoryGirl.create(:note, person: @person, note_text: encounter_note_hash['Note Text'])
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
-    # if encounter_note_hash['Status'] && encounter_note_hash['Status'] == 'Reviewed'
-    #   abstractor_suggestion_status_accepted= AbstractorSuggestionStatus.where(:name => 'Accepted').first
-    #   encounter_note.reload.abstractor_abstractions(true).each do |abstractor_abstraction|
-    #     abstractor_abstraction.abstractor_suggestions.each do |abstractor_suggestion|
-    #       abstractor_suggestion.abstractor_suggestion_status = abstractor_suggestion_status_accepted
-    #       abstractor_suggestion.save!
-    #     end
-    #   end
-    # end
   end
 end
 

@@ -73,7 +73,7 @@
     - procedure_occurences = @note.procedure_occurences(username: current_user.username)
     - if procedure_occurences.any?
       - procedure_occurences.each do |procedure_occurence|
-        .row
+        .row.procedure_occurrence
           .procedure_concept.col.s12.l2
             = procedure_occurence.procedure_concept.concept_name
           .procedure_date.col.s12.l2
@@ -100,10 +100,10 @@
             - notes = procedure_occurence.notes(username: current_user.username, except_notes: [@note])
             - if notes.any?
               - notes.each do |note|
-                .row
+                .row.note
                   .note_title.center-align.col.s6.l6
                     = note.note_title
-                  .note.center-align.col.s6.l6
+                  .note_view.center-align.col.s6.l6
                     = link_to 'View', "#note_id_#{note.note_id}", class: 'waves-effect waves-light btn modal-trigger'
                     %div{id: "note_id_#{note.note_id}", class: 'modal' }
                       .modal-content.left-align

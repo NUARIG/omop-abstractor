@@ -85,3 +85,7 @@ def logs_in(username, password)
   fill_in('Password', with: password)
   click_button('Submit')
 end
+
+def click_the_back_button
+  page.evaluate_script('window.history.back()')
+end

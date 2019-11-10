@@ -44,4 +44,11 @@ document.addEventListener('turbolinks:before-cache', () => {
       instance.destroy();
     }
   });
+
+  document.querySelectorAll('.modal').forEach((modal) => {
+    var instance = M.Modal.getInstance(modal);
+    if (instance) {
+      instance.destroy();
+    }
+  });
 });

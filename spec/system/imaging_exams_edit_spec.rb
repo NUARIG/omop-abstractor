@@ -70,14 +70,6 @@ RSpec.feature 'Editing imaging exam: User should be able to edit namespaced imag
     expect(page).to_not have_content('RECIST response criteria')
     expect(page).to_not have_content('Favorite minor Moomin character')
   end
-#@abstractor_namespace_imaging_exams_1
-#Dopamine Transporter Level
-#Diagnosis
-#Favorite major Moomin character
-
-#@abstractor_namespace_imaging_exams_2
-#RECIST response criteria
-#Diagnosis
 
   scenario 'Groups displayed in UI should maintain namespace', js: true, focus: true do
     note = FactoryGirl.create(:note, person: @person, note_text: 'Hello, you look good to me.', note_date: Date.parse('1/1/2014'))

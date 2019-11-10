@@ -21,21 +21,6 @@ FactoryGirl.define do
     invalid_reason      nil
   end
 
-  # create_table "pii_mrn", id: false, force: :cascade do |t|
-  #   t.bigint "person_id", null: false
-  #   t.string "health_system", limit: 50
-  #   t.string "mrn", limit: 50
-  # end
-  #
-  # create_table "pii_name", id: false, force: :cascade do |t|
-  #   t.bigint "person_id", null: false
-  #   t.string "first_name", limit: 200
-  #   t.string "middle_name", limit: 508
-  #   t.string "last_name", limit: 200
-  #   t.string "suffix", limit: 50
-  #   t.string "prefix", limit: 50
-  # end
-
   factory :pii_name do
     sequence(:first_name) do |n|
       "Bob #{n}"
@@ -124,6 +109,32 @@ FactoryGirl.define do
     note_id                     nil
     stable_identifier_path      ''
     stable_identifier_value     ''
+  end
+
+
+  factory :procedure_occurrence do
+    sequence(:procedure_occurrence_id)
+    person_id                    nil
+    procedure_concept_id         0
+    procedure_date               Date.parse('2019-01-01')
+    procedure_datetime           Date.parse('2019-01-01')
+    procedure_type_concept_id    0
+    modifier_concept_id          0
+    quantity                     nil
+    provider_id                  nil
+    visit_occurrence_id          nil
+    visit_detail_id              nil
+    procedure_source_value       nil
+    procedure_source_concept_id  0
+    modifier_source_value        nil
+  end
+
+  factory :fact_relationship do
+    domain_concept_id_1         nil
+    fact_id_1                   nil
+    domain_concept_id_2         nil
+    fact_id_2                   nil
+    relationship_concept_id     nil
   end
 
   factory :user do

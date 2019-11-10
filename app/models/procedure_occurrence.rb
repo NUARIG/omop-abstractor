@@ -5,7 +5,7 @@ class ProcedureOccurrence < ApplicationRecord
   belongs_to :procedure_type_concept, class_name: 'Concept', foreign_key: 'procedure_type_concept_id'
   belongs_to :modifier_concept, class_name: 'Concept', foreign_key: 'modifier_concept_id', optional: true
   belongs_to :person, class_name: 'Person', foreign_key: 'person_id'
-  belongs_to :provider, class_name: 'Provider', foreign_key: 'provider_id'
+  belongs_to :provider, class_name: 'Provider', foreign_key: 'provider_id', optional: true
   DOMAIN_ID = 'Procedure'
 
   validates_numericality_of :quantity, message: 'is not a number', only_integer: true, greater_than: 0, allow_nil: true

@@ -10,10 +10,15 @@ RSpec.feature 'Editing encounter note', type: :system do
     @person = FactoryGirl.create(:person)
     @pii_name = FactoryGirl.create(:pii_name, person_id: @person.person_id)
     @abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
-    FactoryGirl.create(:concept, concept_id: 10, concept_name: 'Procedure', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_DOMAIN, concept_class_id: Concept::CONCEPT_CLASS_DOMAIN, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
-    FactoryGirl.create(:concept, concept_id: 5085, concept_name: 'Note', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_DOMAIN, concept_class_id: Concept::CONCEPT_CLASS_DOMAIN, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
-    FactoryGirl.create(:concept, concept_id: 44818790, concept_name: 'Has procedure context (SNOMED)', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_RELATIONSHIP, concept_class_id: Concept::CONCEPT_CLASS_RELATIONSHIP, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
-    FactoryGirl.create(:relationship, relationship_id: 'Has proc context', relationship_name: 'Has procedure context (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Proc context of', relationship_concept_id: 44818790)
+    @concept_domain_procedure = FactoryGirl.create(:concept, concept_id: 10, concept_name: 'Procedure', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_DOMAIN, concept_class_id: Concept::CONCEPT_CLASS_DOMAIN, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @concept_domain_note = FactoryGirl.create(:concept, concept_id: 5085, concept_name: 'Note', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_DOMAIN, concept_class_id: Concept::CONCEPT_CLASS_DOMAIN, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @concept_domain_specimen = FactoryGirl.create(:concept, concept_id: 36, concept_name: 'Specimen', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_DOMAIN, concept_class_id: Concept::CONCEPT_CLASS_DOMAIN, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @concept_relationship_has_procedure_context = FactoryGirl.create(:concept, concept_id: 44818790, concept_name: 'Has procedure context (SNOMED)', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_RELATIONSHIP, concept_class_id: Concept::CONCEPT_CLASS_RELATIONSHIP, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @relationship_has_procedure_context = FactoryGirl.create(:relationship, relationship_id: 'Has proc context', relationship_name: 'Has procedure context (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Proc context of', relationship_concept_id: 44818790)
+    @concept_relationship_procedure_context_of = FactoryGirl.create(:concept, concept_id: 44818888, concept_name: 'Procedure context of (SNOMED)', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_RELATIONSHIP, concept_class_id: Concept::CONCEPT_CLASS_RELATIONSHIP, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @relationship_proc_context_of = FactoryGirl.create(:relationship, relationship_id: 'Proc context of', relationship_name: 'Procedure context of (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Has proc context', relationship_concept_id: 44818888)
+    @concept_relationship_has_specimen = FactoryGirl.create(:concept, concept_id: 44818756, concept_name: 'Has specimen (SNOMED)', domain_id: Concept::DOMAIN_ID_METADATA, vocabulary_id: Concept::VOCABULARY_ID_RELATIONSHIP, concept_class_id: Concept::CONCEPT_CLASS_RELATIONSHIP, concept_code: Concept::CONCEPT_CODE_OMOP_GENERATED)
+    @relationship_has_specimen = FactoryGirl.create(:relationship, relationship_id: 'Has specimen', relationship_name: 'Has specimen (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Has proc context', relationship_concept_id: 44818756)
   end
 
   scenario 'Viewing an abstraction with an actual suggestion', js: true, focus: true do
@@ -437,6 +442,39 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
+
+
+  describe 'Navigating to a page with the back button' do
+    before(:each) do
+      @procedure_occurrence = FactoryGirl.create(:procedure_occurrence, person_id: @person.id)
+      @note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+      @note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: @note)
+      @note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  @abstractor_namespace_encoutner_note.id)
+      @other_note = FactoryGirl.create(:note, person: @person, note_text: 'Another note.', note_title: 'Another note title')
+
+      FactoryGirl.create(:fact_relationship, domain_concept_id_1: @concept_domain_procedure.concept_id, fact_id_1: @procedure_occurrence.procedure_occurrence_id, domain_concept_id_2: @concept_domain_note.concept_id, fact_id_2: @note.note_id, relationship_concept_id:@relationship_proc_context_of.relationship_concept_id)
+      FactoryGirl.create(:fact_relationship, domain_concept_id_1: @concept_domain_note.concept_id, fact_id_1: @note.note_id, domain_concept_id_2: @concept_domain_procedure.concept_id, fact_id_2: @procedure_occurrence.procedure_occurrence_id, relationship_concept_id: @relationship_has_procedure_context.relationship_concept_id)
+
+      FactoryGirl.create(:fact_relationship, domain_concept_id_1: @concept_domain_procedure.concept_id, fact_id_1: @procedure_occurrence.procedure_occurrence_id, domain_concept_id_2: @concept_domain_note.concept_id, fact_id_2: @other_note.note_id, relationship_concept_id:@relationship_proc_context_of.relationship_concept_id)
+      FactoryGirl.create(:fact_relationship, domain_concept_id_1: @concept_domain_note.concept_id, fact_id_1: @other_note.note_id, domain_concept_id_2: @concept_domain_procedure.concept_id, fact_id_2: @procedure_occurrence.procedure_occurrence_id, relationship_concept_id: @relationship_has_procedure_context.relationship_concept_id)
+    end
+
+    scenario 'Viewing modals.', js: true, focus: true do
+      visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+      logs_in('mjg994', 'secret')
+      all('#procedure_occurrences .note')[0].find('.note_view').click
+      sleep(1)
+      expect(all('#procedure_occurrences .note')[0].find('.note_text')).to have_content('Another note.')
+      visit(root_path())
+      sleep(1)
+      click_the_back_button
+      sleep(1)
+      all('#procedure_occurrences .note')[0].find('.note_view').click
+      sleep(1)
+      expect(all('#procedure_occurrences .note')[0].find('.note_text')).to have_content('Another note.')
+    end
+  end
+
 end
 
 def create_encounter_notes(encountr_notes)

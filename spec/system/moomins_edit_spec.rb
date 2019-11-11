@@ -14,7 +14,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     FactoryGirl.create(:relationship, relationship_id: 'Has proc context', relationship_name: 'Has procedure context (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Proc context of', relationship_concept_id: 44818790)
   end
 
-  scenario 'Editing a moomin with no sections setup', js: true, focus: true do
+  scenario 'Editing a moomin with no sections setup', js: true, focus: false do
     moomin_abstaction_schemas_with_no_sections
     note_text = "I like little my the best!\nfavorite moomin:\nThe groke is the bomb!"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -37,7 +37,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     sleep(1)
   end
 
-  scenario 'Editing a moomin with a section setup and a section name variant is mentioned', js: true, focus: true do
+  scenario 'Editing a moomin with a section setup and a section name variant is mentioned', js: true, focus: false do
     moomin_abstaction_schemas_with_sections
     note_text = "I like little my the best!\nbeloved moomin:\nThe groke is the bomb!"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -57,7 +57,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     match_highlighted_text('.abstractor_source_tab_content', 'The groke')
   end
 
-  scenario 'Editing a moomin with a section setup and more than one section name variant is mentioned', js: true, focus: true do
+  scenario 'Editing a moomin with a section setup and more than one section name variant is mentioned', js: true, focus: false do
     moomin_abstaction_schemas_with_sections
     note_text = "I like little my the best!\nfavorite moomin:\nThe groke is the bomb!\nbeloved moomin:\nMoomintroll is the bomb!"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))
@@ -77,7 +77,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     match_highlighted_text('.abstractor_source_tab_content', 'The groke')
   end
 
-  scenario 'Editing a moomin with a section setup and return note on empty section is set to true', js: true, focus: true do
+  scenario 'Editing a moomin with a section setup and return note on empty section is set to true', js: true, focus: false do
     moomin_abstaction_schemas_with_sections
     moomin_abstaction_schemas_have_return_note_on_empty_section('true')
     note_text = "I like little my the best!\nWorse moomin:\nThe groke is terrible!"
@@ -103,7 +103,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     match_highlighted_text('.abstractor_source_tab_content', 'The groke')
   end
 
-  scenario 'Editing a moomin with a section setup and return note on empty section is set to false', js: true, focus: true do
+  scenario 'Editing a moomin with a section setup and return note on empty section is set to false', js: true, focus: false do
     moomin_abstaction_schemas_with_sections
     moomin_abstaction_schemas_have_return_note_on_empty_section('false')
     note_text = "I like little my the best!\nWorse moomin:\nThe groke is terrible!"
@@ -121,7 +121,7 @@ RSpec.feature 'Editing moomin: User should be able to edit moomin information', 
     expect(all('.abstractor_source_tab_content')[0]).to have_content("")
   end
 
-  scenario 'Editing a moomin with a custom section setup', js: true, focus: true do
+  scenario 'Editing a moomin with a custom section setup', js: true, focus: false do
     moomin_abstaction_schemas_with_custom_section
     note_text = "I like little my the best!\nCool moomin: The groke is the bomb!"
     note = FactoryGirl.create(:note, person: @person, note_text: note_text, note_date: Date.parse('1/1/2014'))

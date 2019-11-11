@@ -419,7 +419,7 @@ describe NoteStableIdentifier do
 
       pivot = NoteStableIdentifier.pivot_abstractions(namespace_type: @abstractor_subject_abstraction_schema_dat.namespace_type, namespace_id:  @abstractor_subject_abstraction_schema_dat.namespace_id).where(id: @note_stable_identifier.id)
       pivot = pivot.map { |nsi| { id: nsi.id, note_text: nsi.note.note_text, stable_identifier_path: nsi.stable_identifier_path, stable_identifier_value: nsi.stable_identifier_value, note_date: nsi.note.note_date,  person_id: nsi.note.person_id, has_favorite_major_moomin_character: nsi.has_favorite_major_moomin_character } }
-      expect(Set.new(pivot)).to eq(Set.new([{ id: @note_stable_identifier.id,  note_text: @note_stable_identifier.note.note_text, stable_identifier_path: @note_stable_identifier.stable_identifier_path, stable_identifier_value: @note_stable_identifier.stable_identifier_value, note_date: @note_stable_identifier.note.note_date, person_id: @note_stable_identifier.note.person_id, stable_identifier_path: @note_stable_identifier.stable_identifier_path, stable_identifier_value: @note_stable_identifier.stable_identifier_value, has_favorite_major_moomin_character: 'unknown' } ]))
+      expect(Set.new(pivot)).to eq(Set.new([{ id: @note_stable_identifier.id,  note_text: @note_stable_identifier.note.note_text, stable_identifier_path: @note_stable_identifier.stable_identifier_path, stable_identifier_value: @note_stable_identifier.stable_identifier_value, note_date: @note_stable_identifier.note.note_date, person_id: @note_stable_identifier.note.person_id, has_favorite_major_moomin_character: 'unknown' } ]))
     end
 
     it "can pivot abstractions in a namespace as if regular columns on the abstractable entity if the vaue is marked as 'not applicable'", focus: false do

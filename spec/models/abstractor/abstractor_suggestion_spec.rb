@@ -9,7 +9,7 @@ describe  Abstractor::AbstractorSuggestion do
     abstractor_abstraction_schema = FactoryGirl.create(:abstractor_abstraction_schema, predicate: 'has_some_property', display_name: 'some_property', abstractor_object_type: abstractor_object_type, preferred_name: 'property')
     abstractor_rule_type = Abstractor::AbstractorRuleType.first
     abstractor_abstraction_source_type = Abstractor::AbstractorAbstractionSourceType.first
-    abstractor_abstraction_schema.abstractor_subjects << FactoryGirl.build(:abstractor_subject, subject_type: ImagingExam.to_s)
+    abstractor_abstraction_schema.abstractor_subjects << FactoryGirl.build(:abstractor_subject, subject_type: NoteStableIdentifier.to_s)
     abstractor_abstraction_source = FactoryGirl.create(:abstractor_abstraction_source, abstractor_subject: abstractor_abstraction_schema.abstractor_subjects.first, abstractor_rule_type: abstractor_rule_type, abstractor_abstraction_source_type: abstractor_abstraction_source_type, section_name: 'moomin')
     @undefined_concept_class = FactoryGirl.create(:undefined_concept_class)
     @no_matching_concept = FactoryGirl.create(:no_matching_concept)

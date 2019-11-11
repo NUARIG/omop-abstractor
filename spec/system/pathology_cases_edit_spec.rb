@@ -20,7 +20,7 @@ RSpec.feature 'Editing pathology case: User should be able to edit pathology cas
     FactoryGirl.create(:relationship, relationship_id: 'Has proc context', relationship_name: 'Has procedure context (SNOMED)', is_hierarchical: 0, defines_ancestry: 0, reverse_relationship_id: 'Proc context of', relationship_concept_id: 44818790)
   end
 
-  scenario 'User editing an abstraction with a dynamic list', js: true, focus: true do
+  scenario 'User editing an abstraction with a dynamic list', js: true, focus: false do
     pending "Expected to fail: Need to figure out if supporting dynamic lists still makes sense."
     @abstractor_namespace_pathology_case = Abstractor::AbstractorNamespace.where(name: 'Pathology Case', subject_type: NoteStableIdentifier.to_s, joins_clause: '', where_clause: '').first_or_create
     note_text = "Hello, you look good to me."

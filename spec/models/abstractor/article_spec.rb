@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe Article do
+describe NoteStableIdentifier do
   before(:each) do
     Abstractor::Setup.system
     list_object_type = Abstractor::AbstractorObjectType.where(value: 'list').first

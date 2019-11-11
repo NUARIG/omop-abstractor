@@ -14,7 +14,7 @@ describe  Abstractor::AbstractorAbstraction do
    @note = FactoryGirl.create(:note, person: @person, note_text: 'Little my says hi!')
    @note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: @note)
 
-   @abstractor_subject = FactoryGirl.create(:abstractor_subject, subject_type: ImagingExam.to_s, abstractor_abstraction_schema: abstractor_abstraction_schema)
+   @abstractor_subject = FactoryGirl.create(:abstractor_subject, subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: abstractor_abstraction_schema)
    @abstractor_abstraction = FactoryGirl.create(:abstractor_abstraction, abstractor_subject: @abstractor_subject, about: @note_stable_identifier, unknown: nil)
    @abstractor_abstraction_2 = FactoryGirl.create(:abstractor_abstraction, abstractor_subject: @abstractor_subject, about: @note_stable_identifier, unknown: nil)
    @abstractor_abstraction_3 = FactoryGirl.create(:abstractor_abstraction, abstractor_subject: @abstractor_subject, about: @note_stable_identifier, unknown: nil)

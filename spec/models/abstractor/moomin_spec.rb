@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe Moomin do
+describe NoteStableIdentifier do
   before(:each) do
     Abstractor::Setup.system
     n_v_rule = Abstractor::AbstractorRuleType.where(name: 'name/value').first

@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe RadiationTherapyPrescription do
+describe NoteStableIdentifier do
   before(:each) do
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.sites

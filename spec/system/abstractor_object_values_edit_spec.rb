@@ -18,7 +18,7 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
   end
 
   describe 'User should be able to edit an abstractor object value' do
-    scenario 'Prevent editing an abstractor object value with suggestions', js: true, focus: true do
+    scenario 'Prevent editing an abstractor object value with suggestions', js: true, focus: false do
       [{ site: 'abdominal wall, nos' }].each_with_index do |radiation_therapy_prescription_hash, i|
         note = FactoryGirl.create(:note, person: @person, note_text: radiation_therapy_prescription_hash[:site])
         note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
@@ -60,7 +60,7 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
     end
   end
 
-  scenario 'Allowing edit of an abstractor object value without suggestions', js: true, focus: true do
+  scenario 'Allowing edit of an abstractor object value without suggestions', js: true, focus: false do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first

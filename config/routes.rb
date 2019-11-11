@@ -34,14 +34,5 @@ Rails.application.routes.draw do
   resources :providers, only: :index
   resources :users, only: :show
 
-  #for testing
-  resources :encounter_notes, :only => :edit
-  resources :imaging_exams, :only => :edit
-  resources :moomins, :only => :edit
-  resources :radiation_therapy_prescriptions, :only => :edit
-  resources :pathology_cases, :only => :edit
-  resources :surgeries, :only => :edit
-
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

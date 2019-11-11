@@ -14,7 +14,7 @@ RSpec.feature 'Adding an abstractor object value.  User should be able to add an
     OmopAbstractor::SpecSetup.imaging_exam
   end
 
-  scenario 'Adding an abstractor object value', js: true, focus: true do
+  scenario 'Adding an abstractor object value', js: true, focus: false do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first
@@ -49,7 +49,7 @@ RSpec.feature 'Adding an abstractor object value.  User should be able to add an
     match_abstractor_object_value_variant_row('moomin variant', true, false, 0)
   end
 
-  scenario 'Adding an abstractor object value with validation', js: true, focus: true do
+  scenario 'Adding an abstractor object value with validation', js: true, focus: false do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first

@@ -182,15 +182,6 @@ def moomin_abstaction_schemas_with_custom_section
   Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_moomin, from_method: 'note_text', abstractor_rule_type: value_rule_type, abstractor_abstraction_source_type: source_type_nlp_suggestion, section_name: 'favorite moomin')
 end
 
-def match_highlighted_text(selector, text)
-  elements_selector = "#{selector} [style*='background-color: yellow;']"
-  match = false
-  all(elements_selector, :visible => true).each do |e|
-    match = true if e.text == text
-  end
-  expect(match).to be_truthy
-end
-
 def moomin_abstaction_schemas_have_return_note_on_empty_section(empty_section)
   abstractor_section = Abstractor::AbstractorSection.where(source_type: NoteStableIdentifier.to_s, source_method: 'note_text', name: 'favorite moomin').first
   if empty_section == "true"

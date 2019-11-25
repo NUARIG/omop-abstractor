@@ -30,7 +30,7 @@ export default class AbstractorAbstractionGroupsController extends Controller {
     status = detail[1];
 
     abstractor_subject_groups_container = $(event.currentTarget).closest(".abstractor_subject_groups_container");
-    abstractor_subject_groups_container.find(".abstractor_subject_groups").append(xhr.responseText);
+      abstractor_subject_groups_container.find(".abstractor_subject_groups").append(xhr.responseText);
     controller.validateCardinality(abstractor_subject_groups_container);
     WorkflowStatus.toggleWorkflowStatus();
     return;

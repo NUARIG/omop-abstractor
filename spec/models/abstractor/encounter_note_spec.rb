@@ -6,20 +6,26 @@ describe NoteStableIdentifier do
     @list_object_type = Abstractor::AbstractorObjectType.where(value: 'list').first
     @source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
     @source_type_custom_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'custom suggestion').first
-
     @unknown_rule = Abstractor::AbstractorRuleType.where(name: 'unknown').first
     @value_rule = Abstractor::AbstractorRuleType.where(name: 'value').first
     @name_value_rule = Abstractor::AbstractorRuleType.where(name: 'name/value').first
-
-    @abstractor_abstraction_schema_kps = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_karnofsky_performance_status').first
-    @abstractor_subject_abstraction_schema_kps = Abstractor::AbstractorSubject.where(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema_id: @abstractor_abstraction_schema_kps.id).first
-
     @abstractor_abstraction_always_unknown = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_always_unknown', display_name: 'Always unknown', abstractor_object_type: @list_object_type, preferred_name: 'Always unknown')
     @abstractor_subject_abstraction_schema_always_unknown = Abstractor::AbstractorSubject.create(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => @abstractor_abstraction_always_unknown)
-
-    @abstractor_abstraction_schema_kps_date = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_karnofsky_performance_status_date').first
-    @abstractor_subject_abstraction_schema_kps_date = Abstractor::AbstractorSubject.where(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema_id: @abstractor_abstraction_schema_kps_date.id).first
     Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_always_unknown, from_method: 'note_text', abstractor_abstraction_source_type: @source_type_nlp_suggestion, :abstractor_rule_type => @unknown_rule)
+
+    @abstractor_abstraction_schema_kps = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_karnofsky_performance_status').first
+    @abstractor_subject_abstraction_schema_kps = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_kps.id).first
+    @abstractor_abstraction_schema_kps_date = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_karnofsky_performance_status_date').first
+    @abstractor_subject_abstraction_schema_kps_date = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_kps_date.id).first
+    @abstractor_abstraction_schema_numeric = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_numeric_schema').first
+    @abstractor_subject_abstraction_schema_numeric = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_numeric.id).first
+    @abstractor_abstraction_schema_date = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_date_schema').first
+    @abstractor_subject_abstraction_schema_date = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_date.id).first
+    @abstractor_abstraction_schema_text = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_text_schema').first
+    @abstractor_subject_abstraction_schema_text = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_text.id).first
+    @abstractor_abstraction_schema_string = Abstractor::AbstractorAbstractionSchema.where(predicate: 'has_string_schema').first
+    @abstractor_subject_abstraction_schema_string = Abstractor::AbstractorSubject.where(abstractor_abstraction_schema_id: @abstractor_abstraction_schema_string.id).first
+
     @undefined_concept_class = FactoryGirl.create(:undefined_concept_class)
     @no_matching_concept = FactoryGirl.create(:no_matching_concept)
     @undefined_concept = FactoryGirl.create(:undefined_concept)
@@ -33,11 +39,11 @@ describe NoteStableIdentifier do
     end
 
     it "can report its abstractor subjects by schemas", focus: false do
-      expect(Set.new(NoteStableIdentifier.abstractor_subjects(abstractor_abstraction_schema_ids: [@abstractor_abstraction_schema_kps.id, @abstractor_abstraction_schema_kps_date.id]))).to eq Set.new([@abstractor_subject_abstraction_schema_kps, @abstractor_subject_abstraction_schema_kps_date])
+      expect(Set.new(NoteStableIdentifier.abstractor_subjects(abstractor_abstraction_schema_ids: [@abstractor_abstraction_schema_kps.id, @abstractor_abstraction_schema_kps_date.id]))).to eq(Set.new([@abstractor_subject_abstraction_schema_kps, @abstractor_subject_abstraction_schema_kps_date]))
     end
 
     it "can report its abstractor abstraction schemas", focus: false do
-      expect(Set.new(NoteStableIdentifier.abstractor_abstraction_schemas)).to eq(Set.new([@abstractor_abstraction_schema_kps, @abstractor_abstraction_always_unknown, @abstractor_abstraction_schema_kps_date]))
+      expect(Set.new(NoteStableIdentifier.abstractor_abstraction_schemas)).to eq(Set.new([@abstractor_abstraction_schema_kps, @abstractor_abstraction_always_unknown, @abstractor_abstraction_schema_kps_date, @abstractor_abstraction_schema_numeric, @abstractor_abstraction_schema_date, @abstractor_abstraction_schema_text, @abstractor_abstraction_schema_string]))
     end
 
     #abstractions
@@ -863,7 +869,7 @@ describe NoteStableIdentifier do
       end
 
       it "can report what needs to be reviewed for an instance", focus: false do
-        expect(@note_stable_identifier.reload.abstractor_abstractions_by_abstractor_abstraction_status(Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW).size).to eq(3)
+        expect(@note_stable_identifier.reload.abstractor_abstractions_by_abstractor_abstraction_status(Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW).size).to eq(7)
       end
 
       it "can report what has been reviewed for an instance", focus: false do
@@ -875,7 +881,7 @@ describe NoteStableIdentifier do
       end
 
       it "can report what needs to be reviewed for an instance (ignoring soft deleted rows)", focus: false do
-        expect(@note_stable_identifier.reload.abstractor_abstractions_by_abstractor_abstraction_status(Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW).size).to eq(3)
+        expect(@note_stable_identifier.reload.abstractor_abstractions_by_abstractor_abstraction_status(Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW).size).to eq(7)
         @note_stable_identifier.abstractor_abstractions.each do |abstractor_abstraction|
           abstractor_abstraction.soft_delete!
         end

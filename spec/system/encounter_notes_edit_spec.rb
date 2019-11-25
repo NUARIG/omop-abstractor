@@ -208,10 +208,193 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
   end
 
+  scenario "Editing an abstraction for 'list' abstraction and saving with a blank value", js: true, focus: false do
+    abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
+    note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+
+    within('.has_karnofsky_performance_status') do
+      click_link('Edit')
+    end
+
+    sleep(1)
+    expect(page).to_not have_css(".has_karnofsky_performance_status div.invalid")
+
+    click_button('Save')
+
+    sleep(1)
+
+    expect(page).to have_css(".has_karnofsky_performance_status div.invalid")
+    expect(all(".has_karnofsky_performance_status .helper-text")[0]['data-error']).to eq(Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+
+    within('.has_karnofsky_performance_status') do
+      expect(page).to have_unchecked_field('100', visible: false)
+    end
+
+    within('.has_karnofsky_performance_status') do
+      expect(page).to have_unchecked_field('not applicable', visible: false)
+    end
+
+    within('.has_karnofsky_performance_status') do
+      expect(page).to have_unchecked_field('unknown', visible: false)
+    end
+  end
+
+  scenario "Editing an abstraction for 'number' abstraction and saving with a blank value", js: true, focus: false do
+    abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
+    note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+
+    within('.has_numeric_schema') do
+      click_link('Edit')
+    end
+
+    sleep(1)
+    expect(page).to_not have_css(".has_numeric_schema input.invalid")
+
+    click_button('Save')
+
+    sleep(1)
+
+    expect(page).to have_css(".has_numeric_schema input.invalid")
+    expect(all(".has_numeric_schema .helper-text")[0]['data-error']).to eq(Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+
+    within('.has_numeric_schema') do
+      expect(page).to have_unchecked_field('not applicable', visible: false)
+    end
+
+    within('.has_numeric_schema') do
+      expect(page).to have_unchecked_field('unknown', visible: false)
+    end
+  end
+
+  scenario "Editing an abstraction for 'date' abstraction and saving with a blank value", js: true, focus: false do
+    abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
+    note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+
+    within('.has_date_schema') do
+      click_link('Edit')
+    end
+
+    sleep(1)
+    expect(page).to_not have_css(".has_date_schema input.invalid")
+
+    click_button('Save')
+
+    sleep(1)
+
+    expect(page).to have_css(".has_date_schema input.invalid")
+    expect(all(".has_date_schema .helper-text")[0]['data-error']).to eq(Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+
+    sleep(1)
+    within('.has_date_schema') do
+      expect(page).to have_unchecked_field('not applicable', visible: false)
+    end
+
+    within('.has_date_schema') do
+      expect(page).to have_unchecked_field('unknown', visible: false)
+    end
+  end
+
+  scenario "Editing an abstraction for 'text' abstraction and saving with a blank value", js: true, focus: false do
+    abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
+    note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+
+    within('.has_text_schema') do
+      click_link('Edit')
+    end
+
+    sleep(1)
+    expect(page).to_not have_css(".has_text_schema textarea.invalid")
+
+    click_button('Save')
+
+    sleep(1)
+
+    expect(page).to have_css(".has_text_schema textarea.invalid")
+    expect(all(".has_text_schema .helper-text")[0]['data-error']).to eq(Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+
+    sleep(1)
+    within('.has_text_schema') do
+      expect(page).to have_unchecked_field('not applicable', visible: false)
+    end
+
+    within('.has_text_schema') do
+      expect(page).to have_unchecked_field('unknown', visible: false)
+    end
+  end
+
+  scenario "Editing an abstraction for 'string' abstraction and saving with a blank value", js: true, focus: false do
+    abstractor_namespace_encoutner_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note').first
+    note = FactoryGirl.create(:note, person: @person, note_text: 'Looking good. KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+
+    within('.has_string_schema') do
+      click_link('Edit')
+    end
+
+    sleep(1)
+    expect(page).to_not have_css(".has_string_schema input.invalid")
+
+    click_button('Save')
+
+    sleep(1)
+
+    expect(page).to have_css(".has_string_schema input.invalid")
+    expect(all(".has_string_schema .helper-text")[0]['data-error']).to eq(Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+
+    sleep(1)
+    within('.has_string_schema') do
+      expect(page).to have_unchecked_field('not applicable', visible: false)
+    end
+
+    within('.has_string_schema') do
+      expect(page).to have_unchecked_field('unknown', visible: false)
+    end
+  end
+
   scenario 'Viewing source for suggestion with source and match value', js: true, focus: false do
-    create_encounter_notes([{'Note Text' => 'The patient is looking good.  KPS: 100'}])
-    @note = Note.last
-    visit(edit_note_path(@note.note_id, previous_note_id: @note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    note = FactoryGirl.create(:note, person: @person, note_text: 'The patient is looking good.  KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id)
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
     logs_in('mjg994', 'secret')
     scroll_to_bottom_of_the_page
     sleep(1)
@@ -221,6 +404,74 @@ RSpec.feature 'Editing encounter note', type: :system do
     end
     expect(find('.abstractor_source_tab label')).to have_content('Note text')
     expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+    match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+  end
+
+  scenario 'Viewing source for multiple suggestion with source and match value', js: true, focus: false do
+    note = FactoryGirl.create(:note, person: @person, note_text: 'The patient is looking good.  KPS: 100.  But the KPS could also be 60.  Also the numeric schema is 55.')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id)
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+    sleep(1)
+    all(:css, '.has_karnofsky_performance_status span.abstractor_abstraction_source_tooltip_img')[0].click
+    within('.abstractor_source_tab') do
+      expect(page).to have_css("[style*='background-color: yellow;']")
+    end
+    expect(find('.abstractor_source_tab label')).to have_content('Note text')
+    expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+    match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+    not_match_highlighted_text('.abstractor_source_tab_content', 'But the KPS could also be 60.')
+    all(:css, '.has_karnofsky_performance_status span.abstractor_abstraction_source_tooltip_img')[1].click
+    not_match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+    match_highlighted_text('.abstractor_source_tab_content', 'But the KPS could also be 60.')
+  end
+
+  scenario 'Viewing source for suggestion with source and match value after accepting a suggestion', js: true, focus: false do
+    note = FactoryGirl.create(:note, person: @person, note_text: 'The patient is looking good.  KPS: 100')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id)
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+    sleep(1)
+    find(:css, '.has_karnofsky_performance_status span.abstractor_abstraction_source_tooltip_img').click
+    within('.abstractor_source_tab') do
+      expect(page).to have_css("[style*='background-color: yellow;']")
+    end
+    expect(find('.abstractor_source_tab label')).to have_content('Note text')
+    expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+    match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+
+    within('.has_karnofsky_performance_status') do
+      check('100', allow_label_click: true)
+    end
+    sleep(1)
+    not_match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+  end
+
+  scenario 'Viewing source for multiple suggestion with source and match value after accepting a suggestion for another abstraction', js: true, focus: false do
+    note = FactoryGirl.create(:note, person: @person, note_text: 'The patient is looking good.  KPS: 100.  But the KPS could also be 60.  Also the numeric schema is 85.')
+    note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
+    note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id)
+    visit(edit_note_path(note.note_id, previous_note_id: note.note_id, index: 0, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id))
+    logs_in('mjg994', 'secret')
+    scroll_to_bottom_of_the_page
+    sleep(1)
+    all(:css, '.has_karnofsky_performance_status span.abstractor_abstraction_source_tooltip_img')[0].click
+    within('.abstractor_source_tab') do
+      expect(page).to have_css("[style*='background-color: yellow;']")
+    end
+    expect(find('.abstractor_source_tab label')).to have_content('Note text')
+    expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
+    match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
+    not_match_highlighted_text('.abstractor_source_tab_content', 'But the KPS could also be 60.')
+
+    within('.has_numeric_schema') do
+      check('85', allow_label_click: true)
+    end
+    sleep(1)
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
 
@@ -426,7 +677,7 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.has_karnofsky_performance_status_date')).to have_content('unknown')
   end
 
-  scenario "Viewing source for suggestion with source and match value with the match malue requiring scroll to.", js: true, focus: false do
+  scenario "Viewing source for suggestion with source and match value with the match value requiring scroll to.", js: true, focus: false do
     note_text = "Little my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\nLittle my says hi!\n The patient is looking good.  KPS: 100"
     create_encounter_notes([{'Note Text' => note_text}])
     @note = Note.last
@@ -442,7 +693,6 @@ RSpec.feature 'Editing encounter note', type: :system do
     expect(find('.abstractor_source_tab_content')).to have_content('The patient is looking good. KPS: 100')
     match_highlighted_text('.abstractor_source_tab_content', 'KPS: 100')
   end
-
 
   describe 'Navigating to a page with the back button' do
     before(:each) do
@@ -509,13 +759,4 @@ def create_encounter_notes(encountr_notes)
     note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
     note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  abstractor_namespace_encoutner_note.id)
   end
-end
-
-def match_highlighted_text(selector, text)
-  elements_selector = "#{selector} [style*='background-color: yellow;']"
-  match = false
-  all(elements_selector, :visible => true).each do |e|
-    match = true if e.text == text
-  end
-  expect(match).to be_truthy
 end

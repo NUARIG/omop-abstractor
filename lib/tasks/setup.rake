@@ -26,6 +26,7 @@ namespace :setup do
     number_object_type = Abstractor::AbstractorObjectType.where(value: 'number').first
     radio_button_list_object_type = Abstractor::AbstractorObjectType.where(value: 'radio button list').first
     dynamic_list_object_type = Abstractor::AbstractorObjectType.where(value: 'dynamic list').first
+    text_object_type = Abstractor::AbstractorObjectType.where(value: 'text').first
     name_value_rule = Abstractor::AbstractorRuleType.where(name: 'name/value').first
     value_rule = Abstractor::AbstractorRuleType.where(name: 'value').first
     unknown_rule = Abstractor::AbstractorRuleType.where(name: 'unknown').first
@@ -501,8 +502,20 @@ namespace :setup do
 
     abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_surgical_pathology.id).first_or_create
     Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => name_value_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion).first_or_create
+
     # Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'health_heritage_casefinder_nlp_service').first_or_create
     #End p53
+
+    #Begin text_area
+    abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(
+      predicate: 'has_text_schema',
+      display_name: 'Text Schema',
+      abstractor_object_type: text_object_type,
+      preferred_name: 'Text Schema').first_or_create
+
+    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_surgical_pathology.id).first_or_create
+    Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => name_value_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion).first_or_create
+    #End text_area
 
     #surgical pathology report abstractions setup end
 

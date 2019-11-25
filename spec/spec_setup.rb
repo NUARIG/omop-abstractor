@@ -125,95 +125,111 @@ module OmopAbstractor
     def self.encounter_note
       abstractor_namespace_encounter_note = Abstractor::AbstractorNamespace.where(name: 'Encounter Note', subject_type: NoteStableIdentifier.to_s, joins_clause: '', where_clause: '').first_or_create
       list_object_type = Abstractor::AbstractorObjectType.where(value: 'list').first
-      n_v_rule = Abstractor::AbstractorRuleType.where(name: 'name/value').first
+      numeric_object_type = Abstractor::AbstractorObjectType.where(value: 'number').first
+      date_object_type = Abstractor::AbstractorObjectType.where(value: 'date').first
+      text_object_type = Abstractor::AbstractorObjectType.where(value: 'text').first
+      string_object_type = Abstractor::AbstractorObjectType.where(value: 'string').first
       n_v_rule = Abstractor::AbstractorRuleType.where(name: 'name/value').first
       source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
-      kps_abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_karnofsky_performance_status', display_name: 'Karnofsky performance status', abstractor_object_type: list_object_type, preferred_name: 'Karnofsky performance status')
-      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, value: 'kps')
-      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, value: 'Karnofsky performance status (assessment scale)')
-      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, value: 'Karnofsky index')
-      abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: kps_abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
+      custom_suggestion_source_type = Abstractor::AbstractorAbstractionSourceType.where(name: 'custom suggestion').first
+
+      @abstractor_abstraction_schema_kps = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_karnofsky_performance_status', display_name: 'Karnofsky performance status', abstractor_object_type: list_object_type, preferred_name: 'Karnofsky performance status')
+      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, value: 'kps')
+      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, value: 'Karnofsky performance status (assessment scale)')
+      Abstractor::AbstractorAbstractionSchemaPredicateVariant.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, value: 'Karnofsky index')
+      @abstractor_subject_abstraction_schema_kps = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
       abstractor_object_values = []
       abstractor_object_value = nil
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '100% - Normal; no complaints; no evidence of disease.', vocabulary_code: '100% - Normal; no complaints; no evidence of disease.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '100')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '100%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '90% - Able to carry on normal activity; minor signs or symptoms of disease.', vocabulary_code: '90% - Able to carry on normal activity; minor signs or symptoms of disease.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '90')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.90')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '90%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '80% - Normal activity with effort; some signs or symptoms of disease.', vocabulary_code: '80% - Normal activity with effort; some signs or symptoms of disease.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '80')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.80')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '80%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '70% - Cares for self; unable to carry on normal activity or to do active work.', vocabulary_code: '70% - Cares for self; unable to carry on normal activity or to do active work.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '70')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.70')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '70%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '60% - Requires occasional assistance, but is able to care for most of his personal needs.', vocabulary_code: '60% - Requires occasional assistance, but is able to care for most of his personal needs.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '60')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.60')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '60%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '50% - Requires considerable assistance and frequent medical care.', vocabulary_code: '50% - Requires considerable assistance and frequent medical care.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '50')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.50')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '50%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '40% - Disabled; requires special care and assistance.', vocabulary_code: '40% - Disabled; requires special care and assistance.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '40')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.40')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '40%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '30% - Severely disabled; hospital admission is indicated although death not imminent.', vocabulary_code: '30% - Severely disabled; hospital admission is indicated although death not imminent.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '30')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.30')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '30%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '20% - Very sick; hospital admission necessary; active supportive treatment necessary.', vocabulary_code: '20% - Very sick; hospital admission necessary; active supportive treatment necessary.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '20')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.20')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '20%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '10% - Moribund; fatal processes progressing rapidly.', vocabulary_code: '10% - Moribund; fatal processes progressing rapidly.')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '10')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '.10')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '10%')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
       abstractor_object_values << abstractor_object_value = Abstractor::AbstractorObjectValue.create(value: '0% - Dead', vocabulary_code: '0% - Dead')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '0')
       abstractor_object_value.abstractor_object_value_variants << Abstractor::AbstractorObjectValueVariant.create(value: '0% ')
       abstractor_object_value.save
-      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: kps_abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value)
-      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
-
-      date_object_type = Abstractor::AbstractorObjectType.where(value: 'date').first
-      custom_suggestion_source_type = Abstractor::AbstractorAbstractionSourceType.where(name: 'custom suggestion').first
-      kps_date_abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_karnofsky_performance_status_date', display_name: 'Karnofsky performance status date', abstractor_object_type: date_object_type, preferred_name: 'Karnofsky performance status date')
-      abstractor_subject = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: kps_date_abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
-
+      Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: @abstractor_abstraction_schema_kps, abstractor_object_value: abstractor_object_value)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_kps, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
+      @abstractor_abstraction_schema_kps_date = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_karnofsky_performance_status_date', display_name: 'Karnofsky performance status date', abstractor_object_type: date_object_type, preferred_name: 'Karnofsky performance status date')
+      @abstractor_subject_abstraction_schema_kps_date = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_kps_date, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
       NoteStableIdentifier.send(:define_method, 'encounter_date') do |abstractor_abstraction|
         [{ suggestion: '2014-06-26', explanation: 'A bit of custom logic.' }]
       end
-
       NoteStableIdentifier.send(:define_method, 'empty_encounter_date') do |abstractor_abstraction|
         []
       end
-      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: abstractor_subject, from_method: 'note_text', custom_method: 'encounter_date', abstractor_abstraction_source_type: custom_suggestion_source_type, :abstractor_rule_type => @unknown_rule)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_kps_date, from_method: 'note_text', custom_method: 'encounter_date', abstractor_abstraction_source_type: custom_suggestion_source_type, :abstractor_rule_type => @unknown_rule)
+
+      @abstractor_abstraction_schema_numeric = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_numeric_schema', display_name: 'Numeric Schema', abstractor_object_type: numeric_object_type, preferred_name: 'Numeric Schema')
+      @abstractor_subject_abstraction_schema_numeric = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_numeric, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_numeric, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
+
+      @abstractor_abstraction_schema_date = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_date_schema', display_name: 'Date Schema', abstractor_object_type: date_object_type, preferred_name: 'Date Schema')
+      @abstractor_subject_abstraction_schema_date = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_date, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_date, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
+
+      @abstractor_abstraction_schema_text = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_text_schema', display_name: 'Text Schema', abstractor_object_type: text_object_type, preferred_name: 'Text Schema')
+      @abstractor_subject_abstraction_schema_text = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_text, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_text, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
+
+      @abstractor_abstraction_schema_string = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_string_schema', display_name: 'String Schema', abstractor_object_type: string_object_type, preferred_name: 'String Schema')
+      @abstractor_subject_abstraction_schema_string = Abstractor::AbstractorSubject.create(subject_type: NoteStableIdentifier.to_s, abstractor_abstraction_schema: @abstractor_abstraction_schema_string, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_encounter_note.id)
+      Abstractor::AbstractorAbstractionSource.create(abstractor_subject: @abstractor_subject_abstraction_schema_string, from_method: 'note_text', abstractor_rule_type: n_v_rule, abstractor_abstraction_source_type: source_type_nlp_suggestion)
     end
 
     def self.pathology_case

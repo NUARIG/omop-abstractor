@@ -66,7 +66,15 @@ module ApplicationHelper
     ((page.to_i - 1) * 10) + i
   end
 
-  def back_from_pathology_cases_review
-    session[:index_history] || pathology_cases_url
+  def validation_errors?(object, field_name)
+    object.errors.messages[field_name].any?
+  end
+
+  def format_validation_errors(object, field_name)
+    if object.errors.any?
+      if !object.errors.messages[field_name].blank?
+        object.errors.messages[field_name].join(", ")
+      end
+    end
   end
 end

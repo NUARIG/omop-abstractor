@@ -145,12 +145,3 @@ def create_surgical_procedure_reports(surgical_procedure_reports)
     surgical_procedure_report = FactoryGirl.create(:surgical_procedure_report, note_text: surgical_procedure_report_hash['Note Text'], patient_id: surgical_procedure_report_hash['Patient ID'], report_date: Date.parse(surgical_procedure_report_hash['Date']), reference_number: surgical_procedure_report_hash['Reference Number'])
   end
 end
-
-def match_highlighted_text(selector, text)
-  elements_selector = "#{selector} [style*='background-color: yellow;']"
-  match = false
-  all(elements_selector, :visible => true).each do |e|
-    match = true if e.text == text
-  end
-  expect(match).to be_truthy
-end

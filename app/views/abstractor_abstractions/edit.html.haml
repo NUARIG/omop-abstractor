@@ -2,7 +2,7 @@
 - abstraction_schema = abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema
 
 .abstractor_abstraction_edit
-  = form_for abstractor_abstraction, url: Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_path(abstractor_abstraction)), method: :put, :remote => true, data: { action: 'ajax:complete->abstractor-abstraction#render' } do |f|
+  = form_for abstractor_abstraction, url: Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_path(abstractor_abstraction)), method: :put, :remote => true, data: { action: 'ajax:success->abstractor-abstraction#save ajax:error->abstractor-abstraction#saveError' } do |f|
     .abstractor_abstraction_schema_name
       %h5
         = abstraction_schema.display_name
@@ -10,24 +10,35 @@
       - case abstraction_schema.abstractor_object_type.value
       - when 'date'
         = f.text_field :value, class: 'abstractor_datepicker'
+        - if validation_errors?(abstractor_abstraction, :value)
+          %span.helper-text{ 'data-error' => "#{format_validation_errors(abstractor_abstraction, :value)}"}
       - when 'text'
-        = f.text_area :value
+        .input-field
+          = f.text_area :value, class: 'materialize-textarea'
+          - if validation_errors?(abstractor_abstraction, :value)
+            %span.helper-text{ 'data-error' => "#{format_validation_errors(abstractor_abstraction, :value)}"}
       - when 'string'
         = f.text_field :value
+        - if validation_errors?(abstractor_abstraction, :value)
+          %span.helper-text{ 'data-error' => "#{format_validation_errors(abstractor_abstraction, :value)}"}
       - when 'number'
         = f.number_field :value
+        - if validation_errors?(abstractor_abstraction, :value)
+          %span.helper-text{ 'data-error' => "#{format_validation_errors(abstractor_abstraction, :value)}"}
       - when 'radio button list'
         - values = abstraction_schema.abstractor_object_values.not_deleted.order('abstractor_abstraction_schema_object_values.display_order, abstractor_object_values.value')
         -  values.each do |value|
           %label
-            = f.radio_button :value, value.value
+            = f.radio_button :value, value.value, required: 'required'
             %span
               = value.value
         = f.radio_button :value, '', {:style => 'display:none;' }
         &nbsp;
       - when 'list'
         - values = abstraction_schema.abstractor_object_values.not_deleted.order('abstractor_abstraction_schema_object_values.display_order, abstractor_object_values.value')
-        = f.select :value, values.map{|s| [s.value, s.value]}, {:include_blank => true}, :class => "combobox"
+        = f.select :value, options_for_select(values.map{|s| [s.value, s.value]}, selected: f.object.value), { include_blank: true }
+        - if validation_errors?(abstractor_abstraction, :value)
+          %span.helper-text{ 'data-error' => "#{format_validation_errors(abstractor_abstraction, :value)}"}
       - when 'dynamic list'
         - values = abstractor_abstraction.about.send(abstractor_abstraction.abstractor_subject.dynamic_list_method).sort_by { |l| l[:value] }
         = f.select :value, values.map{|s| [s[:value], s[:id]]}, {:include_blank => true}, :class => "combobox"
@@ -52,7 +63,7 @@
             Unknown
     .abstraction_edit_abstraction_actions
       = f.submit 'Save', class: 'waves-effect waves-light btn'
-      = link_to 'Cancel', abstractor_abstraction_path(abstractor_abstraction), :remote => true
+      = link_to 'Cancel', abstractor_abstraction_path(abstractor_abstraction), :remote => true, data: { action: 'ajax:complete->abstractor-abstraction#render' }
     .clear
     .indirect_sources
       - abstraction_sources = abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.select { |s| s.abstractor_abstraction_source_type.name == 'indirect' }

@@ -17,7 +17,6 @@ module Abstractor
         end
 
         def edit
-          @abstractor_abstraction.clear
           respond_to do |format|
             format.html { render :layout => false }
           end
@@ -46,10 +45,12 @@ module Abstractor
               if abstractor_suggestion
                 format.html { render "abstractor_abstractions/show", layout: false }
               else
-                format.json { render json: "Error processing request to create abstractor suggestion", status: :unprocessable_entity }
+                @abstractor_abstraction.clear
+                @abstractor_abstraction.errors.add(:value, Abstractor::Enum::ABSTRACTOR_ABSTRACTION_VALIDATION_ERROR)
+                raise "Error processing request to create abstractor suggestion"
               end
             rescue => e
-              format.json { render json: "Error processing request to create abstractor suggestions: #{e}", status: :unprocessable_entity }
+              format.html { render "abstractor_abstractions/edit", layout: false, status: :unprocessable_entity }
             end
           end
         end

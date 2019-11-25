@@ -89,3 +89,22 @@ end
 def click_the_back_button
   page.go_back
 end
+
+def perform_match_highlighted_text(selector, text)
+  elements_selector = "#{selector} [style*='background-color: yellow;']"
+  match = false
+  all(elements_selector, :visible => true).each do |e|
+    match = true if e.text == text
+  end
+  match
+end
+
+def match_highlighted_text(selector, text)
+  match = perform_match_highlighted_text(selector, text)
+  expect(match).to be_truthy
+end
+
+def not_match_highlighted_text(selector, text)
+  match = perform_match_highlighted_text(selector, text)
+  expect(match).to be_falsy
+end

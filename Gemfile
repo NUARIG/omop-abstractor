@@ -41,7 +41,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Application Gems
 gem 'american_date'
 gem 'bulk_insert'
-gem 'cocoon'
 gem 'devise', '~> 4.2'
 gem 'devise_ldap_authenticatable'
 gem 'exception_notification'

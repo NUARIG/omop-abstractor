@@ -14,28 +14,49 @@ module Abstractor
           base.send :has_many, :object_relations,   :class_name => "Abstractor::AbstractorAbstractionSchemaRelation", :foreign_key => "object_id"
           base.send :has_many, :subject_relations,  :class_name => "Abstractor::AbstractorAbstractionSchemaRelation", :foreign_key => "subject_id"
 
-          # base.send :attr_accessible, :abstractor_object_type, :abstractor_object_type_id, :display_name, :predicate, :preferred_name, :deleted_at
+          base.send(:include, InstanceMethods)
+          base.extend(ClassMethods)
         end
+
 
         # Instance Methods
-        ##
-        # All of the different ways of referring to the predicate.
-        #
-        # @return [Array<String>]
-        def predicate_variants
-          [preferred_name].concat(abstractor_abstraction_schema_predicate_variants.map(&:value))
+        module InstanceMethods
+          ##
+          # All of the different ways of referring to the predicate.
+          #
+          # @return [Array<String>]
+          def predicate_variants
+            [preferred_name].concat(abstractor_abstraction_schema_predicate_variants.map(&:value))
+          end
+
+          ##
+          # Whether or not it is a list.
+          #
+          # @return [Boolean]
+          def object_type_list?
+            case abstractor_object_type.value
+            when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_LIST, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_RADIO_BUTTON_LIST
+              true
+            else
+              false
+            end
+          end
         end
 
-        ##
-        # Whether or not it is a list.
-        #
-        # @return [Boolean]
-        def object_type_list?
-          case abstractor_object_type.value
-          when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_LIST, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_RADIO_BUTTON_LIST
-            true
-          else
-            false
+        # Class Methods
+        module ClassMethods
+          def search_across_fields(search_token, options={})
+            if search_token
+              search_token.downcase!
+            end
+            options = { sort_column: 'display_name', sort_direction: 'asc' }.merge(options)
+
+            if search_token
+              s = where("LOWER(predicate) LIKE ? OR LOWER(display_name) LIKE ? OR LOWER(preferred_name) LIKE ?", *Array.new(3, "%#{search_token}%"))
+            end
+
+            sort = options[:sort_column] + ' ' + options[:sort_direction] + ', abstractor_abstraction_schemas.id ASC'
+            s = s.nil? ? order(sort) : s.order(sort)
           end
         end
       end

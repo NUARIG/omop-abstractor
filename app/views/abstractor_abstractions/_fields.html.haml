@@ -12,7 +12,7 @@
     .abstractor_suggestions
       - if abstractor_suggestions.any?
         - abstractor_suggestions.each_with_index do |abstractor_suggestion, index|
-          .abstractor_suggestion{ "data-controller" => "abstractor-suggestion", 'data-target' => "abstractor-abstraction.suggestion abstractor-suggestion.suggestion" }
+          .abstractor_suggestion{ data: { controller: "abstractor-suggestion", target: 'abstractor-abstraction.suggestion abstractor-suggestion.suggestion' } }
             = form_for [abstractor_abstraction, abstractor_suggestion], url: Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_abstractor_suggestion_path(abstractor_abstraction, abstractor_suggestion)), method: :put, remote: true, html: { class: 'edit_abstractor_suggestion' }, data: { action: 'ajax:complete->abstractor-abstraction#render' } do |f|
               = render 'shared/error_messages', object: f.object
               .abstractor_suggestion_status

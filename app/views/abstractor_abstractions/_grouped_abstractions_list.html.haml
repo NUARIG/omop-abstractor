@@ -4,7 +4,7 @@
 .abstractor_abstractions_grouped
   - abstractor_subject_groups = about.class.abstractor_subject_groups(namespace_type: namespace_type, namespace_id: namespace_id)
   - abstractor_subject_groups.each do |abstractor_subject_group|
-    .abstractor_subject_groups_container{ "data-controller" => "abstractor-abstraction-groups" }
+    .abstractor_subject_groups_container{ data: { controller: 'abstractor-abstraction-groups' } }
       %h4
         =abstractor_subject_group.name
       - if abstractor_subject_group.cardinality

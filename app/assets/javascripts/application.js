@@ -14,7 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
-//= require cocoon
 //= require materialize-sprockets
 //= require cable
 //= require select2/select2.full

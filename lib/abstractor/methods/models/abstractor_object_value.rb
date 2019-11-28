@@ -27,7 +27,7 @@ module Abstractor
           base.send :after_destroy, :update_abstractor_abstraction_schema_object_values
           base.send :after_touch,   :update_abstractor_abstraction_schema_object_values
 
-          base.send :accepts_nested_attributes_for, :abstractor_object_value_variants, allow_destroy: false
+          base.send :accepts_nested_attributes_for, :abstractor_object_value_variants, allow_destroy: true
 
           base.send(:include, InstanceMethods)
           base.extend(ClassMethods)
@@ -74,12 +74,18 @@ module Abstractor
 
         # Class Methods
         module ClassMethods
-          def search_across_fields(query)
-            if query.blank?
-              all
-            else
-              where("LOWER(value) LIKE ? OR LOWER(vocabulary) LIKE ? OR LOWER(vocabulary_version) LIKE ? OR LOWER(vocabulary_code) LIKE ?", *Array.new(4, "%#{query.downcase}%"))
+          def search_across_fields(search_token, options={})
+            if search_token
+              search_token.downcase!
             end
+            options = { sort_column: 'value', sort_direction: 'asc' }.merge(options)
+
+            if search_token
+              s = where("LOWER(value) LIKE ? OR LOWER(vocabulary) LIKE ? OR LOWER(vocabulary_version) LIKE ? OR LOWER(vocabulary_code) LIKE ?", *Array.new(4, "%#{search_token}%"))
+            end
+
+            sort = options[:sort_column] + ' ' + options[:sort_direction] + ', abstractor_object_values.id ASC'
+            s = s.nil? ? order(sort) : s.order(sort)
           end
         end
       end

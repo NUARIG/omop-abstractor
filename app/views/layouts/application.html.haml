@@ -17,6 +17,8 @@
     %ul#slide-out.sidenav
       %li
         = link_to 'Notes', notes_url, class: 'waves-effect'
+      %li
+        = link_to 'Schemas', abstractor_abstraction_schemas_url, class: 'waves-effect'
       - if user_signed_in?
         %li.log_out.menu-text
           = link_to "Log out", destroy_user_session_path, method: :delete

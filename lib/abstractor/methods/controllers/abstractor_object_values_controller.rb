@@ -4,20 +4,28 @@ module Abstractor
       module AbstractorObjectValuesController
         def self.included(base)
           base.send :helper, :all
+          base.send :helper_method, :sort_column
+          base.send :helper_method, :sort_direction
           base.send :before_action, :authenticate_user!
           base.send :before_action, :set_abstractor_abstraction_schema
           base.send :before_action, :set_abstractor_object_value, except: [:index, :new, :create]
         end
 
         def index
-          @abstractor_object_values = @abstractor_abstraction_schema.abstractor_object_values.not_deleted.order(:value).search_across_fields(params[:search]).order(:value).paginate(per_page: 10, page: params[:page])
+          options = {}
+          options[:sort_column] = sort_column
+          options[:sort_direction] = sort_direction
+          @abstractor_object_values = @abstractor_abstraction_schema.abstractor_object_values.not_deleted.search_across_fields(params[:search], options).paginate(per_page: 10, page: params[:page])
         end
 
         def new
+          @path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_values_path(@abstractor_abstraction_schema))
           @abstractor_object_value = Abstractor::AbstractorObjectValue.new
+          @abstractor_object_value.abstractor_object_value_variants.build
         end
 
         def create
+          @path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_values_path(@abstractor_abstraction_schema))
           @abstractor_object_value = Abstractor::AbstractorObjectValue.new(abstractor_object_value_params)
           @abstractor_object_value.abstractor_abstraction_schemas << @abstractor_abstraction_schema
           if @abstractor_object_value.save
@@ -28,9 +36,11 @@ module Abstractor
         end
 
         def edit
+          @path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, @abstractor_object_value))
         end
 
         def update
+          @path = Abstractor::UserInterface.abstractor_relative_path(abstractor_abstraction_schema_abstractor_object_value_path(@abstractor_abstraction_schema, @abstractor_object_value))
           params[:abstractor_abstractor_object_value][:abstractor_object_value_variants_attributes].each do |key, values|
             values[:soft_delete] = values[:_destroy] if values[:id].present?
           end
@@ -52,7 +62,9 @@ module Abstractor
           end
 
           def set_abstractor_object_value
+            Rails.logger.info("we made it here")
             @abstractor_object_value = Abstractor::AbstractorObjectValue.find(params[:id])
+            Rails.logger.info("Note so much #{@abstractor_object_value.id}")
           end
 
           def abstractor_object_value_params
@@ -65,10 +77,18 @@ module Abstractor
               :comments,
               :case_sensitive,
               abstractor_object_value_variants_attributes: [
-                :id, :value, :case_sensitive, :soft_delete
+                :id, :value, :case_sensitive, :_destroy
               ]
             )
 
+          end
+
+          def sort_column
+            ['value', 'vocabulary_code'].include?(params[:sort]) ? params[:sort] : 'value'
+          end
+
+          def sort_direction
+            %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
           end
       end
     end

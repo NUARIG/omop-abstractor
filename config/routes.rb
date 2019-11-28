@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :abstractor_rules do
   end
 
+  resources :abstractor_object_value_variants
   resources :notes do
     collection { get :next_note }
     collection { get :previous_note }

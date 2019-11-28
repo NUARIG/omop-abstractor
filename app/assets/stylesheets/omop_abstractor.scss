@@ -13,3 +13,7 @@
 .select2-container--default .select2-search--dropdown .select2-search__field {
   border-bottom: none !important;
 }
+
+.required:after {
+  content:" *";
+}

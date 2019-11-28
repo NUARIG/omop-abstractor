@@ -11,6 +11,7 @@ require './lib/abstractor/methods/controllers/abstractor_abstraction_groups_cont
 require './lib/abstractor/methods/controllers/abstractor_abstraction_schemas_controller'
 require './lib/abstractor/methods/controllers/abstractor_abstractions_controller'
 require './lib/abstractor/methods/controllers/abstractor_object_values_controller'
+require './lib/abstractor/methods/controllers/abstractor_object_value_variants_controller'
 require './lib/abstractor/methods/controllers/abstractor_rules_controller'
 require './lib/abstractor/methods/controllers/abstractor_suggestions_controller'
 require './lib/abstractor/methods/models/abstractor_abstraction_group_member'

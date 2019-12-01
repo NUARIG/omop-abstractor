@@ -108,3 +108,18 @@ def not_match_highlighted_text(selector, text)
   match = perform_match_highlighted_text(selector, text)
   expect(match).to be_falsy
 end
+
+def match_abstractor_object_value_row(value, vocabulary_code, index)
+  expect(all('.abstractor_abstractor_object_value')[index].find('.abstractor_object_value_value')).to have_content(value)
+  expect(all('.abstractor_abstractor_object_value')[index].find('.abstractor_object_value_vocabulary_code')).to have_content(vocabulary_code)
+end
+
+def match_abstractor_object_value_variant_row(value, case_sensitive, disabled, index)
+  expect(all('.abstractor-object-value-variant .value')[index].has_field?(nil, with: value, disabled: disabled)).to be_truthy
+
+  if case_sensitive
+    expect(all('.abstractor-object-value-variant .case_sensitive')[index].has_checked_field?('Case Sensitive?', disabled: disabled, visible: false)).to be_truthy
+  else
+    expect(all('.abstractor-object-value-variant .case_sensitive')[index].has_unchecked_field?('Case Sensitive?', disabled: disabled, visible: false)).to be_truthy
+  end
+end

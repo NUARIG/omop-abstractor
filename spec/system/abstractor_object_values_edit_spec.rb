@@ -53,7 +53,10 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
       expect(page.has_field?('Value', with: 'abdomen, nos', disabled: true)).to be_truthy
       expect(page.has_field?('Vocabulary Code', with: 'abdomen, nos', disabled: true)).to be_truthy
       expect(page.has_field?('Comments', with: '', disabled: false)).to be_truthy
-      expect(page.has_unchecked_field?('Case Sensitive?', disabled: true, visible: false)).to be_truthy
+      within(".abstractor_object_value_case_sensitive") do
+        expect(page.has_unchecked_field?('Case Sensitive?', disabled: false, visible: false)).to be_falsy
+      end
+      scroll_to_bottom_of_the_page
 
       match_abstractor_object_value_variant_row('abdominal wall, nos', false, true, 0)
       match_abstractor_object_value_variant_row('intra-abdominal site, nos', false, false, 1)

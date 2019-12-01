@@ -3,12 +3,12 @@
     = f.hidden_field :id, data: { target: 'abstractor-object-value-variants.id' }
     = f.hidden_field :_destroy, data: { target: 'abstractor-object-value-variants.destroy' }
     .input-field
-      = f.text_field :value, class: 'autocomplete', autocomplete: 'off'
+      = f.text_field :value, class: 'autocomplete', autocomplete: 'off', disabled: f.object.used?
     - if validation_errors?(f.object, :value)
       %p.error= format_validation_errors(f.object, :value)
   %td.case_sensitive
     %label
-      = f.check_box :case_sensitive, data: { target: 'abstractor-object-value-variants.case_sensitive' }
+      = f.check_box :case_sensitive, disabled: f.object.used?, data: { target: 'abstractor-object-value-variants.case_sensitive' }
       %span
         Case Sensitive?
   %td.remove.right-align

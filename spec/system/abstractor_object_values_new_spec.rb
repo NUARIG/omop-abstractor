@@ -26,11 +26,16 @@ RSpec.feature 'Adding an abstractor object value.  User should be able to add an
     fill_in 'Value', with: 'moomin'
     fill_in 'Vocabulary Code', with: 'moomin code'
     fill_in 'Comments', with: 'moomin comments'
-    click_link('Add variant')
-    fill_in 'Variant Value', with: 'moomin variant'
-    within('.abstractor_object_value_variant') do
-      check('Case Sensitive?', allow_label_click: true)
-    end
+    scroll_to_bottom_of_the_page
+
+    all('.abstractor_object_value_variants_list .value input')[0].set('moomin variant')
+    all('.abstractor_object_value_variants_list .case_sensitive')[0].check('Case Sensitive?', allow_label_click: true)
+
+    click_link('Add Variant Value')
+    sleep(1)
+    all('.abstractor_object_value_variants_list .value input')[1].set('moomin variant 2')
+    all('.abstractor_object_value_variants_list .case_sensitive')[1].uncheck('Case Sensitive?', allow_label_click: true)
+
 
     click_button('Save')
     fill_in 'Search', with: 'moomin'
@@ -44,9 +49,13 @@ RSpec.feature 'Adding an abstractor object value.  User should be able to add an
     expect(page.has_field?('Value', with: 'moomin', disabled: false)).to be_truthy
     expect(page.has_field?('Vocabulary Code', with: 'moomin code', disabled: false)).to be_truthy
     expect(page.has_field?('Comments', with: 'moomin comments', disabled: false)).to be_truthy
-    expect(page.has_checked_field?('Case Sensitive?', disabled: false, visible: false)).to be_truthy
+
+    within(".abstractor_object_value_case_sensitive") do
+      expect(page.has_checked_field?('Case Sensitive?', disabled: false, visible: false)).to be_falsy
+    end
 
     match_abstractor_object_value_variant_row('moomin variant', true, false, 0)
+    match_abstractor_object_value_variant_row('moomin variant 2', false, false, 1)
   end
 
   scenario 'Adding an abstractor object value with validation', js: true, focus: false do
@@ -57,29 +66,13 @@ RSpec.feature 'Adding an abstractor object value.  User should be able to add an
       click_link('Values')
     end
     click_link('New')
-    click_link('Add variant')
+    click_link('Add Variant Value')
     click_button('Save')
-    expect(page).to have_css("#new_abstractor_abstractor_object_value .value .field_with_errors")
-    expect(all("#new_abstractor_abstractor_object_value .value")[0]).to have_content("can't be blank")
+    expect(page).to have_css(".abstractor_object_value_value .invalid")
+    expect(all(".abstractor_object_value_value .error")[0]).to have_content("can't be blank")
 
-    expect(page).to have_css("#new_abstractor_abstractor_object_value .vocabulary_code .field_with_errors")
-    expect(all("#new_abstractor_abstractor_object_value .vocabulary_code")[0]).to have_content("can't be blank")
-
-    expect(page).to have_css("#abstractor_object_value_variants .value .field_with_errors")
-    expect(all("#abstractor_object_value_variants .value")[0]).to have_content("can't be blank")
-  end
-end
-
-def match_abstractor_object_value_row(value, vocabulary_code, index)
-  expect(all('.abstractor_abstractor_object_value')[index].find('.abstractor_object_value_value')).to have_content(value)
-  expect(all('.abstractor_abstractor_object_value')[index].find('.abstractor_object_value_vocabulary_code')).to have_content(vocabulary_code)
-end
-
-def match_abstractor_object_value_variant_row(value, case_sensitive, disabled, index)
-  expect(all('.abstractor_object_value_variant')[index].has_field?('Variant Value', with: value, disabled: disabled)).to be_truthy
-  if case_sensitive
-    expect(all('.abstractor_object_value_variant')[index].has_checked_field?('Case Sensitive?', disabled: disabled, visible: false)).to be_truthy
-  else
-    expect(all('.abstractor_object_value_variant')[index].has_unchecked_field?('Case Sensitive?', disabled: disabled, visible: false)).to be_truthy
+    expect(page).to have_css(".abstractor_object_value_vocabulary_code .invalid")
+    expect(all(".abstractor_object_value_vocabulary_code .error")[0]).to have_content("can't be blank")
+    expect(all('.abstractor-object-value-variant .value')[0]).to have_css('input.invalid')
   end
 end

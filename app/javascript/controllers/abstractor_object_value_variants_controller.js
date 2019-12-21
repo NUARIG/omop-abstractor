@@ -1,34 +1,29 @@
 import { Controller } from "stimulus"
 
 export default class AbstractorObjectValueVariantsController extends Controller {
-  static targets =['abstractorObjectValueVariant', 'id', 'destroy', 'addAbstractorObjectValueVariant']
+  static targets =['list', 'template']
 
   connect() {
     if (typeof M.updateTextFields == 'function') {
-       M.updateTextFields();
-    }
-
-    if (this.hasDestroyTarget) {
-      if (this.destroyTarget.value == 'true') {
-        this.abstractorObjectValueVariantTarget.style.display = 'none';
-      }
+      M.updateTextFields();
     }
   }
 
-  initialize() {
-  }
-
-  delete() {
+  add_association(event) {
     event.preventDefault();
-    const confirmed = confirm('Are you sure?')
-    if (confirmed) {
-      if (this.idTarget.value) {
-        this.destroyTarget.value = '1'
-        this.abstractorObjectValueVariantTarget.style.display = 'none';
-      }
-      else {
-        this.abstractorObjectValueVariantTarget.parentNode.removeChild(this.abstractorObjectValueVariantTarget);
-      }
+    var content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, new Date().getTime());
+    this.listTarget.insertAdjacentHTML('beforeend', content);
+  }
+
+  remove_association(event) {
+    event.preventDefault();
+    let wrapper = event.target.closest('.abstractor-object-value-variant')
+    if (wrapper.dataset.newRecord == "true"){
+      wrapper.remove();
+    }
+    else {
+      wrapper.querySelector("input[name*='_destroy']").value = 1;
+      wrapper.style.display = 'none';
     }
   }
 }

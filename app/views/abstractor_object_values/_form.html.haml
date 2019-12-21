@@ -20,8 +20,8 @@
   .abstractor_object_value_variants
     %h3
       Variant Values
-    %div{ data: { controller: 'nested-form' } }
-      %template{ data: { target: 'nested-form.template' } }
+    %div{ data: { controller: 'abstractor-object-value-variants' } }
+      %template{ data: { target: 'abstractor-object-value-variants.template' } }
         = f.fields_for :abstractor_object_value_variants, Abstractor::AbstractorObjectValueVariant.new, child_index: 'NEW_RECORD' do |abstractor_object_value_variant|
           = render 'abstractor_object_value_variant_fields', form: abstractor_object_value_variant
       %table.s12
@@ -33,11 +33,11 @@
             %th.case_sensitive{ width: 200 }
               Case Sensitive?
             %th.remove.right-align{ width: 100 }
-        %tbody.abstractor_object_value_variants_list{ data: { target: 'nested-form.list' }}
+        %tbody.abstractor_object_value_variants_list{ data: { target: 'abstractor-object-value-variants.list' }}
           = f.fields_for :abstractor_object_value_variants do |abstractor_object_value_variant|
             = render 'abstractor_object_value_variant_fields', form: abstractor_object_value_variant
-      %div{ data: { target: 'nested-form.links' } }
-        = link_to 'Add Variant Value', '#', id: 'add-abstractor-object-value-variant', class: 'btn wave-effect waves-light', data: { action: 'click->nested-form#add_association'  }
+      %div
+        = link_to 'Add Variant Value', '#', id: 'add-abstractor-object-value-variant', class: 'btn wave-effect waves-light', data: { action: 'click->abstractor-object-value-variants#add_association'  }
   .row
     .navigation.col.offset-l9.l3
       %p.help-text

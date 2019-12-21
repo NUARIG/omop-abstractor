@@ -1,4 +1,4 @@
-%tr{ class: 'abstractor-object-value-variant nested-fields', data: { new_record: "#{form.object.new_record?}" } }
+%tr{ class: 'abstractor-object-value-variant', data: { new_record: "#{form.object.new_record?}" } }
   %td.value
     = form.hidden_field :id
     = form.hidden_field :_destroy
@@ -12,4 +12,4 @@
       %span
         Case Sensitive?
   %td.remove.right-align
-    = link_to 'Remove', '#', class: 'btn wave-effect waves-light red', data: { action: 'click->nested-form#remove_association' }
+    = link_to 'Remove', '#', class: 'btn wave-effect waves-light red', data: { action: 'click->abstractor-object-value-variants#remove_association' }

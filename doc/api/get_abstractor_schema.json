@@ -1,0 +1,952 @@
+GET  /abstractor_abstraction_schemas/:id(.:format)
+{
+	"abstractor_abstraction_schema": {
+		"predicate": "has_metastatic_cancer_site",
+		"display_name": "Site",
+		"abstractor_object_type": "list",
+		"preferred_name": "cancer site",
+		"predicate_variants": [
+
+		],
+		"object_values": [
+			{
+				"value": "parietal lobe (c71.3)",
+				"properties": null,
+				"vocabulary_code": "C71.3",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "parietal lobe",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "spinal meninges (c70.1)",
+				"properties": null,
+				"vocabulary_code": "C70.1",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "spinal meninges",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "spinal arachnoid",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "spinal dura mater",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "spinal pia mater",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "ventricle, nos (c71.5)",
+				"properties": null,
+				"vocabulary_code": "C71.5",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "ventricle, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "choroid plexus of third ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "third ventricle, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "ependyma",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "choroid plexus of lateral ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "choroid plexus, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebral ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "lateral ventricle, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "third ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "choroid plexus",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "lateral ventricle",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "skin of scalp and neck (c44.4)",
+				"properties": null,
+				"vocabulary_code": "C44.4",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "skin of scalp and neck",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "scalp, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of cervical region",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of scalp",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of head, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of neck",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of supraclavicular region",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "scalp",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skin of head",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "occipital lobe (c71.4)",
+				"properties": null,
+				"vocabulary_code": "C71.4",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "occipital lobe",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "occipital pole",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "cranial nerve, nos (c72.5)",
+				"properties": null,
+				"vocabulary_code": "C72.5",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "cranial nerve, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "trochlear nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "trigeminal nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "oculomotor nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "hypoglossal nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "glossopharyngeal nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "facial nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "spinal accessory nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "abducens nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "vagus nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "accessory nerve, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "accessory nerve",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "bones of skull and face and associated joints (c41.0)",
+				"properties": null,
+				"vocabulary_code": "C41.0",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "bones of skull and face and associated joints",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "hyoid bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "sphenoid bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skull, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "parietal bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "orbital bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "occipital bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "zygomatic bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "nasal bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "temporal bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "frontal bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "facial bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "ethmoid bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "calvarium",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "maxilla",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "upper jaw bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "skull",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "cerebellum, nos (c71.6)",
+				"properties": null,
+				"vocabulary_code": "C71.6",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "cerebellum, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebellopontine angle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "vermis of cerebellum",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebellum",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "meninges, nos (c70.9)",
+				"properties": null,
+				"vocabulary_code": "C70.9",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "meninges, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "dura mater, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pia mater, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "arachnoid, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "dura, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "dura mater",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pia mater",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "arachnoid",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "dura",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "mandible (c41.1)",
+				"properties": null,
+				"vocabulary_code": "C41.1",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "mandible",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "temporomandibular joint",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "lower jaw bone",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "jaw bone, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "jaw bone",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "cerebrum (c71.0)",
+				"properties": null,
+				"vocabulary_code": "C71.0",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "cerebrum",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "corpus striatum",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "thalamus",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "supratentorial brain, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "rhinencephalon",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "putamen",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pallium",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "operculum",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "island of reil",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "internal capsule",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "insula",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "globus pallidus",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebral white matter",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebral hemisphere",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebral cortex",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "central white matter",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "basal ganglia",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "hypothalamus",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "supratentorial brain",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "frontal lobe (c71.1)",
+				"properties": null,
+				"vocabulary_code": "C71.1",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "frontal lobe",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "frontal pole",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "cerebral meninges (c70.0)",
+				"properties": null,
+				"vocabulary_code": "C70.0",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "cerebral meninges",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "falx, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "tentorium, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "tentorium cerebelli",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "intracranial arachnoid",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "falx cerebri",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "falx cerebelli",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial pia mater",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial meninges",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial dura mater",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "intracranial meninges",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "falx",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "tentorium",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "optic nerve (c72.3)",
+				"properties": null,
+				"vocabulary_code": "C72.3",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "optic nerve",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "optic chiasm",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "optic tract",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "spinal cord (c72.0)",
+				"properties": null,
+				"vocabulary_code": "C72.0",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "spinal cord",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cervical cord",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "sacral cord",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "thoracic cord",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "lumbar cord",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "filum terminale",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "conus medullaris",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "temporal lobe (c71.2)",
+				"properties": null,
+				"vocabulary_code": "C71.2",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "temporal lobe",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "hippocampus",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "uncus",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "brain stem (c71.7)",
+				"properties": null,
+				"vocabulary_code": "C71.7",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "brain stem",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "choroid plexus of fourth ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pyramid",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pons",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "olive",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "midbrain",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "medulla oblongata",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "basis pedunculi",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cerebral peduncle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "fourth ventricle, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "infratentorial brain, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "fourth ventricle",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "infratentorial brain",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "brain, nos (c71.9)",
+				"properties": null,
+				"vocabulary_code": "C71.9",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "brain, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "intracranial site",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "suprasellar",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "posterior cranial fossa",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "middle cranial fossa",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial fossa, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "anterior cranial fossa",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "cranial fossa",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "overlapping lesion of brain (c71.8)",
+				"properties": null,
+				"vocabulary_code": "C71.8",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "overlapping lesion of brain",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "corpus callosum",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "tapetum",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "cauda equina (c72.1)",
+				"properties": null,
+				"vocabulary_code": "C72.1",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "cauda equina",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "olfactory nerve (c72.2)",
+				"properties": null,
+				"vocabulary_code": "C72.2",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "olfactory nerve",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "acoustic nerve (c72.4)",
+				"properties": null,
+				"vocabulary_code": "C72.4",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "acoustic nerve",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "overlapping lesion of brain and central nervous system (c72.8)",
+				"properties": null,
+				"vocabulary_code": "C72.8",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "overlapping lesion of brain and central nervous system",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "nervous system, nos (c72.9)",
+				"properties": null,
+				"vocabulary_code": "C72.9",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "nervous system, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "central nervous system",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "epidural",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "extradural",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "parasellar",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "nervous system",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "pituitary gland (c75.1)",
+				"properties": null,
+				"vocabulary_code": "C75.1",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "pituitary gland",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pituitary, nos",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "sella turcica",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pituitary fossa",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "hypophysis",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "rathke pouch",
+						"case_sensitive": "false"
+					},
+					{
+						"value": "pituitary",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "craniopharyngeal duct (c75.2)",
+				"properties": null,
+				"vocabulary_code": "C75.2",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "craniopharyngeal duct",
+						"case_sensitive": "false"
+					}
+				]
+			},
+			{
+				"value": "pineal gland (c75.3)",
+				"properties": null,
+				"vocabulary_code": "C75.3",
+				"vocabulary": "ICD-O-3",
+				"vocabulary_version": "2011 Updates to ICD-O-3",
+				"case_sensitive": "false",
+				"object_value_variants": [
+					{
+						"value": "pineal gland",
+						"case_sensitive": "false"
+					}
+				]
+			}
+		]
+	}
+}

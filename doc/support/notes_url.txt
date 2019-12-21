@@ -1,8 +1,0 @@
-production
-
-https://mbti-data.fsm.northwestern.edu/notes?utf8=%E2%9C%93&abstraction_status=needs+review&namespace_id=1&search=&date_from=&date_to=&provider%5B%5D=HORBINSKI%2C+CRAIG+M.&provider%5B%5D=APPIN%2C+CHRISTINA+L.&provider%5B%5D=BIGIO%2C+EILEEN+H.&provider%5B%5D=BRAT%2C+DANIEL+J.&provider%5B%5D=MAO%2C+QINWEN&provider%5B%5D=DALCANTO%2C+MAURO+&provider%5B%5D=GOTTARDILITTELL%2C+NUMA+R&provider%5B%5D=BRODY%2C+BETTYANN+
-
-
-development
-
-http://0.0.0.0:3000/notes?utf8=%E2%9C%93&abstraction_status=needs+review&namespace_id=1&search=&date_from=&date_to=&provider%5B%5D=HORBINSKI%2C+CRAIG+M.&provider%5B%5D=APPIN%2C+CHRISTINA+L.&provider%5B%5D=BIGIO%2C+EILEEN+H.&provider%5B%5D=BRAT%2C+DANIEL+J.&provider%5B%5D=MAO%2C+QINWEN&provider%5B%5D=DALCANTO%2C+MAURO+&provider%5B%5D=GOTTARDILITTELL%2C+NUMA+R&provider%5B%5D=BRODY%2C+BETTYANN+

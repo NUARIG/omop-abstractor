@@ -6,8 +6,8 @@ describe AbstractorSuggestionsController, :type => :request do
 
   describe "POST /abstractor_abstractions/:abstractor_abstraction_id/abstractor_suggestions" do
     before(:each) do
-      OmopAbstractor::SpecSetup.encounter_note
       Abstractor::Setup.system
+      OmopAbstractor::SpecSetup.encounter_note
       @undefined_concept_class = FactoryGirl.create(:undefined_concept_class)
       @no_matching_concept = FactoryGirl.create(:no_matching_concept)
       @undefined_concept = FactoryGirl.create(:undefined_concept)
@@ -18,7 +18,7 @@ describe AbstractorSuggestionsController, :type => :request do
       [{'Note Text' => 'Looking good. KPS: 100'}].each_with_index do |encounter_note_hash, i|
         note = FactoryGirl.create(:note, person: @person, note_text: encounter_note_hash['Note Text'])
         note_stable_identifier = FactoryGirl.create(:note_stable_identifier, note: note)
-        note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id:  @abstractor_namespace_encoutner_note.id)
+        note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: @abstractor_namespace_encoutner_note.id)
       end
 
       AbstractorSuggestionsController.any_instance.stub(:authenticate_user!).and_return(true)
@@ -88,6 +88,7 @@ describe AbstractorSuggestionsController, :type => :request do
       }
 
       post "/abstractor_abstractions/#{@abstractor_abstraciton.id}/abstractor_suggestions", params: abstractor_suggestion, headers: headers
+      # File.write("#{Rails.root}/doc/api/post_suggestion.json", abstractor_suggestion.to_json)
       expect(response.status).to eq 201
       expect(@abstractor_abstraciton.reload.abstractor_suggestions.first.suggested_value).to eq('glioblastoma')
       expect(@abstractor_abstraciton.reload.abstractor_suggestions.first.abstractor_suggestion_sources.map(&:match_value)).to match_array(["glioblastoma", "gbm"])

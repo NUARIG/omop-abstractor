@@ -62,9 +62,7 @@ module Abstractor
           end
 
           def set_abstractor_object_value
-            Rails.logger.info("we made it here")
             @abstractor_object_value = Abstractor::AbstractorObjectValue.find(params[:id])
-            Rails.logger.info("Note so much #{@abstractor_object_value.id}")
           end
 
           def abstractor_object_value_params

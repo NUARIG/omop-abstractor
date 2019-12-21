@@ -1,5 +1,5 @@
 # initial setup
-# bundle exec rake db:migrate
+# RAILS_ENV=test bundle exec rake db:migrate
 # bundle exec rake data:load_omop_vocabulary_tables
 # bundle exec rake data:compile_omop_vocabulary_indexes
 # bundle exec rake setup:data
@@ -8,6 +8,8 @@
 # bundle exec rake abstractor:setup:system
 # bundle exec rake setup:schemas
 # bundle exec rake suggestor:do
+# OBJC_DISABLE_INITIALIZE_FORK_SAFETY='YES' bundle exec rake suggestor:do
+
 
 #cleanup
 # bundle exec rake setup:truncate_schemas

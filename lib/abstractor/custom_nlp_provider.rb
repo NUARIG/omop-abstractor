@@ -97,6 +97,9 @@ module Abstractor
           abstractor_abstraction_id: abstractor_abstraction.id,
           abstractor_abstraction_source_id: abstractor_abstraction_source.id,
           abstractor_subject_id: abstractor_abstraction.abstractor_subject.id,
+          namespace_type: abstractor_abstraction.abstractor_subject.namespace_type,
+          namespace_id: abstractor_abstraction.abstractor_subject.namespace_id,
+          abstractor_rule_type: abstractor_abstraction_source.abstractor_rule_type.name,
           updated_at: abstractor_abstraction_schema.updated_at.iso8601.to_s
         }
         body[:abstractor_abstraction_schemas] << abstractor_abstraction_schema

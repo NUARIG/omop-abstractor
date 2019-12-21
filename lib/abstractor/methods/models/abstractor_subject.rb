@@ -100,15 +100,15 @@ module Abstractor
           # @return [void]
           def abstract_nlp_suggestion(about, abstractor_abstraction, abstractor_abstraction_source)
             case abstractor_abstraction_source.abstractor_rule_type.name
-            when 'name/value'
+            when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
               abstract_name_value(about, abstractor_abstraction, abstractor_abstraction_source)
               abstract_not_applicable(about, abstractor_abstraction, abstractor_abstraction_source)
               abstract_unknown(about, abstractor_abstraction, abstractor_abstraction_source)
-            when 'value'
+            when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_VALUE
               abstract_value(about, abstractor_abstraction, abstractor_abstraction_source)
               abstract_not_applicable(about, abstractor_abstraction, abstractor_abstraction_source)
               abstract_unknown(about, abstractor_abstraction, abstractor_abstraction_source)
-            when 'unknown'
+            when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_UNKNOWN
               abstract_unknown(about, abstractor_abstraction, abstractor_abstraction_source)
             end
           end

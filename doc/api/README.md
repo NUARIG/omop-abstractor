@@ -5,5 +5,4 @@ OMOP Abstractor calls an external library that implments the RESTful API is call
 
 The OMOP Abstactor RESTFul API message flow is detailed in the following diagram.
 
-![](/docs/OMOP Abstractor Custom NLP Provder Message Flow.png)
-
+![](OMOP Abstractor Custom NLP Provder Message Flow.png)

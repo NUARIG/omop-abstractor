@@ -1,1 +1,21 @@
-{"abstractor_abstractor_suggestion":{"abstractor_abstraction_source_id":2386,"source_id":301,"source_type":"NoteStableIdentifier","source_method":"note_text","value":"glioblastoma","unknown":null,"not_applicable":null,"suggestion_sources":[{"match_value":"glioblastoma","sentence_match_value":"The patient has a diagnosis of glioblastoma."},{"match_value":"gbm","sentence_match_value":"GBM does not have a good prognosis."}]}}
+{
+  "abstractor_abstractor_suggestion": {
+    "abstractor_abstraction_source_id": 2386,
+    "source_id": 301,
+    "source_type": "NoteStableIdentifier",
+    "source_method": "note_text",
+    "value": "glioblastoma",
+    "unknown": null,
+    "not_applicable": null,
+    "suggestion_sources": [
+      {
+        "match_value": "glioblastoma",
+        "sentence_match_value": "The patient has a diagnosis of glioblastoma."
+      },
+      {
+        "match_value": "gbm",
+        "sentence_match_value": "GBM does not have a good prognosis."
+      }
+    ]
+  }
+}

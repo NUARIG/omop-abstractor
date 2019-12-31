@@ -1,3 +1,5 @@
+POST https://moomin.com/abstractor_abstractions/:abstractor_abstraction_id/abstractor_suggestions(.:format)
+
 {
   "abstractor_abstractor_suggestion": {
     "abstractor_abstraction_source_id": 2386,

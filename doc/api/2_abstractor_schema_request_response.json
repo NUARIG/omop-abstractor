@@ -1,4 +1,5 @@
-GET  /abstractor_abstraction_schemas/:id(.:format)
+GET https://moomin.com/abstractor_abstraction_schemas/:abstractor_abstraction_schema_id(.:format)
+
 {
 	"abstractor_abstraction_schema": {
 		"predicate": "has_metastatic_cancer_site",

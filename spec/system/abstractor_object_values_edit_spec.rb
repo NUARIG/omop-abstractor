@@ -94,4 +94,32 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
     match_abstractor_object_value_variant_row('abdominal wall, nos', false, false, 0)
     match_abstractor_object_value_variant_row('intra-abdominal site, nos', false, false, 1)
   end
+
+  scenario 'Searching a list of abstractor object values', js: true, focus: false do
+    visit abstractor_abstraction_schemas_path
+    logs_in('mjg994', 'secret')
+    abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first
+    within("#abstractor_abstractor_abstraction_schema_#{abstractor_abstraction_schema.id}") do
+      click_link('Values')
+    end
+
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_value')).to have_content('abdomen, nos')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_value')).to have_content('abdominal esophagus')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_value')).to have_content('accessory sinus, nos')
+    expect(all(".abstractor_abstractor_object_value")[3].find('.abstractor_object_value_value')).to have_content('accessory sinuses')
+    expect(all(".abstractor_abstractor_object_value")[4].find('.abstractor_object_value_value')).to have_content('acoustic nerve')
+    expect(all(".abstractor_abstractor_object_value")[5].find('.abstractor_object_value_value')).to have_content('adrenal gland')
+    expect(all(".abstractor_abstractor_object_value")[6].find('.abstractor_object_value_value')).to have_content('adrenal gland, nos')
+    expect(all(".abstractor_abstractor_object_value")[7].find('.abstractor_object_value_value')).to have_content('ampulla of vater')
+    expect(all(".abstractor_abstractor_object_value")[8].find('.abstractor_object_value_value')).to have_content('anal canal')
+    expect(all(".abstractor_abstractor_object_value")[9].find('.abstractor_object_value_value')).to have_content('anterior 2/3 of tongue, nos')
+    fill_in 'Search', with: 'accessory'
+    click_button('Search')
+    sleep(1)
+
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_value')).to have_content('accessory sinus, nos')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_value')).to have_content('accessory sinuses')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_value')).to have_content('overlapping lesion of accessory sinuses')
+    expect(all(".abstractor_abstractor_object_value")[3]).to be_nil
+  end
 end

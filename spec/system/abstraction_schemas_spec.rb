@@ -71,4 +71,34 @@ RSpec.feature 'Abstractor Schemas', type: :system do
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Laterality')
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Karnofsky performance status date')
   end
+
+  scenario 'Searching a list of abstraction schemas', js: true,  focus: false do
+    visit abstractor_abstraction_schemas_path
+    logs_in('mjg994', 'secret')
+
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Anatomical location')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Date Schema')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Diagnosis')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Dopamine transporter level')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Duration')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Extent of resection')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Falls')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite major Moomin character')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite minor Moomin character')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Freezing')
+
+    fill_in 'Search', with: 'Favorite'
+    click_button('Search')
+
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Anatomical location')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Date Schema')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Diagnosis')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Dopamine transporter level')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Duration')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Extent of resection')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Falls')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite major Moomin character')
+    expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite minor Moomin character')
+    expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Freezing')
+  end
 end

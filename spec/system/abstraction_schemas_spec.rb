@@ -72,7 +72,7 @@ RSpec.feature 'Abstractor Schemas', type: :system do
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Karnofsky performance status date')
   end
 
-  scenario 'Searching a list of abstraction schemas', js: true,  focus: false do
+  scenario 'Searching a list of abstraction schemas', js: true, focus: false do
     visit abstractor_abstraction_schemas_path
     logs_in('mjg994', 'secret')
 
@@ -100,5 +100,63 @@ RSpec.feature 'Abstractor Schemas', type: :system do
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite major Moomin character')
     expect(page).to have_css('.abstractor_abstraction_schema_display_name', text: 'Favorite minor Moomin character')
     expect(page).to_not have_css('.abstractor_abstraction_schema_display_name', text: 'Freezing')
+  end
+
+  scenario 'Sorting a list of abstraction schemas', js: true, focus: false do
+    visit abstractor_abstraction_schemas_path
+    logs_in('mjg994', 'secret')
+
+    expect(all(".abstractor_abstractor_abstraction_schema")[0].find('.abstractor_abstraction_schema_display_name')).to have_content('Anatomical location')
+    expect(all(".abstractor_abstractor_abstraction_schema")[1].find('.abstractor_abstraction_schema_display_name')).to have_content('Date Schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[2].find('.abstractor_abstraction_schema_display_name')).to have_content('Diagnosis')
+    expect(all(".abstractor_abstractor_abstraction_schema")[3].find('.abstractor_abstraction_schema_display_name')).to have_content('Dopamine transporter level')
+    expect(all(".abstractor_abstractor_abstraction_schema")[4].find('.abstractor_abstraction_schema_display_name')).to have_content('Duration')
+    expect(all(".abstractor_abstractor_abstraction_schema")[5].find('.abstractor_abstraction_schema_display_name')).to have_content('Extent of resection')
+    expect(all(".abstractor_abstractor_abstraction_schema")[6].find('.abstractor_abstraction_schema_display_name')).to have_content('Falls')
+    expect(all(".abstractor_abstractor_abstraction_schema")[7].find('.abstractor_abstraction_schema_display_name')).to have_content('Favorite major Moomin character')
+    expect(all(".abstractor_abstractor_abstraction_schema")[8].find('.abstractor_abstraction_schema_display_name')).to have_content('Favorite minor Moomin character')
+    expect(all(".abstractor_abstractor_abstraction_schema")[9].find('.abstractor_abstraction_schema_display_name')).to have_content('Freezing')
+
+    click_link('Name')
+    sleep(1)
+
+    expect(all(".abstractor_abstractor_abstraction_schema")[0].find('.abstractor_abstraction_schema_display_name')).to have_content('Text Schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[1].find('.abstractor_abstraction_schema_display_name')).to have_content('Surgery')
+    expect(all(".abstractor_abstractor_abstraction_schema")[2].find('.abstractor_abstraction_schema_display_name')).to have_content('String Schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[3].find('.abstractor_abstraction_schema_display_name')).to have_content('Score 2')
+    expect(all(".abstractor_abstractor_abstraction_schema")[4].find('.abstractor_abstraction_schema_display_name')).to have_content('Score 1')
+    expect(all(".abstractor_abstractor_abstraction_schema")[5].find('.abstractor_abstraction_schema_display_name')).to have_content('Radiation therapy prescription date')
+    expect(all(".abstractor_abstractor_abstraction_schema")[6].find('.abstractor_abstraction_schema_display_name')).to have_content('RECIST response criteria')
+    expect(all(".abstractor_abstractor_abstraction_schema")[7].find('.abstractor_abstraction_schema_display_name')).to have_content('Numeric Schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[8].find('.abstractor_abstraction_schema_display_name')).to have_content('Laterality')
+    expect(all(".abstractor_abstractor_abstraction_schema")[9].find('.abstractor_abstraction_schema_display_name')).to have_content('Karnofsky performance status date')
+
+    click_link('Predicate')
+    sleep(1)
+
+    expect(all(".abstractor_abstractor_abstraction_schema")[0].find('.abstractor_abstraction_schema_predicate')).to have_content('has_anatomical_location')
+    expect(all(".abstractor_abstractor_abstraction_schema")[1].find('.abstractor_abstraction_schema_predicate')).to have_content('has_date_schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[2].find('.abstractor_abstraction_schema_predicate')).to have_content('has_diagnosis')
+    expect(all(".abstractor_abstractor_abstraction_schema")[3].find('.abstractor_abstraction_schema_predicate')).to have_content('has_diagnosis_duration')
+    expect(all(".abstractor_abstractor_abstraction_schema")[4].find('.abstractor_abstraction_schema_predicate')).to have_content('has_dopamine_transporter_level')
+    expect(all(".abstractor_abstractor_abstraction_schema")[5].find('.abstractor_abstraction_schema_predicate')).to have_content('has_falls')
+    expect(all(".abstractor_abstractor_abstraction_schema")[6].find('.abstractor_abstraction_schema_predicate')).to have_content('has_favorite_major_moomin_character')
+    expect(all(".abstractor_abstractor_abstraction_schema")[7].find('.abstractor_abstraction_schema_predicate')).to have_content('has_favorite_minor_moomin_character')
+    expect(all(".abstractor_abstractor_abstraction_schema")[8].find('.abstractor_abstraction_schema_predicate')).to have_content('has_freezing')
+    expect(all(".abstractor_abstractor_abstraction_schema")[9].find('.abstractor_abstraction_schema_predicate')).to have_content('has_imaging_confirmed_extent_of_resection')
+
+    click_link('Predicate')
+    sleep(1)
+
+    expect(all(".abstractor_abstractor_abstraction_schema")[0].find('.abstractor_abstraction_schema_predicate')).to have_content('has_text_schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[1].find('.abstractor_abstraction_schema_predicate')).to have_content('has_surgery')
+    expect(all(".abstractor_abstractor_abstraction_schema")[2].find('.abstractor_abstraction_schema_predicate')).to have_content('has_string_schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[3].find('.abstractor_abstraction_schema_predicate')).to have_content('has_score_2')
+    expect(all(".abstractor_abstractor_abstraction_schema")[4].find('.abstractor_abstraction_schema_predicate')).to have_content('has_score_1')
+    expect(all(".abstractor_abstractor_abstraction_schema")[5].find('.abstractor_abstraction_schema_predicate')).to have_content('has_recist_response_criteria')
+    expect(all(".abstractor_abstractor_abstraction_schema")[6].find('.abstractor_abstraction_schema_predicate')).to have_content('has_radiation_therapy_prescription_date')
+    expect(all(".abstractor_abstractor_abstraction_schema")[7].find('.abstractor_abstraction_schema_predicate')).to have_content('has_numeric_schema')
+    expect(all(".abstractor_abstractor_abstraction_schema")[8].find('.abstractor_abstraction_schema_predicate')).to have_content('has_laterality')
+    expect(all(".abstractor_abstractor_abstraction_schema")[9].find('.abstractor_abstraction_schema_predicate')).to have_content('has_karnofsky_performance_status_date')
   end
 end

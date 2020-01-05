@@ -35,6 +35,7 @@ document.addEventListener('turbolinks:load', () => {
   if ($('.abstractor_footer').length > 0) {
     $('.abstractor_abstractions').css('margin-top', $('.abstractor_footer').height() * -1);
   }
+  M.updateTextFields();
 });
 
 document.addEventListener('turbolinks:before-cache', () => {

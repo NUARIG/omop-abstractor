@@ -189,7 +189,7 @@ GEM
       request_store (~> 1.1)
     pg (1.1.4)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.8)
     rack-proxy (0.6.5)
       rack
@@ -357,7 +357,7 @@ DEPENDENCIES
   materialize-sass (~> 1.0.0)
   paper_trail
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.3)
   record_tag_helper
   rest-client

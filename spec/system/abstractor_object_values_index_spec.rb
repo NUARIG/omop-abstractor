@@ -28,9 +28,9 @@ RSpec.feature 'Listing and searching abstractor object values.  User should be a
     end
     fill_in 'Search', with: 'abdomen'
     click_button('Search')
-    match_abstractor_object_value_row('abdomen, nos', 'abdomen, nos', 0)
-    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'connective, subcutaneous and other soft tissues of abdomen', 1)
-    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 2)
+    match_abstractor_object_value_row('abdomen, nos', 'C76.2', 0)
+    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'C49.4', 1)
+    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'C47.4', 2)
   end
 
   scenario 'Deleting an abstractor object value', js: true, focus: false do
@@ -48,9 +48,9 @@ RSpec.feature 'Listing and searching abstractor object values.  User should be a
     end
     fill_in 'Search', with: 'abdomen'
     click_button('Search')
-    match_abstractor_object_value_row('abdomen, nos', 'abdomen, nos', 0)
-    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'connective, subcutaneous and other soft tissues of abdomen', 1)
-    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 2)
+    match_abstractor_object_value_row('abdomen, nos', 'C76.2', 0)
+    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'C49.4', 1)
+    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'C47.4', 2)
 
     abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(value: 'abdomen, nos').first
     within("#abstractor_abstractor_object_value_#{abstractor_object_value.id}") do
@@ -60,7 +60,7 @@ RSpec.feature 'Listing and searching abstractor object values.  User should be a
     end
     fill_in 'Search', with: 'abdomen'
     click_button('Search')
-    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'connective, subcutaneous and other soft tissues of abdomen', 0)
-    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 1)
+    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'C49.4', 0)
+    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'C47.4', 1)
   end
 end

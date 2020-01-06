@@ -70,7 +70,7 @@ module OmopAbstractor
       if anatomical_location_abstractor_abstraction_schema.blank?
         anatomical_location_abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.create(predicate: 'has_anatomical_location', display_name: 'Anatomical location', abstractor_object_type: list_object_type, preferred_name: 'Anatomical location')
         Site.where(synonym: false).each do |site|
-          object_value = Abstractor::AbstractorObjectValue.create(value: site.name, vocabulary_code: site.name)
+          object_value = Abstractor::AbstractorObjectValue.create(value: site.name, vocabulary_code: site.icdo3_code)
           Abstractor::AbstractorAbstractionSchemaObjectValue.create(abstractor_abstraction_schema: anatomical_location_abstractor_abstraction_schema, abstractor_object_value: object_value)
           Site.where(icdo3_code: site.icdo3_code, synonym: true).each do |site_synonym|
             Abstractor::AbstractorObjectValueVariant.create(abstractor_object_value: object_value, value: site_synonym.name)

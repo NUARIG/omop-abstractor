@@ -40,9 +40,9 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
       end
       fill_in 'Search', with: 'abdomen'
       click_button('Search')
-      match_abstractor_object_value_row('abdomen, nos', 'abdomen, nos', 0)
-      match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'connective, subcutaneous and other soft tissues of abdomen', 1)
-      match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 2)
+      match_abstractor_object_value_row('abdomen, nos', 'C76.2', 0)
+      match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'C49.4', 1)
+      match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'C47.4', 2)
 
       abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(value: 'abdomen, nos').first
 
@@ -51,7 +51,7 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
       end
 
       expect(page.has_field?('Value', with: 'abdomen, nos', disabled: true)).to be_truthy
-      expect(page.has_field?('Vocabulary Code', with: 'abdomen, nos', disabled: true)).to be_truthy
+      expect(page.has_field?('Vocabulary Code', with: 'C76.2', disabled: true)).to be_truthy
       expect(page.has_field?('Comments', with: '', disabled: false)).to be_truthy
       within(".abstractor_object_value_case_sensitive") do
         expect(page.has_unchecked_field?('Case Sensitive?', disabled: false, visible: false)).to be_falsy
@@ -77,9 +77,9 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
     end
     fill_in 'Search', with: 'abdomen'
     click_button('Search')
-    match_abstractor_object_value_row('abdomen, nos', 'abdomen, nos', 0)
-    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'connective, subcutaneous and other soft tissues of abdomen', 1)
-    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'peripheral nerves and autonomic nervous system of abdomen', 2)
+    match_abstractor_object_value_row('abdomen, nos', 'C76.2', 0)
+    match_abstractor_object_value_row('connective, subcutaneous and other soft tissues of abdomen', 'C49.4', 1)
+    match_abstractor_object_value_row('peripheral nerves and autonomic nervous system of abdomen', 'C47.4', 2)
     abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(value: 'abdomen, nos').first
 
     within("#abstractor_abstractor_object_value_#{abstractor_object_value.id}") do
@@ -87,7 +87,7 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
     end
 
     expect(page.has_field?('Value', with: 'abdomen, nos', disabled: false)).to be_truthy
-    expect(page.has_field?('Vocabulary Code', with: 'abdomen, nos', disabled: false)).to be_truthy
+    expect(page.has_field?('Vocabulary Code', with: 'C76.2', disabled: false)).to be_truthy
     expect(page.has_field?('Comments', with: nil, disabled: false)).to be_truthy
     expect(page.has_unchecked_field?('Case Sensitive?', disabled: false, visible: false)).to be_truthy
 
@@ -121,5 +121,65 @@ RSpec.feature 'Abstractor Object Values Edit', type: :system do
     expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_value')).to have_content('accessory sinuses')
     expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_value')).to have_content('overlapping lesion of accessory sinuses')
     expect(all(".abstractor_abstractor_object_value")[3]).to be_nil
+  end
+
+  scenario 'Sorting a list of abstractor object values', js: true, focus: false do
+    visit abstractor_abstraction_schemas_path
+    logs_in('mjg994', 'secret')
+    abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(display_name: 'Anatomical location').first
+    within("#abstractor_abstractor_abstraction_schema_#{abstractor_abstraction_schema.id}") do
+      click_link('Values')
+    end
+    sleep(1)
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_value')).to have_content('abdomen, nos')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_value')).to have_content('abdominal esophagus')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_value')).to have_content('accessory sinus, nos')
+    expect(all(".abstractor_abstractor_object_value")[3].find('.abstractor_object_value_value')).to have_content('accessory sinuses')
+    expect(all(".abstractor_abstractor_object_value")[4].find('.abstractor_object_value_value')).to have_content('acoustic nerve')
+    expect(all(".abstractor_abstractor_object_value")[5].find('.abstractor_object_value_value')).to have_content('adrenal gland')
+    expect(all(".abstractor_abstractor_object_value")[6].find('.abstractor_object_value_value')).to have_content('adrenal gland, nos')
+    expect(all(".abstractor_abstractor_object_value")[7].find('.abstractor_object_value_value')).to have_content('ampulla of vater')
+    expect(all(".abstractor_abstractor_object_value")[8].find('.abstractor_object_value_value')).to have_content('anal canal')
+    expect(all(".abstractor_abstractor_object_value")[9].find('.abstractor_object_value_value')).to have_content('anterior 2/3 of tongue, nos')
+
+    click_link('Value')
+    sleep(1)
+
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_value')).to have_content('waldeyer ring')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_value')).to have_content('vulva, nos')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_value')).to have_content('vulva')
+    expect(all(".abstractor_abstractor_object_value")[3].find('.abstractor_object_value_value')).to have_content('vestibule of mouth')
+    expect(all(".abstractor_abstractor_object_value")[4].find('.abstractor_object_value_value')).to have_content('vertebral column')
+    expect(all(".abstractor_abstractor_object_value")[5].find('.abstractor_object_value_value')).to have_content('ventricle, nos')
+    expect(all(".abstractor_abstractor_object_value")[6].find('.abstractor_object_value_value')).to have_content('ventral surface of tongue, nos')
+    expect(all(".abstractor_abstractor_object_value")[7].find('.abstractor_object_value_value')).to have_content('vallecula')
+    expect(all(".abstractor_abstractor_object_value")[8].find('.abstractor_object_value_value')).to have_content('vagina, nos')
+    expect(all(".abstractor_abstractor_object_value")[9].find('.abstractor_object_value_value')).to have_content('vagina')
+
+    click_link('Vocabulary Code')
+    sleep(1)
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_vocabulary_code')).to have_content('C00')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.0')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.1')
+    expect(all(".abstractor_abstractor_object_value")[3].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.2')
+    expect(all(".abstractor_abstractor_object_value")[4].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.3')
+    expect(all(".abstractor_abstractor_object_value")[5].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.4')
+    expect(all(".abstractor_abstractor_object_value")[6].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.5')
+    expect(all(".abstractor_abstractor_object_value")[7].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.6')
+    expect(all(".abstractor_abstractor_object_value")[8].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.8')
+    expect(all(".abstractor_abstractor_object_value")[9].find('.abstractor_object_value_vocabulary_code')).to have_content('C00.9')
+
+    click_link('Vocabulary Code')
+    sleep(1)
+    expect(all(".abstractor_abstractor_object_value")[0].find('.abstractor_object_value_vocabulary_code')).to have_content('C80.9')
+    expect(all(".abstractor_abstractor_object_value")[1].find('.abstractor_object_value_vocabulary_code')).to have_content('C80')
+    expect(all(".abstractor_abstractor_object_value")[2].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.9')
+    expect(all(".abstractor_abstractor_object_value")[3].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.8')
+    expect(all(".abstractor_abstractor_object_value")[4].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.5')
+    expect(all(".abstractor_abstractor_object_value")[5].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.4')
+    expect(all(".abstractor_abstractor_object_value")[6].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.3')
+    expect(all(".abstractor_abstractor_object_value")[7].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.2')
+    expect(all(".abstractor_abstractor_object_value")[8].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.1')
+    expect(all(".abstractor_abstractor_object_value")[9].find('.abstractor_object_value_vocabulary_code')).to have_content('C77.0')
   end
 end

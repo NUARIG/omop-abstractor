@@ -41,3 +41,4 @@ db/migrate/CommonDataModel-5.3.0/PostgreSQL/ClinicalImport/OMOP CDM clinical loa
 db/migrate/CommonDataModel-5.3.0/PostgreSQL/VocabImport/*.csv
 db/migrate/CommonDataModel-5.3.0/PostgreSQL/VocabImport/*.json
 db/migrate/CommonDataModel-5.3s.0/PostgreSQL/VocabImport/OMOP CDM vocabulary load - PostgreSQL.sql
+lib/setup/data/clamp/*.xmi

@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Listing and searching abstractor object values.  User should be able to list and search for abstractor object values', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.encounter_note
     OmopAbstractor::SpecSetup.sites

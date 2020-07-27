@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Editing radiation therapy prescription: User should be able to edit radiation therapy prescription information', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.sites
     OmopAbstractor::SpecSetup.custom_site_synonyms

@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'webmock/rspec'
 require './spec/spec_setup'
+# require 'webdrivers/chromedriver'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -61,6 +63,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_preference(:download, prompt_for_download: false, default_directory: Rails.root.join('tmp/downloads'))
+  options.add_preference(:browser, set_download_behavior: { behavior: 'allow' })
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
 
   config.before(:each, type: :system) do
     driven_by :rack_test
@@ -68,8 +77,13 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     # driven_by :selenium_chrome_headless
-    driven_by :selenium_chrome
+    driven_by :chrome
   end
+
+  WebMock.disable_net_connect!(
+    allow_localhost: true,
+    allow: 'chromedriver.storage.googleapis.com'
+  )
 end
 
 def scroll_to_bottom_of_the_page

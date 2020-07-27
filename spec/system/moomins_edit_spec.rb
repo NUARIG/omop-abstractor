@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Editing moomin: User should be able to edit moomin information', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     @undefined_concept_class = FactoryGirl.create(:undefined_concept_class)
     @no_matching_concept = FactoryGirl.create(:no_matching_concept)

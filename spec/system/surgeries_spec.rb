@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Editing surgery: User should be able to edit surgery information', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.encounter_note
     OmopAbstractor::SpecSetup.sites

@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Editing encounter note', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.encounter_note
     @undefined_concept_class = FactoryGirl.create(:undefined_concept_class)

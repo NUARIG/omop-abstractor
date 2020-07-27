@@ -1,7 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Editing pathology case: User should be able to edit pathology case information', type: :system do
   before(:each) do
-    WebMock.disable_net_connect!(allow_localhost: true)
     Abstractor::Setup.system
     OmopAbstractor::SpecSetup.sites
     OmopAbstractor::SpecSetup.custom_site_synonyms

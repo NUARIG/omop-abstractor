@@ -12,8 +12,22 @@ module Abstractor
       suggestion_endpoint = YAML.load_file("#{Rails.root}/config/abstractor/custom_nlp_providers.yml")[custom_nlp_provider]['suggestion_endpoint'][Rails.env]
     end
 
+    def self.determine_multiple_suggestion_file_location(custom_nlp_provider)
+      multiple_suggestion_file_location = nil
+      provider = YAML.load_file("#{Rails.root}/config/abstractor/custom_nlp_providers.yml")[custom_nlp_provider]
+      if provider.present? && provider['multiple_suggestion_file_location']
+        multiple_suggestion_file_location = provider['multiple_suggestion_file_location'][Rails.env]
+      end
+      multiple_suggestion_file_location
+    end
+
     def self.determine_multiple_suggestion_endpoint(custom_nlp_provider)
-      suggestion_endpoint = YAML.load_file("#{Rails.root}/config/abstractor/custom_nlp_providers.yml")[custom_nlp_provider]['multiple_suggestion_endpoint'][Rails.env]
+      multiple_suggestion_endpoint = nil
+      provider = YAML.load_file("#{Rails.root}/config/abstractor/custom_nlp_providers.yml")[custom_nlp_provider]
+      if provider.present? && provider['multiple_suggestion_endpoint']
+        multiple_suggestion_endpoint = provider['multiple_suggestion_endpoint'][Rails.env]
+      end
+      multiple_suggestion_endpoint
     end
 
     def self.determine_suggestion_endpoint_credentials(custom_nlp_provider)

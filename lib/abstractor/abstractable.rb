@@ -201,19 +201,39 @@ module Abstractor
 
         body = nil
         sources_with_abstractor_abstraction_schemas.each do |source_with_abstractor_abstraction_schema|
-          custom_nlp_provider = source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources].map(&:custom_nlp_provider)
-          custom_nlp_provider  = custom_nlp_provider.first
-          multiple_suggestion_endpoint = CustomNlpProvider.determine_multiple_suggestion_endpoint(custom_nlp_provider)
-          suggestion_endpoint_auth = Abstractor::CustomNlpProvider.determine_suggestion_endpoint_credentials(custom_nlp_provider).symbolize_keys
-
-          if !Rails.env.test?
-            user = User.where(username: suggestion_endpoint_auth[:username]).first
-            suggestion_endpoint_auth[:password] = user.authentication_token
-          end
-
           abstractor_text = Abstractor::AbstractorAbstractionSource.abstractor_text(source_with_abstractor_abstraction_schema[:source])
           body = Abstractor::CustomNlpProvider.format_body_for_multiple_suggestion_endpoint(source_with_abstractor_abstraction_schema[:abstractor_abstractions], source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources], abstractor_text, source_with_abstractor_abstraction_schema[:source])
-          result = HTTParty.post(multiple_suggestion_endpoint, { body: body.to_json, headers: { 'Content-Type' => 'application/json', }, basic_auth: suggestion_endpoint_auth, :debug_output => $stdout })
+          custom_nlp_providers = source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources].map(&:custom_nlp_provider)
+          custom_nlp_providers.each do |custom_nlp_provider|
+            multiple_suggestion_endpoint = Abstractor::CustomNlpProvider.determine_multiple_suggestion_endpoint(custom_nlp_provider)
+            if multiple_suggestion_endpoint.present?
+              suggestion_endpoint_auth = Abstractor::CustomNlpProvider.determine_suggestion_endpoint_credentials(custom_nlp_provider).symbolize_keys
+
+              if !Rails.env.test?
+                user = User.where(username: suggestion_endpoint_auth[:username]).first
+                suggestion_endpoint_auth[:password] = user.authentication_token
+              end
+              # puts 'suggestion_endpoint'
+              # puts multiple_suggestion_endpoint
+              # puts 'body'
+              # puts body
+              # puts 'here we go again'
+              result = HTTParty.post(multiple_suggestion_endpoint, { body: body.to_json, headers: { 'Content-Type' => 'application/json', }, basic_auth: suggestion_endpoint_auth, :debug_output => $stdout })
+            end
+
+            multiple_suggestion_file_location = Abstractor::CustomNlpProvider.determine_multiple_suggestion_file_location(custom_nlp_provider)
+            if multiple_suggestion_file_location.present?
+              # puts 'suggestion_endpoint'
+              # puts multiple_suggestion_file_location
+              # puts 'body'
+              # puts body
+              # puts 'here we go again'
+
+              File.open "#{multiple_suggestion_file_location}/#{source_with_abstractor_abstraction_schema[:source][:source_type]}_#{source_with_abstractor_abstraction_schema[:source][:source_id]}_#{Time.now.utc.to_s}.json", 'w' do |f|
+                f.puts body
+              end
+            end
+          end
         end
       end
 

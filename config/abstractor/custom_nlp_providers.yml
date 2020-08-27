@@ -1,5 +1,11 @@
 # Add the actual name of your custom nlp provider.
 # Specify the sugestion endpoint per environemnt.
+custom_nlp_provider_clamp:
+  multiple_suggestion_file_location:
+      development: /Users/mjg994/Documents/source/omop-abstractor/lib/setup/data_out/custom_nlp_provider_clamp
+      test: /Users/mjg994/Documents/source/omop-abstractor/lib/setup/data_out/custom_nlp_provider_clamp_test
+      staging:
+      production:
 custom_nlp_provider_name:
   suggestion_endpoint:
       development: http://custom-nlp-provider.dev/suggest

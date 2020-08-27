@@ -110,7 +110,7 @@ new
       add system_accepted_reason string
 
     abstractor_sections
-      add auto_accept            boolean
+      add auto_accept            boolean ?
 
   create
     create_table "abstractor_abstraction_source_sections", force: :cascade do |t|
@@ -133,6 +133,7 @@ new
   if abstractor_abstraction_sources is setup with any abstractor_abstraction_source_sections, and the CLAMP named entity section_name matches a section name or one of its variants, then insert the CLAMP named entity into abstractor_suggestions and abstractor_suggestion_sources.  Set abstractor_suggestions.accepted = true and abstractor_suggestions.system_accepted = true and abstractor_suggestions.system_accepted_reason = 'Matches a setup section.'
   if abstractor_abstraction_sources is setup with any abstractor_abstraction_source_sections and abstractor_abstraction_sources.section_required = true, and the CLAMP named entity section_name does not match a section name or one of its variants, then insert the CLAMP named entity into abstractor_suggestions and abstractor_suggestion_sources. Set abstractor_suggestions.accepted = false and abstractor_suggestions.system_rejected = true and abstractor_suggestions.system_rejected_reason = 'Not in any setup section.'
   if abstractor_abstraction_sources is setup with any abstractor_abstraction_source_sections and abstractor_abstraction_sources.section_required = false, and the CLAMP named entity section_name does not match a section name or one of its variants, then insert the CLAMP named entity into abstractor_suggestions and abstractor_suggestion_sources. Set abstractor_suggestions.accepted = null and abstractor_suggestions.system_rejected = false.
+
   if the CLAMP named entity assertion=negative, then insert the CLAMP named entity into abstractor_suggestions and abstractor_suggestion_sources. Set abstractor_suggestions.accepted = false and abstractor_suggestions.system_rejected = true and abstractor_suggestions.system_rejected_reason = 'Negated.'
 
   later

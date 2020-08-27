@@ -16,7 +16,7 @@ module Abstractor
               abstractor_suggestion = nil
               Abstractor::AbstractorSuggestion.transaction do
                 suggestion[:suggestion_sources].each do |suggestion_source|
-                  abstractor_suggestion = @abstractor_abstraction.abstractor_subject.suggest(@abstractor_abstraction, abstractor_abstraction_source, suggestion_source[:match_value], suggestion_source[:sentence_match_value], suggestion[:source_id], suggestion[:source_type], suggestion[:source_method], nil, suggestion[:value], suggestion[:unknown].to_s.to_boolean, suggestion[:not_applicable].to_s.to_boolean, nil, nil)
+                  abstractor_suggestion = @abstractor_abstraction.abstractor_subject.suggest(@abstractor_abstraction, abstractor_abstraction_source, suggestion_source[:match_value], suggestion_source[:sentence_match_value], suggestion[:source_id], suggestion[:source_type], suggestion[:source_method], suggestion_source[:section_name], suggestion[:value], suggestion[:unknown].to_s.to_boolean, suggestion[:not_applicable].to_s.to_boolean, nil, nil, suggestion[:negated].to_s.to_boolean)
                 end
               end
               format.json { render json: abstractor_suggestion, status: :created }

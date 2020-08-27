@@ -45,6 +45,7 @@ require './lib/abstractor/methods/models/abstractor_suggestion_source'
 require './lib/abstractor/methods/models/abstractor_suggestion_status'
 require './lib/abstractor/methods/models/abstractor_suggestion'
 require './lib/abstractor/methods/models/soft_delete'
+require './lib/abstractor/methods/models/abstractor_abstraction_source_section'
 require './lib/abstractor/serializers/abstractor_abstraction_schema_serializer'
 require './lib/abstractor/serializers/abstractor_rules_serializer'
 

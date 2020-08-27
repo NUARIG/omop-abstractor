@@ -359,7 +359,7 @@ module Abstractor
             suggested_value.instance_of?(Abstractor::AbstractorObjectValue)
           end
 
-          def suggest(abstractor_abstraction, abstractor_abstraction_source, match_value, sentence_match_value, source_id, source_type, source_method, section_name, suggested_value, unknown, not_applicable, custom_method, custom_explanation)
+          def suggest(abstractor_abstraction, abstractor_abstraction_source, match_value, sentence_match_value, source_id, source_type, source_method, section_name, suggested_value, unknown, not_applicable, custom_method, custom_explanation, negated=nil)
             unknown ||= false
             not_applicable ||= false
             match_value.strip! unless match_value.nil?
@@ -377,12 +377,47 @@ module Abstractor
             end
             abstractor_suggestion = abstractor_abstraction.detect_abstractor_suggestion(suggested_value, unknown, not_applicable)
             if !abstractor_suggestion
+              accepted = nil
+              system_accepted = false
+              system_accepted_reason = nil
+              system_rejected = false
+              system_rejected_reason = nil
+
+              if section_name
+                if abstractor_abstraction_source
+                  if abstractor_abstraction_source.detect_abstractor_abstraction_source_section(section_name)
+                    accepted = true
+                    system_accepted = true
+                    system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                  else
+                    if abstractor_abstraction_source.section_required
+                      accepted = false
+                      system_accepted = false
+                      system_rejected = true
+                      system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_REASON_NO_SECTION_MATCH
+                    end
+                  end
+                end
+              end
+
+              if negated
+                accepted = false
+                system_accepted = false
+                system_accepted_reason = nil
+                system_rejected = true
+                system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_REASON_NEGATED
+              end
+
               abstractor_suggestion = Abstractor::AbstractorSuggestion.create!(
                                                                   abstractor_abstraction: abstractor_abstraction,
-                                                                  accepted: nil,
+                                                                  accepted: accepted,
                                                                   suggested_value: suggested_value,
                                                                   unknown: unknown,
-                                                                  not_applicable: not_applicable
+                                                                  not_applicable: not_applicable,
+                                                                  system_accepted: system_accepted,
+                                                                  system_accepted_reason: system_accepted_reason,
+                                                                  system_rejected: system_rejected,
+                                                                  system_rejected_reason: system_rejected_reason,
                                                                   )
 
               if abstractor_object_value

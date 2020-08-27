@@ -111,7 +111,6 @@ FactoryGirl.define do
     stable_identifier_value     ''
   end
 
-
   factory :procedure_occurrence do
     sequence(:procedure_occurrence_id)
     person_id                    nil
@@ -176,5 +175,14 @@ FactoryGirl.define do
   end
 
   factory :abstractor_rule, :class => Abstractor::AbstractorRule do
+  end
+
+  factory :abstractor_section, :class => Abstractor::AbstractorSection do
+  end
+
+  factory :abstractor_section_name_variant, :class => Abstractor::AbstractorSectionNameVariant do
+  end
+
+  factory :abstractor_abstraction_source_section, :class => Abstractor::AbstractorAbstractionSourceSection do
   end
 end

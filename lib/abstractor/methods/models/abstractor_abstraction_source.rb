@@ -13,6 +13,7 @@ module Abstractor
           base.send :has_many, :abstractor_abstractions, :through => :abstractor_suggestion_sources
           base.send :has_many, :abstractor_indirect_sources
           base.send :has_many, :abstractor_abstraction_source_section_name_variants
+          base.send :has_many, :abstractor_abstraction_source_sections
 
           def base.abstractor_text(source)
             text = source[:source_type].to_s.constantize.find(source[:source_id]).send(source[:source_method])
@@ -55,6 +56,20 @@ module Abstractor
             sources = fm
           end
           sources
+        end
+
+        def detect_abstractor_abstraction_source_section(section_name)
+          detected_abstractor_abstraction_source_section = abstractor_abstraction_source_sections.detect { |abstractor_abstraction_source_section| abstractor_abstraction_source_section.abstractor_section.name == section_name }
+          if !detected_abstractor_abstraction_source_section.present?
+            detect_abstractor_abstraction_source_section = abstractor_abstraction_source_sections.each do |abstractor_abstraction_source_section|
+              abstractor_abstraction_source_section.abstractor_section.abstractor_section_name_variants.each do |abstractor_section_name_variant|
+                if abstractor_section_name_variant.name == section_name
+                  detected_abstractor_abstraction_source_section = abstractor_abstraction_source_section
+                end
+              end
+            end
+          end
+          detected_abstractor_abstraction_source_section
         end
       end
     end

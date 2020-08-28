@@ -229,8 +229,8 @@ module Abstractor
               # puts body
               # puts 'here we go again'
 
-              File.open "#{multiple_suggestion_file_location}/#{source_with_abstractor_abstraction_schema[:source][:source_type]}_#{source_with_abstractor_abstraction_schema[:source][:source_id]}_#{Time.now.utc.to_s}.json", 'w' do |f|
-                f.puts body
+              File.open "#{multiple_suggestion_file_location}/#{source_with_abstractor_abstraction_schema[:source][:source_type]}_#{source_with_abstractor_abstraction_schema[:source][:source_id]}_#{Time.now.to_i}.json", 'w' do |f|
+                f.puts body.to_json
               end
             end
           end

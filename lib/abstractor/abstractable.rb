@@ -71,19 +71,19 @@ module Abstractor
       # @return [Array] List of [Hash].
       def sources(options = {})
         options = { namespace_type: nil, namespace_id: nil }.merge(options)
-        sources = abstractor_suggestion_sources(options).map { |abstractor_suggestion_source| { source_type: abstractor_suggestion_source.source_type.constantize, source_id: abstractor_suggestion_source.source_id , source_method: abstractor_suggestion_source.source_method, section_name: abstractor_suggestion_source.section_name } }.uniq
+        sources = abstractor_suggestion_sources(options).map { |abstractor_suggestion_source| { source_type: abstractor_suggestion_source.source_type.constantize, source_id: abstractor_suggestion_source.source_id, source_method: abstractor_suggestion_source.source_method } }.uniq
         sources.each do |source|
           source[:abstractor_suggestion_sources] = abstractor_suggestion_sources.select do |abstractor_suggestion_source|
             source[:source_type] == abstractor_suggestion_source.source_type.constantize &&
             source[:source_id] == abstractor_suggestion_source.source_id &&
-            source[:source_method] == abstractor_suggestion_source.source_method &&
-            source[:section_name] == abstractor_suggestion_source.section_name
+            source[:source_method] == abstractor_suggestion_source.source_method
+            # source[:section_name] == abstractor_suggestion_source.section_name
           end.map do |abstractor_suggestion_source|
             {
               source_type: abstractor_suggestion_source.source_type.constantize,
               source_id: abstractor_suggestion_source.source_id,
               source_method: abstractor_suggestion_source.source_method,
-              section_name: abstractor_suggestion_source.section_name,
+              # section_name: abstractor_suggestion_source.section_name,
               sentence_match_value: abstractor_suggestion_source.sentence_match_value
             }
           end.uniq

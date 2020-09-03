@@ -9,20 +9,34 @@ module ClampMapper
       @name = name
       @text = @xmi_document.xpath("//cas:Sofa")[0].attributes['sofaString'].value
 
-      @sections = []
-      @xmi_document.xpath("//textspan:Segment").each do |section|
-        @sections << ClampMapper::Section.new(section.attributes['begin'].value, section.attributes['end'].value, section.attributes['preferredText'].value)
-      end
-
       @sentences = []
       @xmi_document.xpath("//textspan:Sentence").each do |sentence|
-        @sentences << ClampMapper::Sentence.new(sentence.attributes['begin'].value, sentence.attributes['end'].value, sentence.attributes['sentenceNumber'].value, sentence.attributes['segmentId'].value)
+        @sentences << ClampMapper::Sentence.new(self, sentence.attributes['begin'].value, sentence.attributes['end'].value, sentence.attributes['sentenceNumber'].value)
       end
 
       @named_entities = []
       @xmi_document.xpath("//typesystem:ClampNameEntityUIMA").each do |named_entity|
-        @named_entities << ClampMapper::NamedEntity.new(named_entity.attributes['begin'].value, named_entity.attributes['end'].value, named_entity.attributes['semanticTag'].value, named_entity.attributes['assertion'].value)
+        is_section = nil
+        if named_entity.attributes['attr2']
+          is_section = true
+        else
+          is_section = false
+        end
+        @named_entities << ClampMapper::NamedEntity.new(self, named_entity.attributes['begin'].value, named_entity.attributes['end'].value, named_entity.attributes['semanticTag'].value, named_entity.attributes['assertion'].value, is_section)
       end
+
+      @sections = []
+      @xmi_document.xpath("//textspan:Segment").each do |section|
+        @sections << ClampMapper::Section.new(self, section.attributes['begin'].value, section.attributes['end'].value)
+      end
+    end
+
+    def named_entities
+      @named_entities.select { |named_entity| !named_entity.is_section }
+    end
+
+    def section_named_entities
+      @named_entities.select { |named_entity| named_entity.is_section }
     end
   end
 end

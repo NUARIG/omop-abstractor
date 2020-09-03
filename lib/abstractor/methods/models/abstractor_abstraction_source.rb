@@ -19,13 +19,18 @@ module Abstractor
             text = source[:source_type].to_s.constantize.find(source[:source_id]).send(source[:source_method])
             if !source[:section_name].blank?
               abstractor_section = Abstractor::AbstractorSection.where(source_type: source[:source_type].to_s, source_method: source[:source_method], name: source[:section_name]).first
-              if text =~ prepare_section_regular_expression(abstractor_section)
-                text = $2
+
+              if abstractor_section.blank? || abstractor_section.abstractor_section_type.name == Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_OFFSETS
+                text = text
               else
-                if abstractor_section.return_note_on_empty_section
-                  text = text
+                if text =~ prepare_section_regular_expression(abstractor_section)
+                  text = $2
                 else
-                  text = ''
+                  if abstractor_section.return_note_on_empty_section
+                    text = text
+                  else
+                    text = ''
+                  end
                 end
               end
             end

@@ -18,8 +18,8 @@
 # bundle exec rake setup:schemas_new
 # bundle exec rake setup:data
 # OBJC_DISABLE_INITIALIZE_FORK_SAFETY='YES' bundle exec rake suggestor:do_multiple
-#bundle exec rake setup:run_clamp_pipeline
-#bundle exec rake setup:clamp_dictionary:
+# bundle exec rake setup:run_clamp_pipeline
+# bundle exec rake setup:clamp_dictionary
 
 require './lib/omop_abstractor/setup/setup'
 require './lib/clamp_mapper/parser'
@@ -823,8 +823,8 @@ namespace :setup do
     source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
     source_type_custom_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'custom nlp suggestion').first
     indirect_source_type = Abstractor::AbstractorAbstractionSourceType.where(name: 'indirect').first
-    abstractor_section_type_custom = Abstractor::AbstractorSectionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_CUSTOM).first
-    abstractor_section_specimen = Abstractor::AbstractorSection.create(abstractor_section_type: abstractor_section_type_custom, name: 'SPECIMEN')
+    abstractor_section_type_custom = Abstractor::AbstractorSectionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_OFFSETS).first
+    abstractor_section_specimen = Abstractor::AbstractorSection.create(abstractor_section_type: abstractor_section_type_custom, name: 'SPECIMEN', source_type: NoteStableIdentifier.to_s, source_method: 'note_text', return_note_on_empty_section: true)
 
     #surgical pathology report abstractions setup begin
     #concept_id 10  = 'Procedure Occurrence'
@@ -1982,12 +1982,13 @@ namespace :setup do
         abstractor_object_value.object_variants.each do |object_variant|
           object_variant.gsub!(',', ' , ')
           object_variant.gsub!('-', ' - ')
-          dictionary_items << "#{object_variant}\t#{abstractor_abstraction_schema.predicate}|#{abstractor_object_value.value}|#{abstractor_object_value.id}"
+          # dictionary_items << "#{object_variant}\t#{abstractor_abstraction_schema.predicate}|#{abstractor_object_value.value}|#{abstractor_object_value.id}"
+          dictionary_items << "#{object_variant}\t#{abstractor_abstraction_schema.predicate}|#{abstractor_object_value.value}"
         end
       end
     end
 
-    File.open 'abstractor_clamp_data_dictionary.txt', 'w' do |f|
+    File.open 'lib/setup/data_out/abstractor_clamp_data_dictionary.txt', 'w' do |f|
       dictionary_items.each do |di|
         f.puts di
       end

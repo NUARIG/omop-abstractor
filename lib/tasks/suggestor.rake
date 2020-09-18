@@ -20,7 +20,6 @@ def abstractor_suggestor(options = {})
           abstractable_event.abstract_multiple(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace.id)
         else
           abstractable_event.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace.id)
-
         end
         abstractor_namespace.abstractor_namespace_events.build(eventable: abstractable_event)
         abstractor_namespace.save!

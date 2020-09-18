@@ -114,6 +114,7 @@ module Abstractor
           namespace_type: abstractor_abstraction.abstractor_subject.namespace_type,
           namespace_id: abstractor_abstraction.abstractor_subject.namespace_id,
           abstractor_rule_type: abstractor_abstraction_source.abstractor_rule_type.name,
+          abstractor_object_type: abstractor_abstraction_schema.abstractor_object_type.value,
           updated_at: abstractor_abstraction_schema.updated_at.iso8601.to_s
         }
         body[:abstractor_abstraction_schemas] << abstractor_abstraction_schema

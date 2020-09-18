@@ -18,7 +18,6 @@ module Abstractor
           base.extend(ClassMethods)
         end
 
-
         # Instance Methods
         module InstanceMethods
           ##
@@ -40,6 +39,22 @@ module Abstractor
             else
               false
             end
+          end
+
+          ##
+          # Whether or not it is a postive/negative list.
+          #
+          # @return [Boolean]
+          def positive_negative_object_type_list?
+            abstractor_object_values.map(&:value).sort == ['negative', 'positive']
+          end
+
+          ##
+          # Whether or not it is a deleted/non-deleted list.
+          #
+          # @return [Boolean]
+          def deleted_non_deleted_object_type_list?
+            abstractor_object_values.map(&:value).sort == ['deleted', 'non-deleted']
           end
         end
 

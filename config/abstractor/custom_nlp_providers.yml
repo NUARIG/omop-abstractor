@@ -6,6 +6,19 @@ custom_nlp_provider_clamp:
       test: /Users/mjg994/Documents/source/omop-abstractor/lib/setup/data_out/custom_nlp_provider_clamp_test
       staging:
       production:
+custom_nlp_provider_spacy:
+  multiple_suggestion_endpoint:
+      development: http://custom-nlp-provider.dev/multiple_suggest
+      test: http://custom-nlp-provider.test/multiple_suggest
+      staging: http://custom-nlp-provider-staging.org/multiple_suggest
+      production: http://custom-nlp-provider.org/multiple_suggest
+  suggestion_endpoint_credentials:
+      development:
+          "username": testuser
+          "password": password
+      test:
+          "username": testuser
+          "password": password
 custom_nlp_provider_name:
   suggestion_endpoint:
       development: http://custom-nlp-provider.dev/suggest

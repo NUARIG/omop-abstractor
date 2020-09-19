@@ -211,13 +211,14 @@ module Abstractor
 
               if !Rails.env.test?
                 user = User.where(username: suggestion_endpoint_auth[:username]).first
-                suggestion_endpoint_auth[:password] = user.authentication_token
+                # suggestion_endpoint_auth[:password] = user.authentication_token
+                suggestion_endpoint_auth[:password] = 'password'
               end
-              # puts 'suggestion_endpoint'
-              # puts multiple_suggestion_endpoint
-              # puts 'body'
-              # puts body
-              # puts 'here we go again'
+              puts 'suggestion_endpoint'
+              puts multiple_suggestion_endpoint
+              puts 'body'
+              puts body
+              puts 'here we go again'
               result = HTTParty.post(multiple_suggestion_endpoint, { body: body.to_json, headers: { 'Content-Type' => 'application/json', }, basic_auth: suggestion_endpoint_auth, :debug_output => $stdout })
             end
 

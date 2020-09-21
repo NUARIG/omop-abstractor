@@ -1,5 +1,6 @@
 require './lib/omop_abstractor/setup/setup'
 require './lib/clamp_mapper/parser'
+require './lib/clamp_mapper/process_note'
 namespace :clamp do
   desc 'Load schemas CLAMP'
   task(schemas_clamp: :environment) do |t, args|
@@ -764,28 +765,20 @@ namespace :clamp do
 
   desc "Run CLAMP pipeline"
   task(run_clamp_pipeline: :environment) do  |t, args|
-     Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*.json").each do |file|
-       abstractor_note = File.read(file)
-       abstractor_note = JSON.parse(abstractor_note)
+     Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*.json").reject{ |p| p.end_with?('_processed.json') }.each do |file|
+       abstractor_note = JSON.parse(File.read(file))
+       abstractor_note = ClampMapper::ProcessNote.process(abstractor_note)
 
-       txt_file = file.gsub('json', 'txt')
-       File.open txt_file, 'w' do |f|
-         f.puts abstractor_note['text']
-       end
+       File.write(file.gsub(/\.json$/, '_processed.json'), JSON.pretty_generate(abstractor_note))
      end
   end
 
   desc "Map clamp to Abstractor"
   task(map_clamp_to_abstractor: :environment) do  |t, args|
-    Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*.xmi").each do |file|
+    Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*_processed.json").each do |file|
       puts file
-      parser = ClampMapper::Parser.new
-      parser.read(file)
-      clamp_note = parser.document     
-      file = file.gsub('xmi', 'json')       
-      abstractor_note = File.read(file)
-      abstractor_note = JSON.parse(abstractor_note)
-          
+      abstractor_note = JSON.parse(File.read(file))
+      clamp_note = ClampMapper::Parser.new.read(abstractor_note)
       
       abstractor_note['abstractor_abstraction_schemas'].each do |abstractor_abstraction_schema|
         abstractor_abstraction = Abstractor::AbstractorAbstraction.find(abstractor_abstraction_schema['abstractor_abstraction_id'])

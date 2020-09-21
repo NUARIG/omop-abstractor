@@ -15,7 +15,6 @@
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake data:truncate_omop_clinical_data_tables
 
-
 # bundle exec rake clamp:schemas_clamp
 # bundle exec rake spacy:schemas_spacy
 # bundle exec rake setup:schemas
@@ -23,6 +22,7 @@
 # bundle exec rake setup:data
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
+# bundle exec rake clamp:
 # bundle exec rake clamp:clamp_dictionary
 
 require './lib/omop_abstractor/setup/setup'

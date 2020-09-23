@@ -764,20 +764,12 @@ namespace :clamp do
 
   desc "Run CLAMP pipeline"
   task(run_clamp_pipeline: :environment) do  |t, args|
-     Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*.json").reject{ |p| p.end_with?('_processed.json') }.each do |file|
-       abstractor_note = JSON.parse(File.read(file))
-       abstractor_note = ClampMapper::ProcessNote.process(abstractor_note)
-
-       File.write(file.gsub(/\.json$/, '_processed.json'), JSON.pretty_generate(abstractor_note))
-     end
-  end
-
-  desc "Map clamp to Abstractor"
-  task(map_clamp_to_abstractor: :environment) do  |t, args|
-    Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*_processed.json").each do |file|
+   Dir.glob("#{Rails.root}/lib/setup/data_out/custom_nlp_provider_clamp/*.json").each do |file|
       puts file
-      abstractor_note = JSON.parse(File.read(file))
-      clamp_note = ClampMapper::Parser.new.read(abstractor_note)      
+      abstractor_note = ClampMapper::ProcessNote.process(JSON.parse(File.read(file)))
+      File.write(file.gsub(/\/([^\/]*)\.json$/, '/archive/\1.json'), JSON.pretty_generate(abstractor_note))
+      clamp_note = ClampMapper::Parser.new.read(abstractor_note)
+
       abstractor_note['abstractor_abstraction_schemas'].each do |abstractor_abstraction_schema|
         abstractor_abstraction = Abstractor::AbstractorAbstraction.find(abstractor_abstraction_schema['abstractor_abstraction_id'])
         puts abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
@@ -1121,7 +1113,9 @@ namespace :clamp do
             end
           end
         end
-      end        
+      end
+
+      File.delete(file)
     end
   end
 end

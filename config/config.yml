@@ -4,6 +4,9 @@ repository: ssh://git@github.com:NUARIG/omop-abstractor.git
 deployer: deploy
 development:
   server_name: 0.0.0.0:3000
+  clamp_dir: /Applications/ClampCmd_1.6.3/
+  clamp_bin: clamp-nlp-1.6.3-jar-with-dependencies.jar
+  clamp_pipeline: mbti.pipeline.jar
 test:
   server_name: 0.0.0.0:3000
 staging:

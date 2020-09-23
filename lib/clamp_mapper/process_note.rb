@@ -4,12 +4,9 @@ module ClampMapper
   class ProcessNote
     TMP_DIR = 'tmp/clamp_pipeline_cache/'.freeze
 
-    CLAMP_DIR = '/Applications/ClampCmd_1.6.3/'.freeze
-    CLAMP_BIN = 'clamp-nlp-1.6.3-jar-with-dependencies.jar'.freeze
-    CLAMP_PIPELINE = 'mbti.pipeline.jar'.freeze
-
-    UMLS_USER = ''.freeze
-    UMLS_PASS = ''.freeze
+    CLAMP_DIR = Rails.configuration.x.clamp.clamp_dir.freeze
+    CLAMP_BIN = Rails.configuration.x.clamp.clamp_bin.freeze
+    CLAMP_PIPELINE = Rails.configuration.x.clamp.clamp_pipeline.freeze
 
     def self.process(note_hash)
       begin
@@ -27,9 +24,6 @@ module ClampMapper
         exec_pipeline_cmd += " -i \"#{temp_note_dir}input\""
         exec_pipeline_cmd += " -o \"#{temp_note_dir}output\""
         exec_pipeline_cmd += " -p \"#{CLAMP_DIR}pipeline/#{CLAMP_PIPELINE}\""
-        exec_pipeline_cmd += " -U #{UMLS_USER}"
-        exec_pipeline_cmd += " -P #{UMLS_PASS}"
-        exec_pipeline_cmd += " -I \"#{CLAMP_DIR}resource/umls_index/\""
 
         if system(exec_pipeline_cmd)
           clamp_xmi_text = File.read(temp_note_dir + 'output/note.xmi')

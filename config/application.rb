@@ -15,5 +15,11 @@ module OmopAbstractor
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Initialize CLAMP config values
+    APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
+    config.x.clamp.clamp_dir = APP_CONFIG['clamp_dir']
+    config.x.clamp.clamp_bin = APP_CONFIG['clamp_bin']
+    config.x.clamp.clamp_pipeline = APP_CONFIG['clamp_pipeline']
   end
 end

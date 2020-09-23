@@ -196,6 +196,10 @@ module Abstractor
               end
             end
           end
+
+          def suggested?
+            abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? }.present?            
+          end
         end
 
         module ClassMethods

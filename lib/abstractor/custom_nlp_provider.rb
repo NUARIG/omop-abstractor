@@ -76,7 +76,7 @@ module Abstractor
       }
     end
 
-    def self.format_body_for_multiple_suggestion_endpoint(abstractor_abstractions, abstractor_abstraction_sources, abstractor_text, source)
+    def self.format_body_for_multiple_suggestion_endpoint(abstractor_abstractions, abstractor_abstraction_sources, abstractor_text, source, namespace_type, namespace_id)
       if Rails.application.config.relative_url_root
         abstractor_rules_uri =  Rails.application.routes.url_helpers.abstractor_rules_url(script_name: Rails.application.config.relative_url_root, format: :json)
       else
@@ -89,6 +89,8 @@ module Abstractor
         source_method: source[:source_method],
         abstractor_rules_uri: abstractor_rules_uri,
         text: abstractor_text,
+        namespace_type: namespace_type,
+        namespace_id: namespace_id,
         abstractor_abstraction_schemas: []
       }
 

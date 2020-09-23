@@ -202,7 +202,7 @@ module Abstractor
         body = nil
         sources_with_abstractor_abstraction_schemas.each do |source_with_abstractor_abstraction_schema|
           abstractor_text = Abstractor::AbstractorAbstractionSource.abstractor_text(source_with_abstractor_abstraction_schema[:source])
-          body = Abstractor::CustomNlpProvider.format_body_for_multiple_suggestion_endpoint(source_with_abstractor_abstraction_schema[:abstractor_abstractions], source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources], abstractor_text, source_with_abstractor_abstraction_schema[:source])
+          body = Abstractor::CustomNlpProvider.format_body_for_multiple_suggestion_endpoint(source_with_abstractor_abstraction_schema[:abstractor_abstractions], source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources], abstractor_text, source_with_abstractor_abstraction_schema[:source], options[:namespace_type], options[:namespace_id])
           custom_nlp_providers = source_with_abstractor_abstraction_schema[:abstractor_abstraction_sources].map(&:custom_nlp_provider)
           custom_nlp_providers.each do |custom_nlp_provider|
             multiple_suggestion_endpoint = Abstractor::CustomNlpProvider.determine_multiple_suggestion_endpoint(custom_nlp_provider)

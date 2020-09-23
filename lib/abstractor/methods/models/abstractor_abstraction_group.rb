@@ -76,6 +76,14 @@ module Abstractor
           def read_only?
             !(workflow_status.join == Abstractor::Enum::ABSTRACTION_WORKFLOW_STATUS_PENDING)
           end
+          
+          def anchor?            
+            anchor.present?
+          end
+
+          def anchor
+            abstractor_abstraction_group_members.not_deleted.detect { |abstractor_abstraction_group_member| abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.anchor }
+          end
 
           private
             def update_abstractor_abstraction_group_members

@@ -285,6 +285,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.string "dynamic_list_method"
     t.string "namespace_type"
     t.integer "namespace_id"
+    t.boolean "anchor"
     t.index ["namespace_type", "namespace_id"], name: "index_namespace_type_namespace_id"
     t.index ["subject_type"], name: "index_subject_type"
   end

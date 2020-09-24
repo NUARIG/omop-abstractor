@@ -3,7 +3,7 @@ module Abstractor
     module Controllers
       module AbstractorSuggestionsController
         def self.included(base)
-          base.send :before_action, :authenticate_user!
+          # base.send :before_action, :authenticate_user!
           base.send :before_action, :set_abstractor_suggestion, :only => [:update]
           base.send :before_action, :set_abstractor_abstraction
         end

@@ -6,7 +6,7 @@ module Abstractor
           base.send :helper, :all
           base.send :helper_method, :sort_column
           base.send :helper_method, :sort_direction
-          base.send :before_action, :authenticate_user!
+          # base.send :before_action, :authenticate_user!
           base.send :before_action, :set_abstractor_abstraction_schema, only: :show
         end
 

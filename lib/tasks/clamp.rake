@@ -779,6 +779,23 @@ namespace :clamp do
         puts "abstractor_abstraction_schema['abstractor_abstraction_source_id']"
         puts abstractor_abstraction_schema['abstractor_abstraction_source_id']
 
+        abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+        abstractor_abstraction,
+        abstractor_abstraction_source,
+        nil, #suggestion_source[:match_value],
+        nil, #suggestion_source[:sentence_match_value]
+        abstractor_note['source_id'],
+        abstractor_note['source_type'],
+        abstractor_note['source_method'],
+        nil,                                  #suggestion_source[:section_name]
+        nil,                                  #suggestion[:value]
+        true,                                 #suggestion[:unknown].to_s.to_boolean
+        false,                                #suggestion[:not_applicable].to_s.to_boolean
+        nil,
+        nil,
+        false                                 #suggestion[:negated].to_s.to_boolean
+        )        
+
         # ABSTRACTOR_RULE_TYPE_UNKNOWN = 'unknown'
         case abstractor_abstraction_source.abstractor_rule_type.name
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_VALUE
@@ -829,23 +846,6 @@ namespace :clamp do
               named_entity.negated?               #suggestion[:negated].to_s.to_boolean
               )
             end
-          else
-            abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-            abstractor_abstraction,
-            abstractor_abstraction_source,
-            nil, #suggestion_source[:match_value],
-            nil, #suggestion_source[:sentence_match_value]
-            abstractor_note['source_id'],
-            abstractor_note['source_type'],
-            abstractor_note['source_method'],
-            nil,                                  #suggestion_source[:section_name]
-            nil,                                  #suggestion[:value]
-            true,                                 #suggestion[:unknown].to_s.to_boolean
-            false,                                #suggestion[:not_applicable].to_s.to_boolean
-            nil,
-            nil,
-            false                                 #suggestion[:negated].to_s.to_boolean
-            )
           end
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
@@ -898,42 +898,7 @@ namespace :clamp do
                       end
                     end
                   end
-                  if !suggested
-                    abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                    abstractor_abstraction,
-                    abstractor_abstraction_source,
-                    nil, #suggestion_source[:match_value],
-                    nil, #suggestion_source[:sentence_match_value]
-                    abstractor_note['source_id'],
-                    abstractor_note['source_type'],
-                    abstractor_note['source_method'],
-                    nil,                                  #suggestion_source[:section_name]
-                    nil,                                  #suggestion[:value]
-                    true,                                 #suggestion[:unknown].to_s.to_boolean
-                    false,                                #suggestion[:not_applicable].to_s.to_boolean
-                    nil,
-                    nil,
-                    false                                 #suggestion[:negated].to_s.to_boolean
-                    )
-                  end
                 end
-              else
-                abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                abstractor_abstraction,
-                abstractor_abstraction_source,
-                nil, #suggestion_source[:match_value],
-                nil, #suggestion_source[:sentence_match_value]
-                abstractor_note['source_id'],
-                abstractor_note['source_type'],
-                abstractor_note['source_method'],
-                nil,                                  #suggestion_source[:section_name]
-                nil,                                  #suggestion[:value]
-                true,                                 #suggestion[:unknown].to_s.to_boolean
-                false,                                #suggestion[:not_applicable].to_s.to_boolean
-                nil,
-                nil,
-                false                                 #suggestion[:negated].to_s.to_boolean
-                )                
               end
             elsif abstractor_abstraction_schema.positive_negative_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
@@ -972,42 +937,7 @@ namespace :clamp do
                       end
                     end
                   end
-                  if !suggested
-                    abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                    abstractor_abstraction,
-                    abstractor_abstraction_source,
-                    nil, #suggestion_source[:match_value],
-                    nil, #suggestion_source[:sentence_match_value]
-                    abstractor_note['source_id'],
-                    abstractor_note['source_type'],
-                    abstractor_note['source_method'],
-                    nil,                                  #suggestion_source[:section_name]
-                    nil,                                  #suggestion[:value]
-                    true,                                 #suggestion[:unknown].to_s.to_boolean
-                    false,                                #suggestion[:not_applicable].to_s.to_boolean
-                    nil,
-                    nil,
-                    false                                 #suggestion[:negated].to_s.to_boolean
-                    )
-                  end
                 end
-              else
-                abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                abstractor_abstraction,
-                abstractor_abstraction_source,
-                nil, #suggestion_source[:match_value],
-                nil, #suggestion_source[:sentence_match_value]
-                abstractor_note['source_id'],
-                abstractor_note['source_type'],
-                abstractor_note['source_method'],
-                nil,                                  #suggestion_source[:section_name]
-                nil,                                  #suggestion[:value]
-                true,                                 #suggestion[:unknown].to_s.to_boolean
-                false,                                #suggestion[:not_applicable].to_s.to_boolean
-                nil,
-                nil,
-                false                                 #suggestion[:negated].to_s.to_boolean
-                )
               end
             end
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST      
@@ -1044,46 +974,12 @@ namespace :clamp do
                     end
                   end
                 end
-                if !suggested
-                  abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                  abstractor_abstraction,
-                  abstractor_abstraction_source,
-                  nil, #suggestion_source[:match_value],
-                  nil, #suggestion_source[:sentence_match_value]
-                  abstractor_note['source_id'],
-                  abstractor_note['source_type'],
-                  abstractor_note['source_method'],
-                  nil,                                  #suggestion_source[:section_name]
-                  nil,                                  #suggestion[:value]
-                  true,                                 #suggestion[:unknown].to_s.to_boolean
-                  false,                                #suggestion[:not_applicable].to_s.to_boolean
-                  nil,
-                  nil,
-                  false                                 #suggestion[:negated].to_s.to_boolean
-                  )
-                end
               end
-            else
-              abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-              abstractor_abstraction,
-              abstractor_abstraction_source,
-              nil, #suggestion_source[:match_value],
-              nil, #suggestion_source[:sentence_match_value]
-              abstractor_note['source_id'],
-              abstractor_note['source_type'],
-              abstractor_note['source_method'],
-              nil,                                  #suggestion_source[:section_name]
-              nil,                                  #suggestion[:value]
-              true,                                 #suggestion[:unknown].to_s.to_boolean
-              false,                                #suggestion[:not_applicable].to_s.to_boolean
-              nil,
-              nil,
-              false                                 #suggestion[:negated].to_s.to_boolean
-              )
             end
           end
-        end
+        end        
       end
+
       puts 'hello before'
       puts abstractor_note['source_id']
       note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])

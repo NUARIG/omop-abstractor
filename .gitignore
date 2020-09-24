@@ -46,3 +46,4 @@ lib/setup/data_out/custom_nlp_provider_clamp
 lib/setup/data_out/custom_nlp_provider_clamp_test
 lib/setup/data/pathology_cases/*.txt
 abstractor_clamp_data_dictionary.txt
+lib/ClampCmd_1.6.3/

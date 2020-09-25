@@ -32,7 +32,7 @@ class Highlight {
             text_element = $(this);
             match_value = $(that).html().trim().replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\$&").replace(/\s+/g, "\\s*");
             regex = new RegExp(match_value, 'gi');
-            while ((match = regex.exec(text_element.get(0).textContent)) !== null) {
+            while ((match = regex.exec(text_element.get(0).textContent.replace('<','&lt;').replace('>','&gt;'))) !== null) {
               self.highlightedRanges.push(self.highlightRange(text_element.get(0), match.index, match.index + match[0].length, 'yellow'));
             }
           });

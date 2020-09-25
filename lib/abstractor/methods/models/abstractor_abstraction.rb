@@ -200,6 +200,13 @@ module Abstractor
           def suggested?
             abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? }.present?            
           end
+          
+          def set_unknown!
+            abstractor_suggestion = abstractor_suggestions.not_deleted.detect{ |abstractor_suggestion| abstractor_suggestion.unknown }
+            abstractor_suggestion.accepted = true
+            abstractor_suggestion.save!
+            abstractor_suggestion.update_abstraction_value
+          end          
         end
 
         module ClassMethods

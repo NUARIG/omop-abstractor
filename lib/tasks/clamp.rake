@@ -802,8 +802,10 @@ namespace :clamp do
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
           puts 'how much you got?'
           puts named_entities.size
+          suggested = false
           if named_entities.any?
             named_entities.each do |named_entity|
+              abstractor_abstraction.reload              
               puts 'here is the note'
               puts clamp_note.text
 
@@ -845,8 +847,16 @@ namespace :clamp do
               nil,
               named_entity.negated?               #suggestion[:negated].to_s.to_boolean
               )
+
+              if !named_entity.negated?
+                suggested = true
+              end              
             end
-          end
+          end          
+          if !suggested
+            puts 'here we go booch!'
+            abstractor_abstraction.set_unknown!
+          end          
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
           # ABSTRACTOR_OBJECT_TYPE_LIST                 = 'list'
@@ -866,13 +876,14 @@ namespace :clamp do
             named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
             puts 'how much you got?'
             puts named_entities.size
-
+            suggested = false
             if abstractor_abstraction_schema.deleted_non_deleted_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
               named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'deleted_non_deleted' && named_entity.semantic_tag_value_type == 'Value'  }
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|
+                  abstractor_abstraction.reload                  
                   values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                   suggested = false
                   if values.any?
@@ -893,12 +904,12 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
-                      if !suggested && (named_entity_name.negated? && value.negated?)
+                      if !named_entity_name.negated? && !value.negated?
                         suggested = true
                       end
                     end
                   end
-                end
+                end                                      
               end
             elsif abstractor_abstraction_schema.positive_negative_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
@@ -906,8 +917,8 @@ namespace :clamp do
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|
+                  abstractor_abstraction.reload
                   values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
-                  suggested = false
                   if values.any?
                     values.each do |value|                                            
                       if named_entity_name.sentence.section
@@ -932,7 +943,7 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
-                      if !suggested && (named_entity_name.negated? && value.negated?)
+                      if !named_entity_name.negated? && !value.negated?
                         suggested = true
                       end
                     end
@@ -940,19 +951,24 @@ namespace :clamp do
                 end
               end
             end
+            if !suggested
+              puts 'here we go booch!'
+              abstractor_abstraction.set_unknown!
+            end                                    
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST      
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
             named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'number' && named_entity.semantic_tag_value_type == 'Value'  }
+            suggested = false
             if named_entities_names.any?
               named_entities_names.each do |named_entity_name|
                 values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
-                suggested = false
                 if values.any?
                   values.each do |value|
+                    abstractor_abstraction.reload                    
                     if value.semantic_tag_value.scan('%').present?
-                      value.semantic_tag_value = (Percentage.new(value.semantic_tag_value).to_f / 100)
+                      value.semantic_tag_value = (Percentage.new(value.semantic_tag_value).to_f / 100).to_s
                     end
-                    
+
                     abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                     abstractor_abstraction,
                     abstractor_abstraction_source,
@@ -961,21 +977,25 @@ namespace :clamp do
                     abstractor_note['source_id'],
                     abstractor_note['source_type'],
                     abstractor_note['source_method'],
-                    named_entity_name.sentence.section.name, #suggestion_source[:section_name]
-                    value.semantic_tag_value,                 #suggestion[:value]
-                    false,                                     #suggestion[:unknown].to_s.to_boolean
-                    false,                                     #suggestion[:not_applicable].to_s.to_boolean
+                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                    value.semantic_tag_value,                         #suggestion[:value]
+                    false,                                            #suggestion[:unknown].to_s.to_boolean
+                    false,                                            #suggestion[:not_applicable].to_s.to_boolean
                     nil,
                     nil,
-                    (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
+                    (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
                     )
-                    if !suggested && (named_entity_name.negated? && value.negated?)
+                    if !named_entity_name.negated? && !value.negated?
                       suggested = true
                     end
                   end
                 end
               end
             end
+            if !suggested
+              puts 'here we go booch!'
+              abstractor_abstraction.set_unknown!
+            end   
           end
         end        
       end
@@ -998,14 +1018,7 @@ namespace :clamp do
               puts 'here is a member'
               puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
               puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?          
-              
-              abstractor_abstraction_group_member.abstractor_abstraction.abstractor_suggestions.not_deleted.each do |abstractor_suggestion|
-                abstractor_suggestion.accepted = false                
-                abstractor_suggestion.system_accepted = false
-                abstractor_suggestion.system_rejected = true
-                abstractor_suggestion.system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_NO_ANCHOR
-                abstractor_suggestion.save!                              
-              end                          
+              abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
             end
           end
         end

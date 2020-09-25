@@ -22,7 +22,6 @@
 # bundle exec rake setup:data
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
-# bundle exec rake clamp:map_clamp_to_abstractor
 
 #clamp dictionary
 # bundle exec rake clamp:clamp_dictionary

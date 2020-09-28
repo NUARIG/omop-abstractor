@@ -203,9 +203,11 @@ module Abstractor
           
           def set_unknown!
             abstractor_suggestion = abstractor_suggestions.not_deleted.detect{ |abstractor_suggestion| abstractor_suggestion.unknown }
-            abstractor_suggestion.accepted = true
-            abstractor_suggestion.save!
-            abstractor_suggestion.update_abstraction_value
+            if abstractor_suggestion
+              abstractor_suggestion.accepted = true
+              abstractor_suggestion.save!
+              abstractor_suggestion.update_abstraction_value
+            end
           end          
         end
 

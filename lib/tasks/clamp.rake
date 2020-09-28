@@ -535,7 +535,7 @@ namespace :clamp do
 
     #End primary cancer
     #Begin metastatic
-    metastatic_cancer_group = Abstractor::AbstractorSubjectGroup.where(name: 'Metastatic Cancer', enable_workflow_status: false).first_or_create
+    metastatic_cancer_group = Abstractor::AbstractorSubjectGroup.where(name: 'Metastatic Cancer', enable_workflow_status: false).create
     abstractor_abstraction_schema = Abstractor::AbstractorAbstractionSchema.where(
       predicate: 'has_metastatic_cancer_histology',
       display_name: 'Histology',
@@ -553,7 +553,7 @@ namespace :clamp do
       abstractor_object_type: list_object_type,
       preferred_name: 'cancer site').first_or_create
 
-    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).first_or_create
+    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).create
     Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp').first_or_create
     Abstractor::AbstractorSubjectGroupMember.where(:abstractor_subject => abstractor_subject, :abstractor_subject_group => metastatic_cancer_group, :display_order => 2).first_or_create
 
@@ -579,7 +579,7 @@ namespace :clamp do
       abstractor_object_type: radio_button_list_object_type,
       preferred_name: 'laterality').first_or_create
 
-    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).first_or_create
+    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).create
     Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp').first_or_create
     Abstractor::AbstractorSubjectGroupMember.where(:abstractor_subject => abstractor_subject, :abstractor_subject_group => metastatic_cancer_group, :display_order => 4).first_or_create
 
@@ -592,7 +592,7 @@ namespace :clamp do
       abstractor_object_type: radio_button_list_object_type,
       preferred_name: 'recurrent').first_or_create
 
-    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).first_or_create
+    abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_outside_surgical_pathology.id, anchor: false).create
     Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp').first_or_create
     Abstractor::AbstractorSubjectGroupMember.where(:abstractor_subject => abstractor_subject, :abstractor_subject_group => metastatic_cancer_group, :display_order => 5).first_or_create
 
@@ -770,6 +770,69 @@ namespace :clamp do
       File.write(file.gsub(/\/([^\/]*)\.json$/, '/archive/\1.json'), JSON.pretty_generate(abstractor_note))
       clamp_note = ClampMapper::Parser.new.read(abstractor_note)
 
+      puts 'hello before'
+      puts abstractor_note['source_id']
+      note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
+      puts note_stable_identifier.id
+      puts abstractor_note['namespace_type']
+      puts abstractor_note['namespace_id']
+      puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
+      
+      section_abstractor_abstraction_group_map = {}
+      if clamp_note.sections.any?
+        note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
+          puts 'hello'
+          puts abstractor_abstraction_group.abstractor_subject_group.name
+        
+          if abstractor_abstraction_group.anchor? 
+            anchor_predicate = abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate                    
+            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? }
+            anchor_named_entity_sections = anchor_named_entities.group_by{ |anchor_named_entity|  anchor_named_entity.sentence.section.section_range }.keys.sort_by(&:min)
+            
+            puts 'slob'
+            puts anchor_named_entity_sections.class
+            puts anchor_named_entity_sections.first.class
+
+            first_anchor_named_entity_section = anchor_named_entity_sections.shift
+            if section_abstractor_abstraction_group_map[first_anchor_named_entity_section]
+              section_abstractor_abstraction_group_map[first_anchor_named_entity_section] << abstractor_abstraction_group
+            else
+              section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
+            end
+            
+            for anchor_named_entity_section in anchor_named_entity_sections
+              abstractor_abstraction_group = Abstractor::AbstractorAbstractionGroup.create_abstractor_abstraction_group(abstractor_abstraction_group.abstractor_subject_group_id, abstractor_note['source_type'], abstractor_note['source_id'], abstractor_note['namespace_type'], abstractor_note['namespace_id'])            
+
+              if section_abstractor_abstraction_group_map[anchor_named_entity_section]
+                section_abstractor_abstraction_group_map[anchor_named_entity_section] << abstractor_abstraction_group
+              else
+                section_abstractor_abstraction_group_map[anchor_named_entity_section] = [abstractor_abstraction_group]
+              end
+
+              abstractor_abstraction_group.abstractor_abstraction_group_members.each do |abstractor_abstraction_group_member|
+                abstractor_abstraction_source = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.first
+                abstractor_suggestion = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.suggest(
+                abstractor_abstraction_group_member.abstractor_abstraction,
+                abstractor_abstraction_source,
+                nil, #suggestion_source[:match_value],
+                nil, #suggestion_source[:sentence_match_value]
+                abstractor_note['source_id'],
+                abstractor_note['source_type'],
+                abstractor_note['source_method'],
+                nil,                                  #suggestion_source[:section_name]
+                nil,                                  #suggestion[:value]
+                true,                                 #suggestion[:unknown].to_s.to_boolean
+                false,                                #suggestion[:not_applicable].to_s.to_boolean
+                nil,
+                nil,
+                false                                 #suggestion[:negated].to_s.to_boolean
+                )                      
+              end
+            end
+          end
+        end
+      end
+
       abstractor_note['abstractor_abstraction_schemas'].each do |abstractor_abstraction_schema|
         abstractor_abstraction = Abstractor::AbstractorAbstraction.find(abstractor_abstraction_schema['abstractor_abstraction_id'])
         puts abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
@@ -831,8 +894,24 @@ namespace :clamp do
               else
                 section_name = nil               
               end
-              abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-              abstractor_abstraction,
+              
+              aa = abstractor_abstraction
+              if named_entity.sentence.section.present?
+                if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
+                  section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].each do |abstractor_abstraction_group|
+                    abstractor_abstraction_group.abstractor_abstraction_group_members.each do |abstractor_abstraction_group_member|
+                      if abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate == named_entity.semantic_tag_attribute
+                        puts 'hello ninny!'
+                        puts named_entity.semantic_tag_attribute
+                        aa = abstractor_abstraction_group_member.abstractor_abstraction
+                      end
+                    end
+                  end
+                end
+              end
+              
+              abstractor_suggestion = aa.abstractor_subject.suggest(
+              aa,
               abstractor_abstraction_source,
               clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
               clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]

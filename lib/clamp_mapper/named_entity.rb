@@ -1,6 +1,7 @@
 module ClampMapper
   class NamedEntity
     attr_accessor :document, :named_entity_begin, :named_entity_end, :semantic_tag, :semantic_tag_attribute, :semantic_tag_value, :semantic_tag_value_type, :assertion, :is_section, :sentence
+
     def initialize(document, named_entity_begin, named_entity_end, semantic_tag, assertion, is_section)
       @document = document
       @named_entity_begin = named_entity_begin.to_i
@@ -18,6 +19,10 @@ module ClampMapper
 
     def negated?
       @assertion == 'absent'
+    end
+    
+    def overlap?(other)
+      other.named_entity_begin >= self.named_entity_begin  && other.named_entity_begin <= self.named_entity_end && other.named_entity_end >= self.named_entity_begin && other.named_entity_end <= self.named_entity_end      
     end
   end
 end

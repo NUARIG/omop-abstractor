@@ -1051,22 +1051,24 @@ namespace :clamp do
                       value.semantic_tag_value = (Percentage.new(value.semantic_tag_value).to_f / 100).to_s
                     end
 
-                    abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
-                    abstractor_abstraction,
-                    abstractor_abstraction_source,
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],              
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
-                    abstractor_note['source_id'],
-                    abstractor_note['source_type'],
-                    abstractor_note['source_method'],
-                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
-                    value.semantic_tag_value,                         #suggestion[:value]
-                    false,                                            #suggestion[:unknown].to_s.to_boolean
-                    false,                                            #suggestion[:not_applicable].to_s.to_boolean
-                    nil,
-                    nil,
-                    (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
-                    )
+                    if !named_entity_name.overlap?(value)                      
+                      abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                      abstractor_abstraction,
+                      abstractor_abstraction_source,
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],              
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      abstractor_note['source_id'],
+                      abstractor_note['source_type'],
+                      abstractor_note['source_method'],
+                      named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                      value.semantic_tag_value,                         #suggestion[:value]
+                      false,                                            #suggestion[:unknown].to_s.to_boolean
+                      false,                                            #suggestion[:not_applicable].to_s.to_boolean
+                      nil,
+                      nil,
+                      (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
+                      )
+                    end
                     if !named_entity_name.negated? && !value.negated?
                       suggested = true
                     end

@@ -386,9 +386,16 @@ module Abstractor
               if section_name
                 if abstractor_abstraction_source
                   if abstractor_abstraction_source.detect_abstractor_abstraction_source_section(section_name)
-                    accepted = true
-                    system_accepted = true
-                    system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                    if !abstractor_abstraction.suggested?
+                      accepted = true
+                      system_accepted = true
+                      system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                    else
+                      accepted = nil
+                      system_accepted = false
+                      system_rejected = true
+                      system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                    end
                   else
                     if abstractor_abstraction_source.section_required
                       accepted = false

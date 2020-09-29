@@ -786,13 +786,16 @@ namespace :clamp do
         
           if abstractor_abstraction_group.anchor? 
             anchor_predicate = abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate                    
-            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? }
+            anchor_sections = []
+            abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.each do |abstractor_abstraction_source|
+              abstractor_abstraction_source.abstractor_abstraction_source_sections.each do |abstractor_abstraction_source_section|
+                anchor_sections << abstractor_abstraction_source_section.abstractor_section.name                  
+              end
+            end
+            anchor_sections.uniq!
+            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? && anchor_sections.include?(named_entity.sentence.section.name) }
             anchor_named_entity_sections = anchor_named_entities.group_by{ |anchor_named_entity|  anchor_named_entity.sentence.section.section_range }.keys.sort_by(&:min)
             
-            puts 'slob'
-            puts anchor_named_entity_sections.class
-            puts anchor_named_entity_sections.first.class
-
             first_anchor_named_entity_section = anchor_named_entity_sections.shift
             if section_abstractor_abstraction_group_map[first_anchor_named_entity_section]
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] << abstractor_abstraction_group

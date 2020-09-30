@@ -208,7 +208,16 @@ module Abstractor
               abstractor_suggestion.save!
               abstractor_suggestion.update_abstraction_value
             end
-          end          
+          end
+          
+          def set_not_applicable!
+            abstractor_suggestion = abstractor_suggestions.not_deleted.detect{ |abstractor_suggestion| abstractor_suggestion.not_applicable }
+            if abstractor_suggestion
+              abstractor_suggestion.accepted = true
+              abstractor_suggestion.save!
+              abstractor_suggestion.update_abstraction_value
+            end            
+          end                    
         end
 
         module ClassMethods

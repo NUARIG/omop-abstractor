@@ -824,8 +824,8 @@ namespace :clamp do
                 abstractor_note['source_method'],
                 nil,                                  #suggestion_source[:section_name]
                 nil,                                  #suggestion[:value]
-                true,                                 #suggestion[:unknown].to_s.to_boolean
-                false,                                #suggestion[:not_applicable].to_s.to_boolean
+                false,                                #suggestion[:unknown].to_s.to_boolean
+                true,                                 #suggestion[:not_applicable].to_s.to_boolean
                 nil,
                 nil,
                 false                                 #suggestion[:negated].to_s.to_boolean
@@ -855,8 +855,8 @@ namespace :clamp do
         abstractor_note['source_method'],
         nil,                                  #suggestion_source[:section_name]
         nil,                                  #suggestion[:value]
-        true,                                 #suggestion[:unknown].to_s.to_boolean
-        false,                                #suggestion[:not_applicable].to_s.to_boolean
+        false,                                #suggestion[:unknown].to_s.to_boolean
+        true,                                 #suggestion[:not_applicable].to_s.to_boolean
         nil,
         nil,
         false                                 #suggestion[:negated].to_s.to_boolean
@@ -936,8 +936,8 @@ namespace :clamp do
             end
           end          
           if !suggested
-            puts 'here we go booch!'
-            abstractor_abstraction.set_unknown!
+            # abstractor_abstraction.set_unknown!
+            abstractor_abstraction.set_not_applicable!            
           end          
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
@@ -1042,8 +1042,8 @@ namespace :clamp do
               end
             end
             if !suggested
-              puts 'here we go booch!'
-              abstractor_abstraction.set_unknown!
+              # abstractor_abstraction.set_unknown!
+              abstractor_abstraction.set_not_applicable!
             end                                    
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST      
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
@@ -1089,8 +1089,8 @@ namespace :clamp do
               end
             end
             if !suggested
-              puts 'here we go booch!'
-              abstractor_abstraction.set_unknown!
+              # abstractor_abstraction.set_unknown!
+              abstractor_abstraction.set_not_applicable!
             end   
           end
         end        
@@ -1114,7 +1114,8 @@ namespace :clamp do
               puts 'here is a member'
               puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
               puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?          
-              abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
+              # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
+              abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
             end
           end
         end

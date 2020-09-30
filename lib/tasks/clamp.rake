@@ -987,7 +987,11 @@ namespace :clamp do
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
                       if !named_entity_name.negated? && !value.negated?
-                        suggested = true
+                        suggested = true                                              
+                        if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                          abstractor_suggestion.accepted = true
+                          abstractor_suggestion.save!
+                        end
                       end
                     end
                   end
@@ -1027,6 +1031,10 @@ namespace :clamp do
                       )
                       if !named_entity_name.negated? && !value.negated?
                         suggested = true
+                        if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                          abstractor_suggestion.accepted = true
+                          abstractor_suggestion.save!
+                        end
                       end
                     end
                   end
@@ -1071,6 +1079,10 @@ namespace :clamp do
                     end
                     if !named_entity_name.negated? && !value.negated?
                       suggested = true
+                      if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        abstractor_suggestion.accepted = true
+                        abstractor_suggestion.save!
+                      end                      
                     end
                   end
                 end
@@ -1142,9 +1154,6 @@ def create_value_dictionary_items(abstractor_abstraction_schema)
   case abstractor_abstraction_schema.abstractor_object_type.value
   when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_LIST, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_RADIO_BUTTON_LIST, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST
     puts abstractor_abstraction_schema.predicate
-
-
-
     abstractor_abstraction_schema.abstractor_object_values.each do |abstractor_object_value|
       abstractor_object_value.object_variants.each do |object_variant|
         object_variant.gsub!(',', ' , ')
@@ -1157,4 +1166,18 @@ def create_value_dictionary_items(abstractor_abstraction_schema)
   puts 'value length'
   puts dictionary_items.length
   dictionary_items
+end
+
+def canonical_format?(name, value, sentence)      
+  canonical_format = false
+  regular_expression = Regexp.new('\b' + name + '\s*\:\s*' + value.strip + '\b')
+  canonical_format = sentence.scan(regular_expression).present?
+
+  if !canonical_format
+    re = '\b' + name + '\s*' + value.strip + '\b'
+    regular_expression = Regexp.new('\b' + name + '\s*' + value.strip + '\b')
+    canonical_format = sentence.scan(regular_expression).present?
+  end
+  
+  canonical_format
 end

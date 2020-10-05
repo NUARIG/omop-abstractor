@@ -9,7 +9,8 @@ class NoteStableIdentifier < ApplicationRecord
     end
     options = { sort_column: 'note_date', sort_direction: 'asc' }.merge(options)
 
-    s = joins('JOIN note ON note_stable_identifier.note_id = note.note_id
+    s = joins('JOIN note_stable_identifier_full ON note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
+               JOIN note ON note_stable_identifier_full.note_id = note.note_id
                JOIN concept AS note_type ON note.note_type_concept_id = note_type.concept_id
                JOIN person ON note.person_id = person.person_id
                LEFT JOIN pii_name ON person.person_id = pii_name.person_id
@@ -21,7 +22,7 @@ class NoteStableIdentifier < ApplicationRecord
 
     if providers.present?
       s = s.where("EXISTS (SELECT 1
-                     FROM note JOIN note_stable_identifier ON note.note_id = note_stable_identifier.note_id
+                     FROM note JOIN note_stable_identifier_full ON note.note_id = note_stable_identifier_full.note_id AND note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
                                JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
                                JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id
                                JOIN provider ON procedure_occurrence.provider_id = provider.provider_id
@@ -30,7 +31,7 @@ class NoteStableIdentifier < ApplicationRecord
 
     if secondary_providers.present?
       s = s.where("EXISTS (SELECT 1
-                     FROM note JOIN note_stable_identifier ON note.note_id = note_stable_identifier.note_id
+                     FROM note JOIN note_stable_identifier_full ON note.note_id = note_stable_identifier_full.note_id AND note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
                                JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
                                JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id
                                JOIN fact_relationship AS fr2 ON fr2.domain_concept_id_1 = 10 AND fr2.fact_id_1 = procedure_occurrence.procedure_occurrence_id AND fr2.relationship_concept_id = 44818888
@@ -63,4 +64,8 @@ class NoteStableIdentifier < ApplicationRecord
       note.note_text
     end
   end
+  
+  def note
+    Note.joins('JOIN note_stable_identifier_full ON note.note_id = note_stable_identifier_full.note_id').where('note_stable_identifier_full.stable_identifier_path = ? AND note_stable_identifier_full.stable_identifier_value = ?', self.stable_identifier_path, self.stable_identifier_value).first
+  end  
 end

@@ -6,7 +6,6 @@ class Note < ActiveRecord::Base
   belongs_to :note_class, class_name: 'Concept', foreign_key: 'note_class_concept_id'
   belongs_to :person, class_name: 'Person', foreign_key: 'person_id', optional: true
   belongs_to :provider, class_name: 'Provider', foreign_key: 'provider_id', optional: true
-  has_one :note_stable_identifier
 
   def other_notes(options ={})
     abstractor_abstraction_status = options[:abstractor_abstraction_status] || Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW
@@ -23,7 +22,9 @@ class Note < ActiveRecord::Base
   end
 
   def note_stable_identifier
-    NoteStableIdentifier.where(note_id: note_id).first
+    if NoteStableIdentifierFull.where(note_id: self.note_id).first
+      NoteStableIdentifierFull.where(note_id: self.note_id).first.note_stable_identifier
+    end
   end
 
   private

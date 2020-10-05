@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.text "where_clause", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "raw_criteria"
   end
 
   create_table "abstractor_object_types", force: :cascade do |t|
@@ -251,7 +250,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "anchor"
     t.index ["abstractor_subject_id"], name: "index_abstractor_subject_id_2"
   end
 
@@ -349,6 +347,12 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_api_logs_on_created_at"
     t.index ["system"], name: "index_api_logs_on_system"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "attribute_definition", primary_key: "attribute_definition_id", id: :bigint, default: nil, force: :cascade do |t|
@@ -620,6 +624,12 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.index ["ingredient_concept_id"], name: "idx_drug_strength_id_2"
   end
 
+  create_table "encounter_notes", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fact_relationship", id: false, force: :cascade do |t|
     t.bigint "domain_concept_id_1", null: false
     t.bigint "fact_id_1", null: false
@@ -630,6 +640,15 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.index ["domain_concept_id_1"], name: "idx_fact_relationship_id_1"
     t.index ["domain_concept_id_2"], name: "idx_fact_relationship_id_2"
     t.index ["relationship_concept_id"], name: "idx_fact_relationship_id_3"
+  end
+
+  create_table "imaging_exams", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.integer "patient_id", null: false
+    t.date "report_date", null: false
+    t.string "accession_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "location", primary_key: "location_id", id: :bigint, default: nil, force: :cascade do |t|
@@ -684,6 +703,12 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.datetime "metadata_datetime"
   end
 
+  create_table "moomins", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "note", primary_key: "note_id", id: :bigint, default: nil, force: :cascade do |t|
     t.bigint "person_id", null: false
     t.date "note_date", null: false
@@ -726,8 +751,14 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.string "stable_identifier_path", null: false
     t.string "stable_identifier_value", null: false
     t.index ["note_id"], name: "idx_note_stable_identifier_1"
-    t.index ["note_id"], name: "idx_note_stable_identifier_full_1"
     t.index ["stable_identifier_path", "stable_identifier_value"], name: "idx_note_stable_identifier_2"
+  end
+
+  create_table "note_stable_identifier_full", force: :cascade do |t|
+    t.bigint "note_id", null: false
+    t.string "stable_identifier_path", null: false
+    t.string "stable_identifier_value", null: false
+    t.index ["note_id"], name: "idx_note_stable_identifier_full_1"
     t.index ["stable_identifier_path", "stable_identifier_value"], name: "idx_note_stable_identifier_full_2"
   end
 
@@ -760,6 +791,13 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.date "observation_period_end_date", null: false
     t.bigint "period_type_concept_id", null: false
     t.index ["person_id"], name: "idx_observation_period_id"
+  end
+
+  create_table "pathology_cases", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.integer "patient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payer_plan_period", primary_key: "payer_plan_period_id", id: :bigint, default: nil, force: :cascade do |t|
@@ -880,6 +918,12 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.bigint "gender_source_concept_id"
   end
 
+  create_table "radiation_therapy_prescriptions", force: :cascade do |t|
+    t.string "site_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationship", primary_key: "relationship_id", id: :string, limit: 20, force: :cascade do |t|
     t.string "relationship_name", limit: 255, null: false
     t.string "is_hierarchical", limit: 1, null: false
@@ -950,6 +994,31 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
     t.string "auditable_type"
     t.text "auditable_ids"
     t.text "sql", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surgeries", force: :cascade do |t|
+    t.integer "surg_case_id", null: false
+    t.string "surg_case_nbr", null: false
+    t.integer "patient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surgical_procedure_reports", force: :cascade do |t|
+    t.text "note_text", null: false
+    t.integer "patient_id", null: false
+    t.date "report_date", null: false
+    t.string "reference_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surgical_procedures", force: :cascade do |t|
+    t.integer "surg_case_id", null: false
+    t.string "description", null: false
+    t.string "modifier", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -1133,10 +1202,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_005035) do
   add_foreign_key "person", "location", primary_key: "location_id", name: "fpk_person_location"
   add_foreign_key "person", "provider", primary_key: "provider_id", name: "fpk_person_provider"
   add_foreign_key "procedure_occurrence", "concept", column: "modifier_concept_id", primary_key: "concept_id", name: "fpk_procedure_modifier"
-  add_foreign_key "procedure_occurrence", "concept", column: "procedure_concept_id", primary_key: "concept_id", name: "fpk_procedure_concept"
-  add_foreign_key "procedure_occurrence", "concept", column: "procedure_source_concept_id", primary_key: "concept_id", name: "fpk_procedure_concept_s"
   add_foreign_key "procedure_occurrence", "concept", column: "procedure_type_concept_id", primary_key: "concept_id", name: "fpk_procedure_type_concept"
-  add_foreign_key "procedure_occurrence", "provider", primary_key: "provider_id", name: "fpk_procedure_provider"
   add_foreign_key "provider", "care_site", primary_key: "care_site_id", name: "fpk_provider_care_site"
   add_foreign_key "provider", "concept", column: "gender_concept_id", primary_key: "concept_id", name: "fpk_provider_gender"
   add_foreign_key "provider", "concept", column: "gender_source_concept_id", primary_key: "concept_id", name: "fpk_provider_gender_s"

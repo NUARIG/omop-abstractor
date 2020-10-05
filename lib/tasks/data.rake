@@ -83,7 +83,7 @@ namespace :data do
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE pii_name CASCADE;')
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE pii_phone_number CASCADE;')
 
-    ActiveRecord::Base.connection.execute('TRUNCATE TABLE note_stable_identifier CASCADE;')
+    ActiveRecord::Base.connection.execute('TRUNCATE TABLE note_stable_identifier_full CASCADE;')    
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE procedure_occurrence_stable_identifier CASCADE;')
   end
 
@@ -129,14 +129,21 @@ namespace :data do
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE relationship CASCADE;')
     ActiveRecord::Base.connection.execute('TRUNCATE TABLE vocabulary CASCADE;')
   end
-
+  
+  desc "Create entries in note_stable_identifier."
+  task(create_note_stable_identifier_entires: :environment) do  |t, args|
+    NoteStableIdentifierFull.where('NOT EXISTS (SELECT 1 FROM note_stable_identifier WHERE note_stable_identifier_full.stable_identifier_path = note_stable_identifier.stable_identifier_path AND note_stable_identifier_full.stable_identifier_value = note_stable_identifier.stable_identifier_value)').each do |note_stable_identifier_full|
+      NoteStableIdentifier.create!(note_id: note_stable_identifier_full.note_id, stable_identifier_path: note_stable_identifier_full.stable_identifier_path, stable_identifier_value: note_stable_identifier_full.stable_identifier_value)
+    end
+  end
+  
   desc "Drop OMOP constraints"
   task(drop_omop_constraints: :environment) do  |t, args|
     ENV['PGPASSWORD'] = Rails.configuration.database_configuration[Rails.env]['password']
-    `psql -h #{Rails.configuration.database_configuration[Rails.env]['host']} --u #{Rails.configuration.database_configuration[Rails.env]['username']} -d #{Rails.configuration.database_configuration[Rails.env]['database']} -f "#{Rails.root}/db/migrate/CommonDataModel-5.3.0/PostgreSQL/DROP OMOP CDM postgresql constraints.sql"`
+      `psql -h #{Rails.configuration.database_configuration[Rails.env]['host']} --u #{Rails.configuration.database_configuration[Rails.env]['username']} -d #{Rails.configuration.database_configuration[Rails.env]['database']} -f "#{Rails.root}/db/migrate/CommonDataModel-5.3.0/PostgreSQL/DROP OMOP CDM postgresql constraints.sql"`
   end
 end
-``
+
 def create_note(note)
     n = Yajl::Parser.parse(note)
     puts 'note_id'

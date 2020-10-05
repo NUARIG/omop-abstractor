@@ -22,7 +22,8 @@ namespace :clamp do
     abstractor_section_specimen = Abstractor::AbstractorSection.where(abstractor_section_type: abstractor_section_type_custom, name: 'SPECIMEN', source_type: NoteStableIdentifier.to_s, source_method: 'note_text', return_note_on_empty_section: true).first_or_create
 
     abstractor_namespace_surgical_pathology = Abstractor::AbstractorNamespace.where(name: 'Surgical Pathology', subject_type: NoteStableIdentifier.to_s, joins_clause:
-    "JOIN note ON note_stable_identifier.note_id = note.note_id
+    "JOIN note_stable_identifier_full ON note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
+     JOIN note ON note_stable_identifier_full.note_id = note.note_id
      JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
      JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id AND procedure_occurrence.procedure_concept_id = 4213297",
     where_clause: "note.note_title in('Final Diagnosis', 'Final Pathologic Diagnosis') AND note_date >='2018-03-01'").first_or_create
@@ -455,7 +456,8 @@ namespace :clamp do
     #End p53
 
     abstractor_namespace_outside_surgical_pathology = Abstractor::AbstractorNamespace.where(name: 'Outside Surgical Pathology', subject_type: NoteStableIdentifier.to_s, joins_clause:
-    "JOIN note ON note_stable_identifier.note_id = note.note_id
+    "JOIN note_stable_identifier_full ON note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
+     JOIN note ON note_stable_identifier_full.note_id = note.note_id
      JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
      JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id AND procedure_occurrence.procedure_concept_id = 4244107",
     where_clause: "note.note_title IN('Final Diagnosis', 'Final Pathologic Diagnosis') AND note_date >='2018-03-01'").first_or_create
@@ -693,7 +695,8 @@ namespace :clamp do
 
     #molecular genetics report abstractions setup begin
     abstractor_namespace_molecular_pathology = Abstractor::AbstractorNamespace.where(name: 'Molecular Pathology', subject_type: NoteStableIdentifier.to_s, joins_clause:
-    "JOIN note ON note_stable_identifier.note_id = note.note_id
+    "JOIN note_stable_identifier_full ON note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
+     JOIN note ON note_stable_identifier_full.note_id = note.note_id
      JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
      JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id AND procedure_occurrence.procedure_concept_id = 4019097",
      where_clause: "note.note_title = 'Interpretation'").first_or_create
@@ -1171,14 +1174,17 @@ end
 
 def canonical_format?(name, value, sentence)      
   canonical_format = false
-  regular_expression = Regexp.new('\b' + name + '\s*\:\s*' + value.strip + '\b')
-  canonical_format = sentence.scan(regular_expression).present?
-
-  if !canonical_format
-    re = '\b' + name + '\s*' + value.strip + '\b'
-    regular_expression = Regexp.new('\b' + name + '\s*' + value.strip + '\b')
+  begin
+    regular_expression = Regexp.new('\b' + name + '\s*\:\s*' + value.strip + '\b')
     canonical_format = sentence.scan(regular_expression).present?
+
+    if !canonical_format
+      re = '\b' + name + '\s*' + value.strip + '\b'
+      regular_expression = Regexp.new('\b' + name + '\s*' + value.strip + '\b')
+      canonical_format = sentence.scan(regular_expression).present?
+    end    
+  rescue Exception => e    
   end
-  
+    
   canonical_format
 end

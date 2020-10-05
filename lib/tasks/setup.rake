@@ -1,31 +1,8 @@
-# initial setup
-# RAILS_ENV=test bundle exec rake db:migrate
-# bundle exec rake data:load_omop_vocabulary_tables
-# bundle exec rake data:compile_omop_vocabulary_indexes
-# bundle exec rake setup:data
-# bundle exec rake data:compile_omop_indexes
-# bundle exec rake data:compile_omop_constraints
-# bundle exec rake abstractor:setup:system
-# bundle exec rake setup:schemas
-# bundle exec rake suggestor:do
-# OBJC_DISABLE_INITIALIZE_FORK_SAFETY='YES' bundle exec rake suggestor:do
-# bundle exec rake setup:clamp_dictionary
-
 #cleanup
 # bundle exec rake setup:truncate_schemas
-# bundle exec rake data:truncate_omop_clinical_data_tables
-
 # bundle exec rake clamp:schemas_clamp
-#   bundle exec rake spacy:schemas_spacy
-#   bundle exec rake setup:schemas
-
-# bundle exec rake setup:data
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
-
-#clamp dictionary
-# bundle exec rake clamp:clamp_dictionary
-
 require './lib/omop_abstractor/setup/setup'
 require './lib/clamp_mapper/parser'
 namespace :setup do
@@ -840,8 +817,7 @@ namespace :setup do
     note_text = File.read("#{Rails.root}/lib/setup/data/pathology_cases/1.txt")
     note = Note.where(note_id: 1, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Final Diagnosis', note_text: note_text, encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -853,8 +829,7 @@ namespace :setup do
 
     note = Note.where(note_id: 2, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Gross Description', note_text: 'Gross description of the front parietal lobe.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -866,8 +841,7 @@ namespace :setup do
 
     note = Note.where(note_id: 3, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the surgical pathology procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -912,8 +886,7 @@ namespace :setup do
     note_class_concept = Concept.standard.valid.where(concept_name: 'Pathology procedure note').first
     note = Note.where(note_id: 4, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Final Diagnosis', note_text: 'The patient has glioblastoma.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -925,8 +898,7 @@ namespace :setup do
 
     note = Note.where(note_id: 5, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Gross Description', note_text: 'Gross description of the front parietal lobe.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -939,8 +911,7 @@ namespace :setup do
 
     note = Note.where(note_id: 6, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the surgical pathology procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create      
     end
     #outside surgical pathology report end
 
@@ -954,8 +925,7 @@ namespace :setup do
     note_class_concept = Concept.standard.valid.where(concept_name: 'Pathology procedure note').first
     note = Note.where(note_id: 7, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2017'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Interpretation', note_text: 'The tumor is positive for mgmt promoter methylation.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -967,8 +937,7 @@ namespace :setup do
 
     note = Note.where(note_id: 8, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2017'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the molecular genetics procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1007,8 +976,7 @@ namespace :setup do
     note_text = File.read("#{Rails.root}/lib/setup/data/pathology_cases/2.txt")
     note = Note.where(note_id: 9, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Final Diagnosis', note_text: note_text, encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
     relationship_proc_context_of = Relationship.where(relationship_id: 'Proc context of').first
     relationship_has_proc_context = Relationship.where(relationship_id: 'Has proc context').first
@@ -1018,8 +986,7 @@ namespace :setup do
 
     note = Note.where(note_id: 10, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Gross Description', note_text: 'Gross description of the front parietal lobe.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1032,8 +999,7 @@ namespace :setup do
 
     note = Note.where(note_id: 11, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the surgical pathology procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1078,8 +1044,7 @@ namespace :setup do
     note_class_concept = Concept.standard.valid.where(concept_name: 'Pathology procedure note').first
     note = Note.where(note_id: 12, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Final Diagnosis', note_text: 'The patient has adenocarcinoma of the prostate.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
     relationship_proc_context_of = Relationship.where(relationship_id: 'Proc context of').first
     relationship_has_proc_context = Relationship.where(relationship_id: 'Has proc context').first
@@ -1088,8 +1053,7 @@ namespace :setup do
 
     note = Note.where(note_id: 13, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Gross Description', note_text: 'Gross description of the front parietal lobe.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1101,8 +1065,7 @@ namespace :setup do
 
     note = Note.where(note_id: 14, person_id: person.person_id, note_date: Date.parse('2/1/2019'), note_datetime: Date.parse('2/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the surgical pathology procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1126,8 +1089,7 @@ namespace :setup do
     note_class_concept = Concept.standard.valid.where(concept_name: 'Pathology procedure note').first
     note = Note.where(note_id: 15, person_id: person.person_id, note_date: Date.parse('8/1/2019'), note_datetime: Date.parse('8/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Interpretation', note_text: 'The tumor is negative for mgmt promoter methylation.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1139,8 +1101,7 @@ namespace :setup do
 
     note = Note.where(note_id: 16, person_id: person.person_id, note_date: Date.parse('8/1/2019'), note_datetime: Date.parse('8/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the molecular genetics procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      note.build_note_stable_identifier(stable_identifier_path: 'stable_identifier_path', stable_identifier_value: 'stable_identifier_value')
-      note.save!
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
 
     domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
@@ -1173,3 +1134,31 @@ namespace :setup do
     Abstractor::AbstractorAbstractionSource.delete_all
   end
 end
+# initial setup
+# RAILS_ENV=test bundle exec rake db:migrate
+# bundle exec rake abstractor:setup:system
+# bundle exec rake data:load_omop_vocabulary_tables
+# bundle exec rake data:compile_omop_vocabulary_indexes
+# bundle exec rake setup:data
+# bundle exec rake data:compile_omop_indexes
+# bundle exec rake data:compile_omop_constraints
+# bundle exec rake abstractor:setup:system
+# bundle exec rake setup:schemas
+# bundle exec rake suggestor:do
+# OBJC_DISABLE_INITIALIZE_FORK_SAFETY='YES' bundle exec rake suggestor:do
+# bundle exec rake setup:clamp_dictionary
+
+#cleanup
+# bundle exec rake setup:truncate_schemas
+# bundle exec rake data:truncate_omop_clinical_data_tables
+# bundle exec rake clamp:schemas_clamp
+  # bundle exec rake spacy:schemas_spacy
+  # bundle exec rake setup:schemas
+
+# bundle exec rake setup:data
+# bundle exec rake data:create_note_stable_identifier_entires
+# bundle exec rake suggestor:do_multiple
+# bundle exec rake clamp:run_clamp_pipeline
+
+#clamp dictionary
+# bundle exec rake clamp:clamp_dictionary

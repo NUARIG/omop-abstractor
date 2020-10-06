@@ -1,8 +1,18 @@
-#cleanup
+# real data
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake clamp:schemas_clamp
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
+
+# fake data
+# bundle exec rake setup:truncate_schemas
+# bundle exec rake data:truncate_omop_clinical_data_tables
+# bundle exec rake clamp:schemas_clamp
+# bundle exec rake setup:data
+# bundle exec rake data:create_note_stable_identifier_entires
+# bundle exec rake suggestor:do_multiple
+# bundle exec rake clamp:run_clamp_pipeline
+
 require './lib/omop_abstractor/setup/setup'
 require './lib/clamp_mapper/parser'
 namespace :setup do
@@ -911,7 +921,7 @@ namespace :setup do
 
     note = Note.where(note_id: 6, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Comment', note_text: 'Comment on the surgical pathology procedure.', encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
     if note.note_stable_identifier.blank?
-      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create      
+      NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
     end
     #outside surgical pathology report end
 

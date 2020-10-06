@@ -780,59 +780,69 @@ namespace :clamp do
       puts abstractor_note['namespace_type']
       puts abstractor_note['namespace_id']
       puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
-      
+
       section_abstractor_abstraction_group_map = {}
       if clamp_note.sections.any?
         note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
           puts 'hello'
           puts abstractor_abstraction_group.abstractor_subject_group.name
-        
-          if abstractor_abstraction_group.anchor? 
-            anchor_predicate = abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate                    
+
+          if abstractor_abstraction_group.anchor?
+            anchor_predicate = abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
             anchor_sections = []
             abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.each do |abstractor_abstraction_source|
               abstractor_abstraction_source.abstractor_abstraction_source_sections.each do |abstractor_abstraction_source_section|
-                anchor_sections << abstractor_abstraction_source_section.abstractor_section.name                  
+                anchor_sections << abstractor_abstraction_source_section.abstractor_section.name
               end
             end
             anchor_sections.uniq!
             anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? && anchor_sections.include?(named_entity.sentence.section.name) }
             anchor_named_entity_sections = anchor_named_entities.group_by{ |anchor_named_entity|  anchor_named_entity.sentence.section.section_range }.keys.sort_by(&:min)
-            
+
             first_anchor_named_entity_section = anchor_named_entity_sections.shift
             if section_abstractor_abstraction_group_map[first_anchor_named_entity_section]
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] << abstractor_abstraction_group
             else
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
             end
-            
+
+            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == first_anchor_named_entity_section }
+
+            prior_anchor_named_entities = anchor_named_entities
             for anchor_named_entity_section in anchor_named_entity_sections
-              abstractor_abstraction_group = Abstractor::AbstractorAbstractionGroup.create_abstractor_abstraction_group(abstractor_abstraction_group.abstractor_subject_group_id, abstractor_note['source_type'], abstractor_note['source_id'], abstractor_note['namespace_type'], abstractor_note['namespace_id'])            
+              #moomin
+              anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == anchor_named_entity_section }
 
-              if section_abstractor_abstraction_group_map[anchor_named_entity_section]
-                section_abstractor_abstraction_group_map[anchor_named_entity_section] << abstractor_abstraction_group
-              else
-                section_abstractor_abstraction_group_map[anchor_named_entity_section] = [abstractor_abstraction_group]
-              end
+              unless prior_anchor_named_entities.map(&:semantic_tag_value) == anchor_named_entities.map(&:semantic_tag_value)
 
-              abstractor_abstraction_group.abstractor_abstraction_group_members.each do |abstractor_abstraction_group_member|
-                abstractor_abstraction_source = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.first
-                abstractor_suggestion = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.suggest(
-                abstractor_abstraction_group_member.abstractor_abstraction,
-                abstractor_abstraction_source,
-                nil, #suggestion_source[:match_value],
-                nil, #suggestion_source[:sentence_match_value]
-                abstractor_note['source_id'],
-                abstractor_note['source_type'],
-                abstractor_note['source_method'],
-                nil,                                  #suggestion_source[:section_name]
-                nil,                                  #suggestion[:value]
-                false,                                #suggestion[:unknown].to_s.to_boolean
-                true,                                 #suggestion[:not_applicable].to_s.to_boolean
-                nil,
-                nil,
-                false                                 #suggestion[:negated].to_s.to_boolean
-                )                      
+                abstractor_abstraction_group = Abstractor::AbstractorAbstractionGroup.create_abstractor_abstraction_group(abstractor_abstraction_group.abstractor_subject_group_id, abstractor_note['source_type'], abstractor_note['source_id'], abstractor_note['namespace_type'], abstractor_note['namespace_id'])
+
+                if section_abstractor_abstraction_group_map[anchor_named_entity_section]
+                  section_abstractor_abstraction_group_map[anchor_named_entity_section] << abstractor_abstraction_group
+                else
+                  section_abstractor_abstraction_group_map[anchor_named_entity_section] = [abstractor_abstraction_group]
+                end
+
+                abstractor_abstraction_group.abstractor_abstraction_group_members.each do |abstractor_abstraction_group_member|
+                  abstractor_abstraction_source = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.first
+                  abstractor_suggestion = abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.suggest(
+                  abstractor_abstraction_group_member.abstractor_abstraction,
+                  abstractor_abstraction_source,
+                  nil, #suggestion_source[:match_value],
+                  nil, #suggestion_source[:sentence_match_value]
+                  abstractor_note['source_id'],
+                  abstractor_note['source_type'],
+                  abstractor_note['source_method'],
+                  nil,                                  #suggestion_source[:section_name]
+                  nil,                                  #suggestion[:value]
+                  false,                                #suggestion[:unknown].to_s.to_boolean
+                  true,                                 #suggestion[:not_applicable].to_s.to_boolean
+                  nil,
+                  nil,
+                  false                                 #suggestion[:negated].to_s.to_boolean
+                  )
+                end
+                prior_anchor_named_entities = anchor_named_entities
               end
             end
           end
@@ -863,7 +873,7 @@ namespace :clamp do
         nil,
         nil,
         false                                 #suggestion[:negated].to_s.to_boolean
-        )        
+        )
 
         # ABSTRACTOR_RULE_TYPE_UNKNOWN = 'unknown'
         case abstractor_abstraction_source.abstractor_rule_type.name
@@ -874,7 +884,7 @@ namespace :clamp do
           suggested = false
           if named_entities.any?
             named_entities.each do |named_entity|
-              abstractor_abstraction.reload              
+              abstractor_abstraction.reload
               puts 'here is the note'
               puts clamp_note.text
 
@@ -894,13 +904,13 @@ namespace :clamp do
               puts clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end]
               puts 'sentence_match_value'
               puts clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
-              
+
               if named_entity.sentence.section
                 section_name = named_entity.sentence.section.name
               else
-                section_name = nil               
+                section_name = nil
               end
-              
+
               aa = abstractor_abstraction
               if named_entity.sentence.section.present?
                 if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
@@ -915,7 +925,7 @@ namespace :clamp do
                   end
                 end
               end
-              
+
               abstractor_suggestion = aa.abstractor_subject.suggest(
               aa,
               abstractor_abstraction_source,
@@ -935,13 +945,13 @@ namespace :clamp do
 
               if !named_entity.negated?
                 suggested = true
-              end              
+              end
             end
-          end          
+          end
           if !suggested
             # abstractor_abstraction.set_unknown!
-            abstractor_abstraction.set_not_applicable!            
-          end          
+            abstractor_abstraction.set_not_applicable!
+          end
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
           # ABSTRACTOR_OBJECT_TYPE_LIST                 = 'list'
@@ -968,7 +978,7 @@ namespace :clamp do
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|
-                  abstractor_abstraction.reload                  
+                  abstractor_abstraction.reload
                   values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                   suggested = false
                   if values.any?
@@ -990,7 +1000,7 @@ namespace :clamp do
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
                       if !named_entity_name.negated? && !value.negated?
-                        suggested = true                                              
+                        suggested = true
                         if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                           abstractor_suggestion.accepted = true
                           abstractor_suggestion.save!
@@ -998,7 +1008,7 @@ namespace :clamp do
                       end
                     end
                   end
-                end                                      
+                end
               end
             elsif abstractor_abstraction_schema.positive_negative_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
@@ -1009,11 +1019,11 @@ namespace :clamp do
                   abstractor_abstraction.reload
                   values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                   if values.any?
-                    values.each do |value|                                            
+                    values.each do |value|
                       if named_entity_name.sentence.section
                         section_name = named_entity_name.sentence.section.name
                       else
-                        section_name = nil               
+                        section_name = nil
                       end
 
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
@@ -1047,8 +1057,8 @@ namespace :clamp do
             if !suggested
               # abstractor_abstraction.set_unknown!
               abstractor_abstraction.set_not_applicable!
-            end                                    
-          when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST      
+            end
+          when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
             named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'number' && named_entity.semantic_tag_value_type == 'Value'  }
             suggested = false
@@ -1057,16 +1067,16 @@ namespace :clamp do
                 values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                 if values.any?
                   values.each do |value|
-                    abstractor_abstraction.reload                    
+                    abstractor_abstraction.reload
                     if value.semantic_tag_value.scan('%').present?
                       value.semantic_tag_value = (Percentage.new(value.semantic_tag_value).to_f / 100).to_s
                     end
 
-                    if !named_entity_name.overlap?(value)                      
+                    if !named_entity_name.overlap?(value)
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],              
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
                       clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
@@ -1085,7 +1095,7 @@ namespace :clamp do
                       if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                         abstractor_suggestion.accepted = true
                         abstractor_suggestion.save!
-                      end                      
+                      end
                     end
                   end
                 end
@@ -1094,9 +1104,9 @@ namespace :clamp do
             if !suggested
               # abstractor_abstraction.set_unknown!
               abstractor_abstraction.set_not_applicable!
-            end   
+            end
           end
-        end        
+        end
       end
 
       puts 'hello before'
@@ -1105,18 +1115,18 @@ namespace :clamp do
       puts note_stable_identifier.id
       puts abstractor_note['namespace_type']
       puts abstractor_note['namespace_id']
-      puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size      
+      puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
       note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
         puts 'hello'
-        puts abstractor_abstraction_group.abstractor_subject_group.name        
+        puts abstractor_abstraction_group.abstractor_subject_group.name
 
-        
-        if abstractor_abstraction_group.anchor? && !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?                  
+
+        if abstractor_abstraction_group.anchor? && !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
           abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
             if !abstractor_abstraction_group_member.anchor?
               puts 'here is a member'
               puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-              puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?          
+              puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
               # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
               abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
             end
@@ -1172,7 +1182,7 @@ def create_value_dictionary_items(abstractor_abstraction_schema)
   dictionary_items
 end
 
-def canonical_format?(name, value, sentence)      
+def canonical_format?(name, value, sentence)
   canonical_format = false
   begin
     regular_expression = Regexp.new('\b' + name + '\s*\:\s*' + value.strip + '\b')
@@ -1182,9 +1192,9 @@ def canonical_format?(name, value, sentence)
       re = '\b' + name + '\s*' + value.strip + '\b'
       regular_expression = Regexp.new('\b' + name + '\s*' + value.strip + '\b')
       canonical_format = sentence.scan(regular_expression).present?
-    end    
-  rescue Exception => e    
+    end
+  rescue Exception => e
   end
-    
+
   canonical_format
 end

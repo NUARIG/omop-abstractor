@@ -31,6 +31,8 @@ diagnosis_name,icdo3_code,synonym_name
 "neoplasm, malignant",8000/3,malignant unclassified tumor
 "neoplasm, malignant",8000/3,unclassified tumor malignant
 "neoplasm, malignant",8000/3,blastoma
+"neoplasm, malignant",8000/3,glioneuronal tumor
+"neoplasm, metastatic",8000/6,metastatic
 "neoplasm, metastatic",8000/6,"neoplasm, secondary"
 "neoplasm, metastatic",8000/6,"tumor, metastatic"
 "neoplasm, metastatic",8000/6,"tumor, secondary"
@@ -316,6 +318,7 @@ atypical adenoma,8140/1,bronchial adenoma
 "adenocarcinoma, nos",8140/3,adenocarcinoma
 "adenocarcinoma, metastatic, nos",8140/6,metastatic adenocarcinoma
 "adenocarcinoma, metastatic, nos",8140/6,adenocarcinoma metastatic
+"adenocarcinoma, metastatic, nos",8140/6,adenoid cystic carcinoma
 scirrhous adenocarcinoma,8141/3,scirrhous carcinoma
 scirrhous adenocarcinoma,8141/3,carcinoma with productive fibrosis
 "adenocarcinoma, intestinal type",8144/3,"carcinoma, intestinal type"
@@ -1807,8 +1810,11 @@ ameloblastic fibro-odontoma,9290/0,fibroameloblastic odontoma
 "astrocytoma, nos",9400/3,astrocytoma low grade
 "astrocytoma, nos",9400/3,low grade diffuse astrocytoma
 "astrocytoma, nos",9400/3,diffuse astrocytoma low grade
+"astrocytoma, nos",9400/3,diffuse infiltrating astrocytoma
+"astrocytoma, nos",9400/3,"diffuse infiltrating astrocytoma, idh-mutant"
 "astrocytoma, anaplastic",9401/3,anaplastic astrocytoma
 "astrocytoma, anaplastic",9401/3,astrocytoma anaplastic
+"astrocytoma, anaplastic",9401/3,"anaplastic astrocytoma, idh1 mutant"
 gemistocytic astrocytoma,9411/3,gemistocytoma
 desmoplastic infantile astrocytoma,9412/1,desmoplastic infantile ganglioglioma
 fibrillary astrocytoma,9420/3,fibrous astrocytoma
@@ -1881,6 +1887,7 @@ olfactory neuroepithelioma,9523/3,esthesioneuroepithelioma
 "meningioma, nos",9530/0,lymphoplasmacyte-rich meningioma
 "meningioma, nos",9530/0,metaplastic meningioma
 "meningioma, nos",9530/0,meningioma
+"meningioma, nos",9530/0,meninigoma
 "meningiomatosis, nos",9530/1,diffuse meningiomatosis
 "meningiomatosis, nos",9530/1,multiple meningiomas
 "meningiomatosis, nos",9530/1,meningiomatosis

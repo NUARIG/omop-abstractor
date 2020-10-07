@@ -355,6 +355,7 @@ short bones of lower limb and associated joints,C40.3,bone of foot
 "bones, joints and articular cartilage of other and unspecified sites",C41,bones joints and articular cartilage of other and unspecified sites
 bones of skull and face and associated joints,C41.0,hyoid bone
 bones of skull and face and associated joints,C41.0,sphenoid bone
+bones of skull and face and associated joints,C41.0,sphenoid
 bones of skull and face and associated joints,C41.0,"skull, nos"
 bones of skull and face and associated joints,C41.0,parietal bone
 bones of skull and face and associated joints,C41.0,orbital bone
@@ -370,6 +371,9 @@ bones of skull and face and associated joints,C41.0,calvarium
 bones of skull and face and associated joints,C41.0,maxilla
 bones of skull and face and associated joints,C41.0,upper jaw bone
 bones of skull and face and associated joints,C41.0,skull
+bones of skull and face and associated joints,C41.0,orbital
+bones of skull and face and associated joints,C41.0,condylar
+bones of skull and face and associated joints,C41.0,sphenoid wing
 mandible,C41.1,temporomandibular joint
 mandible,C41.1,lower jaw bone
 mandible,C41.1,"jaw bone, nos"
@@ -767,6 +771,8 @@ cerebral meninges,C70.0,tentorium
 spinal meninges,C70.1,spinal arachnoid
 spinal meninges,C70.1,spinal dura mater
 spinal meninges,C70.1,spinal pia mater
+spinal meninges,C70.1,intradural extramedullary
+spinal meninges,C70.1,intramedullary
 "meninges, nos",C70.9,"dura mater, nos"
 "meninges, nos",C70.9,"pia mater, nos"
 "meninges, nos",C70.9,"arachnoid, nos"
@@ -775,8 +781,10 @@ spinal meninges,C70.1,spinal pia mater
 "meninges, nos",C70.9,pia mater
 "meninges, nos",C70.9,arachnoid
 "meninges, nos",C70.9,dura
+"meninges, nos",C70.9,membrane
 cerebrum,C71.0,corpus striatum
 cerebrum,C71.0,thalamus
+cerebrum,C71.0,thalamic
 cerebrum,C71.0,"supratentorial brain, nos"
 cerebrum,C71.0,rhinencephalon
 cerebrum,C71.0,putamen
@@ -794,9 +802,15 @@ cerebrum,C71.0,basal ganglia
 cerebrum,C71.0,hypothalamus
 cerebrum,C71.0,supratentorial brain
 frontal lobe,C71.1,frontal pole
+frontal lobe,C71.1,frontal
+frontal lobe,C71.1,frontoparietal
 temporal lobe,C71.2,hippocampus
 temporal lobe,C71.2,uncus
+temporal lobe,C71.2,temporal
 occipital lobe,C71.4,occipital pole
+occipital lobe,C71.4,occipital
+occipital lobe,C71.4,suboccipital
+"ventricle, nos",C71.5,intraventricular
 "ventricle, nos",C71.5,choroid plexus of third ventricle
 "ventricle, nos",C71.5,"third ventricle, nos"
 "ventricle, nos",C71.5,ependyma
@@ -810,7 +824,9 @@ occipital lobe,C71.4,occipital pole
 "ventricle, nos",C71.5,lateral ventricle
 "cerebellum, nos",C71.6,cerebellopontine angle
 "cerebellum, nos",C71.6,vermis of cerebellum
-"cerebellum, nos",C71.6,cerebellum
+"cerebellum, nos",C71.6,cp angle tumor
+"cerebellum, nos",C71.6,cp angle
+"cerebellum, nos",C71.6,cerebellar
 brain stem,C71.7,choroid plexus of fourth ventricle
 brain stem,C71.7,pyramid
 brain stem,C71.7,pons
@@ -823,6 +839,7 @@ brain stem,C71.7,"fourth ventricle, nos"
 brain stem,C71.7,"infratentorial brain, nos"
 brain stem,C71.7,fourth ventricle
 brain stem,C71.7,infratentorial brain
+brain stem,C71.7,brainstem
 overlapping lesion of brain,C71.8,corpus callosum
 overlapping lesion of brain,C71.8,tapetum
 "brain, nos",C71.9,intracranial site
@@ -832,14 +849,39 @@ overlapping lesion of brain,C71.8,tapetum
 "brain, nos",C71.9,"cranial fossa, nos"
 "brain, nos",C71.9,anterior cranial fossa
 "brain, nos",C71.9,cranial fossa
+"brain, nos",C71.9,fossa
 "spinal cord, cranial nerves, and other parts of central nervous system",C72,and other parts of central nervous system cranial nerves spinal cord
 "spinal cord, cranial nerves, and other parts of central nervous system",C72,spinal cord cranial nerves and other parts of central nervous system
 spinal cord,C72.0,cervical cord
+spinal cord,C72.0,cervical
 spinal cord,C72.0,sacral cord
 spinal cord,C72.0,thoracic cord
 spinal cord,C72.0,lumbar cord
 spinal cord,C72.0,filum terminale
 spinal cord,C72.0,conus medullaris
+spinal cord,C72.0,c2
+spinal cord,C72.0,c3
+spinal cord,C72.0,c4
+spinal cord,C72.0,c5
+spinal cord,C72.0,c6
+spinal cord,C72.0,c7
+spinal cord,C72.0,vertebrae
+spinal cord,C72.0,vertebra
+spinal cord,C72.0,thoracic
+spinal cord,C72.0,t1
+spinal cord,C72.0,t2
+spinal cord,C72.0,t3
+spinal cord,C72.0,t4
+spinal cord,C72.0,t5
+spinal cord,C72.0,t6
+spinal cord,C72.0,t7
+spinal cord,C72.0,t8
+spinal cord,C72.0,t9
+spinal cord,C72.0,t10
+spinal cord,C72.0,t11
+spinal cord,C72.0,lumbar
+spinal cord,C72.0,sacral
+spinal cord,C72.0,vertebral
 optic nerve,C72.3,optic chiasm
 optic nerve,C72.3,optic tract
 "cranial nerve, nos",C72.5,trochlear nerve
@@ -1070,3 +1112,5 @@ pelvic lymph nodes,C77.5,iliac lymph node
 pelvic lymph nodes,C77.5,hypogastric lymph node
 pelvic lymph nodes,C77.5,obturator lymph node
 "lymph node, nos",C77.9,lymph node
+parietal lobe,C71.3,parietal
+parietal lobe,C71.3,frontoparietal

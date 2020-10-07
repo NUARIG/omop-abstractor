@@ -9,14 +9,21 @@ POST https://moomin.com/abstractor_abstractions/:abstractor_abstraction_id/abstr
     "value": "glioblastoma",
     "unknown": null,
     "not_applicable": null,
+    "negated": false,
     "suggestion_sources": [
       {
         "match_value": "glioblastoma",
-        "sentence_match_value": "The patient has a diagnosis of glioblastoma."
+        "sentence_match_value": "The patient has a diagnosis of glioblastoma.",
+        "section_name": "SPECIMEN",
+        "section_name_begin": 1,
+        "section_name_end": 25
       },
       {
         "match_value": "gbm",
-        "sentence_match_value": "GBM does not have a good prognosis."
+        "sentence_match_value": "GBM does not have a good prognosis.",
+        "section_name": "SPECIMEN",
+        "section_name_begin": 1,
+        "section_name_end": 25,
       }
     ]
   }

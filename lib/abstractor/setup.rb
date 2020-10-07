@@ -32,6 +32,11 @@ module Abstractor
       abstractor_section_type = Abstractor::AbstractorSectionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_NAME_VALUE).first_or_create
       abstractor_section_type.regular_expression = '(?<=^|[\r\n])(section_name_variants\s*)delimiter([^\r\n]*(?:[\r\n]+(?![A-Za-z].*delimiter).*)*)'
       abstractor_section_type.save!
+
+      puts 'Setting up Abstractor::AbstractorSectionMentionType'
+      Abstractor::Enum::ABSTRACTOR_SECTION_MENTION_TYPES.each do |abstractor_section_mention_types|
+        Abstractor::AbstractorSectionMentionType.where(name: abstractor_section_mention_types).first_or_create
+      end
     end
   end
 end

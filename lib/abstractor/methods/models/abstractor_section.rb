@@ -7,6 +7,7 @@ module Abstractor
 
           # Associations
           base.send :belongs_to, :abstractor_section_type
+          base.send :belongs_to, :abstractor_section_mention_type
           base.send :has_many, :abstractor_section_name_variants
         end
 

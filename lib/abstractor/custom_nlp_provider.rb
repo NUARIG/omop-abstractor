@@ -91,8 +91,22 @@ module Abstractor
         text: abstractor_text,
         namespace_type: namespace_type,
         namespace_id: namespace_id,
-        abstractor_abstraction_schemas: []
+        abstractor_abstraction_schemas: [],
+        abstractor_sections: []
       }
+
+      if namespace_type.present? && namespace_id.present?
+        abstractor_namespace = Abstractor::AbstractorNamespace.where(id: namespace_id).first
+        if abstractor_namespace
+          abstractor_namespace.abstractor_namespace_sections.each do |abstractor_namespace_section|
+            abstractor_section = { name: abstractor_namespace_section.abstractor_section.name, section_mention_type: abstractor_namespace_section.abstractor_section.abstractor_section_mention_type.name, section_name_variants: [] }
+            abstractor_namespace_section.abstractor_section.abstractor_section_name_variants.each do |abstractor_section_name_variant|
+              abstractor_section[:section_name_variants] << { name: abstractor_section_name_variant.name }
+            end
+            body[:abstractor_sections] << abstractor_section
+          end
+        end
+      end
 
       abstractor_abstractions.each do |abstractor_abstraction|
         abstractor_abstraction_source = abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources & abstractor_abstraction_sources

@@ -1,0 +1,35 @@
+POST http://custom-nlp-provider.test/multiple_suggest
+
+{
+	"source_id": 156,
+	"source_type": "NoteStableIdentifier",
+	"source_method": "note_text",
+	"abstractor_rules_uri": "https://moomin.com/abstractor_rules.json",
+	"text": "Looks like metastatic carcinoma to me.",
+	"abstractor_abstraction_schemas": [
+		{
+			"abstractor_abstraction_schema_id": 1184,
+			"abstractor_abstraction_schema_uri": "https://moomin.com/abstractor_abstraction_schemas/1184.json",
+			"abstractor_abstraction_abstractor_suggestions_uri": "https://moomin.com/abstractor_abstractions/669/abstractor_suggestions.json",
+			"abstractor_abstraction_id": 669,
+			"abstractor_abstraction_source_id": 1374,
+			"abstractor_subject_id": 1355,
+			"namespace_type": "Abstractor::AbstractorNamespace",
+			"namespace_id": 281,
+			"abstractor_rule_type": "value",
+			"updated_at": "2019-12-16T13:07:50Z"
+		},
+		{
+			"abstractor_abstraction_schema_id": 1185,
+			"abstractor_abstraction_schema_uri": "https://moomin.com/abstractor_abstraction_schemas/1185.json",
+			"abstractor_abstraction_abstractor_suggestions_uri": "https://moomin.com/abstractor_abstractions/670/abstractor_suggestions.json",
+			"abstractor_abstraction_id": 670,
+			"abstractor_abstraction_source_id": 1375,
+			"abstractor_subject_id": 1356,
+			"namespace_type": "Abstractor::AbstractorNamespace",
+			"namespace_id": 281,
+			"abstractor_rule_type": "value",
+			"updated_at": "2019-12-16T13:07:50Z"
+		}
+	]
+}

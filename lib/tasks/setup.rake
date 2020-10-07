@@ -1,10 +1,12 @@
 # real data
+# bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake clamp:schemas_clamp
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
 
 # fake data
+# bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake data:truncate_omop_clinical_data_tables
 # bundle exec rake clamp:schemas_clamp
@@ -1142,6 +1144,7 @@ namespace :setup do
     Abstractor::AbstractorSubjectGroupMember.delete_all
     Abstractor::AbstractorSection.delete_all
     Abstractor::AbstractorAbstractionSource.delete_all
+    Abstractor::AbstractorNamespaceSection.delete_all
   end
 end
 # initial setup

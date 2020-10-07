@@ -18,8 +18,18 @@ namespace :clamp do
     source_type_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'nlp suggestion').first
     source_type_custom_nlp_suggestion = Abstractor::AbstractorAbstractionSourceType.where(name: 'custom nlp suggestion').first
     indirect_source_type = Abstractor::AbstractorAbstractionSourceType.where(name: 'indirect').first
-    abstractor_section_type_custom = Abstractor::AbstractorSectionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_OFFSETS).first
-    abstractor_section_specimen = Abstractor::AbstractorSection.where(abstractor_section_type: abstractor_section_type_custom, name: 'SPECIMEN', source_type: NoteStableIdentifier.to_s, source_method: 'note_text', return_note_on_empty_section: true).first_or_create
+    abstractor_section_type_offsets = Abstractor::AbstractorSectionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_TYPE_OFFSETS).first
+    abstractor_section_mention_type_alphabetic = Abstractor::AbstractorSectionMentionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_MENTION_TYPE_ALPHABETIC).first
+    abstractor_section_mention_type_token = Abstractor::AbstractorSectionMentionType.where(name: Abstractor::Enum::ABSTRACTOR_SECTION_MENTION_TYPE_TOKEN).first
+    abstractor_section_specimen = Abstractor::AbstractorSection.where(abstractor_section_type: abstractor_section_type_offsets, name: 'SPECIMEN', source_type: NoteStableIdentifier.to_s, source_method: 'note_text', return_note_on_empty_section: true, abstractor_section_mention_type: abstractor_section_mention_type_alphabetic).first_or_create
+    abstractor_section_comment = Abstractor::AbstractorSection.where(abstractor_section_type: abstractor_section_type_offsets, name: 'COMMENT', source_type: NoteStableIdentifier.to_s, source_method: 'note_text', return_note_on_empty_section: true, abstractor_section_mention_type: abstractor_section_mention_type_token).first_or_create
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Comment')
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Comments')
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Note')
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Notes')
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Additional comment')
+    abstractor_section_comment.abstractor_section_name_variants.build(name: 'Additional comments')
+    abstractor_section_comment.save!
 
     abstractor_namespace_surgical_pathology = Abstractor::AbstractorNamespace.where(name: 'Surgical Pathology', subject_type: NoteStableIdentifier.to_s, joins_clause:
     "JOIN note_stable_identifier_full ON note_stable_identifier.stable_identifier_path = note_stable_identifier_full.stable_identifier_path AND note_stable_identifier.stable_identifier_value = note_stable_identifier_full.stable_identifier_value
@@ -27,6 +37,10 @@ namespace :clamp do
      JOIN fact_relationship ON fact_relationship.domain_concept_id_1 = 5085 AND fact_relationship.fact_id_1 = note.note_id AND fact_relationship.relationship_concept_id = 44818790
      JOIN procedure_occurrence ON fact_relationship.domain_concept_id_2 = 10 AND fact_relationship.fact_id_2 = procedure_occurrence.procedure_occurrence_id AND procedure_occurrence.procedure_concept_id = 4213297",
     where_clause: "note.note_title in('Final Diagnosis', 'Final Pathologic Diagnosis') AND note_date >='2018-03-01'").first_or_create
+
+    abstractor_namespace_surgical_pathology.abstractor_namespace_sections.build(abstractor_section: abstractor_section_specimen)
+    abstractor_namespace_surgical_pathology.abstractor_namespace_sections.build(abstractor_section: abstractor_section_comment)
+    abstractor_namespace_surgical_pathology.save!
 
     #Begin primary cancer
     primary_cancer_group = Abstractor::AbstractorSubjectGroup.where(name: 'Primary Cancer', enable_workflow_status: false).first_or_create
@@ -806,14 +820,16 @@ namespace :clamp do
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
             end
 
+
             anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == first_anchor_named_entity_section }
 
-            prior_anchor_named_entities = anchor_named_entities
+            prior_anchor_named_entities = []
+            prior_anchor_named_entities << anchor_named_entities.map(&:semantic_tag_value).sort
             for anchor_named_entity_section in anchor_named_entity_sections
               #moomin
               anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == anchor_named_entity_section }
 
-              unless prior_anchor_named_entities.map(&:semantic_tag_value) == anchor_named_entities.map(&:semantic_tag_value)
+              unless prior_anchor_named_entities.include?(anchor_named_entities.map(&:semantic_tag_value).sort)
 
                 abstractor_abstraction_group = Abstractor::AbstractorAbstractionGroup.create_abstractor_abstraction_group(abstractor_abstraction_group.abstractor_subject_group_id, abstractor_note['source_type'], abstractor_note['source_id'], abstractor_note['namespace_type'], abstractor_note['namespace_id'])
 
@@ -842,7 +858,7 @@ namespace :clamp do
                   false                                 #suggestion[:negated].to_s.to_boolean
                   )
                 end
-                prior_anchor_named_entities = anchor_named_entities
+                prior_anchor_named_entities << anchor_named_entities.map(&:semantic_tag_value).sort
               end
             end
           end

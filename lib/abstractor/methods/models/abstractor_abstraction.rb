@@ -198,9 +198,9 @@ module Abstractor
           end
 
           def suggested?
-            abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? }.present?            
+            abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific }.present?
           end
-          
+
           def set_unknown!
             abstractor_suggestion = abstractor_suggestions.not_deleted.detect{ |abstractor_suggestion| abstractor_suggestion.unknown }
             if abstractor_suggestion
@@ -209,15 +209,15 @@ module Abstractor
               abstractor_suggestion.update_abstraction_value
             end
           end
-          
+
           def set_not_applicable!
             abstractor_suggestion = abstractor_suggestions.not_deleted.detect{ |abstractor_suggestion| abstractor_suggestion.not_applicable }
             if abstractor_suggestion
               abstractor_suggestion.accepted = true
               abstractor_suggestion.save!
               abstractor_suggestion.update_abstraction_value
-            end            
-          end                    
+            end
+          end
         end
 
         module ClassMethods

@@ -17,7 +17,7 @@ module Abstractor
           # Hooks
           base.send :after_save, :update_abstraction_value, if: Proc.new { |abstractor_suggestion| abstractor_suggestion.saved_change_to_attribute?(:accepted) }
           base.send :after_save, :update_siblings_status, if: Proc.new { |abstractor_suggestion| abstractor_suggestion.saved_change_to_attribute?(:accepted)  }
-          base.send :after_create, :update_siblings_status, if: Proc.new { |abstractor_suggestion| abstractor_suggestion.accepted.nil?  }
+          base.send :after_create, :update_siblings_status, if: Proc.new { |abstractor_suggestion| abstractor_suggestion.accepted.nil? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific  }
         end
 
         # Instance Methods

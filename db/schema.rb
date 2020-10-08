@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_123809) do
+ActiveRecord::Schema.define(version: 2020_10_07_184515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_123809) do
     t.string "vocabulary_version"
     t.text "comments"
     t.boolean "case_sensitive", default: false
+    t.boolean "favor_more_specific"
   end
 
   create_table "abstractor_relation_types", force: :cascade do |t|

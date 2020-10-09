@@ -990,6 +990,7 @@ namespace :clamp do
             puts 'how much you got?'
             puts named_entities.size
             suggested = false
+            suggestions = []
             if abstractor_abstraction_schema.deleted_non_deleted_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
               named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'deleted_non_deleted' && named_entity.semantic_tag_value_type == 'Value'  }
@@ -1017,6 +1018,7 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
+                      suggestions << abstractor_suggestion
                       if !named_entity_name.negated? && !value.negated?
                         suggested = true
                         if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
@@ -1060,6 +1062,7 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
+                      suggestions << abstractor_suggestion
                       if !named_entity_name.negated? && !value.negated?
                         suggested = true
                         if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
@@ -1075,6 +1078,12 @@ namespace :clamp do
             if !suggested
               # abstractor_abstraction.set_unknown!
               abstractor_abstraction.set_not_applicable!
+            else
+              if suggestions.size == 1
+                abstractor_suggestion =suggestions.first
+                abstractor_suggestion.accepted = true
+                abstractor_suggestion.save!
+              end
             end
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }

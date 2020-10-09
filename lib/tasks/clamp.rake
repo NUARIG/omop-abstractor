@@ -1080,10 +1080,11 @@ namespace :clamp do
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
             named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'number' && named_entity.semantic_tag_value_type == 'Value'  }
             suggested = false
+            suggestions = []
             if named_entities_names.any?
               named_entities_names.each do |named_entity_name|
                 values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
-                if values.any?
+                if values.any?  && values.size <= 3
                   values.each do |value|
                     abstractor_abstraction.reload
                     if value.semantic_tag_value.scan('%').present?
@@ -1107,21 +1108,28 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
                       )
+                      suggestions << abstractor_suggestion
                     end
+
                     if !named_entity_name.negated? && !value.negated?
                       suggested = true
-                      if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
-                        abstractor_suggestion.accepted = true
-                        abstractor_suggestion.save!
-                      end
+                      # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                      #   abstractor_suggestion.accepted = true
+                      #   abstractor_suggestion.save!
+                      # end
                     end
                   end
                 end
               end
             end
             if !suggested
-              # abstractor_abstraction.set_unknown!
               abstractor_abstraction.set_not_applicable!
+            else
+              if suggestions.size == 1
+                abstractor_suggestion =suggestions.first
+                abstractor_suggestion.accepted = true
+                abstractor_suggestion.save!
+              end
             end
           end
         end

@@ -1120,26 +1120,30 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
                       )
-                    end
-
-                    if !named_entity_name.negated? && !value.negated?
-                      suggestions << abstractor_suggestion
-                      suggested = true
-                      # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
-                      #   abstractor_suggestion.accepted = true
-                      #   abstractor_suggestion.save!
-                      # end
+                      if !named_entity_name.negated? && !value.negated?
+                        suggestions << abstractor_suggestion
+                        suggested = true
+                        # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        #   abstractor_suggestion.accepted = true
+                        #   abstractor_suggestion.save!
+                        # end
+                      end
                     end
                   end
                 end
               end
             end
             if !suggested
+              puts 'number not suggested!'
               abstractor_abstraction.set_not_applicable!
             else
+              puts 'number is suggested!'
               suggestions.uniq!
+              puts 'here is the size'
+              puts suggestions.size
               if suggestions.size == 1
-                abstractor_suggestion =suggestions.first
+                puts 'auto accepting!'
+                abstractor_suggestion = suggestions.first
                 abstractor_suggestion.accepted = true
                 abstractor_suggestion.save!
               end
@@ -1158,16 +1162,13 @@ namespace :clamp do
       note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
         puts 'hello'
         puts abstractor_abstraction_group.abstractor_subject_group.name
-
-        if abstractor_abstraction_group.anchor? && !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
-          abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
-            if !abstractor_abstraction_group_member.anchor?
-              puts 'here is a member'
-              puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-              puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-              # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
-              abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
-            end
+        abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
+          if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+            puts 'here is a member'
+            puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
+            puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+            # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
+            abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
           end
         end
       end

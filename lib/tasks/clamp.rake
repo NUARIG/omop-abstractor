@@ -897,6 +897,8 @@ namespace :clamp do
         case abstractor_abstraction_source.abstractor_rule_type.name
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_VALUE
           named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
+          puts 'here is the predicate'
+          puts abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
           puts 'how much you got?'
           puts named_entities.size
           suggested = false
@@ -1018,8 +1020,8 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
-                      suggestions << abstractor_suggestion
                       if !named_entity_name.negated? && !value.negated?
+                        suggestions << abstractor_suggestion
                         suggested = true
                         if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                           abstractor_suggestion.accepted = true
@@ -1062,8 +1064,8 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
                       )
-                      suggestions << abstractor_suggestion
                       if !named_entity_name.negated? && !value.negated?
+                        suggestions << abstractor_suggestion
                         suggested = true
                         if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                           abstractor_suggestion.accepted = true
@@ -1079,8 +1081,9 @@ namespace :clamp do
               # abstractor_abstraction.set_unknown!
               abstractor_abstraction.set_not_applicable!
             else
+              suggestions.uniq!
               if suggestions.size == 1
-                abstractor_suggestion =suggestions.first
+                abstractor_suggestion = suggestions.first
                 abstractor_suggestion.accepted = true
                 abstractor_suggestion.save!
               end
@@ -1117,10 +1120,10 @@ namespace :clamp do
                       nil,
                       (named_entity_name.negated? || value.negated?)    #suggestion[:negated].to_s.to_boolean
                       )
-                      suggestions << abstractor_suggestion
                     end
 
                     if !named_entity_name.negated? && !value.negated?
+                      suggestions << abstractor_suggestion
                       suggested = true
                       # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                       #   abstractor_suggestion.accepted = true
@@ -1134,6 +1137,7 @@ namespace :clamp do
             if !suggested
               abstractor_abstraction.set_not_applicable!
             else
+              suggestions.uniq!
               if suggestions.size == 1
                 abstractor_suggestion =suggestions.first
                 abstractor_suggestion.accepted = true
@@ -1154,7 +1158,6 @@ namespace :clamp do
       note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
         puts 'hello'
         puts abstractor_abstraction_group.abstractor_subject_group.name
-
 
         if abstractor_abstraction_group.anchor? && !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
           abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|

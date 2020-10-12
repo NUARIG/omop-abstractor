@@ -218,6 +218,36 @@ module Abstractor
               abstractor_suggestion.update_abstraction_value
             end
           end
+
+          def set_detault_suggested_value!(source_id, source_type, source_method)
+            aov = Abstractor::AbstractorObjectValue.joins(:abstractor_abstraction_schema_object_values).where('abstractor_abstraction_schema_object_values.abstractor_abstraction_schema_id = ? AND abstractor_object_values.id = ? AND abstractor_object_values.deleted_at IS NULL', abstractor_abstraction_schema.id, abstractor_subject.default_abstractor_object_value_id).first
+            if aov
+              abstractor_suggestion =  self.detect_abstractor_suggestion(aov.value, false, false)
+              if !abstractor_suggestion
+                abstractor_abstraction_source = self.abstractor_subject.abstractor_abstraction_sources.first
+                abstractor_suggestion = self.abstractor_subject.suggest(
+                self,
+                abstractor_abstraction_source,
+                nil,  #suggestion_source[:match_value],
+                nil,  #suggestion_source[:sentence_match_value]
+                source_id,    #abstractor_note['source_id']
+                source_type,  #abstractor_note['source_type']
+                source_method,  #abstractor_note['source_method']
+                nil,                       #suggestion_source[:section_name]
+                aov.value,                 #suggestion[:value]
+                false,                     #suggestion[:unknown].to_s.to_boolean
+                false,                     #suggestion[:not_applicable].to_s.to_boolean
+                nil,
+                nil,
+                false                     #suggestion[:negated].to_s.to_boolean
+                )
+              end
+
+              abstractor_suggestion.accepted = true
+              abstractor_suggestion.save!
+              abstractor_suggestion.update_abstraction_value
+            end
+          end
         end
 
         module ClassMethods

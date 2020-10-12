@@ -21,7 +21,7 @@ class NotesController < ApplicationController
     options = {}
     options[:sort_column] = sort_column
     options[:sort_direction] = sort_direction
-    @abstractor_namespaces = Abstractor::AbstractorNamespace.where(subject_type: NoteStableIdentifier.to_s)
+    @abstractor_namespaces = Abstractor::AbstractorNamespace.where(subject_type: NoteStableIdentifier.to_s).order('name ASC')
     @namespace_type = Abstractor::AbstractorNamespace.to_s
     @namespace_id = params[:namespace_id].blank? ? 0 : params[:namespace_id]
     @abstractor_abstraction_status = params[:abstraction_status] || Abstractor::Enum::ABSTRACTION_STATUS_NEEDS_REVIEW

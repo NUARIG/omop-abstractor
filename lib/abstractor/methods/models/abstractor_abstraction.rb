@@ -248,6 +248,10 @@ module Abstractor
               abstractor_suggestion.update_abstraction_value
             end
           end
+
+          def detault_suggested_value?
+            self.abstractor_subject.default_abstractor_object_value_id.present?
+          end
         end
 
         module ClassMethods

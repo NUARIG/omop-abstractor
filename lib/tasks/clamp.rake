@@ -945,6 +945,8 @@ namespace :clamp do
                 end
               end
 
+              suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
+              suggested_value = suggested_value.gsub(' - ', '-')
               abstractor_suggestion = aa.abstractor_subject.suggest(
               aa,
               abstractor_abstraction_source,
@@ -954,7 +956,7 @@ namespace :clamp do
               abstractor_note['source_type'],
               abstractor_note['source_method'],
               section_name, #suggestion_source[:section_name]
-              named_entity.semantic_tag_value,    #suggestion[:value]
+              suggested_value,    #suggestion[:value]
               false,                              #suggestion[:unknown].to_s.to_boolean
               false,                              #suggestion[:not_applicable].to_s.to_boolean
               nil,
@@ -1061,15 +1063,13 @@ namespace :clamp do
                       false,                                     #suggestion[:not_applicable].to_s.to_boolean
                       nil,
                       nil,
-                      (named_entity_name.negated? || value.negated?)   #suggestion[:negated].to_s.to_boolean
+                      false   #suggestion[:negated].to_s.to_boolean
                       )
-                      if !named_entity_name.negated? && !value.negated?
-                        suggestions << abstractor_suggestion
-                        suggested = true
-                        if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
-                          abstractor_suggestion.accepted = true
-                          abstractor_suggestion.save!
-                        end
+                      suggestions << abstractor_suggestion
+                      suggested = true
+                      if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        abstractor_suggestion.accepted = true
+                        abstractor_suggestion.save!
                       end
                     end
                   end
@@ -1177,6 +1177,7 @@ namespace :clamp do
       puts 'hello before'
       puts abstractor_note['source_id']
       note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
+      puts 'here is note_stable_identifier.id'
       puts note_stable_identifier.id
       puts abstractor_note['namespace_type']
       puts abstractor_note['namespace_id']
@@ -1185,7 +1186,9 @@ namespace :clamp do
         puts 'hello'
         puts abstractor_abstraction_group.abstractor_subject_group.name
         abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
+          puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
           if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+            puts 'not suggested'
             if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
               if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
                 abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
@@ -1200,6 +1203,7 @@ namespace :clamp do
               abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
             end
           else
+            puts 'suggested'
             if !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
               abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
             end

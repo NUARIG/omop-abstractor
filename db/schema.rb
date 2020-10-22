@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_184515) do
+ActiveRecord::Schema.define(version: 2020_10_21_111313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -722,6 +722,35 @@ ActiveRecord::Schema.define(version: 2020_10_07_184515) do
 
   create_table "moomins", force: :cascade do |t|
     t.text "note_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nlp_comparison_suggestions", force: :cascade do |t|
+    t.integer "nlp_comparison_id", null: false
+    t.string "source", null: false
+    t.string "suggested_value", null: false
+  end
+
+  create_table "nlp_comparisons", force: :cascade do |t|
+    t.string "stable_identifier_path", null: false
+    t.string "stable_identifier_value", null: false
+    t.integer "note_id", null: false
+    t.integer "note_stable_identifier_id_old"
+    t.integer "note_stable_identifier_id_new"
+    t.string "abstractor_subject_group_name"
+    t.integer "abstractor_abstraction_group_id"
+    t.integer "abstractor_subject_group_counter"
+    t.integer "abstractor_abstraction_id_old", null: false
+    t.string "predicate_old", null: false
+    t.string "predicate_new"
+    t.string "predicate", null: false
+    t.string "value_old"
+    t.float "value_old_float"
+    t.string "value_old_normalized"
+    t.string "value_new"
+    t.float "value_new_float"
+    t.string "value_new_normalized"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

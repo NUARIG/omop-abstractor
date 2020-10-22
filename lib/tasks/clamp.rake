@@ -50,6 +50,7 @@ namespace :clamp do
       abstractor_object_type: list_object_type,
       preferred_name: 'cancer histology').first_or_create
 
+    # primary_cns_histologies = CSV.new(File.open('lib/setup/data/primary_cns_diagnoses.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
     primary_cns_histologies = CSV.new(File.open('lib/setup/data/primary_cns_diagnoses.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
     primary_cns_histologies.each do |histology|
@@ -70,6 +71,7 @@ namespace :clamp do
         end
       end
 
+      # histology_synonyms = CSV.new(File.open('lib/setup/data/primary_cns_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
       histology_synonyms = CSV.new(File.open('lib/setup/data/primary_cns_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
       histology_synonyms = histology_synonyms.select { |histology_synonym| histology_synonym['diagnosis_id'] == histology['id'] }
       histology_synonyms.each do |histology_synonym|
@@ -79,6 +81,31 @@ namespace :clamp do
     abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(vocabulary_code: '8000/3').first
     abstractor_object_value.favor_more_specific = true
     abstractor_object_value.save!
+
+    primary_cns_histologies = CSV.new(File.open('lib/setup/data/cap_ecc_primary_cns_histologies.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+
+    primary_cns_histologies.each do |histology|
+      icdo3_code = histology['icdo3_code']
+      icdo3_code.insert(4,'/')
+      name = histology['name'].gsub(icdo3_code, '').strip
+      name = name.downcase.gsub(', nos', '').strip
+      abstractor_object_value =  Abstractor::AbstractorObjectValue.where(value: "#{name} (#{icdo3_code})", vocabulary_code: icdo3_code).first
+      if abstractor_object_value.blank?
+        abstractor_object_value = Abstractor::AbstractorObjectValue.where(:value => "#{name} (#{icdo3_code})".downcase, vocabulary_code: icdo3_code, vocabulary: 'ICD-O-3', vocabulary_version: 'ICD-O-3').first_or_create
+        Abstractor::AbstractorAbstractionSchemaObjectValue.where(abstractor_abstraction_schema: abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value).first_or_create
+        Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => name.downcase).first_or_create
+      else
+        Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => name.downcase).first_or_create
+      end
+
+      normalized_values = OmopAbstractor::Setup.normalize(name)
+      normalized_values.each do |normalized_value|
+        if !OmopAbstractor::Setup.object_value_exists?(abstractor_abstraction_schema, normalized_value)
+          Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => normalized_value.downcase).first_or_create
+        end
+      end
+    end
+
     abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_surgical_pathology.id, anchor: true).first_or_create
     abstractor_abstraction_source = Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp', section_required: true).first_or_create
     Abstractor::AbstractorAbstractionSourceSection.where( abstractor_abstraction_source: abstractor_abstraction_source, abstractor_section: abstractor_section_specimen).first_or_create
@@ -1214,6 +1241,114 @@ namespace :clamp do
       File.delete(file)
     end
   end
+
+  desc "Calculate performance"
+  task(calculate_performance: :environment) do  |t, args|
+    NlpComparison.delete_all
+    old_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+
+    old_suggestions.each do |old_suggestion|
+      puts old_suggestion['abstractor_abstraction_id_old']
+      if NlpComparison.where(abstractor_abstraction_id_old: old_suggestion['abstractor_abstraction_id_old'].to_i).first.blank?
+        nlp_comparison = NlpComparison.new
+        nlp_comparison.note_id = old_suggestion['note_id'].to_i
+        nlp_comparison.abstractor_abstraction_id_old = old_suggestion['abstractor_abstraction_id_old'].to_i
+        nlp_comparison.stable_identifier_path = old_suggestion['stable_identifier_path']
+        nlp_comparison.stable_identifier_value = old_suggestion['stable_identifier_value']
+        nlp_comparison.note_stable_identifier_id_old = old_suggestion['note_stable_identifier_id']
+        nlp_comparison.abstractor_subject_group_name = old_suggestion['abstractor_subject_group_name']
+        if old_suggestion['abstractor_abstraction_group_id'].present?
+          nlp_comparison.abstractor_abstraction_group_id = old_suggestion['abstractor_abstraction_group_id'].to_i
+        else
+          nlp_comparison.abstractor_abstraction_group_id = nil
+        end
+        nlp_comparison.predicate_old = old_suggestion['predicate']
+        nlp_comparison.predicate = map_predicate(old_suggestion['predicate'])
+        nlp_comparison.value_old = old_suggestion['value']
+        if old_suggestion['abstractor_abstraction_group_id'].present?
+          nlp_comparison.value_old_normalized = old_suggestion['value']
+        end
+        nlp_comparison.save!
+      end
+    end
+
+    NlpComparison.select('DISTINCT stable_identifier_value').each do |nlp_comparison|
+      NlpComparison.where("stable_identifier_value = ? AND abstractor_subject_group_name = 'Primary Cancer'", nlp_comparison.stable_identifier_value).select('DISTINCT abstractor_abstraction_group_id').each_with_index do |nlp_comparison2, i|
+        NlpComparison.where(abstractor_abstraction_group_id: nlp_comparison2.abstractor_abstraction_group_id).update_all(abstractor_subject_group_counter: i+1)
+      end
+    end
+
+    NlpComparison.select('DISTINCT stable_identifier_value').each do |nlp_comparison|
+      NlpComparison.where("stable_identifier_value = ? AND abstractor_subject_group_name = 'Metastatic Cancer'", nlp_comparison.stable_identifier_value).select('DISTINCT abstractor_abstraction_group_id').each_with_index do |nlp_comparison2, i|
+        NlpComparison.where(abstractor_abstraction_group_id: nlp_comparison2.abstractor_abstraction_group_id).update_all(abstractor_subject_group_counter: i+1)
+      end
+    end
+
+    new_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+    new_suggestions = new_suggestions.map { |new_suggestion| { stable_identifier_value: new_suggestion['stable_identifier_value'], predicate: new_suggestion['predicate'], value: new_suggestion['value'], abstractor_abstraction_group_id: new_suggestion['abstractor_abstraction_group_id'] } }.uniq
+
+    new_suggestions.each do |new_suggestion|
+      if new_suggestion[:abstractor_abstraction_group_id].blank?
+        NlpComparison.where(stable_identifier_value: new_suggestion[:stable_identifier_value], predicate: new_suggestion[:predicate]).update_all(value_new: new_suggestion[:value])
+      end
+    end
+
+    NlpComparison.where("value_old != 'not applicable' AND value_new != 'not applicable' AND value_old IS NOT NULL AND value_old IS NOT NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_old_float = CAST ( value_old AS float )')
+    NlpComparison.where("value_old != 'not applicable' AND value_new != 'not applicable' AND value_old IS NOT NULL AND value_old IS NOT NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_new_float = CAST ( value_new AS float )')
+    NlpComparison.where("value_old_float/100 = value_new_float").update_all('value_old_float = value_old_float/100')
+    NlpComparison.where("value_old_float IS NOT NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_old_normalized = CAST ( value_old_float AS varchar(255) )')
+    NlpComparison.where("value_new_float IS NOT NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_new_normalized = CAST ( value_new_float AS varchar(255) )')
+    NlpComparison.where("value_old_float IS NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_old_normalized = value_old')
+    NlpComparison.where("value_new_float IS NULL AND predicate IN ('has_ki67','has_p53')").update_all('value_new_normalized = value_new')
+    NlpComparison.where("predicate NOT IN('has_ki67','has_p53')").update_all('value_old_normalized = value_old')
+    NlpComparison.where("abstractor_abstraction_group_id IS NULL AND predicate NOT IN('has_ki67','has_p53')").update_all('value_old_normalized = value_old')
+    NlpComparison.where("abstractor_abstraction_group_id IS NULL AND predicate NOT IN('has_ki67','has_p53')").update_all('value_new_normalized = value_new')
+
+    new_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+    new_suggestions = new_suggestions.map { |new_suggestion| { stable_identifier_value: new_suggestion['stable_identifier_value'], predicate: new_suggestion['predicate'], value: new_suggestion['value'], abstractor_abstraction_group_id: new_suggestion['abstractor_abstraction_group_id'],  abstractor_subject_group_name: new_suggestion['abstractor_subject_group_name'], note_id: new_suggestion['note_id'] } }.uniq
+    # new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' && new_suggestion[:note_id] == '?' }
+    new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' }
+
+    new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
+      nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
+      if nlp_comparison.size == 1
+        puts 'goodbye'
+        nlp_comparison = nlp_comparison.first
+        nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.save!
+      end
+
+      if new_has_cancer_histology_suggestion[:value].present?
+        icdo3_histology_code = new_has_cancer_histology_suggestion[:value].scan(/\(\d{4}\/\d\)/).first
+        if icdo3_histology_code.present?
+          nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology').where("value_old like '%#{icdo3_histology_code}'")
+          if nlp_comparison.size == 1
+            puts 'goodbye'
+            nlp_comparison = nlp_comparison.first
+            nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+            nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+            nlp_comparison.save!
+          end
+        end
+      end
+    end
+
+    new_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+    new_suggestions = new_suggestions.map { |new_suggestion| { stable_identifier_value: new_suggestion['stable_identifier_value'], predicate: new_suggestion['predicate'], value: new_suggestion['value'], abstractor_abstraction_group_id: new_suggestion['abstractor_abstraction_group_id'],  abstractor_subject_group_name: new_suggestion['abstractor_subject_group_name'], note_id: new_suggestion['note_id'] } }.uniq
+    new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_metastatic_cancer_histology' }
+
+    new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
+      nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_metastatic_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
+      if nlp_comparison.size == 1
+        nlp_comparison = nlp_comparison.first
+        nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.save!
+      end
+
+    end
+  end
 end
 
 def create_name_dictionary_items(abstractor_abstraction_schema)
@@ -1274,4 +1409,17 @@ def canonical_format?(name, value, sentence)
   end
 
   canonical_format
+end
+
+def map_predicate(old_predicate)
+  predicate = case old_predicate
+  when 'has_metastatic_cancer_primary_site'
+    'has_cancer_primary_site'
+  when 'has_metastatic_cancer_recurrence_status'
+    'has_cancer_recurrence_status'
+  when 'has_metastatic_cancer_site_laterality'
+    'has_cancer_site_laterality'
+  else
+    old_predicate
+  end
 end

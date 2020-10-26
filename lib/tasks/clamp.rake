@@ -75,10 +75,26 @@ namespace :clamp do
       histology_synonyms = CSV.new(File.open('lib/setup/data/primary_cns_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
       histology_synonyms = histology_synonyms.select { |histology_synonym| histology_synonym['diagnosis_id'] == histology['id'] }
       histology_synonyms.each do |histology_synonym|
-        Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => histology_synonym['name'].downcase).first_or_create
+        normalized_values = OmopAbstractor::Setup.normalize(histology_synonym['name'].downcase)
+        normalized_values.each do |normalized_value|
+          Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => normalized_value.downcase).first_or_create
+        end
       end
+
+      # histology_synonyms = CSV.new(File.open('lib/setup/data/icdo3_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+      # histology_synonyms = histology_synonyms.select { |histology_synonym| histology_synonym['icdo3_code'] == histology['icdo3_code'] }
+      # histology_synonyms.each do |histology_synonym|
+      #   normalized_values = OmopAbstractor::Setup.normalize(histology_synonym['synonym_name'].downcase)
+      #   normalized_values.each do |normalized_value|
+      #     Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => normalized_value.downcase).first_or_create
+      #   end
+      # end
     end
     abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(vocabulary_code: '8000/3').first
+    abstractor_object_value.favor_more_specific = true
+    abstractor_object_value.save!
+
+    abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(value: 'glioma').first
     abstractor_object_value.favor_more_specific = true
     abstractor_object_value.save!
 
@@ -339,6 +355,9 @@ namespace :clamp do
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'yes').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'pos.').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'affirmative').first_or_create
+    Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'mutated').first_or_create
+    Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'idh-mutant').first_or_create
+    Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'idh-mutated').first_or_create
 
     abstractor_object_value = Abstractor::AbstractorObjectValue.where(value: 'negative', vocabulary_code: 'negative').first_or_create
     Abstractor::AbstractorAbstractionSchemaObjectValue.where(abstractor_abstraction_schema: abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value).first_or_create
@@ -365,6 +384,7 @@ namespace :clamp do
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'yes').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'pos.').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'affirmative').first_or_create
+    Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'mutated').first_or_create
 
     abstractor_object_value = Abstractor::AbstractorObjectValue.where(value: 'negative', vocabulary_code: 'negative').first_or_create
     Abstractor::AbstractorAbstractionSchemaObjectValue.where(abstractor_abstraction_schema: abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value).first_or_create
@@ -458,6 +478,7 @@ namespace :clamp do
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'yes').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'pos.').first_or_create
     Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'affirmative').first_or_create
+    Abstractor::AbstractorObjectValueVariant.where(abstractor_object_value: abstractor_object_value, value: 'mutated').first_or_create
 
     abstractor_object_value = Abstractor::AbstractorObjectValue.where(value: 'negative', vocabulary_code: 'negative').first_or_create
     Abstractor::AbstractorAbstractionSchemaObjectValue.where(abstractor_abstraction_schema: abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value).first_or_create
@@ -1178,29 +1199,7 @@ namespace :clamp do
         end
       end
 
-      # #1
-      # puts 'hello before'
-      # puts abstractor_note['source_id']
-      # note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
-      # puts note_stable_identifier.id
-      # puts abstractor_note['namespace_type']
-      # puts abstractor_note['namespace_id']
-      # puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
-      # note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
-      #   puts 'hello'
-      #   puts abstractor_abstraction_group.abstractor_subject_group.name
-      #   abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
-      #     if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-      #       puts 'here is a member'
-      #       puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-      #       puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-      #       # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
-      #       abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
-      #     end
-      #   end
-      # end
-
-      #2
+      #Post-processing across all schemas with an abstraction group
       puts 'hello before'
       puts abstractor_note['source_id']
       note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
@@ -1306,14 +1305,16 @@ namespace :clamp do
 
     new_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
     new_suggestions = new_suggestions.map { |new_suggestion| { stable_identifier_value: new_suggestion['stable_identifier_value'], predicate: new_suggestion['predicate'], value: new_suggestion['value'], abstractor_abstraction_group_id: new_suggestion['abstractor_abstraction_group_id'],  abstractor_subject_group_name: new_suggestion['abstractor_subject_group_name'], note_id: new_suggestion['note_id'] } }.uniq
-    # new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' && new_suggestion[:note_id] == '?' }
+    # new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' && new_suggestion[:note_id] == '38206682' }
     new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' }
 
     new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
-      nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
-      if nlp_comparison.size == 1
-        puts 'goodbye'
-        nlp_comparison = nlp_comparison.first
+      nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
+      # nlp_comparison = nlp_comparison.first
+
+      puts 'before the storm'
+      nlp_comparisons.each do |nlp_comparison|
+        puts 'round 1'
         nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
         nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
         nlp_comparison.save!
@@ -1322,10 +1323,9 @@ namespace :clamp do
       if new_has_cancer_histology_suggestion[:value].present?
         icdo3_histology_code = new_has_cancer_histology_suggestion[:value].scan(/\(\d{4}\/\d\)/).first
         if icdo3_histology_code.present?
-          nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology').where("value_old like '%#{icdo3_histology_code}'")
-          if nlp_comparison.size == 1
-            puts 'goodbye'
-            nlp_comparison = nlp_comparison.first
+          nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology').where("value_old like '%#{icdo3_histology_code}'")
+          nlp_comparisons.each do |nlp_comparison|
+            puts 'round 2'
             nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
             nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
             nlp_comparison.save!
@@ -1339,14 +1339,12 @@ namespace :clamp do
     new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_metastatic_cancer_histology' }
 
     new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
-      nlp_comparison = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_metastatic_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
-      if nlp_comparison.size == 1
-        nlp_comparison = nlp_comparison.first
+      nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_metastatic_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
+      nlp_comparisons.each do |nlp_comparison|
         nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
         nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
         nlp_comparison.save!
       end
-
     end
   end
 end

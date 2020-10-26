@@ -387,9 +387,15 @@ module Abstractor
                 if abstractor_abstraction_source
                   if abstractor_abstraction_source.detect_abstractor_abstraction_source_section(section_name)
                     if !abstractor_abstraction.suggested?
-                      accepted = true
-                      system_accepted = true
-                      system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                      if abstractor_object_value && !abstractor_object_value.favor_more_specific
+                        accepted = true
+                        system_accepted = true
+                        system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                      else
+                        accepted = nil
+                        system_accepted = false
+                        system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
+                      end
                     else
                       accepted = nil
                       system_accepted = false
@@ -425,12 +431,8 @@ module Abstractor
                                                                   system_accepted_reason: system_accepted_reason,
                                                                   system_rejected: system_rejected,
                                                                   system_rejected_reason: system_rejected_reason,
+                                                                  abstractor_object_value: abstractor_object_value
                                                                   )
-
-              if abstractor_object_value
-                abstractor_suggestion.abstractor_suggestion_object_value = Abstractor::AbstractorSuggestionObjectValue.new(abstractor_object_value: abstractor_object_value)
-                abstractor_suggestion.save!
-              end
             end
 
             if abstractor_abstraction_source

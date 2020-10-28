@@ -1348,10 +1348,41 @@ namespace :clamp do
         end
 
       end
+
       if new_has_cancer_histology_suggestion[:value] == 'glioblastoma (9440/3)'
         nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: ['glioblastoma, idh-mutant (9445/3)', 'glioblastoma, idh-wildtype (9440/3)'])
         nlp_comparisons.each do |nlp_comparison|
           puts 'round 3'
+          nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.save!
+        end
+      end
+
+      if new_has_cancer_histology_suggestion[:value] == 'glioblastoma (9440/3)'
+        nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: ['glioblastoma, idh-mutant (9445/3)', 'glioblastoma, idh-wildtype (9440/3)'])
+        nlp_comparisons.each do |nlp_comparison|
+          puts 'round 3'
+          nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.save!
+        end
+      end
+
+      if new_has_cancer_histology_suggestion[:value] == 'not applicable'
+        nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old_normalized: ['no evidence of tumor'])
+        nlp_comparisons.each do |nlp_comparison|
+          puts 'round 2'
+          nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.save!
+        end
+      end
+
+      if new_has_cancer_histology_suggestion[:value] == 'gliosis'
+        nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old_normalized: ['not applicable'])
+        nlp_comparisons.each do |nlp_comparison|
+          puts 'round 2'
           nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
           nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
           nlp_comparison.save!

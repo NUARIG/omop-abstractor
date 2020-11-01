@@ -253,12 +253,19 @@ namespace :clamp do
         end
       end
 
-      histology_synonyms = CSV.new(File.open('lib/setup/data/primary_cns_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+      histology_synonyms = CSV.new(File.open('lib/setup/data/metastatic_diagnosis_synonyms.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
       histology_synonyms = histology_synonyms.select { |histology_synonym| histology_synonym['diagnosis_id'] == histology['id'] }
       histology_synonyms.each do |histology_synonym|
-        Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => histology_synonym['name'].downcase).first_or_create
+        normalized_values = OmopAbstractor::Setup.normalize(histology_synonym['name'].downcase)
+        normalized_values.each do |normalized_value|
+          Abstractor::AbstractorObjectValueVariant.where(:abstractor_object_value => abstractor_object_value, :value => normalized_value.downcase).first_or_create
+        end
       end
     end
+
+    abstractor_object_value = abstractor_abstraction_schema.abstractor_object_values.where(vocabulary_code: '8000/6').first
+    abstractor_object_value.favor_more_specific = true
+    abstractor_object_value.save!
 
     abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_surgical_pathology.id, anchor: true).first_or_create
     abstractor_abstraction_source = Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp', section_required: true).first_or_create
@@ -1223,30 +1230,67 @@ namespace :clamp do
       puts abstractor_note['namespace_type']
       puts abstractor_note['namespace_id']
       puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
+      abstractor_abstraction_groups = note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id'])
       note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
         puts 'hello'
         puts abstractor_abstraction_group.abstractor_subject_group.name
-        abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
-          puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-          if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-            puts 'not suggested'
-            if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
-              if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
-                abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+        other_abstractor_abstraction_groups = abstractor_abstraction_groups - [abstractor_abstraction_group]
+        if !abstractor_abstraction_group.anchor.abstractor_abstraction.only_less_specific_suggested? || (abstractor_abstraction_group.anchor.abstractor_abstraction.only_less_specific_suggested? && other_abstractor_abstraction_groups.detect { |other_abstractor_abstraction_group| other_abstractor_abstraction_group.anchor.abstractor_abstraction.suggested? })
+          abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
+            puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
+            if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+              puts 'not suggested'
+              if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
+                if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+                else
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
+                end
               else
+                puts 'here is a member'
+                puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
+                puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+                # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
                 abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
               end
             else
-              puts 'here is a member'
-              puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-              puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-              # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
-              abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
+              puts 'suggested'
+              if !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
+                abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
+              end
             end
-          else
-            puts 'suggested'
-            if !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
-              abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
+          end
+        end
+      end
+
+      # Post-processing across all schemas within an abstraction group.  If only less specific suggested.
+      puts 'hello before'
+      puts abstractor_note['source_id']
+      note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
+      puts 'here is note_stable_identifier.id'
+      puts note_stable_identifier.id
+      puts abstractor_note['namespace_type']
+      puts abstractor_note['namespace_id']
+      puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
+      abstractor_abstraction_groups = note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id'])
+      note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
+        other_abstractor_abstraction_groups = abstractor_abstraction_groups - [abstractor_abstraction_group]
+        puts 'hello'
+        puts abstractor_abstraction_group.abstractor_subject_group.name
+        if abstractor_abstraction_group.anchor.abstractor_abstraction.only_less_specific_suggested? && !other_abstractor_abstraction_groups.detect { |other_abstractor_abstraction_group| other_abstractor_abstraction_group.anchor.abstractor_abstraction.suggested? }
+          abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
+            puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
+            if abstractor_abstraction_group_member.anchor?
+              abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
+            else
+              if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+                puts 'not suggested'
+                if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+                else
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
+                end
+              end
             end
           end
         end
@@ -1383,6 +1427,16 @@ namespace :clamp do
         nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old_normalized: ['not applicable'])
         nlp_comparisons.each do |nlp_comparison|
           puts 'round 2'
+          nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
+          nlp_comparison.save!
+        end
+      end
+
+      if new_has_cancer_histology_suggestion[:value] == 'ml, large b-cell, diffuse (9680/3)'
+        nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: ['malignant lymphoma (9590/3)'])
+        nlp_comparisons.each do |nlp_comparison|
+          puts 'round 3'
           nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]
           nlp_comparison.value_new_normalized = new_has_cancer_histology_suggestion[:value]
           nlp_comparison.save!

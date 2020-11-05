@@ -55,6 +55,7 @@ gem 'paper_trail'
 gem 'percentage'
 gem 'record_tag_helper'
 gem 'rest-client'
+gem 'roo'
 gem 'rubyzip'
 gem 'whenever', :require => false
 gem 'will_paginate'

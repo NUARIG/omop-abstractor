@@ -879,6 +879,7 @@ spinal cord,C72.0,t8
 spinal cord,C72.0,t9
 spinal cord,C72.0,t10
 spinal cord,C72.0,t11
+spinal cord,C72.0,t12
 spinal cord,C72.0,lumbar
 spinal cord,C72.0,sacral
 spinal cord,C72.0,vertebral
@@ -1114,3 +1115,42 @@ pelvic lymph nodes,C77.5,obturator lymph node
 "lymph node, nos",C77.9,lymph node
 parietal lobe,C71.3,parietal
 parietal lobe,C71.3,frontoparietal
+frontal lobe,C71.1,bifrontal
+spinal cord,C72.0,spinal tumor
+bones of skull and face and associated joints,C41.0,clival
+"cerebellum, nos",C71.6,cerebropontine
+"ventricle, nos",C71.5,ventricular
+"brain, nos",C71.9,caudate
+pituitary gland,C75.1,pitutiary
+spinal cord,C72.0,spinal canal
+bones of skull and face and associated joints,C41.0,cavernous
+bones of skull and face and associated joints,C41.0,ethmoid
+pineal gland,C75.3,pineal
+frontal lobe,C71.1,frontotemporal
+spinal cord,C72.0,paraspinal
+cerebrum,C71.0,insular
+overlapping lesion of brain,C71.8,splenium
+spinal meninges,C70.1,intradural
+spinal cord,C72.0,l1
+spinal cord,C72.0,l2
+spinal cord,C72.0,l3
+spinal cord,C72.0,l4
+spinal cord,C72.0,c1
+spinal cord,C72.0,c2
+spinal cord,C72.0,c3
+spinal cord,C72.0,c4
+spinal cord,C72.0,medullary
+"meninges, nos",C70.9,convexity
+spinal cord,C72.0,spine
+brain stem,C71.7,tectal
+"brain, nos",C71.9,cranial base
+spinal cord,C72.0,presacral
+spinal cord,C72.0,s1
+spinal cord,C72.0,s2
+spinal cord,C72.0,s3
+spinal cord,C72.0,s4
+spinal cord,C72.0,s5
+cerebrum,C71.0,perithalamic
+bones of skull and face and associated joints,C41.0,ethmoid
+"brain, nos",C71.9,posterior fossa
+spinal cord,C72.0,spinal fusion

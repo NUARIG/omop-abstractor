@@ -7,21 +7,15 @@ diagnosis_name,icdo3_code,synonym_name
 "neoplasm, benign",8000/0,tumor benign
 "neoplasm, benign",8000/0,benign unclassified tumor
 "neoplasm, benign",8000/0,unclassified tumor benign
-"neoplasm, uncertain whether benign or malignant",8000/1,"neoplasm, nos"
-"neoplasm, uncertain whether benign or malignant",8000/1,"tumor, nos"
 "neoplasm, uncertain whether benign or malignant",8000/1,"unclassified tumor, uncertain whether benign or malignant"
 "neoplasm, uncertain whether benign or malignant",8000/1,"unclassified tumor, borderline malignancy"
 "neoplasm, uncertain whether benign or malignant",8000/1,uncertain whether benign or malignant neoplasm
 "neoplasm, uncertain whether benign or malignant",8000/1,neoplasm uncertain whether benign or malignant
-"neoplasm, uncertain whether benign or malignant",8000/1,neoplasm
-"neoplasm, uncertain whether benign or malignant",8000/1,tumor
 "neoplasm, uncertain whether benign or malignant",8000/1,uncertain whether benign or malignant unclassified tumor
 "neoplasm, uncertain whether benign or malignant",8000/1,unclassified tumor uncertain whether benign or malignant
 "neoplasm, uncertain whether benign or malignant",8000/1,borderline malignancy unclassified tumor
 "neoplasm, uncertain whether benign or malignant",8000/1,unclassified tumor borderline malignancy
 "neoplasm, malignant",8000/3,"tumor, malignant, nos"
-"neoplasm, malignant",8000/3,malignancy
-"neoplasm, malignant",8000/3,cancer
 "neoplasm, malignant",8000/3,"unclassified tumor, malignant"
 "neoplasm, malignant",8000/3,"blastoma, nos"
 "neoplasm, malignant",8000/3,malignant neoplasm

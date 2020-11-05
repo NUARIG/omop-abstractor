@@ -739,7 +739,8 @@ ActiveRecord::Schema.define(version: 2020_10_21_111313) do
     t.integer "note_stable_identifier_id_old"
     t.integer "note_stable_identifier_id_new"
     t.string "abstractor_subject_group_name"
-    t.integer "abstractor_abstraction_group_id"
+    t.integer "abstractor_abstraction_group_id_old"
+    t.integer "abstractor_abstraction_group_id_new"
     t.integer "abstractor_subject_group_counter"
     t.integer "abstractor_abstraction_id_old", null: false
     t.string "predicate_old", null: false

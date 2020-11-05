@@ -5,6 +5,8 @@
 # bundle exec rake data:create_note_stable_identifier_entires
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
+# bundle exec rake clamp:calculate_performance
+# bundle exec rake clamp:migrate_calculate_performance
 
 # fake data
 # bundle exec rake abstractor:setup:system

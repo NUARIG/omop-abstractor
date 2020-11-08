@@ -313,7 +313,7 @@ namespace :clamp do
     sites = CSV.new(File.open('lib/setup/data/icdo3_sites.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
     primary_cns_sites = CSV.new(File.open('lib/setup/data/site_site_categories.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
     primary_cns_sites = primary_cns_sites.map { |primary_cns_site| primary_cns_site['icdo3_code'] }
-    sites = sites.select { |site| !primary_cns_sites.include?(site['icdo3_code']) }
+    sites = sites.reject { |site| primary_cns_sites.include?(site['icdo3_code']) || site['icdo3_code'] == 'C71' }
     sites.each do |site|
       abstractor_object_value = Abstractor::AbstractorObjectValue.where(:value => "#{site.to_hash['name']} (#{site.to_hash['icdo3_code']})".downcase, vocabulary_code: site.to_hash['icdo3_code'], vocabulary: 'ICD-O-3', vocabulary_version: '2011 Updates to ICD-O-3').first_or_create
       Abstractor::AbstractorAbstractionSchemaObjectValue.where(abstractor_abstraction_schema: abstractor_abstraction_schema, abstractor_object_value: abstractor_object_value).first_or_create
@@ -1575,6 +1575,7 @@ namespace :clamp do
               if new_suggestion.present?
                 nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
                 nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+                nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
                 nlp_comparison_other_field.save!
               end
             end
@@ -1597,6 +1598,7 @@ namespace :clamp do
             if new_suggestion.present?
               nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
               nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+              nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
               nlp_comparison_other_field.save!
             end
           end
@@ -1616,8 +1618,10 @@ namespace :clamp do
           nlp_comparisons_other_fields.each do |nlp_comparison_other_field|
             new_suggestion = new_suggestions.detect { |new_suggestion| new_suggestion[:abstractor_abstraction_group_id] == new_has_cancer_histology_suggestion[:abstractor_abstraction_group_id] && new_suggestion[:predicate] == nlp_comparison_other_field.predicate }
             if new_suggestion.present?
-              nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
+              nlp_comparison_other_field.value_old_normalized = new_suggestion[:value]
+              nlp_comparison_other_field.value_new = new_suggestion[:value]
               nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+              nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
               nlp_comparison_other_field.save!
             end
           end
@@ -1639,6 +1643,7 @@ namespace :clamp do
             if new_suggestion.present?
               nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
               nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+              nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
               nlp_comparison_other_field.save!
             end
           end
@@ -1660,6 +1665,7 @@ namespace :clamp do
             if new_suggestion.present?
               nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
               nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+              nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
               nlp_comparison_other_field.save!
             end
           end
@@ -1685,6 +1691,7 @@ namespace :clamp do
           if new_suggestion.present?
             nlp_comparison_other_field.value_new = new_suggestion[:vlaue]
             nlp_comparison_other_field.value_new_normalized = new_suggestion[:value]
+            nlp_comparison_other_field.abstractor_abstraction_group_id_new = new_suggestion[:abstractor_abstraction_group_id]
             nlp_comparison_other_field.save!
           end
         end

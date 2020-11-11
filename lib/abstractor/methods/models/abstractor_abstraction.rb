@@ -202,8 +202,8 @@ module Abstractor
           end
 
           def only_less_specific_suggested?
-            size = abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific }.size
-            size > 0 && size == abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value }.size
+            size = abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && !abstractor_suggestion.system_rejected && abstractor_suggestion.abstractor_suggestion_object_value && abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific }.size
+            size > 0 && size == abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.system_rejected }.size
           end
 
           def set_unknown!
@@ -259,8 +259,8 @@ module Abstractor
           end
 
           def set_only_suggestion!
-            if abstractor_suggestions.present?
-              suggestions = abstractor_suggestions.not_deleted.select{ |abstractor_suggestion| abstractor_suggestion.suggested_value.present? }
+            if abstractor_suggestions.not_deleted.present?
+              suggestions = abstractor_suggestions.not_deleted.select{ |abstractor_suggestion| abstractor_suggestion.suggested_value.present? &&  !abstractor_suggestion.system_rejected }
 
               if suggestions.size == 1
                 abstractor_suggestion = suggestions.first

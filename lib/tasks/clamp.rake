@@ -919,7 +919,6 @@ namespace :clamp do
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
             end
 
-
             anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == first_anchor_named_entity_section }
 
             prior_anchor_named_entities = []
@@ -1022,12 +1021,14 @@ namespace :clamp do
               puts 'sentence_match_value'
               puts clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
 
-              if named_entity.sentence.section
-                section_name = named_entity.sentence.section.name
-              else
-                section_name = nil
-              end
+              section_name = nil
+              # if named_entity.sentence.section
+              #   section_name = named_entity.sentence.section.name
+              # else
+              #   section_name = nil
+              # end
 
+              move = true
               aa = abstractor_abstraction
               if named_entity.sentence.section.present?
                 if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
@@ -1037,33 +1038,40 @@ namespace :clamp do
                         puts 'hello ninny!'
                         puts named_entity.semantic_tag_attribute
                         aa = abstractor_abstraction_group_member.abstractor_abstraction
+                        section_name = named_entity.sentence.section.name
+                        move = true
                       end
                     end
                   end
                 end
+              else
+                move = true
               end
 
-              suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
-              suggested_value = suggested_value.gsub(' - ', '-')
-              abstractor_suggestion = aa.abstractor_subject.suggest(
-              aa,
-              abstractor_abstraction_source,
-              clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
-              clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
-              abstractor_note['source_id'],
-              abstractor_note['source_type'],
-              abstractor_note['source_method'],
-              section_name, #suggestion_source[:section_name]
-              suggested_value,    #suggestion[:value]
-              false,                              #suggestion[:unknown].to_s.to_boolean
-              false,                              #suggestion[:not_applicable].to_s.to_boolean
-              nil,
-              nil,
-              named_entity.negated?               #suggestion[:negated].to_s.to_boolean
-              )
+              if move
+                suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
+                suggested_value = suggested_value.gsub(' - ', '-')
 
-              if !named_entity.negated?
-                suggested = true
+                abstractor_suggestion = aa.abstractor_subject.suggest(
+                aa,
+                abstractor_abstraction_source,
+                clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                abstractor_note['source_id'],
+                abstractor_note['source_type'],
+                abstractor_note['source_method'],
+                section_name, #suggestion_source[:section_name]
+                suggested_value,    #suggestion[:value]
+                false,                              #suggestion[:unknown].to_s.to_boolean
+                false,                              #suggestion[:not_applicable].to_s.to_boolean
+                nil,
+                nil,
+                named_entity.negated?               #suggestion[:negated].to_s.to_boolean
+                )
+
+                if !named_entity.negated?
+                  suggested = true
+                end
               end
             end
           end
@@ -1249,10 +1257,9 @@ namespace :clamp do
         end
       end
 
-      #Post-processing across all schemas with an abstraction group
+      # #Post-processing across all schemas with an abstraction group
       puts 'hello before'
       puts abstractor_note['source_id']
-      note_stable_identifier = NoteStableIdentifier.find(abstractor_note['source_id'])
       puts 'here is note_stable_identifier.id'
       puts note_stable_identifier.id
       puts abstractor_note['namespace_type']
@@ -1266,28 +1273,25 @@ namespace :clamp do
         if !abstractor_abstraction_group.anchor.abstractor_abstraction.only_less_specific_suggested? || (abstractor_abstraction_group.anchor.abstractor_abstraction.only_less_specific_suggested? && other_abstractor_abstraction_groups.detect { |other_abstractor_abstraction_group| other_abstractor_abstraction_group.anchor.abstractor_abstraction.suggested? })
           abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
             puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-            if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-              puts 'not suggested'
+
+            if abstractor_abstraction_group_member.abstractor_abstraction.suggested?
               if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
-                if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
+                if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
+                elsif abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
                   abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
-                else
-                  if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
-                    abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
-                  else
-                    abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
-                  end
                 end
               else
-                puts 'here is a member'
-                puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
-                puts abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-                # abstractor_abstraction_group_member.abstractor_abstraction.set_unknown!
                 abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
               end
             else
-              puts 'suggested'
-              if !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
+              if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
+                if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
+                elsif abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+                end
+              else
                 abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
               end
             end
@@ -1325,6 +1329,10 @@ namespace :clamp do
                   else
                     abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
                   end
+                end
+              else
+                if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
                 end
               end
             end
@@ -1460,6 +1468,71 @@ namespace :clamp do
           row['target'] = miss_latest_new['target']
           row['reason'] = miss_latest_new['reason']
           row['histology'] = miss_latest_new['histology']
+          row['category'] = miss_latest_new['category']
+        end
+        csv << row
+      end
+    end
+
+    ##site
+    misses = []
+    misses_latest_old = Roo::Spreadsheet.open('lib/setup/data/compare/misses_has_cancer_site_curated_old.xlsx')
+    misses_map = {
+       'note_id' => 0,
+       'value_old_normalized' => 1,
+       'value_new_normalized' => 2,
+       'source' => 3,
+       'target' => 4,
+       'reason' => 5,
+       'histology' => 6,
+       'category' => 7
+    }
+
+    for i in 2..misses_latest_old.sheet(0).last_row do
+      puts 'row'
+      puts i
+      miss = {}
+      miss['note_id'] = misses_latest_old.sheet(0).row(i)[misses_map['note_id']]
+      miss['value_old_normalized'] = misses_latest_old.sheet(0).row(i)[misses_map['value_old_normalized']]
+      miss['value_new_normalized'] = misses_latest_old.sheet(0).row(i)[misses_map['value_new_normalized']]
+      miss['source'] = misses_latest_old.sheet(0).row(i)[misses_map['source']]
+      miss['target'] = misses_latest_old.sheet(0).row(i)[misses_map['target']]
+      miss['reason'] = misses_latest_old.sheet(0).row(i)[misses_map['reason']]
+      miss['site'] = misses_latest_old.sheet(0).row(i)[misses_map['site']]
+      miss['category'] = misses_latest_old.sheet(0).row(i)[misses_map['category']]
+      misses << miss
+    end
+
+    misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_has_cancer_site_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+
+    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'site',	'category']
+    row_header = CSV::Row.new(headers, headers, true)
+    row_template = CSV::Row.new(headers, [], false)
+
+    CSV.open('lib/setup/data/compare/misses_has_cancer_site_new_curated.csv', "wb") do |csv|
+      csv << row_header
+      misses_latest_new.each do |miss_latest_new|
+        row = row_template.dup
+        puts miss_latest_new['note_id']
+        row['note_id'] = miss_latest_new['note_id']
+        puts miss_latest_new['value_old_normalized']
+        row['value_old_normalized'] = miss_latest_new['value_old_normalized']
+        row['value_new_normalized'] = miss_latest_new['value_new_normalized']
+        miss = misses.detect { |miss| miss['note_id'].to_s == miss_latest_new['note_id'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
+
+        if miss.present?
+          puts 'not so much'
+          row['source'] = miss['source']
+          row['target'] = miss['target']
+          row['reason'] = miss['reason']
+          row['site'] = miss['site']
+          row['category'] = miss['category']
+        else
+          puts 'same old'
+          row['source'] = miss_latest_new['source']
+          row['target'] = miss_latest_new['target']
+          row['reason'] = miss_latest_new['reason']
+          row['site'] = miss_latest_new['site']
           row['category'] = miss_latest_new['category']
         end
         csv << row

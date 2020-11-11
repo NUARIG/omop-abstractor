@@ -399,7 +399,7 @@ module Abstractor
                     else
                       accepted = nil
                       system_accepted = false
-                      system_rejected = true
+                      system_rejected = false
                       system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
                     end
                   else
@@ -410,6 +410,13 @@ module Abstractor
                       system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_REASON_NO_SECTION_MATCH
                     end
                   end
+                end
+              else
+                if abstractor_abstraction_source.section_required
+                  accepted = false
+                  system_accepted = false
+                  system_rejected = true
+                  system_rejected_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_REASON_NO_SECTION_MATCH
                 end
               end
 

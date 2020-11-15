@@ -1274,23 +1274,29 @@ namespace :clamp do
           abstractor_abstraction_group.abstractor_abstraction_group_members.not_deleted.each do |abstractor_abstraction_group_member|
             puts abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
 
+            # member suggested
             if abstractor_abstraction_group_member.abstractor_abstraction.suggested?
+              #anchor suggested
               if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
                 if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
                   abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
-                elsif abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
-                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
                 end
+              #anchor not suggested
               else
                 abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
               end
+            #member not suggested
             else
+              #anchor suggested
               if abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
                 if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
                   abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
                 elsif abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
                   abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+                else
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
                 end
+              #anchor not suggested
               else
                 abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
               end
@@ -1319,20 +1325,18 @@ namespace :clamp do
             if abstractor_abstraction_group_member.anchor?
               abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
             else
-              if !abstractor_abstraction_group_member.abstractor_abstraction.suggested?
-                puts 'not suggested'
-                if abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
-                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
-                else
-                  if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
-                    abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
-                  else
-                    abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
-                  end
-                end
-              else
+              if abstractor_abstraction_group_member.abstractor_abstraction.suggested?
                 if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
                   abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
+                end
+              else
+                puts 'not suggested'
+                if abstractor_abstraction_group_member.abstractor_abstraction.only_less_specific_suggested?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_only_suggestion!
+                elsif abstractor_abstraction_group_member.abstractor_abstraction.detault_suggested_value?
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_detault_suggested_value!(abstractor_note['source_id'], abstractor_note['source_type'], abstractor_note['source_method'],)
+                else
+                  abstractor_abstraction_group_member.abstractor_abstraction.set_not_applicable!
                 end
               end
             end

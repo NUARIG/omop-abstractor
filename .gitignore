@@ -48,3 +48,5 @@ lib/setup/data/pathology_cases/*.txt
 abstractor_clamp_data_dictionary.txt
 lib/ClampCmd_1.6.3/
 lib/setup/data
+doc/omop_abstractor.txt
+doc/utility/compare.sql

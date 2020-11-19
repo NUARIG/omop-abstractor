@@ -1021,13 +1021,7 @@ namespace :clamp do
               puts 'sentence_match_value'
               puts clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
 
-              # if named_entity.sentence.section
-              #   section_name = named_entity.sentence.section.name
-              # else
-              #   section_name = nil
-              # end
               section_name = nil
-              suggest = false
               aa = abstractor_abstraction
               if named_entity.sentence.section.present?
                 if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
@@ -1038,18 +1032,54 @@ namespace :clamp do
                         puts named_entity.semantic_tag_attribute
                         aa = abstractor_abstraction_group_member.abstractor_abstraction
                         section_name = named_entity.sentence.section.name
-                        suggest = true
+
+
+                        suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
+                        suggested_value = suggested_value.gsub(' - ', '-')
+
+                        abstractor_suggestion = aa.abstractor_subject.suggest(
+                        aa,
+                        abstractor_abstraction_source,
+                        clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                        clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                        abstractor_note['source_id'],
+                        abstractor_note['source_type'],
+                        abstractor_note['source_method'],
+                        section_name, #suggestion_source[:section_name]
+                        suggested_value,    #suggestion[:value]
+                        false,                              #suggestion[:unknown].to_s.to_boolean
+                        false,                              #suggestion[:not_applicable].to_s.to_boolean
+                        nil,
+                        nil,
+                        named_entity.negated?               #suggestion[:negated].to_s.to_boolean
+                        )
+
                       end
                     end
                   end
                 else
-                  if aa.anchor?
-                    suggest = true
-                  end
-                end
-              end
+                  suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
+                  suggested_value = suggested_value.gsub(' - ', '-')
 
-              if suggest
+                  abstractor_suggestion = aa.abstractor_subject.suggest(
+                  aa,
+                  abstractor_abstraction_source,
+                  clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                  clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                  abstractor_note['source_id'],
+                  abstractor_note['source_type'],
+                  abstractor_note['source_method'],
+                  section_name, #suggestion_source[:section_name]
+                  suggested_value,    #suggestion[:value]
+                  false,                              #suggestion[:unknown].to_s.to_boolean
+                  false,                              #suggestion[:not_applicable].to_s.to_boolean
+                  nil,
+                  nil,
+                  named_entity.negated?               #suggestion[:negated].to_s.to_boolean
+                  )
+                end
+              else
+                puts 'we got to be a good person'
                 suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
                 suggested_value = suggested_value.gsub(' - ', '-')
 
@@ -1069,10 +1099,9 @@ namespace :clamp do
                 nil,
                 named_entity.negated?               #suggestion[:negated].to_s.to_boolean
                 )
-
-                if !named_entity.negated?
-                  suggested = true
-                end
+              end
+              if !named_entity.negated?
+                suggested = true
               end
             end
           end

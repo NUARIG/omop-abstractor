@@ -270,6 +270,10 @@ module Abstractor
               end
             end
           end
+
+          def anchor?
+            abstractor_subject.anchor
+          end
         end
 
         module ClassMethods

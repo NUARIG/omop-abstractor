@@ -1021,14 +1021,13 @@ namespace :clamp do
               puts 'sentence_match_value'
               puts clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
 
-              section_name = nil
               # if named_entity.sentence.section
               #   section_name = named_entity.sentence.section.name
               # else
               #   section_name = nil
               # end
-
-              move = true
+              section_name = nil
+              suggest = false
               aa = abstractor_abstraction
               if named_entity.sentence.section.present?
                 if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
@@ -1039,16 +1038,18 @@ namespace :clamp do
                         puts named_entity.semantic_tag_attribute
                         aa = abstractor_abstraction_group_member.abstractor_abstraction
                         section_name = named_entity.sentence.section.name
-                        move = true
+                        suggest = true
                       end
                     end
                   end
+                else
+                  if aa.anchor?
+                    suggest = true
+                  end
                 end
-              else
-                move = true
               end
 
-              if move
+              if suggest
                 suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
                 suggested_value = suggested_value.gsub(' - ', '-')
 
@@ -1483,13 +1484,14 @@ namespace :clamp do
     misses_latest_old = Roo::Spreadsheet.open('lib/setup/data/compare/misses_has_cancer_site_curated_old.xlsx')
     misses_map = {
        'note_id' => 0,
-       'value_old_normalized' => 1,
-       'value_new_normalized' => 2,
-       'source' => 3,
-       'target' => 4,
-       'reason' => 5,
-       'site' => 6,
-       'category' => 7
+       'abstractor_subject_group_name' => 1,
+       'value_old_normalized' => 2,
+       'value_new_normalized' => 3,
+       'source' => 4,
+       'target' => 5,
+       'reason' => 6,
+       'site' => 7,
+       'category' => 8
     }
 
     for i in 2..misses_latest_old.sheet(0).last_row do

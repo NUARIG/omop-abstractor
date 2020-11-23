@@ -1231,7 +1231,44 @@ namespace :clamp do
             if named_entities_names.any?
               named_entities_names.each do |named_entity_name|
                 values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
-                if values.any?  && values.size <= 3
+                values.reject! { |value| named_entity_name.overlap?(value) }
+                move = true
+                if values.size == 2 #&& values.last.semantic_tag_value.scan('%').present?
+                  value_last = values.last.semantic_tag_value.gsub('%', '')
+                  sentence = clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end]
+                  regexp = Regexp.new("#{values.first.semantic_tag_value}\-#{value_last}\%")
+                  match = sentence.match(regexp)
+                  if match
+                    values.first.semantic_tag_value = (Percentage.new((((values.first.semantic_tag_value.to_f + values.last.semantic_tag_value.to_f)/2)) / 100)).value.to_s
+                    abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                    abstractor_abstraction,
+                    abstractor_abstraction_source,
+                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                    abstractor_note['source_id'],
+                    abstractor_note['source_type'],
+                    abstractor_note['source_method'],
+                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                    values.first.semantic_tag_value,                         #suggestion[:value]
+                    false,                                            #suggestion[:unknown].to_s.to_boolean
+                    false,                                            #suggestion[:not_applicable].to_s.to_boolean
+                    nil,
+                    nil,
+                    (named_entity_name.negated? || values.first.negated?)    #suggestion[:negated].to_s.to_boolean
+                    )
+                    if !named_entity_name.negated? && !values.first.negated?
+                      suggestions << abstractor_suggestion
+                      suggested = true
+                      # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                      #   abstractor_suggestion.accepted = true
+                      #   abstractor_suggestion.save!
+                      # end
+                    end
+                    move = false
+                  end
+                end
+
+                if move && values.any? && values.size <= 4
                   values.each do |value|
                     abstractor_abstraction.reload
                     if value.semantic_tag_value.scan('%').present?
@@ -1584,7 +1621,7 @@ namespace :clamp do
     old_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
     old_suggestions.each do |old_suggestion|
-      puts old_suggestion['abstractor_abstraction_id_old']
+      puts old_suggestion['note_id'].to_i
       if NlpComparison.where(abstractor_abstraction_id_old: old_suggestion['abstractor_abstraction_id_old'].to_i).first.blank?
         nlp_comparison = NlpComparison.new
         nlp_comparison.note_id = old_suggestion['note_id'].to_i

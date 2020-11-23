@@ -13,3 +13,10 @@ end
 named_entity = @document.named_entities.detect do |named_entity|
   named_entity.semantic_tag_value == 'osteosarcoma (9180/3)'
 end
+
+
+values = [5,10]
+sentence = 'The p53 immunostain shows moderate immunoreactivity in about 5-10% of the tumor cells.'
+regexp = Regexp.new("#{values.first}\-#{values.last}\%")
+match = sentence.match(regexp)
+hello = (Percentage.new((((values.first.to_f + values.last.to_f)/2)) / 100))

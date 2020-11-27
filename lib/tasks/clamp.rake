@@ -1166,6 +1166,26 @@ namespace :clamp do
                         end
                       end
                     end
+                  else
+                    if !named_entity_name.negated?
+                      suggested = true
+                      abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                      abstractor_abstraction,
+                      abstractor_abstraction_source,
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      abstractor_note['source_id'],
+                      abstractor_note['source_type'],
+                      abstractor_note['source_method'],
+                      named_entity_name.sentence.section.name, #suggestion_source[:section_name]
+                      nil,                 #suggestion[:value]
+                      true,                                     #suggestion[:unknown].to_s.to_boolean
+                      false,                                     #suggestion[:not_applicable].to_s.to_boolean
+                      nil,
+                      nil,
+                      false,  #suggestion[:negated].to_s.to_boolean
+                      )
+                    end
                   end
                 end
               end
@@ -1207,6 +1227,26 @@ namespace :clamp do
                         abstractor_suggestion.accepted = true
                         abstractor_suggestion.save!
                       end
+                    end
+                  else
+                    if !named_entity_name.negated?
+                      suggested = true
+                      abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                      abstractor_abstraction,
+                      abstractor_abstraction_source,
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      abstractor_note['source_id'],
+                      abstractor_note['source_type'],
+                      abstractor_note['source_method'],
+                      nil, #suggestion_source[:section_name]
+                      nil,                 #suggestion[:value]
+                      true,                                     #suggestion[:unknown].to_s.to_boolean
+                      false,                                     #suggestion[:not_applicable].to_s.to_boolean
+                      nil,
+                      nil,
+                      false   #suggestion[:negated].to_s.to_boolean
+                      )
                     end
                   end
                 end
@@ -1301,6 +1341,26 @@ namespace :clamp do
                         # end
                       end
                     end
+                  end
+                end
+                if values.empty?
+                  if !named_entity_name.negated?
+                    abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                    abstractor_abstraction,
+                    abstractor_abstraction_source,
+                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                    abstractor_note['source_id'],
+                    abstractor_note['source_type'],
+                    abstractor_note['source_method'],
+                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                    nil,                         #suggestion[:value]
+                    true,                                            #suggestion[:unknown].to_s.to_boolean
+                    false,                                            #suggestion[:not_applicable].to_s.to_boolean
+                    nil,
+                    nil,
+                    named_entity_name.negated?    #suggestion[:negated].to_s.to_boolean
+                    )
                   end
                 end
               end
@@ -1447,7 +1507,7 @@ namespace :clamp do
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_latest_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category']
+    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1460,6 +1520,7 @@ namespace :clamp do
         puts miss_latest_new['value_old_normalized']
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
+        row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
         miss = misses.detect { |miss| miss['note_id'].to_s == miss_latest_new['note_id'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?

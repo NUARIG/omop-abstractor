@@ -40,7 +40,6 @@ select  nlc.note_id
 	    , nlc.value_new_normalized
       , nlc.abstractor_subject_group_name
       , 1 as group
-
 from nlp_comparisons nlc
 where nlc.predicate = 'has_cancer_site'
 and nlc.value_old_normalized != nlc.value_new_normalized

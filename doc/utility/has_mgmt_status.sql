@@ -34,8 +34,6 @@ and not exists(
 )
 
 --curated
-
-
 select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized

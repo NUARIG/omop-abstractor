@@ -9,12 +9,6 @@ from nlp_comparisons nlc
 where  nlc.predicate = 'has_metastatic_cancer_histology'
 and nlc.abstractor_abstraction_group_id_new is not null
 
---raw punts
-select abstractor_abstraction_group_id_old, *
-from nlp_comparisons nlc
-where  nlc.predicate = 'has_metastatic_cancer_histology'
-and nlc.abstractor_abstraction_group_id_new is null
-
 --punts
 select abstractor_abstraction_group_id_old, *
 from nlp_comparisons nlc
@@ -45,6 +39,8 @@ and exists(
 -- )
 
 --curated
+select *
+from(
 select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
@@ -78,3 +74,5 @@ and not exists(
     aa.not_applicable is null
   )
 )
+) data
+where data.value_new_normalized != 'not applicable'

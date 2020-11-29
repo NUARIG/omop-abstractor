@@ -34,6 +34,8 @@ and not exists(
 )
 
 --curated
+select *
+from (
 select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
@@ -72,3 +74,5 @@ and exists(
   )
   and nlc1.abstractor_subject_group_name = asg.name
 )
+) data
+where data.value_new_normalized != 'not applicable'

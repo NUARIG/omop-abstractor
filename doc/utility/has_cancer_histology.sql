@@ -45,6 +45,8 @@ and exists(
 -- )
 
 --curated
+select *
+from (
 select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
@@ -78,3 +80,5 @@ and not exists(
     aa.not_applicable is null
   )
 )
+) data
+--where data.value_new_normalized != 'not applicable'

@@ -20,9 +20,13 @@ module ClampMapper
     def negated?
       @assertion == 'absent'
     end
-    
+
     def overlap?(other)
-      other.named_entity_begin >= self.named_entity_begin  && other.named_entity_begin <= self.named_entity_end && other.named_entity_end >= self.named_entity_begin && other.named_entity_end <= self.named_entity_end      
+      other.named_entity_begin >= self.named_entity_begin  && other.named_entity_begin <= self.named_entity_end && other.named_entity_end >= self.named_entity_begin && other.named_entity_end <= self.named_entity_end
+    end
+
+    def to_s
+      document.text[self.named_entity_begin...self.named_entity_end]
     end
   end
 end

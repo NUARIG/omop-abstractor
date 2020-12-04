@@ -1,6 +1,6 @@
 module ClampMapper
   class Section
-    attr_accessor :document, :section_begin, :section_end, :section_names, :name, :named_entity
+    attr_accessor :document, :section_begin, :section_end, :name, :named_entity
     def initialize(document, section_begin, section_end)
       @document = document
       @section_begin = section_begin.to_i
@@ -9,16 +9,24 @@ module ClampMapper
       if @named_entity
         @name = @named_entity.semantic_tag
       else
-        @name = nil        
+        @name = nil
       end
     end
-    
+
     def ==(other)
       self.section_begin == other.section_begin && self.section_end == other.section_end
     end
-    
+
     def section_range
-      @section_begin..@section_end      
+      @section_begin..@section_end
+    end
+
+    def to_s
+      named_entity.to_s
+    end
+
+    def trigger
+      to_s[to_s.length-2]
     end
   end
 end

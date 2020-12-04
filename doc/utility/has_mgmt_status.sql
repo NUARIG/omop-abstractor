@@ -34,6 +34,8 @@ and not exists(
 )
 
 --curated
+select *
+from(
 select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
@@ -78,3 +80,5 @@ and nlc1.stable_identifier_value not in(
 ,'10267556267'
 ,'10301739029'
 )
+) data
+where data.value_new_normalized != 'not applicable'

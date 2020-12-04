@@ -18,32 +18,30 @@ def abstractor_suggestor(options = {})
     puts abstractor_namespace.subject_type.constantize.missing_abstractor_namespace_event(abstractor_namespace.id).joins(abstractor_namespace.joins_clause).where(abstractor_namespace.where_clause).to_sql
     puts 'hello'
     puts abstractor_namespace.subject_type.constantize.missing_abstractor_namespace_event(abstractor_namespace.id).joins(abstractor_namespace.joins_clause).where(abstractor_namespace.where_clause).size
-    abstractor_namespace.subject_type.constantize.missing_abstractor_namespace_event(abstractor_namespace.id).joins(abstractor_namespace.joins_clause).where(abstractor_namespace.where_clause).each do |abstractable_event|
+    abstractor_namespace.subject_type.constantize.missing_abstractor_namespace_event(abstractor_namespace.id).joins(abstractor_namespace.joins_clause).where(abstractor_namespace.where_clause).where(stable_identifier_value: stable_identifier_values).each do |abstractable_event|
       puts 'what we got?'
       puts abstractable_event.id
       child_pid = fork do
         if options[:multiple]
-          if stable_identifier_values.include?(abstractable_event.stable_identifier_value)
-            puts 'here is the stable_identifier_value'
-            puts abstractable_event.stable_identifier_value
+          puts 'here is the stable_identifier_value'
+          puts abstractable_event.stable_identifier_value
 
-            note_titles = ['Microscopic Description', 'Addendum']
-            procedure_occurrence_options = {}
-            procedure_occurrence_options[:username] = 'mjg994'
-            procedure_occurrence_options[:include_parent_procedures] = false
-            note = abstractable_event.note
-            note_options = {}
-            note_options[:username] = 'mjg994'
-            note_options[:except_notes] = [note]
-            note.procedure_occurences(procedure_occurrence_options).each do |procedure_occurence|
-              procedure_occurence.notes(note_options).each do |other_note|
-                if note_titles.include?(other_note.note_title)
-                  note.note_text = "#{note.note_text}\n----------------------------------\n#{other_note.note_title}\n----------------------------------\n#{other_note.note_text}"
-                  note.save!
-                  note.reload
-                else
-                  puts 'not so much'
-                end
+          note_titles = ['Microscopic Description', 'Addendum']
+          procedure_occurrence_options = {}
+          procedure_occurrence_options[:username] = 'mjg994'
+          procedure_occurrence_options[:include_parent_procedures] = false
+          note = abstractable_event.note
+          note_options = {}
+          note_options[:username] = 'mjg994'
+          note_options[:except_notes] = [note]
+          note.procedure_occurences(procedure_occurrence_options).each do |procedure_occurence|
+            procedure_occurence.notes(note_options).each do |other_note|
+              if note_titles.include?(other_note.note_title)
+                note.note_text = "#{note.note_text}\n----------------------------------\n#{other_note.note_title}\n----------------------------------\n#{other_note.note_text}"
+                note.save!
+                note.reload
+              else
+                puts 'not so much'
               end
             end
 

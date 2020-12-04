@@ -884,7 +884,7 @@ namespace :clamp do
       puts file
       abstractor_note = ClampMapper::ProcessNote.process(JSON.parse(File.read(file)))
       File.write(file.gsub(/\/([^\/]*)\.json$/, '/archive/\1.json'), JSON.pretty_generate(abstractor_note))
-      clamp_note = ClampMapper::Parser.new.read(abstractor_note)
+      clamp_document = ClampMapper::Parser.new.read(abstractor_note)
 
       puts 'hello before'
       puts abstractor_note['source_id']
@@ -894,8 +894,35 @@ namespace :clamp do
       puts abstractor_note['namespace_id']
       puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
 
+      sections_grouped = clamp_document.sections.group_by do |section|
+        section.name
+      end
+
+      bad_guy_sections = []
+      sections_grouped.each do |section_name, sections|
+        if section_name == 'SPECIMEN'
+          previous_section_trigger = sections.first.trigger
+          sections.each do |section|
+            puts 'section token'
+            puts section.to_s
+            puts 'trigger'
+            puts section.trigger
+
+            if section.trigger.downcase < previous_section_trigger.downcase
+              bad_guy_sections << section
+            else
+              previous_section_trigger = section.trigger
+            end
+          end
+        end
+      end
+
+      bad_guy_sections.each do |bad_guy_section|
+        clamp_document.sections.reject! { |section| section == bad_guy_section  }
+      end
+
       section_abstractor_abstraction_group_map = {}
-      if clamp_note.sections.any?
+      if clamp_document.sections.any?
         note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
           puts 'hello'
           puts abstractor_abstraction_group.abstractor_subject_group.name
@@ -909,7 +936,7 @@ namespace :clamp do
               end
             end
             anchor_sections.uniq!
-            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? && anchor_sections.include?(named_entity.sentence.section.name) }
+            anchor_named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && !named_entity.negated? && named_entity.sentence.section && anchor_sections.include?(named_entity.sentence.section.name) }
             anchor_named_entity_sections = anchor_named_entities.group_by{ |anchor_named_entity|  anchor_named_entity.sentence.section.section_range }.keys.sort_by(&:min)
 
             first_anchor_named_entity_section = anchor_named_entity_sections.shift
@@ -919,13 +946,13 @@ namespace :clamp do
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
             end
 
-            anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == first_anchor_named_entity_section }
+            anchor_named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section && named_entity.sentence.section.section_range == first_anchor_named_entity_section }
 
             prior_anchor_named_entities = []
             prior_anchor_named_entities << anchor_named_entities.map(&:semantic_tag_value).sort
             for anchor_named_entity_section in anchor_named_entity_sections
               #moomin
-              anchor_named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section.section_range == anchor_named_entity_section }
+              anchor_named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == anchor_predicate && named_entity.sentence.section && named_entity.sentence.section.section_range == anchor_named_entity_section }
 
               unless prior_anchor_named_entities.include?(anchor_named_entities.map(&:semantic_tag_value).sort)
 
@@ -992,7 +1019,7 @@ namespace :clamp do
         # ABSTRACTOR_RULE_TYPE_UNKNOWN = 'unknown'
         case abstractor_abstraction_source.abstractor_rule_type.name
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_VALUE
-          named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
+          named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
           puts 'here is the predicate'
           puts abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
           puts 'how much you got?'
@@ -1002,7 +1029,7 @@ namespace :clamp do
             named_entities.each do |named_entity|
               abstractor_abstraction.reload
               puts 'here is the note'
-              puts clamp_note.text
+              puts clamp_document.text
 
               puts 'named_entity_begin'
               puts named_entity.named_entity_begin
@@ -1017,9 +1044,9 @@ namespace :clamp do
               puts named_entity.sentence.sentence_end
 
               puts 'match_value'
-              puts clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end]
+              puts clamp_document.text[named_entity.named_entity_begin..named_entity.named_entity_end]
               puts 'sentence_match_value'
-              puts clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
+              puts clamp_document.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end]
 
               section_name = nil
               aa = abstractor_abstraction
@@ -1040,8 +1067,8 @@ namespace :clamp do
                         abstractor_suggestion = aa.abstractor_subject.suggest(
                         aa,
                         abstractor_abstraction_source,
-                        clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
-                        clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                        clamp_document.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                        clamp_document.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                         abstractor_note['source_id'],
                         abstractor_note['source_type'],
                         abstractor_note['source_method'],
@@ -1064,8 +1091,8 @@ namespace :clamp do
                   abstractor_suggestion = aa.abstractor_subject.suggest(
                   aa,
                   abstractor_abstraction_source,
-                  clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
-                  clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                  clamp_document.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                  clamp_document.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                   abstractor_note['source_id'],
                   abstractor_note['source_type'],
                   abstractor_note['source_method'],
@@ -1086,8 +1113,8 @@ namespace :clamp do
                 abstractor_suggestion = aa.abstractor_subject.suggest(
                 aa,
                 abstractor_abstraction_source,
-                clamp_note.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
-                clamp_note.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                clamp_document.text[named_entity.named_entity_begin..named_entity.named_entity_end], #suggestion_source[:match_value],
+                clamp_document.text[named_entity.sentence.sentence_begin..named_entity.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                 abstractor_note['source_id'],
                 abstractor_note['source_type'],
                 abstractor_note['source_method'],
@@ -1110,7 +1137,7 @@ namespace :clamp do
             abstractor_abstraction.set_not_applicable!
           end
         when Abstractor::Enum::ABSTRACTOR_RULE_TYPE_NAME_VALUE
-          named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
+          named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
           # ABSTRACTOR_OBJECT_TYPE_LIST                 = 'list'
           # ABSTRACTOR_OBJECT_TYPE_RADIO_BUTTON_LIST    = 'radio button list'
 
@@ -1125,31 +1152,38 @@ namespace :clamp do
 
           case abstractor_abstraction_schema.abstractor_object_type.value
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_LIST, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_RADIO_BUTTON_LIST
-            named_entities = clamp_note.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
+            named_entities = clamp_document.named_entities.select { |named_entity|  named_entity.semantic_tag_attribute == abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate }
             puts 'how much you got?'
             puts named_entities.size
             suggested = false
             suggestions = []
             if abstractor_abstraction_schema.deleted_non_deleted_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
-              named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'deleted_non_deleted' && named_entity.semantic_tag_value_type == 'Value'  }
+              named_entities_values = clamp_document.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'deleted_non_deleted' && named_entity.semantic_tag_value_type == 'Value'  }
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|
                   abstractor_abstraction.reload
                   values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                   suggested = false
+
+                  if named_entity_name.sentence.section
+                    section_name = named_entity_name.sentence.section.name
+                  else
+                    section_name = nil
+                  end
+
                   if values.any?
                     values.each do |value|
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
                       abstractor_note['source_method'],
-                      named_entity_name.sentence.section.name, #suggestion_source[:section_name]
+                      section_name, #suggestion_source[:section_name]
                       value.semantic_tag_value,                 #suggestion[:value]
                       false,                                     #suggestion[:unknown].to_s.to_boolean
                       false,                                     #suggestion[:not_applicable].to_s.to_boolean
@@ -1160,7 +1194,7 @@ namespace :clamp do
                       if !named_entity_name.negated? && !value.negated?
                         suggestions << abstractor_suggestion
                         suggested = true
-                        if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        if canonical_format?(clamp_document.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_document.text[value.named_entity_begin..value.named_entity_end], clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                           abstractor_suggestion.accepted = true
                           abstractor_suggestion.save!
                         end
@@ -1172,12 +1206,12 @@ namespace :clamp do
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
                       abstractor_note['source_method'],
-                      named_entity_name.sentence.section.name, #suggestion_source[:section_name]
+                      section_name, #suggestion_source[:section_name]
                       nil,                 #suggestion[:value]
                       true,                                     #suggestion[:unknown].to_s.to_boolean
                       false,                                     #suggestion[:not_applicable].to_s.to_boolean
@@ -1191,7 +1225,7 @@ namespace :clamp do
               end
             elsif abstractor_abstraction_schema.positive_negative_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
-              named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'positive_negative'  && named_entity.semantic_tag_value_type == 'Value'  }
+              named_entities_values = clamp_document.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'positive_negative'  && named_entity.semantic_tag_value_type == 'Value'  }
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|
@@ -1208,8 +1242,8 @@ namespace :clamp do
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
                       abstractor_note['source_method'],
@@ -1223,7 +1257,7 @@ namespace :clamp do
                       )
                       suggestions << abstractor_suggestion
                       suggested = true
-                      if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                      if canonical_format?(clamp_document.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_document.text[value.named_entity_begin..value.named_entity_end], clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                         abstractor_suggestion.accepted = true
                         abstractor_suggestion.save!
                       end
@@ -1234,8 +1268,8 @@ namespace :clamp do
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
                       abstractor_note['source_method'],
@@ -1265,7 +1299,7 @@ namespace :clamp do
             end
           when Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER, Abstractor::Enum::ABSTRACTOR_OBJECT_TYPE_NUMBER_LIST
             named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
-            named_entities_values = clamp_note.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'number' && named_entity.semantic_tag_value_type == 'Value'  }
+            named_entities_values = clamp_document.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'number' && named_entity.semantic_tag_value_type == 'Value'  }
             suggested = false
             suggestions = []
             if named_entities_names.any?
@@ -1273,9 +1307,15 @@ namespace :clamp do
                 values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
                 values.reject! { |value| named_entity_name.overlap?(value) }
                 move = true
+                if named_entity_name.sentence.section
+                  section_name = named_entity_name.sentence.section.name
+                else
+                  section_name = nil
+                end
+
                 if values.size == 2 #&& values.last.semantic_tag_value.scan('%').present?
                   value_last = values.last.semantic_tag_value.gsub('%', '')
-                  sentence = clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end]
+                  sentence = clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end]
                   regexp = Regexp.new("#{values.first.semantic_tag_value}\-#{value_last}\%")
                   match = sentence.match(regexp)
                   if match
@@ -1283,12 +1323,12 @@ namespace :clamp do
                     abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                     abstractor_abstraction,
                     abstractor_abstraction_source,
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                    clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                    clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                     abstractor_note['source_id'],
                     abstractor_note['source_type'],
                     abstractor_note['source_method'],
-                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                    section_name,          #suggestion_source[:section_name]
                     values.first.semantic_tag_value,                         #suggestion[:value]
                     false,                                            #suggestion[:unknown].to_s.to_boolean
                     false,                                            #suggestion[:not_applicable].to_s.to_boolean
@@ -1299,7 +1339,7 @@ namespace :clamp do
                     if !named_entity_name.negated? && !values.first.negated?
                       suggestions << abstractor_suggestion
                       suggested = true
-                      # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                      # if canonical_format?(clamp_document.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_document.text[value.named_entity_begin..value.named_entity_end], clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                       #   abstractor_suggestion.accepted = true
                       #   abstractor_suggestion.save!
                       # end
@@ -1319,12 +1359,12 @@ namespace :clamp do
                       abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                       abstractor_abstraction,
                       abstractor_abstraction_source,
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                      clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                       abstractor_note['source_id'],
                       abstractor_note['source_type'],
                       abstractor_note['source_method'],
-                      named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                      section_name,          #suggestion_source[:section_name]
                       value.semantic_tag_value,                         #suggestion[:value]
                       false,                                            #suggestion[:unknown].to_s.to_boolean
                       false,                                            #suggestion[:not_applicable].to_s.to_boolean
@@ -1335,7 +1375,7 @@ namespace :clamp do
                       if !named_entity_name.negated? && !value.negated?
                         suggestions << abstractor_suggestion
                         suggested = true
-                        # if canonical_format?(clamp_note.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_note.text[value.named_entity_begin..value.named_entity_end], clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        # if canonical_format?(clamp_document.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_document.text[value.named_entity_begin..value.named_entity_end], clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
                         #   abstractor_suggestion.accepted = true
                         #   abstractor_suggestion.save!
                         # end
@@ -1343,17 +1383,18 @@ namespace :clamp do
                     end
                   end
                 end
+
                 if values.empty?
                   if !named_entity_name.negated?
                     abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
                     abstractor_abstraction,
                     abstractor_abstraction_source,
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
-                    clamp_note.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                    clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                    clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
                     abstractor_note['source_id'],
                     abstractor_note['source_type'],
                     abstractor_note['source_method'],
-                    named_entity_name.sentence.section.name,          #suggestion_source[:section_name]
+                    nil,          #suggestion_source[:section_name]
                     nil,                         #suggestion[:value]
                     true,                                            #suggestion[:unknown].to_s.to_boolean
                     false,                                            #suggestion[:not_applicable].to_s.to_boolean

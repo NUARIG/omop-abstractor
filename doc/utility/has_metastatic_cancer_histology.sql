@@ -75,4 +75,4 @@ and not exists(
   )
 )
 ) data
-where data.value_new_normalized != 'not applicable'
+--where data.value_new_normalized != 'not applicable'

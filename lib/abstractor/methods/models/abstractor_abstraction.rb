@@ -198,12 +198,16 @@ module Abstractor
           end
 
           def suggested?
-            abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific && abstractor_suggestion.system_rejected_reason != 'Negated' }.present?
+            abstractor_suggestions.not_deleted.detect { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.system_rejected && !abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific }.present?
           end
 
           def only_less_specific_suggested?
-            size = abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && !abstractor_suggestion.system_rejected && abstractor_suggestion.abstractor_suggestion_object_value && abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific && abstractor_suggestion.system_rejected_reason != 'Negated'}.size
-            size > 0 && size == abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.system_rejected && abstractor_suggestion.system_rejected_reason != 'Negated' }.size
+            #count only less specific
+            size = abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.system_rejected && abstractor_suggestion.abstractor_suggestion_object_value.abstractor_object_value.favor_more_specific }.size
+            #count all
+            size_all = abstractor_suggestions.not_deleted.select { |abstractor_suggestion| abstractor_suggestion.suggested_value.present? && abstractor_suggestion.abstractor_suggestion_object_value && !abstractor_suggestion.system_rejected  }.size
+
+            size > 0 && size == size_all
           end
 
           def set_unknown!

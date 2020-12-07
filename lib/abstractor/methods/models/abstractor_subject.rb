@@ -394,6 +394,7 @@ module Abstractor
                       else
                         accepted = nil
                         system_accepted = false
+                        system_rejected = false
                       end
                     else
                       accepted = nil

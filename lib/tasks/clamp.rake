@@ -1425,7 +1425,7 @@ namespace :clamp do
         end
       end
 
-      #Post-processing across all schemas with an abstraction group
+      #Post-processing across all schemas within an abstraction group
       puts 'hello before'
       puts abstractor_note['source_id']
       puts 'here is note_stable_identifier.id'

@@ -2,6 +2,29 @@ require './lib/omop_abstractor/setup/setup'
 require './lib/clamp_mapper/parser'
 require './lib/clamp_mapper/process_note'
 namespace :clamp do
+  desc "Determine new stable identifier values"
+  task(determine_new_stable_identifier_values: :environment) do |t, args|
+    stable_identifier_values = CSV.new(File.open('lib/setup/data/stable_identifier_values.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+    stable_identifier_values = stable_identifier_values.map { |stable_identifier_value| stable_identifier_value['stable_identifier_value'] }
+
+    stable_identifier_values_new = CSV.new(File.open('lib/setup/data/stable_identifier_values_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+    stable_identifier_values_new = stable_identifier_values_new.map { |stable_identifier_value| stable_identifier_value['stable_identifier_value'] }
+    stable_identifier_values_delta = stable_identifier_values_new - stable_identifier_values
+
+    headers = ['stable_identifier_value']
+    row_header = CSV::Row.new(headers, headers, true)
+    row_template = CSV::Row.new(headers, [], false)
+
+    CSV.open('lib/setup/data_out/stable_identifier_value_delta.csv', "wb") do |csv|
+      csv << row_header
+      stable_identifier_values_delta.each do |stable_identifier_value_delta|
+        row = row_template.dup
+        row['stable_identifier_value'] = stable_identifier_value_delta
+        csv << row
+      end
+    end
+  end
+
   desc 'Load schemas CLAMP'
   task(schemas_clamp: :environment) do |t, args|
     date_object_type = Abstractor::AbstractorObjectType.where(value: 'date').first
@@ -1060,7 +1083,6 @@ namespace :clamp do
                         aa = abstractor_abstraction_group_member.abstractor_abstraction
                         section_name = named_entity.sentence.section.name
 
-
                         suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
                         suggested_value = suggested_value.gsub(' - ', '-')
 
@@ -1087,7 +1109,7 @@ namespace :clamp do
                 else
                   suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
                   suggested_value = suggested_value.gsub(' - ', '-')
-
+                  section_name = named_entity.sentence.section.name
                   abstractor_suggestion = aa.abstractor_subject.suggest(
                   aa,
                   abstractor_abstraction_source,
@@ -1528,7 +1550,8 @@ namespace :clamp do
        'target' => 4,
        'reason' => 5,
        'histology' => 6,
-       'category' => 7
+       'category' => 7,
+       'stable_identifier_value' => 8
     }
 
     for i in 2..misses_latest_old.sheet(0).last_row do
@@ -1543,6 +1566,7 @@ namespace :clamp do
       miss['reason'] = misses_latest_old.sheet(0).row(i)[misses_map['reason']]
       miss['histology'] = misses_latest_old.sheet(0).row(i)[misses_map['histology']]
       miss['category'] = misses_latest_old.sheet(0).row(i)[misses_map['category']]
+      miss['stable_identifier_value'] = misses_latest_old.sheet(0).row(i)[misses_map['stable_identifier_value']]
       misses << miss
     end
 
@@ -1562,7 +1586,7 @@ namespace :clamp do
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
         row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
-        miss = misses.detect { |miss| miss['note_id'].to_s == miss_latest_new['note_id'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
+        miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
           puts 'not so much'
@@ -1593,7 +1617,8 @@ namespace :clamp do
        'target' => 4,
        'reason' => 5,
        'histology' => 6,
-       'category' => 7
+       'category' => 7,
+       'stable_identifier_value' => 8
     }
 
     for i in 2..misses_latest_old.sheet(0).last_row do
@@ -1608,12 +1633,13 @@ namespace :clamp do
       miss['reason'] = misses_latest_old.sheet(0).row(i)[misses_map['reason']]
       miss['histology'] = misses_latest_old.sheet(0).row(i)[misses_map['histology']]
       miss['category'] = misses_latest_old.sheet(0).row(i)[misses_map['category']]
+      miss['stable_identifier_value'] = misses_latest_old.sheet(0).row(i)[misses_map['stable_identifier_value']]
       misses << miss
     end
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_metastatic_latest_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category']
+    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1626,7 +1652,8 @@ namespace :clamp do
         puts miss_latest_new['value_old_normalized']
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
-        miss = misses.detect { |miss| miss['note_id'].to_s == miss_latest_new['note_id'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
+        row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
+        miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
           puts 'not so much'
@@ -1659,7 +1686,8 @@ namespace :clamp do
        'target' => 5,
        'reason' => 6,
        'site' => 7,
-       'category' => 8
+       'category' => 8,
+       'stable_identifier_value' => 10
     }
 
     for i in 2..misses_latest_old.sheet(0).last_row do
@@ -1674,12 +1702,13 @@ namespace :clamp do
       miss['reason'] = misses_latest_old.sheet(0).row(i)[misses_map['reason']]
       miss['site'] = misses_latest_old.sheet(0).row(i)[misses_map['site']]
       miss['category'] = misses_latest_old.sheet(0).row(i)[misses_map['category']]
+      miss['stable_identifier_value'] = misses_latest_old.sheet(0).row(i)[misses_map['stable_identifier_value']]
       misses << miss
     end
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_has_cancer_site_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'abstractor_subject_group_name','value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'site',	'category', 'group']
+    headers = ['note_id',	'abstractor_subject_group_name','value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'site',	'category', 'group', 'stable_identifier_value']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1693,7 +1722,8 @@ namespace :clamp do
         row['abstractor_subject_group_name'] = miss_latest_new['abstractor_subject_group_name']
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
-        miss = misses.detect { |miss| miss['note_id'].to_s == miss_latest_new['note_id'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
+        row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
+        miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
           puts 'not so much'

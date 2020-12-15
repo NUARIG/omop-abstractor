@@ -12,7 +12,7 @@ end
 
 def abstractor_suggestor(options = {})
   options.reverse_merge!({ multiple: false })
-  stable_identifier_values = CSV.new(File.open('lib/setup/data/stable_identifier_values.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+  stable_identifier_values = CSV.new(File.open('lib/setup/data/stable_identifier_values_all.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
   stable_identifier_values = stable_identifier_values.map { |stable_identifier_value| stable_identifier_value['stable_identifier_value'] }
   Abstractor::AbstractorNamespace.all.each do |abstractor_namespace|
     puts abstractor_namespace.subject_type.constantize.missing_abstractor_namespace_event(abstractor_namespace.id).joins(abstractor_namespace.joins_clause).where(abstractor_namespace.where_clause).to_sql

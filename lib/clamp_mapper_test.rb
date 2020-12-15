@@ -3,6 +3,9 @@ file = "/Users/mjg994/Documents/source/omop-abstractor/lib/setup/data/clamp/samp
 clamp_xmi = File.read(file)
 @document = ClampMapper::Document.new(Nokogiri::XML(clamp_xmi), file)
 
+
+
+
 sections_grouped = @document.sections.group_by do |section|
   section.name
 end
@@ -49,3 +52,10 @@ sentence = 'The p53 immunostain shows moderate immunoreactivity in about 5-10% o
 regexp = Regexp.new("#{values.first}\-#{values.last}\%")
 match = sentence.match(regexp)
 hello = (Percentage.new((((values.first.to_f + values.last.to_f)/2)) / 100))
+
+
+named_entities = @document.named_entities.select do |named_entity|
+  named_entity.semantic_tag_value == 'bones of skull and face and associated joints (c41.0)'
+end
+
+named_entities[1].sentence.section

@@ -51,6 +51,7 @@ select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
 	    , nlc.value_new_normalized
+      , nlc.value_new_normalized_raw
 from nlp_comparisons nlc
 where  nlc.predicate = 'has_cancer_histology'
 and nlc.abstractor_abstraction_group_id_new is null

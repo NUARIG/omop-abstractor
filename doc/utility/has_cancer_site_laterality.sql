@@ -42,7 +42,7 @@ select  nlc.note_id
 	    , nlc.value_new_normalized
       , nlc.abstractor_subject_group_name
       , 1 as group
-
+      , nlc.value_new_normalized_raw
 from nlp_comparisons nlc
 where nlc.predicate = 'has_cancer_site_laterality'
 and nlc.value_old_normalized != nlc.value_new_normalized
@@ -53,6 +53,7 @@ select  nlc1.note_id
 	    , nlc1.value_new_normalized
       , nlc1.abstractor_subject_group_name
       , 2 as group
+      , nlc1.value_new_normalized_raw
 from nlp_comparisons nlc1
 where nlc1.predicate = 'has_cancer_site_laterality'
 and nlc1.value_new_normalized is null
@@ -75,4 +76,4 @@ and exists(
   and nlc1.abstractor_subject_group_name = asg.name
 )
 ) data
-where data.value_new_normalized != 'not applicable'
+--where data.value_new_normalized != 'not applicable'

@@ -1572,7 +1572,7 @@ namespace :clamp do
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_latest_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value']
+    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value', 'value_new_normalized_raw']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1586,6 +1586,7 @@ namespace :clamp do
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
         row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
+        row['value_new_normalized_raw'] = miss_latest_new['value_new_normalized_raw']
         miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
@@ -1639,7 +1640,7 @@ namespace :clamp do
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_metastatic_latest_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value']
+    headers = ['note_id',	'value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'histology',	'category', 'stable_identifier_value',  'value_new_normalized_raw']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1653,6 +1654,7 @@ namespace :clamp do
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
         row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
+        row['value_new_normalized_raw'] = miss_latest_new['value_new_normalized_raw']
         miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
@@ -1708,7 +1710,7 @@ namespace :clamp do
 
     misses_latest_new = CSV.new(File.open('lib/setup/data/compare/misses_has_cancer_site_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
 
-    headers = ['note_id',	'abstractor_subject_group_name','value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'site',	'category', 'group', 'stable_identifier_value']
+    headers = ['note_id',	'abstractor_subject_group_name','value_old_normalized',	'value_new_normalized',	'source',	'target',	'reason',	'site',	'category', 'group', 'stable_identifier_value', 'value_new_normalized_raw']
     row_header = CSV::Row.new(headers, headers, true)
     row_template = CSV::Row.new(headers, [], false)
 
@@ -1723,6 +1725,7 @@ namespace :clamp do
         row['value_old_normalized'] = miss_latest_new['value_old_normalized']
         row['value_new_normalized'] = miss_latest_new['value_new_normalized']
         row['stable_identifier_value'] = miss_latest_new['stable_identifier_value']
+        row['value_new_normalized_raw'] = miss_latest_new['value_new_normalized_raw']
         miss = misses.detect { |miss| miss['stable_identifier_value'].to_s == miss_latest_new['stable_identifier_value'].to_s && miss['value_old_normalized'] == miss_latest_new['value_old_normalized'] }
 
         if miss.present?
@@ -1811,10 +1814,24 @@ namespace :clamp do
 
     new_suggestions = CSV.new(File.open('lib/setup/data/mbti_data_development_new.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
     new_suggestions = new_suggestions.map { |new_suggestion| { stable_identifier_value: new_suggestion['stable_identifier_value'], predicate: new_suggestion['predicate'], value: new_suggestion['value'], abstractor_abstraction_group_id: new_suggestion['abstractor_abstraction_group_id'],  abstractor_subject_group_name: new_suggestion['abstractor_subject_group_name'], note_id: new_suggestion['note_id'] } }.uniq
-    # new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' && new_suggestion[:note_id] == '38206682' }
     new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_cancer_histology' }
 
     new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
+      nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology')
+      nlp_comparisons.each do |nlp_comparison|
+        nlp_comparison.value_new_normalized_raw = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.save!
+
+        nlp_comparisons_other_fields = NlpComparison.where("abstractor_abstraction_group_id_old = ? AND predicate != 'has_cancer_histology'", nlp_comparison.abstractor_abstraction_group_id_old)
+        nlp_comparisons_other_fields.each do |nlp_comparison_other_field|
+          new_suggestion = new_suggestions.detect { |new_suggestion| new_suggestion[:stable_identifier_value] == new_has_cancer_histology_suggestion[:stable_identifier_value] && new_suggestion[:predicate] == nlp_comparison_other_field.predicate }
+          if new_suggestion.present? && new_suggestion[:value].present?
+            nlp_comparison_other_field.value_new_normalized_raw = new_suggestion[:value]
+            nlp_comparison_other_field.save!
+          end
+        end
+      end
+
       nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
       # nlp_comparison = nlp_comparison.first
 
@@ -1958,6 +1975,21 @@ namespace :clamp do
     new_has_cancer_histology_suggestions = new_suggestions.select { |new_suggestion| new_suggestion[:predicate] == 'has_metastatic_cancer_histology' }
 
     new_has_cancer_histology_suggestions.each do |new_has_cancer_histology_suggestion|
+      nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_metastatic_cancer_histology')
+      nlp_comparisons.each do |nlp_comparison|
+        nlp_comparison.value_new_normalized_raw = new_has_cancer_histology_suggestion[:value]
+        nlp_comparison.save!
+
+        nlp_comparisons_other_fields = NlpComparison.where("abstractor_abstraction_group_id_old = ? AND predicate != 'has_metastatic_cancer_histology'", nlp_comparison.abstractor_abstraction_group_id_old)
+        nlp_comparisons_other_fields.each do |nlp_comparison_other_field|
+          new_suggestion = new_suggestions.detect { |new_suggestion| new_suggestion[:stable_identifier_value] == new_has_cancer_histology_suggestion[:stable_identifier_value] && new_suggestion[:predicate] == nlp_comparison_other_field.predicate }
+          if new_suggestion.present? && new_suggestion[:value].present?
+            nlp_comparison_other_field.value_new_normalized_raw = new_suggestion[:value]
+            nlp_comparison_other_field.save!
+          end
+        end
+      end
+
       nlp_comparisons = NlpComparison.where(stable_identifier_value: new_has_cancer_histology_suggestion[:stable_identifier_value], predicate: 'has_metastatic_cancer_histology', value_old: new_has_cancer_histology_suggestion[:value])
       nlp_comparisons.each do |nlp_comparison|
         nlp_comparison.value_new = new_has_cancer_histology_suggestion[:value]

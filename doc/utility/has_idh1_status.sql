@@ -34,7 +34,6 @@ and not exists(
 )
 
 --curated
-
 select *
 from(
 select  nlc.note_id
@@ -43,7 +42,6 @@ select  nlc.note_id
 	    , nlc.value_new_normalized
       , nlc.abstractor_subject_group_name
       , 1 as group
-
 from nlp_comparisons nlc
 where nlc.predicate = 'has_idh1_status'
 and nlc.value_old_normalized != nlc.value_new_normalized
@@ -83,4 +81,4 @@ and nlc1.stable_identifier_value not in(
 ,'10301739029'
 )
 ) data
-where data.value_new_normalized != 'not applicable'
+--where data.value_new_normalized != 'not applicable'

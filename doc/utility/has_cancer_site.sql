@@ -40,8 +40,11 @@ select  nlc.note_id
       , nlc.stable_identifier_value
 	    , nlc.value_old_normalized
 	    , nlc.value_new_normalized
+      , nlc.value_new_normalized_raw
       , nlc.abstractor_subject_group_name
+      , nlc.abstractor_abstraction_group_id_old
       , 1 as group
+      , nlc.value_new_normalized_raw
 from nlp_comparisons nlc
 where nlc.predicate = 'has_cancer_site'
 and nlc.value_old_normalized != nlc.value_new_normalized
@@ -50,8 +53,11 @@ select  nlc1.note_id
       , nlc1.stable_identifier_value
 	    , nlc1.value_old_normalized
 	    , nlc1.value_new_normalized
+      , nlc1.value_new_normalized_raw
       , nlc1.abstractor_subject_group_name
+      , nlc1.abstractor_abstraction_group_id_old
       , 2 as group
+      , nlc1.value_new_normalized_raw
 from nlp_comparisons nlc1
 where nlc1.predicate = 'has_cancer_site'
 and nlc1.value_new_normalized is null

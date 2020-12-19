@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_111313) do
+ActiveRecord::Schema.define(version: 2020_12_15_144128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -754,6 +754,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_111313) do
     t.string "value_new_normalized"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "value_new_normalized_raw"
   end
 
   create_table "note", primary_key: "note_id", id: :bigint, default: nil, force: :cascade do |t|

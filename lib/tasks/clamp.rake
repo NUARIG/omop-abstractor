@@ -944,6 +944,36 @@ namespace :clamp do
         clamp_document.sections.reject! { |section| section == bad_guy_section  }
       end
 
+      #new stuff
+      sections_grouped = clamp_document.sections.group_by do |section|
+        section.name
+      end
+
+      if !sections_grouped['SPECIMEN'].nil? && !sections_grouped['COMMENT'].nil?
+        bad_guy_sections = []
+        sections_grouped['SPECIMEN'].each do |specimen_section|
+          if sections_grouped['COMMENT'][0].section_begin < specimen_section.section_begin
+            bad_guy_sections << specimen_section
+          end
+        end
+      end
+
+      bad_guy_sections.each do |bad_guy_section|
+        clamp_document.sections.reject! { |section| section == bad_guy_section  }
+      end
+      #end new stuf
+
+      #new stuff 2
+      sections_grouped = clamp_document.sections.group_by do |section|
+        section.name
+      end
+
+      if sections_grouped['SPECIMEN'].nil? && !sections_grouped['COMMENT'].nil?
+        puts "we are adding!"
+        clamp_document.add_named_entity(0, sections_grouped['COMMENT'][0].section_begin-2, 'SPECIMEN', 'present', true)
+      end
+      #end new stuf 2
+
       section_abstractor_abstraction_group_map = {}
       if clamp_document.sections.any?
         note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
@@ -951,6 +981,7 @@ namespace :clamp do
           puts abstractor_abstraction_group.abstractor_subject_group.name
 
           if abstractor_abstraction_group.anchor?
+            puts 'we have an anchor'
             anchor_predicate = abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate
             anchor_sections = []
             abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_subject.abstractor_abstraction_sources.each do |abstractor_abstraction_source|
@@ -966,6 +997,7 @@ namespace :clamp do
             if section_abstractor_abstraction_group_map[first_anchor_named_entity_section]
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] << abstractor_abstraction_group
             else
+              puts 'in the digs'
               section_abstractor_abstraction_group_map[first_anchor_named_entity_section] = [abstractor_abstraction_group]
             end
 
@@ -1074,7 +1106,12 @@ namespace :clamp do
               section_name = nil
               aa = abstractor_abstraction
               if named_entity.sentence.section.present?
+                puts 'step 1'
+                puts named_entity.sentence.section.section_range
+                puts 'more'
+                puts section_abstractor_abstraction_group_map
                 if section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].present?
+                  puts 'step 2'
                   section_abstractor_abstraction_group_map[named_entity.sentence.section.section_range].each do |abstractor_abstraction_group|
                     abstractor_abstraction_group.abstractor_abstraction_group_members.each do |abstractor_abstraction_group_member|
                       if abstractor_abstraction_group_member.abstractor_abstraction.abstractor_subject.abstractor_abstraction_schema.predicate == named_entity.semantic_tag_attribute
@@ -1107,6 +1144,7 @@ namespace :clamp do
                     end
                   end
                 else
+                  puts 'step 3'
                   suggested_value = named_entity.semantic_tag_value.gsub(' , ', ',')
                   suggested_value = suggested_value.gsub(' - ', '-')
                   section_name = named_entity.sentence.section.name

@@ -29,6 +29,8 @@ module ClampMapper
       @xmi_document.xpath("//textspan:Segment").each do |section|
         @sections << ClampMapper::Section.new(self, section.attributes['begin'].value, section.attributes['end'].value)
       end
+
+      @sections.reject! { |section| section.name.nil? }
     end
 
     def named_entities
@@ -37,6 +39,13 @@ module ClampMapper
 
     def section_named_entities
       @named_entities.select { |named_entity| named_entity.is_section }
+    end
+
+    def add_named_entity(named_entity_begin, named_entity_end, semantic_tag, assertion, is_section)
+      @named_entities << ClampMapper::NamedEntity.new(self, named_entity_begin, named_entity_end, semantic_tag, semantic_tag, is_section)
+      if is_section
+        @sections << ClampMapper::Section.new(self, named_entity_begin, named_entity_end)
+      end
     end
   end
 end

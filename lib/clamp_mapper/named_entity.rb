@@ -28,5 +28,9 @@ module ClampMapper
     def to_s
       document.text[self.named_entity_begin...self.named_entity_end]
     end
+
+    def named_entity_range
+      @named_entity_begin..@named_entity_end
+    end
   end
 end

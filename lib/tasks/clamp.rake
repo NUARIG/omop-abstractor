@@ -925,13 +925,13 @@ namespace :clamp do
       sections_grouped.each do |section_name, sections|
         if section_name == 'SPECIMEN'
           previous_section_trigger = sections.first.trigger
-          sections.each do |section|
+          sections.each_with_index do |section, i|
             puts 'section token'
             puts section.to_s
             puts 'trigger'
             puts section.trigger
 
-            if section.trigger.downcase < previous_section_trigger.downcase
+            if i > 0 && section.trigger.downcase <= previous_section_trigger.downcase
               bad_guy_sections << section
             else
               previous_section_trigger = section.trigger
@@ -941,7 +941,7 @@ namespace :clamp do
       end
 
       bad_guy_sections.each do |bad_guy_section|
-        clamp_document.sections.reject! { |section| section == bad_guy_section  }
+        clamp_document.sections.reject! { |section| section == bad_guy_section }
       end
 
       #new stuff

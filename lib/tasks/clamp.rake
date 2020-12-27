@@ -1485,7 +1485,33 @@ namespace :clamp do
         end
       end
 
-      #Post-processing across all schemas within an abstraction group
+      #Post-processing across all schemas within an abstraction group:
+      #Pull anchor suggestions from non-anchor sections if they exisit and none exist in any anchor sections.
+      puts 'hello before'
+      puts abstractor_note['source_id']
+      puts 'here is note_stable_identifier.id'
+      puts note_stable_identifier.id
+      puts abstractor_note['namespace_type']
+      puts abstractor_note['namespace_id']
+      puts note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).size
+      abstractor_abstraction_groups = note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id'])
+      note_stable_identifier.abstractor_abstraction_groups_by_namespace(namespace_type: abstractor_note['namespace_type'], namespace_id: abstractor_note['namespace_id']).each do |abstractor_abstraction_group|
+        puts 'hello'
+        puts abstractor_abstraction_group.abstractor_subject_group.name
+        other_abstractor_abstraction_groups = abstractor_abstraction_groups - [abstractor_abstraction_group]
+        if !abstractor_abstraction_group.anchor.abstractor_abstraction.suggested?
+          abstractor_abstraction_group.anchor.abstractor_abstraction.abstractor_suggestions.not_deleted.each do |abstractor_suggestion|
+            if abstractor_suggestion.system_rejected && abstractor_suggestion.system_rejected_reason == Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_REJECTED_REASON_NO_SECTION_MATCH
+              abstractor_suggestion.system_rejected = false
+              abstractor_suggestion.system_rejected_reason = nil
+              abstractor_suggestion.accepted = nil
+              abstractor_suggestion.save!
+            end
+          end
+        end
+      end
+
+      #Post-processing across all schemas within an abstraction group round:
       puts 'hello before'
       puts abstractor_note['source_id']
       puts 'here is note_stable_identifier.id'

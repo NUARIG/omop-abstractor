@@ -1,0 +1,1240 @@
+"classificaiton","data_point_value","vocabulary_code","data_point_value_synonym","favor_more_specific"
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","bones of skull and face and associated joints",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","calvarium",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","cavernous",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","clival",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","condylar",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","cranial bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","ethmoid",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","ethmoid bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","facial bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","frontal bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","hyoid bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","maxilla",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","nasal bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","occipital bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","orbital",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","orbital bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","parietal bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","skull",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","sphenoid",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","sphenoid bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","sphenoid wing",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","temporal bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","upper jaw bone",NULL
+"Primary CNS Site","bones of skull and face and associated joints (c41.0)","C41.0","zygomatic bone",NULL
+"Primary CNS Site","mandible (c41.1)","C41.1","jaw bone",NULL
+"Primary CNS Site","mandible (c41.1)","C41.1","lower jaw bone",NULL
+"Primary CNS Site","mandible (c41.1)","C41.1","mandible",NULL
+"Primary CNS Site","mandible (c41.1)","C41.1","temporomandibular joint",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","scalp",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of cervical region",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of head",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of neck",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of scalp",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of scalp and neck",NULL
+"Primary CNS Site","skin of scalp and neck (c44.4)","C44.4","skin of supraclavicular region",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","cerebral meninges",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","cranial dura mater",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","cranial meninges",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","cranial pia mater",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","falx",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","falx cerebelli",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","falx cerebri",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","intracranial arachnoid",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","intracranial meninges",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","tentorium",NULL
+"Primary CNS Site","cerebral meninges (c70.0)","C70.0","tentorium cerebelli",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","intradural",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","intradural extramedullary",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","intramedullary",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","spinal arachnoid",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","spinal dura mater",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","spinal meninges",NULL
+"Primary CNS Site","spinal meninges (c70.1)","C70.1","spinal pia mater",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","arachnoid",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","convexity",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","dura",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","dura mater",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","membrane",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","meninges",NULL
+"Primary CNS Site","meninges (c70.9)","C70.9","pia mater",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","basal ganglia",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","central white matter",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","cerebral cortex",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","cerebral hemisphere",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","cerebral white matter",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","cerebrum",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","corpus striatum",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","globus pallidus",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","hypothalamus",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","insula",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","insular",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","internal capsule",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","island of reil",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","operculum",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","pallium",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","perithalamic",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","putamen",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","rhinencephalon",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","supratentorial brain",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","thalamic",NULL
+"Primary CNS Site","cerebrum (c71.0)","C71.0","thalamus",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","bifrontal",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","frontal",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","frontal lobe",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","frontal pole",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","frontoparietal",NULL
+"Primary CNS Site","frontal lobe (c71.1)","C71.1","frontotemporal",NULL
+"Primary CNS Site","temporal lobe (c71.2)","C71.2","hippocampus",NULL
+"Primary CNS Site","temporal lobe (c71.2)","C71.2","temporal",NULL
+"Primary CNS Site","temporal lobe (c71.2)","C71.2","temporal lobe",NULL
+"Primary CNS Site","temporal lobe (c71.2)","C71.2","uncus",NULL
+"Primary CNS Site","parietal lobe (c71.3)","C71.3","frontoparietal",NULL
+"Primary CNS Site","parietal lobe (c71.3)","C71.3","parietal",NULL
+"Primary CNS Site","parietal lobe (c71.3)","C71.3","parietal lobe",NULL
+"Primary CNS Site","occipital lobe (c71.4)","C71.4","occipital",NULL
+"Primary CNS Site","occipital lobe (c71.4)","C71.4","occipital lobe",NULL
+"Primary CNS Site","occipital lobe (c71.4)","C71.4","occipital pole",NULL
+"Primary CNS Site","occipital lobe (c71.4)","C71.4","suboccipital",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","cerebral ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","choroid plexus",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","choroid plexus of lateral ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","choroid plexus of third ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","ependyma",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","intraventricular",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","lateral ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","third ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","ventricle",NULL
+"Primary CNS Site","ventricle (c71.5)","C71.5","ventricular",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cerebellar",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cerebellopontine angle",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cerebellum",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cerebropontine",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cp angle",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","cp angle tumor",NULL
+"Primary CNS Site","cerebellum (c71.6)","C71.6","vermis of cerebellum",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","basis pedunculi",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","brain stem",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","brainstem",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","cerebral peduncle",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","choroid plexus of fourth ventricle",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","fourth ventricle",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","infratentorial brain",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","medulla oblongata",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","midbrain",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","olive",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","pons",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","pyramid",NULL
+"Primary CNS Site","brain stem (c71.7)","C71.7","tectal",NULL
+"Primary CNS Site","overlapping lesion of brain (c71.8)","C71.8","corpus callosum",NULL
+"Primary CNS Site","overlapping lesion of brain (c71.8)","C71.8","overlapping lesion of brain",NULL
+"Primary CNS Site","overlapping lesion of brain (c71.8)","C71.8","splenium",NULL
+"Primary CNS Site","overlapping lesion of brain (c71.8)","C71.8","tapetum",NULL
+"Primary CNS Site","brain (c71.9)","C71.9","anterior cranial fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","brain",True
+"Primary CNS Site","brain (c71.9)","C71.9","caudate",True
+"Primary CNS Site","brain (c71.9)","C71.9","cranial base",True
+"Primary CNS Site","brain (c71.9)","C71.9","cranial fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","intracranial site",True
+"Primary CNS Site","brain (c71.9)","C71.9","middle cranial fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","posterior cranial fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","posterior fossa",True
+"Primary CNS Site","brain (c71.9)","C71.9","suprasellar",True
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c1",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c2",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c3",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c4",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c5",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c6",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","c7",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","cervical",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","cervical cord",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","conus medullaris",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","filum terminale",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","l1",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","l2",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","l3",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","l4",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","lumbar",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","lumbar cord",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","medullary",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","paraspinal",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","presacral",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","s1",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","s2",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","s3",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","s4",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","s5",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","sacral",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","sacral cord",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","spinal canal",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","spinal cord",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","spinal fusion",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","spinal tumor",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t1",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t10",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t11",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t12",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t2",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t3",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t4",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t5",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t6",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t7",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t8",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","t9",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","thoracic",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","thoracic cord",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","vertebrae",NULL
+"Primary CNS Site","spinal cord (c72.0)","C72.0","vertebral",NULL
+"Primary CNS Site","cauda equina (c72.1)","C72.1","cauda equina",NULL
+"Primary CNS Site","olfactory nerve (c72.2)","C72.2","olfactory nerve",NULL
+"Primary CNS Site","optic nerve (c72.3)","C72.3","optic chiasm",NULL
+"Primary CNS Site","optic nerve (c72.3)","C72.3","optic nerve",NULL
+"Primary CNS Site","optic nerve (c72.3)","C72.3","optic tract",NULL
+"Primary CNS Site","acoustic nerve (c72.4)","C72.4","acoustic nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","abducens nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","accessory nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","cranial nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","facial nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","glossopharyngeal nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","hypoglossal nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","oculomotor nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","spinal accessory nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","trigeminal nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","trochlear nerve",NULL
+"Primary CNS Site","cranial nerve (c72.5)","C72.5","vagus nerve",NULL
+"Primary CNS Site","overlapping lesion of brain and central nervous system (c72.8)","C72.8","overlapping lesion of brain and central nervous system",NULL
+"Primary CNS Site","nervous system (c72.9)","C72.9","central nervous system",NULL
+"Primary CNS Site","nervous system (c72.9)","C72.9","epidural",NULL
+"Primary CNS Site","nervous system (c72.9)","C72.9","extradural",NULL
+"Primary CNS Site","nervous system (c72.9)","C72.9","nervous system",NULL
+"Primary CNS Site","nervous system (c72.9)","C72.9","parasellar",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","hypophysis",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","pituitary",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","pituitary fossa",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","pituitary gland",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","pitutiary",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","rathke pouch",NULL
+"Primary CNS Site","pituitary gland (c75.1)","C75.1","sella turcica",NULL
+"Primary CNS Site","craniopharyngeal duct (c75.2)","C75.2","craniopharyngeal duct",NULL
+"Primary CNS Site","pineal gland (c75.3)","C75.3","pineal",NULL
+"Primary CNS Site","pineal gland (c75.3)","C75.3","pineal gland",NULL
+"Primary Site","external upper lip (c00.0)","C00.0","external upper lip",NULL
+"Primary Site","external upper lip (c00.0)","C00.0","skin of upper lip",NULL
+"Primary Site","external upper lip (c00.0)","C00.0","upper lip",NULL
+"Primary Site","external upper lip (c00.0)","C00.0","vermilion border of upper lip",NULL
+"Primary Site","external lower lip (c00.1)","C00.1","external lower lip",NULL
+"Primary Site","external lower lip (c00.1)","C00.1","lower lip",NULL
+"Primary Site","external lower lip (c00.1)","C00.1","skin of lower lip",NULL
+"Primary Site","external lower lip (c00.1)","C00.1","vermilion border of lower lip",NULL
+"Primary Site","external lip (c00.2)","C00.2","external lip",NULL
+"Primary Site","mucosa of upper lip (c00.3)","C00.3","frenulum of upper lip",NULL
+"Primary Site","mucosa of upper lip (c00.3)","C00.3","mucosa of upper lip",NULL
+"Primary Site","mucosa of lower lip (c00.4)","C00.4","frenulum of lower lip",NULL
+"Primary Site","mucosa of lower lip (c00.4)","C00.4","inner aspect of lower lip",NULL
+"Primary Site","mucosa of lower lip (c00.4)","C00.4","mucosa of lower lip",NULL
+"Primary Site","mucosa of lip (c00.5)","C00.5","frenulum labii",NULL
+"Primary Site","mucosa of lip (c00.5)","C00.5","frenulum of lip",NULL
+"Primary Site","mucosa of lip (c00.5)","C00.5","inner aspect of lip",NULL
+"Primary Site","mucosa of lip (c00.5)","C00.5","internal lip",NULL
+"Primary Site","mucosa of lip (c00.5)","C00.5","mucosa of lip",NULL
+"Primary Site","commissure of lip (c00.6)","C00.6","commissure of lip",NULL
+"Primary Site","commissure of lip (c00.6)","C00.6","labial commissure",NULL
+"Primary Site","overlapping lesion of lip (c00.8)","C00.8","overlapping lesion of lip",NULL
+"Primary Site","lip (c00.9)","C00.9","lip",NULL
+"Primary Site","base of tongue (c01.9)","C01.9","base of tongue",NULL
+"Primary Site","base of tongue (c01.9)","C01.9","dorsal surface of base of tongue",NULL
+"Primary Site","base of tongue (c01.9)","C01.9","posterior third of tongue",NULL
+"Primary Site","base of tongue (c01.9)","C01.9","posterior tongue",NULL
+"Primary Site","base of tongue (c01.9)","C01.9","root of tongue",NULL
+"Primary Site","dorsal surface of tongue (c02.0)","C02.0","anterior 2/3 of tongue dorsal surface",NULL
+"Primary Site","dorsal surface of tongue (c02.0)","C02.0","dorsal surface anterior 2/3 of tongue",NULL
+"Primary Site","dorsal surface of tongue (c02.0)","C02.0","dorsal surface of anterior tongue",NULL
+"Primary Site","dorsal surface of tongue (c02.0)","C02.0","dorsal surface of tongue",NULL
+"Primary Site","dorsal surface of tongue (c02.0)","C02.0","midline of tongue",NULL
+"Primary Site","border of tongue (c02.1)","C02.1","border of tongue",NULL
+"Primary Site","border of tongue (c02.1)","C02.1","tip of tongue",NULL
+"Primary Site","ventral surface of tongue (c02.2)","C02.2","anterior 2/3 of tongue ventral surface",NULL
+"Primary Site","ventral surface of tongue (c02.2)","C02.2","frenulum linguae",NULL
+"Primary Site","ventral surface of tongue (c02.2)","C02.2","ventral surface anterior 2/3 of tongue",NULL
+"Primary Site","ventral surface of tongue (c02.2)","C02.2","ventral surface of anterior tongue",NULL
+"Primary Site","ventral surface of tongue (c02.2)","C02.2","ventral surface of tongue",NULL
+"Primary Site","anterior 2/3 of tongue (c02.3)","C02.3","anterior 2/3 of tongue",NULL
+"Primary Site","anterior 2/3 of tongue (c02.3)","C02.3","anterior tongue",NULL
+"Primary Site","lingual tonsil (c02.4)","C02.4","lingual tonsil",NULL
+"Primary Site","overlapping lesion of tongue (c02.8)","C02.8","junctional zone of tongue",NULL
+"Primary Site","overlapping lesion of tongue (c02.8)","C02.8","overlapping lesion of tongue",NULL
+"Primary Site","tongue (c02.9)","C02.9","lingual",NULL
+"Primary Site","tongue (c02.9)","C02.9","tongue",NULL
+"Primary Site","upper gum (c03.0)","C03.0","upper alveolar mucosa",NULL
+"Primary Site","upper gum (c03.0)","C03.0","upper alveolar ridge mucosa",NULL
+"Primary Site","upper gum (c03.0)","C03.0","upper alveolus",NULL
+"Primary Site","upper gum (c03.0)","C03.0","upper gingiva",NULL
+"Primary Site","upper gum (c03.0)","C03.0","upper gum",NULL
+"Primary Site","lower gum (c03.1)","C03.1","lower alveolar mucosa",NULL
+"Primary Site","lower gum (c03.1)","C03.1","lower alveolar ridge mucosa",NULL
+"Primary Site","lower gum (c03.1)","C03.1","lower alveolus",NULL
+"Primary Site","lower gum (c03.1)","C03.1","lower gingiva",NULL
+"Primary Site","lower gum (c03.1)","C03.1","lower gum",NULL
+"Primary Site","gum (c03.9)","C03.9","alveolar mucosa",NULL
+"Primary Site","gum (c03.9)","C03.9","alveolar ridge mucosa",NULL
+"Primary Site","gum (c03.9)","C03.9","alveolus",NULL
+"Primary Site","gum (c03.9)","C03.9","gum",NULL
+"Primary Site","gum (c03.9)","C03.9","periodontal tissue",NULL
+"Primary Site","gum (c03.9)","C03.9","tooth socket",NULL
+"Primary Site","anterior floor of mouth (c04.0)","C04.0","anterior floor of mouth",NULL
+"Primary Site","lateral floor of mouth (c04.1)","C04.1","lateral floor of mouth",NULL
+"Primary Site","overlapping lesion of floor of mouth (c04.8)","C04.8","overlapping lesion of floor of mouth",NULL
+"Primary Site","floor of mouth (c04.9)","C04.9","floor of mouth",NULL
+"Primary Site","hard palate (c05.0)","C05.0","hard palate",NULL
+"Primary Site","soft palate (c05.1)","C05.1","soft palate",NULL
+"Primary Site","uvula (c05.2)","C05.2","uvula",NULL
+"Primary Site","overlapping lesion of palate (c05.8)","C05.8","junction of hard and soft palate",NULL
+"Primary Site","overlapping lesion of palate (c05.8)","C05.8","overlapping lesion of palate",NULL
+"Primary Site","palate (c05.9)","C05.9","palate",NULL
+"Primary Site","palate (c05.9)","C05.9","roof of mouth",NULL
+"Primary Site","cheek mucosa (c06.0)","C06.0","buccal mucosa",NULL
+"Primary Site","cheek mucosa (c06.0)","C06.0","cheek mucosa",NULL
+"Primary Site","cheek mucosa (c06.0)","C06.0","internal cheek",NULL
+"Primary Site","vestibule of mouth (c06.1)","C06.1","buccal sulcus",NULL
+"Primary Site","vestibule of mouth (c06.1)","C06.1","labial sulcus",NULL
+"Primary Site","vestibule of mouth (c06.1)","C06.1","vestibule of mouth",NULL
+"Primary Site","retromolar area (c06.2)","C06.2","retromolar area",NULL
+"Primary Site","retromolar area (c06.2)","C06.2","retromolar triangle",NULL
+"Primary Site","retromolar area (c06.2)","C06.2","retromolar trigone",NULL
+"Primary Site","overlapping lesion of other and unspecified parts of mouth (c06.8)","C06.8","overlapping lesion of other and unspecified parts of mouth",NULL
+"Primary Site","mouth (c06.9)","C06.9","buccal cavity",NULL
+"Primary Site","mouth (c06.9)","C06.9","minor salivary gland",NULL
+"Primary Site","mouth (c06.9)","C06.9","mouth",NULL
+"Primary Site","mouth (c06.9)","C06.9","oral cavity",NULL
+"Primary Site","mouth (c06.9)","C06.9","oral mucosa",NULL
+"Primary Site","parotid gland (c07.9)","C07.9","parotid",NULL
+"Primary Site","parotid gland (c07.9)","C07.9","parotid gland",NULL
+"Primary Site","parotid gland (c07.9)","C07.9","parotid gland duct",NULL
+"Primary Site","parotid gland (c07.9)","C07.9","stensen duct",NULL
+"Primary Site","submandibular gland (c08.0)","C08.0","submandibular gland",NULL
+"Primary Site","submandibular gland (c08.0)","C08.0","submaxillary gland",NULL
+"Primary Site","submandibular gland (c08.0)","C08.0","submaxillary gland duct",NULL
+"Primary Site","submandibular gland (c08.0)","C08.0","wharton duct",NULL
+"Primary Site","sublingual gland (c08.1)","C08.1","sublingual gland",NULL
+"Primary Site","sublingual gland (c08.1)","C08.1","sublingual gland duct",NULL
+"Primary Site","overlapping lesion of major salivary glands (c08.8)","C08.8","overlapping lesion of major salivary glands",NULL
+"Primary Site","major salivary gland (c08.9)","C08.9","major salivary gland",NULL
+"Primary Site","major salivary gland (c08.9)","C08.9","minor salivary gland",NULL
+"Primary Site","major salivary gland (c08.9)","C08.9","salivary gland",NULL
+"Primary Site","tonsillar fossa (c09.0)","C09.0","tonsillar fossa",NULL
+"Primary Site","tonsillar pillar (c09.1)","C09.1","faucial pillar",NULL
+"Primary Site","tonsillar pillar (c09.1)","C09.1","glossopalatine fold",NULL
+"Primary Site","tonsillar pillar (c09.1)","C09.1","tonsillar pillar",NULL
+"Primary Site","overlapping lesion of tonsil (c09.8)","C09.8","overlapping lesion of tonsil",NULL
+"Primary Site","tonsil (c09.9)","C09.9","faucial tonsil",NULL
+"Primary Site","tonsil (c09.9)","C09.9","palatine tonsil",NULL
+"Primary Site","tonsil (c09.9)","C09.9","tonsil",NULL
+"Primary Site","vallecula (c10.0)","C10.0","vallecula",NULL
+"Primary Site","anterior surface of epiglottis (c10.1)","C10.1","anterior surface of epiglottis",NULL
+"Primary Site","lateral wall of oropharynx (c10.2)","C10.2","lateral wall of mesopharynx",NULL
+"Primary Site","lateral wall of oropharynx (c10.2)","C10.2","lateral wall of oropharynx",NULL
+"Primary Site","posterior wall of oropharynx (c10.3)","C10.3","posterior wall of mesopharynx",NULL
+"Primary Site","posterior wall of oropharynx (c10.3)","C10.3","posterior wall of oropharynx",NULL
+"Primary Site","branchial cleft (c10.4)","C10.4","branchial cleft",NULL
+"Primary Site","overlapping lesion of oropharynx (c10.8)","C10.8","junctional region of oropharynx",NULL
+"Primary Site","overlapping lesion of oropharynx (c10.8)","C10.8","overlapping lesion of oropharynx",NULL
+"Primary Site","oropharynx (c10.9)","C10.9","fauces",NULL
+"Primary Site","oropharynx (c10.9)","C10.9","mesopharynx",NULL
+"Primary Site","oropharynx (c10.9)","C10.9","oropharynx",NULL
+"Primary Site","superior wall of nasopharynx (c11.0)","C11.0","roof of nasopharynx",NULL
+"Primary Site","superior wall of nasopharynx (c11.0)","C11.0","superior wall of nasopharynx",NULL
+"Primary Site","posterior wall of nasopharynx (c11.1)","C11.1","adenoid",NULL
+"Primary Site","posterior wall of nasopharynx (c11.1)","C11.1","pharyngeal tonsil",NULL
+"Primary Site","posterior wall of nasopharynx (c11.1)","C11.1","posterior wall of nasopharynx",NULL
+"Primary Site","lateral wall of nasopharynx (c11.2)","C11.2","fossa of rosenmuller",NULL
+"Primary Site","lateral wall of nasopharynx (c11.2)","C11.2","lateral wall of nasopharynx",NULL
+"Primary Site","anterior wall of nasopharynx (c11.3)","C11.3","anterior wall of nasopharynx",NULL
+"Primary Site","anterior wall of nasopharynx (c11.3)","C11.3","choana",NULL
+"Primary Site","anterior wall of nasopharynx (c11.3)","C11.3","nasopharyngeal surface of soft palate",NULL
+"Primary Site","anterior wall of nasopharynx (c11.3)","C11.3","pharyngeal fornix",NULL
+"Primary Site","anterior wall of nasopharynx (c11.3)","C11.3","posterior margin of nasal septum",NULL
+"Primary Site","overlapping lesion of nasopharynx (c11.8)","C11.8","overlapping lesion of nasopharynx",NULL
+"Primary Site","nasopharynx (c11.9)","C11.9","nasopharyngeal wall",NULL
+"Primary Site","nasopharynx (c11.9)","C11.9","nasopharynx",NULL
+"Primary Site","pyriform sinus (c12.9)","C12.9","piriform fossa",NULL
+"Primary Site","pyriform sinus (c12.9)","C12.9","piriform sinus",NULL
+"Primary Site","pyriform sinus (c12.9)","C12.9","pyriform fossa",NULL
+"Primary Site","pyriform sinus (c12.9)","C12.9","pyriform sinus",NULL
+"Primary Site","postcricoid region (c13.0)","C13.0","cricoid",NULL
+"Primary Site","postcricoid region (c13.0)","C13.0","cricopharynx",NULL
+"Primary Site","postcricoid region (c13.0)","C13.0","postcricoid region",NULL
+"Primary Site","hypopharyngeal aspect of aryepiglottic fold (c13.1)","C13.1","aryepiglottic fold",NULL
+"Primary Site","hypopharyngeal aspect of aryepiglottic fold (c13.1)","C13.1","arytenoid fold",NULL
+"Primary Site","hypopharyngeal aspect of aryepiglottic fold (c13.1)","C13.1","hypopharyngeal aspect of aryepiglottic fold",NULL
+"Primary Site","hypopharyngeal aspect of aryepiglottic fold (c13.1)","C13.1","laryngeal aspect of aryepiglottic fold",NULL
+"Primary Site","posterior wall of hypopharynx (c13.2)","C13.2","posterior wall of hypopharynx",NULL
+"Primary Site","overlapping lesion of hypopharynx (c13.8)","C13.8","overlapping lesion of hypopharynx",NULL
+"Primary Site","hypopharynx (c13.9)","C13.9","hypopharyngeal wall",NULL
+"Primary Site","hypopharynx (c13.9)","C13.9","hypopharynx",NULL
+"Primary Site","hypopharynx (c13.9)","C13.9","laryngopharynx",NULL
+"Primary Site","pharynx (c14.0)","C14.0","lateral wall of pharynx",NULL
+"Primary Site","pharynx (c14.0)","C14.0","pharyngeal wall",NULL
+"Primary Site","pharynx (c14.0)","C14.0","pharynx",NULL
+"Primary Site","pharynx (c14.0)","C14.0","posterior wall of pharynx",NULL
+"Primary Site","pharynx (c14.0)","C14.0","retropharynx",NULL
+"Primary Site","pharynx (c14.0)","C14.0","throat",NULL
+"Primary Site","pharynx (c14.0)","C14.0","wall of pharynx",NULL
+"Primary Site","waldeyer ring (c14.2)","C14.2","waldeyer ring",NULL
+"Primary Site","overlapping lesion of lip, oral cavity and pharynx (c14.8)","C14.8","oral cavity and pharynx overlapping lesion of lip",NULL
+"Primary Site","overlapping lesion of lip, oral cavity and pharynx (c14.8)","C14.8","overlapping lesion of lip oral cavity and pharynx",NULL
+"Primary Site","overlapping lesion of lip, oral cavity and pharynx (c14.8)","C14.8","overlapping lesion of lip, oral cavity and pharynx",NULL
+"Primary Site","cervical esophagus (c15.0)","C15.0","cervical esophagus",NULL
+"Primary Site","thoracic esophagus (c15.1)","C15.1","thoracic esophagus",NULL
+"Primary Site","abdominal esophagus (c15.2)","C15.2","abdominal esophagus",NULL
+"Primary Site","upper third of esophagus (c15.3)","C15.3","proximal third of esophagus",NULL
+"Primary Site","upper third of esophagus (c15.3)","C15.3","upper third of esophagus",NULL
+"Primary Site","middle third of esophagus (c15.4)","C15.4","middle third of esophagus",NULL
+"Primary Site","lower third of esophagus (c15.5)","C15.5","distal third of esophagus",NULL
+"Primary Site","lower third of esophagus (c15.5)","C15.5","lower third of esophagus",NULL
+"Primary Site","overlapping lesion of esophagus (c15.8)","C15.8","overlapping lesion of esophagus",NULL
+"Primary Site","esophagus (c15.9)","C15.9","esophagus",NULL
+"Primary Site","cardia (c16.0)","C16.0","cardia",NULL
+"Primary Site","cardia (c16.0)","C16.0","cardioesophageal junction",NULL
+"Primary Site","cardia (c16.0)","C16.0","esophagogastric junction",NULL
+"Primary Site","cardia (c16.0)","C16.0","gastric cardia",NULL
+"Primary Site","cardia (c16.0)","C16.0","gastroesophageal junction",NULL
+"Primary Site","fundus of stomach (c16.1)","C16.1","fundus of stomach",NULL
+"Primary Site","fundus of stomach (c16.1)","C16.1","gastric fundus",NULL
+"Primary Site","body of stomach (c16.2)","C16.2","body of stomach",NULL
+"Primary Site","body of stomach (c16.2)","C16.2","corpus of stomach",NULL
+"Primary Site","body of stomach (c16.2)","C16.2","gastric corpus",NULL
+"Primary Site","gastric antrum (c16.3)","C16.3","antrum of stomach",NULL
+"Primary Site","gastric antrum (c16.3)","C16.3","gastric antrum",NULL
+"Primary Site","gastric antrum (c16.3)","C16.3","pyloric antrum",NULL
+"Primary Site","pylorus (c16.4)","C16.4","prepylorus",NULL
+"Primary Site","pylorus (c16.4)","C16.4","pyloric canal",NULL
+"Primary Site","pylorus (c16.4)","C16.4","pylorus",NULL
+"Primary Site","lesser curvature of stomach (c16.5)","C16.5","lesser curvature of stomach",NULL
+"Primary Site","greater curvature of stomach (c16.6)","C16.6","greater curvature of stomach",NULL
+"Primary Site","overlapping lesion of stomach (c16.8)","C16.8","anterior wall of stomach",NULL
+"Primary Site","overlapping lesion of stomach (c16.8)","C16.8","overlapping lesion of stomach",NULL
+"Primary Site","overlapping lesion of stomach (c16.8)","C16.8","posterior wall of stomach",NULL
+"Primary Site","stomach (c16.9)","C16.9","gastric",NULL
+"Primary Site","stomach (c16.9)","C16.9","stomach",NULL
+"Primary Site","duodenum (c17.0)","C17.0","duodenum",NULL
+"Primary Site","jejunum (c17.1)","C17.1","jejunum",NULL
+"Primary Site","ileum (c17.2)","C17.2","ileum",NULL
+"Primary Site","meckel diverticulum (c17.3)","C17.3","meckel diverticulum",NULL
+"Primary Site","overlapping lesion of smallintestine (c17.8)","C17.8","overlapping lesion of smallintestine",NULL
+"Primary Site","small intestine (c17.9)","C17.9","small bowel",NULL
+"Primary Site","small intestine (c17.9)","C17.9","small intestine",NULL
+"Primary Site","cecum (c18.0)","C18.0","cecum",NULL
+"Primary Site","cecum (c18.0)","C18.0","ileocecal junction",NULL
+"Primary Site","cecum (c18.0)","C18.0","ileocecal valve",NULL
+"Primary Site","appendix (c18.1)","C18.1","appendix",NULL
+"Primary Site","ascending colon (c18.2)","C18.2","ascending colon",NULL
+"Primary Site","ascending colon (c18.2)","C18.2","right colon",NULL
+"Primary Site","hepatic flexure of colon (c18.3)","C18.3","hepatic flexure of colon",NULL
+"Primary Site","transverse colon (c18.4)","C18.4","transverse colon",NULL
+"Primary Site","splenic flexure of colon (c18.5)","C18.5","splenic flexure of colon",NULL
+"Primary Site","descending colon (c18.6)","C18.6","descending colon",NULL
+"Primary Site","descending colon (c18.6)","C18.6","left colon",NULL
+"Primary Site","sigmoid colon (c18.7)","C18.7","pelvic colon",NULL
+"Primary Site","sigmoid colon (c18.7)","C18.7","sigmoid",NULL
+"Primary Site","sigmoid colon (c18.7)","C18.7","sigmoid colon",NULL
+"Primary Site","sigmoid colon (c18.7)","C18.7","sigmoid flexure of colon",NULL
+"Primary Site","overlapping lesion of colon (c18.8)","C18.8","overlapping lesion of colon",NULL
+"Primary Site","colon (c18.9)","C18.9","and rectosigmoid junction",NULL
+"Primary Site","colon (c18.9)","C18.9","colon",NULL
+"Primary Site","colon (c18.9)","C18.9","large bowel",NULL
+"Primary Site","colon (c18.9)","C18.9","large intestine",NULL
+"Primary Site","colon (c18.9)","C18.9","rectum",NULL
+"Primary Site","rectosigmoid junction (c19.9)","C19.9","colon and rectum",NULL
+"Primary Site","rectosigmoid junction (c19.9)","C19.9","pelvirectal junction",NULL
+"Primary Site","rectosigmoid junction (c19.9)","C19.9","rectosigmoid",NULL
+"Primary Site","rectosigmoid junction (c19.9)","C19.9","rectosigmoid colon",NULL
+"Primary Site","rectosigmoid junction (c19.9)","C19.9","rectosigmoid junction",NULL
+"Primary Site","rectum (c20.9)","C20.9","rectal ampulla",NULL
+"Primary Site","rectum (c20.9)","C20.9","rectum",NULL
+"Primary Site","anus (c21.0)","C21.0","anus",NULL
+"Primary Site","anal canal (c21.1)","C21.1","anal canal",NULL
+"Primary Site","anal canal (c21.1)","C21.1","anal sphincter",NULL
+"Primary Site","cloacogenic zone (c21.2)","C21.2","cloacogenic zone",NULL
+"Primary Site","overlapping lesion of rectum, anus and anal canal (c21.8)","C21.8","anorectal junction",NULL
+"Primary Site","overlapping lesion of rectum, anus and anal canal (c21.8)","C21.8","anorectum",NULL
+"Primary Site","overlapping lesion of rectum, anus and anal canal (c21.8)","C21.8","anus and anal canal overlapping lesion of rectum",NULL
+"Primary Site","overlapping lesion of rectum, anus and anal canal (c21.8)","C21.8","overlapping lesion of rectum anus and anal canal",NULL
+"Primary Site","overlapping lesion of rectum, anus and anal canal (c21.8)","C21.8","overlapping lesion of rectum, anus and anal canal",NULL
+"Primary Site","liver (c22.0)","C22.0","hepatic",NULL
+"Primary Site","liver (c22.0)","C22.0","liver",NULL
+"Primary Site","intrahepatic bile duct (c22.1)","C22.1","biliary canaliculus",NULL
+"Primary Site","intrahepatic bile duct (c22.1)","C22.1","cholangiole",NULL
+"Primary Site","intrahepatic bile duct (c22.1)","C22.1","intrahepatic bile duct",NULL
+"Primary Site","gallbladder (c23.9)","C23.9","gallbladder",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","bile duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","biliary duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","choledochal duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","common bile duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","common duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","cystic bile duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","cystic duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","extrahepatic bile duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","hepatic bile duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","hepatic duct",NULL
+"Primary Site","extrahepatic bile duct (c24.0)","C24.0","sphincter of oddi",NULL
+"Primary Site","ampulla of vater (c24.1)","C24.1","ampulla of vater",NULL
+"Primary Site","ampulla of vater (c24.1)","C24.1","periampullary",NULL
+"Primary Site","overlapping lesion of biliary tract note: (c24.8)","C24.8","overlapping lesion of biliary tract note:",NULL
+"Primary Site","biliary tract (c24.9)","C24.9","biliary tract",NULL
+"Primary Site","head of pancreas (c25.0)","C25.0","head of pancreas",NULL
+"Primary Site","body of pancreas (c25.1)","C25.1","body of pancreas",NULL
+"Primary Site","tail of pancreas (c25.2)","C25.2","tail of pancreas",NULL
+"Primary Site","pancreatic duct (c25.3)","C25.3","duct of santorini",NULL
+"Primary Site","pancreatic duct (c25.3)","C25.3","duct of wirsung",NULL
+"Primary Site","pancreatic duct (c25.3)","C25.3","pancreatic duct",NULL
+"Primary Site","islets of langerhans (c25.4)","C25.4","endocrine pancreas",NULL
+"Primary Site","islets of langerhans (c25.4)","C25.4","islands of langerhans",NULL
+"Primary Site","islets of langerhans (c25.4)","C25.4","islets of langerhans",NULL
+"Primary Site","other specified parts of pancreas (c25.7)","C25.7","neck of pancreas",NULL
+"Primary Site","other specified parts of pancreas (c25.7)","C25.7","other specified parts of pancreas",NULL
+"Primary Site","overlapping lesion of pancreas (c25.8)","C25.8","overlapping lesion of pancreas",NULL
+"Primary Site","pancreas (c25.9)","C25.9","pancreas",NULL
+"Primary Site","intestinal tract (c26.0)","C26.0","bowel",NULL
+"Primary Site","intestinal tract (c26.0)","C26.0","intestinal tract",NULL
+"Primary Site","intestinal tract (c26.0)","C26.0","intestine",NULL
+"Primary Site","overlapping lesion of digestive system (c26.8)","C26.8","overlapping lesion of digestive system",NULL
+"Primary Site","gastrointestinal tract (c26.9)","C26.9","digestive organs",NULL
+"Primary Site","gastrointestinal tract (c26.9)","C26.9","gastrointestinal tract",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","internal nose",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","naris",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nasal cartilage",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nasal cavity",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nasal mucosa",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nasal septum",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nasal turbinate",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","nostril",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","posterior margin of nasal septum",NULL
+"Primary Site","nasal cavity (c30.0)","C30.0","vestibule of nose",NULL
+"Primary Site","middle ear (c30.1)","C30.1","auditory tube",NULL
+"Primary Site","middle ear (c30.1)","C30.1","eustachian tube",NULL
+"Primary Site","middle ear (c30.1)","C30.1","inner ear",NULL
+"Primary Site","middle ear (c30.1)","C30.1","mastoid antrum",NULL
+"Primary Site","middle ear (c30.1)","C30.1","middle ear",NULL
+"Primary Site","middle ear (c30.1)","C30.1","tympanic cavity",NULL
+"Primary Site","maxillary sinus (c31.0)","C31.0","antrum",NULL
+"Primary Site","maxillary sinus (c31.0)","C31.0","maxillary antrum",NULL
+"Primary Site","maxillary sinus (c31.0)","C31.0","maxillary sinus",NULL
+"Primary Site","ethmoid sinus (c31.1)","C31.1","ethmoid sinus",NULL
+"Primary Site","frontal sinus (c31.2)","C31.2","frontal sinus",NULL
+"Primary Site","sphenoid sinus (c31.3)","C31.3","sphenoid sinus",NULL
+"Primary Site","overlapping lesion of accessory sinuses (c31.8)","C31.8","overlapping lesion of accessory sinuses",NULL
+"Primary Site","accessory sinus (c31.9)","C31.9","accessory nasal sinus",NULL
+"Primary Site","accessory sinus (c31.9)","C31.9","accessory sinus",NULL
+"Primary Site","accessory sinus (c31.9)","C31.9","paranasal sinus",NULL
+"Primary Site","glottis (c32.0)","C32.0","glottis",NULL
+"Primary Site","glottis (c32.0)","C32.0","intrinsic larynx",NULL
+"Primary Site","glottis (c32.0)","C32.0","laryngeal commissure",NULL
+"Primary Site","glottis (c32.0)","C32.0","true cord",NULL
+"Primary Site","glottis (c32.0)","C32.0","true vocal cord",NULL
+"Primary Site","glottis (c32.0)","C32.0","vocal cord",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","anterior surface of epiglottis",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","epiglottis",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","extrinsic larynx",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","false cord",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","false vocal cord",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","laryngeal aspect of aryepiglottic fold",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","posterior surface of epiglottis",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","supraglottis",NULL
+"Primary Site","supraglottis (c32.1)","C32.1","ventricular band of larynx",NULL
+"Primary Site","subglottis (c32.2)","C32.2","subglottis",NULL
+"Primary Site","laryngeal cartilage (c32.3)","C32.3","arytenoid cartilage",NULL
+"Primary Site","laryngeal cartilage (c32.3)","C32.3","cricoid cartilage",NULL
+"Primary Site","laryngeal cartilage (c32.3)","C32.3","cuneiform cartilage",NULL
+"Primary Site","laryngeal cartilage (c32.3)","C32.3","laryngeal cartilage",NULL
+"Primary Site","laryngeal cartilage (c32.3)","C32.3","thyroid cartilage",NULL
+"Primary Site","overlapping lesion of larynx (c32.8)","C32.8","overlapping lesion of larynx",NULL
+"Primary Site","larynx (c32.9)","C32.9","larynx",NULL
+"Primary Site","trachea (c33.9)","C33.9","trachea",NULL
+"Primary Site","main bronchus (c34.0)","C34.0","carina",NULL
+"Primary Site","main bronchus (c34.0)","C34.0","hilus of lung",NULL
+"Primary Site","main bronchus (c34.0)","C34.0","main bronchus",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","bronchus upper lobe",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","lingula of lung",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","lung upper lobe",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","upper lobe bronchus",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","upper lobe lung",NULL
+"Primary Site","upper lobe, lung (c34.1)","C34.1","upper lobe, lung",NULL
+"Primary Site","middle lobe, lung (c34.2)","C34.2","bronchus middle lobe",NULL
+"Primary Site","middle lobe, lung (c34.2)","C34.2","lung middle lobe",NULL
+"Primary Site","middle lobe, lung (c34.2)","C34.2","middle lobe bronchus",NULL
+"Primary Site","middle lobe, lung (c34.2)","C34.2","middle lobe lung",NULL
+"Primary Site","middle lobe, lung (c34.2)","C34.2","middle lobe, lung",NULL
+"Primary Site","lower lobe, lung (c34.3)","C34.3","bronchus lower lobe",NULL
+"Primary Site","lower lobe, lung (c34.3)","C34.3","lower lobe bronchus",NULL
+"Primary Site","lower lobe, lung (c34.3)","C34.3","lower lobe lung",NULL
+"Primary Site","lower lobe, lung (c34.3)","C34.3","lower lobe, lung",NULL
+"Primary Site","lower lobe, lung (c34.3)","C34.3","lung lower lobe",NULL
+"Primary Site","overlapping lesion of lung (c34.8)","C34.8","overlapping lesion of lung",NULL
+"Primary Site","lung (c34.9)","C34.9","bronchiole",NULL
+"Primary Site","lung (c34.9)","C34.9","bronchogenic",NULL
+"Primary Site","lung (c34.9)","C34.9","bronchus",NULL
+"Primary Site","lung (c34.9)","C34.9","lung",NULL
+"Primary Site","lung (c34.9)","C34.9","pulmonary",NULL
+"Primary Site","thymus (c37.9)","C37.9","thymus",NULL
+"Primary Site","heart (c38.0)","C38.0","cardiac atrium",NULL
+"Primary Site","heart (c38.0)","C38.0","cardiac ventricle",NULL
+"Primary Site","heart (c38.0)","C38.0","endocardium",NULL
+"Primary Site","heart (c38.0)","C38.0","epicardium",NULL
+"Primary Site","heart (c38.0)","C38.0","heart",NULL
+"Primary Site","heart (c38.0)","C38.0","myocardium",NULL
+"Primary Site","heart (c38.0)","C38.0","pericardium",NULL
+"Primary Site","anterior mediastinum (c38.1)","C38.1","anterior mediastinum",NULL
+"Primary Site","posterior mediastinum (c38.2)","C38.2","posterior mediastinum",NULL
+"Primary Site","mediastinum (c38.3)","C38.3","mediastinum",NULL
+"Primary Site","pleura (c38.4)","C38.4","parietal pleura",NULL
+"Primary Site","pleura (c38.4)","C38.4","pleura",NULL
+"Primary Site","pleura (c38.4)","C38.4","visceral pleura",NULL
+"Primary Site","overlapping lesion of heart, mediastinum and pleura (c38.8)","C38.8","mediastinum and pleura overlapping lesion of heart",NULL
+"Primary Site","overlapping lesion of heart, mediastinum and pleura (c38.8)","C38.8","overlapping lesion of heart mediastinum and pleura",NULL
+"Primary Site","overlapping lesion of heart, mediastinum and pleura (c38.8)","C38.8","overlapping lesion of heart, mediastinum and pleura",NULL
+"Primary Site","upper respiratory tract (c39.0)","C39.0","upper respiratory tract",NULL
+"Primary Site","overlapping lesion of respiratory system and intrathoracic organs (c39.8)","C39.8","overlapping lesion of respiratory system and intrathoracic organs",NULL
+"Primary Site","ill-defined sites within respiratory system (c39.9)","C39.9","ill-defined sites within respiratory system",NULL
+"Primary Site","ill-defined sites within respiratory system (c39.9)","C39.9","respiratory tract",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","acromioclavicular joint",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","bone of arm",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","bone of forearm",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","bone of shoulder",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","elbow joint",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","humerus",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","long bones of upper limb scapula and associated joints",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","long bones of upper limb, scapula and associated joints",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","radius",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","scapula",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","scapula and associated joints long bones of upper limb",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","shoulder girdle",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","shoulder joint",NULL
+"Primary Site","long bones of upper limb, scapula and associated joints (c40.0)","C40.0","ulna",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","bone of finger",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","bone of hand",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","bone of thumb",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","bone of wrist",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","carpal bone",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","hand joint",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","metacarpal bone",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","phalanx of hand",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","short bones of upper limb and associated joints",NULL
+"Primary Site","short bones of upper limb and associated joints (c40.1)","C40.1","wrist joint",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","bone of leg",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","femur",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","fibula",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","knee joint",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","lateral meniscus of knee joint",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","long bones of lower limb and associated joints",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","medial meniscus of knee joint",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","semilunar cartilage",NULL
+"Primary Site","long bones of lower limb and associated joints (c40.2)","C40.2","tibia",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","ankle joint",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","bone of ankle",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","bone of foot",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","bone of heel",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","bone of toe",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","foot joint",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","metatarsal bone",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","patella",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","phalanx of foot",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","short bones of lower limb and associated joints",NULL
+"Primary Site","short bones of lower limb and associated joints (c40.3)","C40.3","tarsal bone",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage of limbs (c40.8)","C40.8","joints and articular cartilage of limbs overlapping lesion of bones",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage of limbs (c40.8)","C40.8","overlapping lesion of bones joints and articular cartilage of limbs",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage of limbs (c40.8)","C40.8","overlapping lesion of bones, joints and articular cartilage of limbs",NULL
+"Primary Site","bone of limb (c40.9)","C40.9","articular cartilage of limb",NULL
+"Primary Site","bone of limb (c40.9)","C40.9","bone of limb",NULL
+"Primary Site","bone of limb (c40.9)","C40.9","cartilage of limb",NULL
+"Primary Site","bone of limb (c40.9)","C40.9","joint of limb",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","atlas",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","axis",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","bone of back",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","intervertebral disc",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","nucleus pulposus",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","spinal column",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","spine",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","vertebra",NULL
+"Primary Site","vertebral column (c41.2)","C41.2","vertebral column",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","clavicle and associated joints sternum rib",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","costal cartilage",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","costovertebral joint",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","rib sternum clavicle and associated joints",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","rib, sternum, clavicle and associated joints",NULL
+"Primary Site","rib, sternum, clavicle and associated joints (c41.3)","C41.3","sternocostal joint",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","acetabulum",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","bone of hip",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","coccyx",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","coccyx and associated joints sacrum pelvic bones",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","hip joint",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","ilium",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","innominate bone",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","ischium",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","pelvic bone",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","pelvic bones sacrum coccyx and associated joints",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","pelvic bones, sacrum, coccyx and associated joints",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","pubic bone",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","sacrum",NULL
+"Primary Site","pelvic bones, sacrum, coccyx and associated joints (c41.4)","C41.4","symphysis pubis",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage (c41.8)","C41.8","joints and articular cartilage overlapping lesion of bones",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage (c41.8)","C41.8","overlapping lesion of bones joints and articular cartilage",NULL
+"Primary Site","overlapping lesion of bones, joints and articular cartilage (c41.8)","C41.8","overlapping lesion of bones, joints and articular cartilage",NULL
+"Primary Site","bone (c41.9)","C41.9","articular cartilage",NULL
+"Primary Site","bone (c41.9)","C41.9","bone",NULL
+"Primary Site","bone (c41.9)","C41.9","cartilage",NULL
+"Primary Site","bone (c41.9)","C41.9","joint",NULL
+"Primary Site","bone (c41.9)","C41.9","skeletal bone",NULL
+"Primary Site","blood (c42.0)","C42.0","blood",NULL
+"Primary Site","bone marrow (c42.1)","C42.1","bone marrow",NULL
+"Primary Site","spleen (c42.2)","C42.2","spleen",NULL
+"Primary Site","reticuloendothelial system,nos (c42.3)","C42.3","reticuloendothelial system",NULL
+"Primary Site","reticuloendothelial system,nos (c42.3)","C42.3","reticuloendothelial system,nos",NULL
+"Primary Site","hematopoietic system (c42.4)","C42.4","hematopoietic system",NULL
+"Primary Site","skin of lip (c44.0)","C44.0","skin of lip",NULL
+"Primary Site","skin of lip (c44.0)","C44.0","skin of lower lip",NULL
+"Primary Site","skin of lip (c44.0)","C44.0","skin of upper lip",NULL
+"Primary Site","eyelid (c44.1)","C44.1","canthus",NULL
+"Primary Site","eyelid (c44.1)","C44.1","eyelid",NULL
+"Primary Site","eyelid (c44.1)","C44.1","inner canthus",NULL
+"Primary Site","eyelid (c44.1)","C44.1","lid",NULL
+"Primary Site","eyelid (c44.1)","C44.1","lower lid",NULL
+"Primary Site","eyelid (c44.1)","C44.1","meibomian gland",NULL
+"Primary Site","eyelid (c44.1)","C44.1","outer canthus",NULL
+"Primary Site","eyelid (c44.1)","C44.1","palpebra",NULL
+"Primary Site","eyelid (c44.1)","C44.1","upper lid",NULL
+"Primary Site","external ear (c44.2)","C44.2","auditory canal",NULL
+"Primary Site","external ear (c44.2)","C44.2","auricle",NULL
+"Primary Site","external ear (c44.2)","C44.2","auricular canal",NULL
+"Primary Site","external ear (c44.2)","C44.2","ceruminal gland",NULL
+"Primary Site","external ear (c44.2)","C44.2","concha",NULL
+"Primary Site","external ear (c44.2)","C44.2","ear",NULL
+"Primary Site","external ear (c44.2)","C44.2","ear canal",NULL
+"Primary Site","external ear (c44.2)","C44.2","ear lobule",NULL
+"Primary Site","external ear (c44.2)","C44.2","earlobe",NULL
+"Primary Site","external ear (c44.2)","C44.2","external auditory canal",NULL
+"Primary Site","external ear (c44.2)","C44.2","external auditory meatus",NULL
+"Primary Site","external ear (c44.2)","C44.2","external auricular canal",NULL
+"Primary Site","external ear (c44.2)","C44.2","external ear",NULL
+"Primary Site","external ear (c44.2)","C44.2","helix",NULL
+"Primary Site","external ear (c44.2)","C44.2","pinna",NULL
+"Primary Site","external ear (c44.2)","C44.2","skin of auricle",NULL
+"Primary Site","external ear (c44.2)","C44.2","skin of ear",NULL
+"Primary Site","external ear (c44.2)","C44.2","tragus",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","ala nasi",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","brow",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","chin",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","columnella",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","external cheek",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","external nose",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","eyebrow",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","forehead",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","skin of other and unspecified parts of face",NULL
+"Primary Site","skin of other and unspecified parts of face (c44.3)","C44.3","temple",NULL
+"Primary Site","skin of trunk (c44.5)","C44.5","perianal skin",NULL
+"Primary Site","skin of trunk (c44.5)","C44.5","skin of trunk",NULL
+"Primary Site","skin of trunk (c44.5)","C44.5","umbilicus",NULL
+"Primary Site","skin of upper limb and shoulder (c44.6)","C44.6","finger nail",NULL
+"Primary Site","skin of upper limb and shoulder (c44.6)","C44.6","palmar skin",NULL
+"Primary Site","skin of upper limb and shoulder (c44.6)","C44.6","skin of upper limb and shoulder",NULL
+"Primary Site","skin of lower limb and hip (c44.7)","C44.7","plantar skin",NULL
+"Primary Site","skin of lower limb and hip (c44.7)","C44.7","skin of lower limb and hip",NULL
+"Primary Site","skin of lower limb and hip (c44.7)","C44.7","sole of foot",NULL
+"Primary Site","skin of lower limb and hip (c44.7)","C44.7","toe nail",NULL
+"Primary Site","overlapping lesion of skin (c44.8)","C44.8","overlapping lesion of skin",NULL
+"Primary Site","skin (c44.9)","C44.9","c51.0 skin of vulva c51.9 skin of penis c60.9 and skin of scrotum c63.2)",NULL
+"Primary Site","skin (c44.9)","C44.9","skin",NULL
+"Primary Site","skin (c44.9)","C44.9","skin of penis c60.9 and skin of scrotum c63.2) skin of vulva c51.9 c51.0",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of head, face, and neck (c47.0)","C47.0","and neck face peripheral nerves and autonomic nervous system of head",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of head, face, and neck (c47.0)","C47.0","cervical plexus",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of head, face, and neck (c47.0)","C47.0","peripheral nerves and autonomic nervous system of head face and neck",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of head, face, and neck (c47.0)","C47.0","peripheral nerves and autonomic nervous system of head, face, and neck",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","brachial nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","brachial plexus",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","median nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","peripheral nerves and autonomic nervous system of upper limb and shoulder",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","radial nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of upper limb and shoulder (c47.1)","C47.1","ulnar nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of lower limband hip (c47.2)","C47.2","femoral nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of lower limband hip (c47.2)","C47.2","obturator nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of lower limband hip (c47.2)","C47.2","peripheral nerves and autonomic nervous system of lower limband hip",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of lower limband hip (c47.2)","C47.2","sciatic nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of thorax (c47.3)","C47.3","intercostal nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of thorax (c47.3)","C47.3","peripheral nerves and autonomic nervous system of thorax",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of abdomen (c47.4)","C47.4","peripheral nerves and autonomic nervous system of abdomen",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of pelvis (c47.5)","C47.5","lumbosacral plexus",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of pelvis (c47.5)","C47.5","peripheral nerves and autonomic nervous system of pelvis",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of pelvis (c47.5)","C47.5","sacral nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of pelvis (c47.5)","C47.5","sacral plexus",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of trunk (c47.6)","C47.6","lumbar nerve",NULL
+"Primary Site","peripheral nerves and autonomic nervous system of trunk (c47.6)","C47.6","peripheral nerves and autonomic nervous system of trunk",NULL
+"Primary Site","overlapping lesion of peripheral nerves and autonomic nervous system (c47.8)","C47.8","overlapping lesion of peripheral nerves and autonomic nervous system",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","autonomic nervous system",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","ganglia",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","nerve",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","parasympathetic nervous system",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","peripheral nerve",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","spinal nerve",NULL
+"Primary Site","autonomic nervous system (c47.9)","C47.9","sympathetic nervous system",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","periadrenal tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","perinephric tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","peripancreatic tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","perirenal tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","retrocecal tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","retroperitoneal tissue",NULL
+"Primary Site","retroperitoneum (c48.0)","C48.0","retroperitoneum",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","cul de sac",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","mesentery",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","mesoappendix",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","mesocolon",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","omentum",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","pelvic peritoneum",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","pouch of douglas",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","rectouterine pouch",NULL
+"Primary Site","specified parts of peritoneum (c48.1)","C48.1","specified parts of peritoneum",NULL
+"Primary Site","peritoneum (c48.2)","C48.2","peritoneal cavity",NULL
+"Primary Site","peritoneum (c48.2)","C48.2","peritoneum",NULL
+"Primary Site","overlapping lesion of retroperitoneum and peritoneum (c48.8)","C48.8","overlapping lesion of retroperitoneum and peritoneum",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","and neck face subcutaneous and other soft tissues of head connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","auricular cartilage",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","c69.6 and nasal cartilage c30.0)",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","carotid artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","cartilage of ear",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","connective subcutaneous and other soft tissues of head face and neck",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","connective, subcutaneous and other soft tissues of head, face, and neck",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","masseter muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of head, face, and neck (c49.0)","C49.0","sternocleidomastoid muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","biceps brachii muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","brachialis muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","connective subcutaneous and other soft tissues of upper limb and shoulder",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","connective, subcutaneous and other soft tissues of upper limb and shoulder",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","coracobrachialis muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","deltoideus muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","palmar aponeurosis",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","palmar fascia",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","radial artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","subcutaneous and other soft tissues of upper limb and shoulder connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","triceps brachii muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of upper limb and shoulder (c49.1)","C49.1","ulnar artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","biceps femoris muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","connective subcutaneous and other soft tissues of lower limb and hip",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","connective, subcutaneous and other soft tissues of lower limb and hip",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","femoral artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","gastrocnemius muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","plantar aponeurosis",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","plantar fascia",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","quadriceps femoris muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of lower limb and hip (c49.2)","C49.2","subcutaneous and other soft tissues of lower limb and hip connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","aorta",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","axillary artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","c38._)",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","connective subcutaneous and other soft tissues of thorax",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","connective, subcutaneous and other soft tissues of thorax",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","diaphragm",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","intercostal muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","internal mammary artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","latissimus dorsi muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","pectoralis major muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","subclavian artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","subcutaneous and other soft tissues of thorax connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","superior vena cava",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","thoracic duct",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of thorax (c49.3)","C49.3","trapezius muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","abdominal aorta",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","abdominal vena cava",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","abdominal wall muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","celiac artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","connective subcutaneous and other soft tissues of abdomen",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","connective, subcutaneous and other soft tissues of abdomen",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","iliopsoas muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","inferior vena cava",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","mesenteric artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","psoas muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","rectus abdominis muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","renal artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","subcutaneous and other soft tissues of abdomen connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of abdomen (c49.4)","C49.4","vena cava",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","connective subcutaneous and other soft tissues of pelvis",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","connective, subcutaneous and other soft tissues of pelvis",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","gluteus maximus muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","iliac artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","iliac vein",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of pelvis (c49.5)","C49.5","subcutaneous and other soft tissues of pelvis connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of trunk nos (c49.6)","C49.6","connective subcutaneous and other soft tissues of trunk nos",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of trunk nos (c49.6)","C49.6","connective, subcutaneous and other soft tissues of trunk nos",NULL
+"Primary Site","connective, subcutaneous and other soft tissues of trunk nos (c49.6)","C49.6","subcutaneous and other soft tissues of trunk nos connective",NULL
+"Primary Site","overlapping lesion of connective, subcutaneous and other soft tissues (c49.8)","C49.8","overlapping lesion of connective subcutaneous and other soft tissues",NULL
+"Primary Site","overlapping lesion of connective, subcutaneous and other soft tissues (c49.8)","C49.8","overlapping lesion of connective, subcutaneous and other soft tissues",NULL
+"Primary Site","overlapping lesion of connective, subcutaneous and other soft tissues (c49.8)","C49.8","subcutaneous and other soft tissues overlapping lesion of connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","adipose tissue",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","aponeurosis",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","artery",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","blood vessel",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","bursa",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","connective subcutaneous and other soft tissues",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","connective tissue",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","connective, subcutaneous and other soft tissues",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","fascia",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","fatty tissue",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","fibrous tissue",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","ligament",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","lymphatic",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","skeletal muscle",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","subcutaneous and other soft tissues connective",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","subcutaneous tissue",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","synovia",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","tendon",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","tendon sheath",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","vein",NULL
+"Primary Site","connective, subcutaneous and other soft tissues (c49.9)","C49.9","vessel",NULL
+"Primary Site","nipple (c50.0)","C50.0","areola",NULL
+"Primary Site","nipple (c50.0)","C50.0","nipple",NULL
+"Primary Site","central portion of breast (c50.1)","C50.1","central portion of breast",NULL
+"Primary Site","upper-inner quadrant of breast (c50.2)","C50.2","upper-inner quadrant of breast",NULL
+"Primary Site","lower-inner quadrant of breast (c50.3)","C50.3","lower-inner quadrant of breast",NULL
+"Primary Site","upper-outer quadrant of breast (c50.4)","C50.4","upper-outer quadrant of breast",NULL
+"Primary Site","lower-outer quadrant of breast (c50.5)","C50.5","lower-outer quadrant of breast",NULL
+"Primary Site","axillary tail of breast (c50.6)","C50.6","axillary tail of breast",NULL
+"Primary Site","axillary tail of breast (c50.6)","C50.6","tail of breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","inner breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","lower breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","midline of breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","outer breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","overlapping lesion of breast",NULL
+"Primary Site","overlapping lesion of breast (c50.8)","C50.8","upper breast",NULL
+"Primary Site","breast (c50.9)","C50.9","breast",NULL
+"Primary Site","breast (c50.9)","C50.9","mammary gland",NULL
+"Primary Site","labium majus (c51.0)","C51.0","bartholin gland",NULL
+"Primary Site","labium majus (c51.0)","C51.0","labia majora",NULL
+"Primary Site","labium majus (c51.0)","C51.0","labium majus",NULL
+"Primary Site","labium majus (c51.0)","C51.0","skin of labia majora",NULL
+"Primary Site","labium minus (c51.1)","C51.1","labia minora",NULL
+"Primary Site","labium minus (c51.1)","C51.1","labium minus",NULL
+"Primary Site","clitoris (c51.2)","C51.2","clitoris",NULL
+"Primary Site","overlapping lesion of vulva (c51.8)","C51.8","overlapping lesion of vulva",NULL
+"Primary Site","vulva (c51.9)","C51.9","external female genitalia",NULL
+"Primary Site","vulva (c51.9)","C51.9","fourchette",NULL
+"Primary Site","vulva (c51.9)","C51.9","labia",NULL
+"Primary Site","vulva (c51.9)","C51.9","labium",NULL
+"Primary Site","vulva (c51.9)","C51.9","mons pubis",NULL
+"Primary Site","vulva (c51.9)","C51.9","mons veneris",NULL
+"Primary Site","vulva (c51.9)","C51.9","pudendum",NULL
+"Primary Site","vulva (c51.9)","C51.9","skin of vulva",NULL
+"Primary Site","vulva (c51.9)","C51.9","vulva",NULL
+"Primary Site","vagina (c52.9)","C52.9","fornix of vagina",NULL
+"Primary Site","vagina (c52.9)","C52.9","gartner duct",NULL
+"Primary Site","vagina (c52.9)","C52.9","hymen",NULL
+"Primary Site","vagina (c52.9)","C52.9","vagina",NULL
+"Primary Site","vagina (c52.9)","C52.9","vaginal vault",NULL
+"Primary Site","endocervix (c53.0)","C53.0","cervical canal",NULL
+"Primary Site","endocervix (c53.0)","C53.0","endocervical canal",NULL
+"Primary Site","endocervix (c53.0)","C53.0","endocervical gland",NULL
+"Primary Site","endocervix (c53.0)","C53.0","endocervix",NULL
+"Primary Site","endocervix (c53.0)","C53.0","internal os",NULL
+"Primary Site","endocervix (c53.0)","C53.0","nabothian gland",NULL
+"Primary Site","exocervix (c53.1)","C53.1","exocervix",NULL
+"Primary Site","exocervix (c53.1)","C53.1","external os",NULL
+"Primary Site","overlapping lesion of cervix uteri (c53.8)","C53.8","cervical stump",NULL
+"Primary Site","overlapping lesion of cervix uteri (c53.8)","C53.8","overlapping lesion of cervix uteri",NULL
+"Primary Site","overlapping lesion of cervix uteri (c53.8)","C53.8","squamocolumnar junction of cervix",NULL
+"Primary Site","cervix uteri (c53.9)","C53.9","cervix",NULL
+"Primary Site","cervix uteri (c53.9)","C53.9","cervix uteri",NULL
+"Primary Site","cervix uteri (c53.9)","C53.9","uterine cervix",NULL
+"Primary Site","isthmus uteri (c54.0)","C54.0","isthmus uteri",NULL
+"Primary Site","isthmus uteri (c54.0)","C54.0","lower uterine segment",NULL
+"Primary Site","endometrium (c54.1)","C54.1","endometrial gland",NULL
+"Primary Site","endometrium (c54.1)","C54.1","endometrial stroma",NULL
+"Primary Site","endometrium (c54.1)","C54.1","endometrium",NULL
+"Primary Site","myometrium (c54.2)","C54.2","myometrium",NULL
+"Primary Site","fundus uteri (c54.3)","C54.3","fundus uteri",NULL
+"Primary Site","overlapping lesion of corpus uteri (c54.8)","C54.8","overlapping lesion of corpus uteri",NULL
+"Primary Site","corpus uteri (c54.9)","C54.9","body of uterus",NULL
+"Primary Site","corpus uteri (c54.9)","C54.9","corpus uteri",NULL
+"Primary Site","uterus (c55.9)","C55.9","uterine",NULL
+"Primary Site","uterus (c55.9)","C55.9","uterus",NULL
+"Primary Site","ovary (c56.9)","C56.9","ovary",NULL
+"Primary Site","fallopian tube (c57.0)","C57.0","fallopian tube",NULL
+"Primary Site","fallopian tube (c57.0)","C57.0","uterine tube",NULL
+"Primary Site","broad ligament (c57.1)","C57.1","broad ligament",NULL
+"Primary Site","broad ligament (c57.1)","C57.1","mesovarium",NULL
+"Primary Site","broad ligament (c57.1)","C57.1","parovarian region",NULL
+"Primary Site","round ligament (c57.2)","C57.2","round ligament",NULL
+"Primary Site","parametrium (c57.3)","C57.3","parametrium",NULL
+"Primary Site","parametrium (c57.3)","C57.3","uterine ligament",NULL
+"Primary Site","parametrium (c57.3)","C57.3","uterosacral ligament",NULL
+"Primary Site","uterine adnexa (c57.4)","C57.4","adnexa",NULL
+"Primary Site","uterine adnexa (c57.4)","C57.4","uterine adnexa",NULL
+"Primary Site","other specified parts of female genital organs (c57.7)","C57.7","other specified parts of female genital organs",NULL
+"Primary Site","other specified parts of female genital organs (c57.7)","C57.7","wolffian body",NULL
+"Primary Site","other specified parts of female genital organs (c57.7)","C57.7","wolffian duct",NULL
+"Primary Site","overlapping lesion of female genital organs (c57.8)","C57.8","overlapping lesion of female genital organs",NULL
+"Primary Site","overlapping lesion of female genital organs (c57.8)","C57.8","tubo-ovarian",NULL
+"Primary Site","overlapping lesion of female genital organs (c57.8)","C57.8","utero-ovarian",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","female genital organs",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","female genital tract",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","female genitourinary tract",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","urethrovaginal septum",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","vesicocervical tissue",NULL
+"Primary Site","female genital tract (c57.9)","C57.9","vesicovaginal septum",NULL
+"Primary Site","placenta (c58.9)","C58.9","fetal membranes",NULL
+"Primary Site","placenta (c58.9)","C58.9","placenta",NULL
+"Primary Site","prepuce (c60.0)","C60.0","foreskin",NULL
+"Primary Site","prepuce (c60.0)","C60.0","prepuce",NULL
+"Primary Site","glans penis (c60.1)","C60.1","glans penis",NULL
+"Primary Site","body of penis (c60.2)","C60.2","body of penis",NULL
+"Primary Site","body of penis (c60.2)","C60.2","corpus cavernosum",NULL
+"Primary Site","body of penis (c60.2)","C60.2","corpus of penis",NULL
+"Primary Site","overlapping lesion of penis (c60.8)","C60.8","overlapping lesion of penis",NULL
+"Primary Site","penis (c60.9)","C60.9","penis",NULL
+"Primary Site","prostate gland (c61.9)","C61.9","prostate",NULL
+"Primary Site","prostate gland (c61.9)","C61.9","prostate gland",NULL
+"Primary Site","undescended testis (c62.0)","C62.0","ectopic testis (site of neoplasm)",NULL
+"Primary Site","undescended testis (c62.0)","C62.0","retained testis (site of neoplasm)",NULL
+"Primary Site","undescended testis (c62.0)","C62.0","undescended testis",NULL
+"Primary Site","descended testis (c62.1)","C62.1","descended testis",NULL
+"Primary Site","descended testis (c62.1)","C62.1","scrotal testis",NULL
+"Primary Site","testis (c62.9)","C62.9","testicle",NULL
+"Primary Site","testis (c62.9)","C62.9","testis",NULL
+"Primary Site","epididymis (c63.0)","C63.0","epididymis",NULL
+"Primary Site","spermatic cord (c63.1)","C63.1","spermatic cord",NULL
+"Primary Site","spermatic cord (c63.1)","C63.1","vas deferens",NULL
+"Primary Site","scrotum (c63.2)","C63.2","scrotum",NULL
+"Primary Site","scrotum (c63.2)","C63.2","skin of scrotum",NULL
+"Primary Site","other specified parts of male genital organs (c63.7)","C63.7","other specified parts of male genital organs",NULL
+"Primary Site","other specified parts of male genital organs (c63.7)","C63.7","seminal vesicle",NULL
+"Primary Site","other specified parts of male genital organs (c63.7)","C63.7","tunica vaginalis",NULL
+"Primary Site","overlapping lesion of male genital organs note: (c63.8)","C63.8","overlapping lesion of male genital organs note:",NULL
+"Primary Site","male genital organs (c63.9)","C63.9","male genital organs",NULL
+"Primary Site","male genital organs (c63.9)","C63.9","male genital tract",NULL
+"Primary Site","male genital organs (c63.9)","C63.9","male genitourinary tract",NULL
+"Primary Site","kidney (c64.9)","C64.9","kidney",NULL
+"Primary Site","kidney (c64.9)","C64.9","kidney parenchyma",NULL
+"Primary Site","kidney (c64.9)","C64.9","renal",NULL
+"Primary Site","renal pelvis (c65.9)","C65.9","pelvis of kidney",NULL
+"Primary Site","renal pelvis (c65.9)","C65.9","pelviureteric junction",NULL
+"Primary Site","renal pelvis (c65.9)","C65.9","renal calyces",NULL
+"Primary Site","renal pelvis (c65.9)","C65.9","renal calyx",NULL
+"Primary Site","renal pelvis (c65.9)","C65.9","renal pelvis",NULL
+"Primary Site","ureter (c66.9)","C66.9","ureter",NULL
+"Primary Site","trigone of bladder (c67.0)","C67.0","trigone of bladder",NULL
+"Primary Site","dome of bladder (c67.1)","C67.1","dome of bladder",NULL
+"Primary Site","lateral wall of bladder (c67.2)","C67.2","lateral wall of bladder",NULL
+"Primary Site","anterior wall of bladder (c67.3)","C67.3","anterior wall of bladder",NULL
+"Primary Site","posterior wall of bladder (c67.4)","C67.4","posterior wall of bladder",NULL
+"Primary Site","bladder neck (c67.5)","C67.5","bladder neck",NULL
+"Primary Site","bladder neck (c67.5)","C67.5","internal urethral orifice",NULL
+"Primary Site","ureteric orifice (c67.6)","C67.6","ureteric orifice",NULL
+"Primary Site","urachus (c67.7)","C67.7","urachus",NULL
+"Primary Site","overlapping lesion of bladder (c67.8)","C67.8","overlapping lesion of bladder",NULL
+"Primary Site","bladder (c67.9)","C67.9","bladder",NULL
+"Primary Site","bladder (c67.9)","C67.9","bladder wall",NULL
+"Primary Site","bladder (c67.9)","C67.9","urinary bladder",NULL
+"Primary Site","urethra (c68.0)","C68.0","cowper gland",NULL
+"Primary Site","urethra (c68.0)","C68.0","prostatic utricle",NULL
+"Primary Site","urethra (c68.0)","C68.0","urethra",NULL
+"Primary Site","urethra (c68.0)","C68.0","urethral gland",NULL
+"Primary Site","paraurethral gland (c68.1)","C68.1","paraurethral gland",NULL
+"Primary Site","overlapping lesion of urinary organs (c68.8)","C68.8","overlapping lesion of urinary organs",NULL
+"Primary Site","urinary system (c68.9)","C68.9","urinary system",NULL
+"Primary Site","conjunctiva (c69.0)","C69.0","conjunctiva",NULL
+"Primary Site","cornea (c69.1)","C69.1","cornea",NULL
+"Primary Site","cornea (c69.1)","C69.1","limbus of cornea",NULL
+"Primary Site","retina (c69.2)","C69.2","retina",NULL
+"Primary Site","choroid (c69.3)","C69.3","choroid",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","ciliary body",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","crystalline lens",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","eyeball",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","intraocular",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","iris",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","sclera",NULL
+"Primary Site","ciliary body (c69.4)","C69.4","uveal tract",NULL
+"Primary Site","lacrimal gland (c69.5)","C69.5","lacrimal duct",NULL
+"Primary Site","lacrimal gland (c69.5)","C69.5","lacrimal gland",NULL
+"Primary Site","lacrimal gland (c69.5)","C69.5","lacrimal sac",NULL
+"Primary Site","lacrimal gland (c69.5)","C69.5","nasal lacrimal duct",NULL
+"Primary Site","lacrimal gland (c69.5)","C69.5","nasolacrimal duct",NULL
+"Primary Site","orbit (c69.6)","C69.6","autonomic nervous system of orbit",NULL
+"Primary Site","orbit (c69.6)","C69.6","connective tissue of orbit",NULL
+"Primary Site","orbit (c69.6)","C69.6","extraocular muscle",NULL
+"Primary Site","orbit (c69.6)","C69.6","orbit",NULL
+"Primary Site","orbit (c69.6)","C69.6","peripheral nerves of orbit",NULL
+"Primary Site","orbit (c69.6)","C69.6","retrobulbar tissue",NULL
+"Primary Site","orbit (c69.6)","C69.6","soft tissue of orbit",NULL
+"Primary Site","overlapping lesion of eye and adnexa (c69.8)","C69.8","overlapping lesion of eye and adnexa",NULL
+"Primary Site","eye (c69.9)","C69.9","eye",NULL
+"Primary Site","thyroid gland (c73.9)","C73.9","thyroglossal duct",NULL
+"Primary Site","thyroid gland (c73.9)","C73.9","thyroid",NULL
+"Primary Site","thyroid gland (c73.9)","C73.9","thyroid gland",NULL
+"Primary Site","cortex of adrenal gland (c74.0)","C74.0","cortex of adrenal gland",NULL
+"Primary Site","medulla of adrenal gland (c74.1)","C74.1","medulla of adrenal gland",NULL
+"Primary Site","adrenal gland (c74.9)","C74.9","adrenal",NULL
+"Primary Site","adrenal gland (c74.9)","C74.9","adrenal gland",NULL
+"Primary Site","adrenal gland (c74.9)","C74.9","suprarenal gland",NULL
+"Primary Site","parathyroid gland (c75.0)","C75.0","parathyroid gland",NULL
+"Primary Site","carotid body (c75.4)","C75.4","carotid body",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","aortic body and other paraganglia",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","coccygeal body",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","coccygeal glomus",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","glomus jugulare",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","organ of zuckerkandl",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","para-aortic body",NULL
+"Primary Site","aortic body and other paraganglia (c75.5)","C75.5","paraganglion",NULL
+"Primary Site","overlapping lesion of endocrine glands and related structures (c75.8)","C75.8","multiple endocrine glands",NULL
+"Primary Site","overlapping lesion of endocrine glands and related structures (c75.8)","C75.8","overlapping lesion of endocrine glands and related structures",NULL
+"Primary Site","overlapping lesion of endocrine glands and related structures (c75.8)","C75.8","pluriglandular",NULL
+"Primary Site","endocrine gland (c75.9)","C75.9","endocrine gland",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","cervical region",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","cheek",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","face or neck head",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","head face or neck",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","head, face or neck",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","jaw",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","nose",NULL
+"Primary Site","head, face or neck (c76.0)","C76.0","supraclavicular region",NULL
+"Primary Site","thorax (c76.1)","C76.1","axilla",NULL
+"Primary Site","thorax (c76.1)","C76.1","chest",NULL
+"Primary Site","thorax (c76.1)","C76.1","chest wall",NULL
+"Primary Site","thorax (c76.1)","C76.1","infraclavicular region",NULL
+"Primary Site","thorax (c76.1)","C76.1","intrathoracic site",NULL
+"Primary Site","thorax (c76.1)","C76.1","scapular region",NULL
+"Primary Site","thorax (c76.1)","C76.1","thoracic wall",NULL
+"Primary Site","thorax (c76.1)","C76.1","thorax",NULL
+"Primary Site","abdomen (c76.2)","C76.2","abdomen",NULL
+"Primary Site","abdomen (c76.2)","C76.2","abdominal wall",NULL
+"Primary Site","abdomen (c76.2)","C76.2","intra-abdominal site",NULL
+"Primary Site","pelvis (c76.3)","C76.3","buttock",NULL
+"Primary Site","pelvis (c76.3)","C76.3","gluteal region",NULL
+"Primary Site","pelvis (c76.3)","C76.3","groin",NULL
+"Primary Site","pelvis (c76.3)","C76.3","inguinal region",NULL
+"Primary Site","pelvis (c76.3)","C76.3","ischiorectal fossa",NULL
+"Primary Site","pelvis (c76.3)","C76.3","pelvic wall",NULL
+"Primary Site","pelvis (c76.3)","C76.3","pelvis",NULL
+"Primary Site","pelvis (c76.3)","C76.3","perineum",NULL
+"Primary Site","pelvis (c76.3)","C76.3","perirectal region",NULL
+"Primary Site","pelvis (c76.3)","C76.3","presacral region",NULL
+"Primary Site","pelvis (c76.3)","C76.3","rectovaginal septum",NULL
+"Primary Site","pelvis (c76.3)","C76.3","rectovesical septum",NULL
+"Primary Site","pelvis (c76.3)","C76.3","sacrococcygeal region",NULL
+"Primary Site","upper limb (c76.4)","C76.4","antecubital space",NULL
+"Primary Site","upper limb (c76.4)","C76.4","arm",NULL
+"Primary Site","upper limb (c76.4)","C76.4","elbow",NULL
+"Primary Site","upper limb (c76.4)","C76.4","finger",NULL
+"Primary Site","upper limb (c76.4)","C76.4","forearm",NULL
+"Primary Site","upper limb (c76.4)","C76.4","hand",NULL
+"Primary Site","upper limb (c76.4)","C76.4","shoulder",NULL
+"Primary Site","upper limb (c76.4)","C76.4","thumb",NULL
+"Primary Site","upper limb (c76.4)","C76.4","upper limb",NULL
+"Primary Site","upper limb (c76.4)","C76.4","wrist",NULL
+"Primary Site","lower limb (c76.5)","C76.5","ankle",NULL
+"Primary Site","lower limb (c76.5)","C76.5","calf",NULL
+"Primary Site","lower limb (c76.5)","C76.5","foot",NULL
+"Primary Site","lower limb (c76.5)","C76.5","heel",NULL
+"Primary Site","lower limb (c76.5)","C76.5","hip",NULL
+"Primary Site","lower limb (c76.5)","C76.5","knee",NULL
+"Primary Site","lower limb (c76.5)","C76.5","leg",NULL
+"Primary Site","lower limb (c76.5)","C76.5","lower limb",NULL
+"Primary Site","lower limb (c76.5)","C76.5","popliteal space",NULL
+"Primary Site","lower limb (c76.5)","C76.5","thigh",NULL
+"Primary Site","lower limb (c76.5)","C76.5","toe",NULL
+"Primary Site","other ill-defined sites (c76.7)","C76.7","back",NULL
+"Primary Site","other ill-defined sites (c76.7)","C76.7","flank",NULL
+"Primary Site","other ill-defined sites (c76.7)","C76.7","other ill-defined sites",NULL
+"Primary Site","other ill-defined sites (c76.7)","C76.7","trunk",NULL
+"Primary Site","overlapping lesion of ill-defined sites (c76.8)","C76.8","overlapping lesion of ill-defined sites",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","auricular lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","cervical lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","face and neck lymph nodes of head",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","facial lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","jugular lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","lymph nodes of head face and neck",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","lymph nodes of head, face and neck",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","mandibular lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","occipital lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","parotid lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","preauricular lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","prelaryngeal lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","pretracheal lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","retropharyngeal lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","scalene lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","sublingual lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","submandibular lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","submaxillary lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","submental lymph node",NULL
+"Primary Site","lymph nodes of head, face and neck (c77.0)","C77.0","supraclavicular lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","bronchial lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","bronchopulmonary lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","diaphragmatic lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","esophageal lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","hilar lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","innominate lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","intercostal lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","intrathoracic lymph nodes",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","mediastinal lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","parasternal lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","pulmonary hilar lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","pulmonary lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","thoracic lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","tracheal lymph node",NULL
+"Primary Site","intrathoracic lymph nodes (c77.1)","C77.1","tracheobronchial lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","abdominal lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","aortic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","celiac lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","colic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","common duct lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","gastric lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","hepatic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","ileocolic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","inferior mesenteric lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","intestinal lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","intra-abdominal lymph nodes",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","lumbar lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","mesenteric lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","midcolic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","pancreatic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","para-aortic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","periaortic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","peripancreatic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","porta hepatis lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","portal lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","pyloric lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","retroperitoneal lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","splenic hilar lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","splenic lymph node",NULL
+"Primary Site","intra-abdominal lymph nodes (c77.2)","C77.2","superior mesenteric lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","axillary lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","brachial lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","cubital lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","epitrochlear lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","infraclavicular lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","lymph node of upper limb",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","lymph nodes of axilla or arm",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","pectoral lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","subclavicular lymph node",NULL
+"Primary Site","lymph nodes of axilla or arm (c77.3)","C77.3","subscapular lymph node",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","femoral lymph node",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","inguinal lymph node",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","lymph node of cloquet",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","lymph node of groin",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","lymph node of lower limb",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","lymph node of rosenmuller",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","lymph nodes of inguinal region or leg",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","popliteal lymph node",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","subinguinal lymph node",NULL
+"Primary Site","lymph nodes of inguinal region or leg (c77.4)","C77.4","tibial lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","hypogastric lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","iliac lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","inferior epigastric lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","intrapelvic lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","obturator lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","paracervical lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","parametrial lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","pelvic lymph nodes",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","presymphysial lymph node",NULL
+"Primary Site","pelvic lymph nodes (c77.5)","C77.5","sacral lymph node",NULL
+"Primary Site","lymph nodes of multiple regions (c77.8)","C77.8","lymph nodes of multiple regions",NULL
+"Primary Site","lymph node (c77.9)","C77.9","lymph node",NULL
+"Primary Site","unknown primary site (c80.9)","C80.9","unknown primary site",NULL

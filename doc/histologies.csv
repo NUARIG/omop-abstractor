@@ -1,0 +1,1044 @@
+classificaiton,data_point_value,vocabulary_code,data_point_value_synonym,favor_more_specific
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,metastatic,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,metastatic neoplasm,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,metastatic tumor,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,metastic,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,neoplasm metastatic,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,neoplasm secondary,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,"neoplasm, metastatic",TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,secondary neoplasm,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,secondary tumor,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,tumor embolus,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,tumor metastatic,TRUE
+Metastatic Histology,"neoplasm, metastatic (8000/6)",8000/6,tumor secondary,TRUE
+Metastatic Histology,"neoplasm, malignant, uncertain whether primary or metastatic (8000/9)",8000/9,neoplasm malignant uncertain whether primary or metastatic,NULL
+Metastatic Histology,"neoplasm, malignant, uncertain whether primary or metastatic (8000/9)",8000/9,"neoplasm, malignant, uncertain whether primary or metastatic",NULL
+Metastatic Histology,"neoplasm, malignant, uncertain whether primary or metastatic (8000/9)",8000/9,uncertain whether primary or metastatic malignant neoplasm,NULL
+Metastatic Histology,"neoplasm, malignant, uncertain whether primary or metastatic (8000/9)",8000/9,uncertain whether primary or metastatic malignant unclassified tumor,NULL
+Metastatic Histology,"neoplasm, malignant, uncertain whether primary or metastatic (8000/9)",8000/9,unclassified tumor malignant uncertain whether primary or metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,adenoid cystic carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,carcinoma metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,"carcinoma, metastatic",NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic breast carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clear cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clear cell renal cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clear-cell adenocarcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clear-cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clearcell adenocarcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic clearcell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic colon carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic colorectal carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic esophageal carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic esophagus carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic high grade carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic high-grade carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic highgrade carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic lung carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic moderately differentiated carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic moderately-differentiated carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic mucinous carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic non small cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic non smallcell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic non-small cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic papillary carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic poorly differentiated carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic poorly-differentiated carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic prostate carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic prostatic carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic rectal carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic renal carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic renal cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic serous carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic small cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic small-cell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,metastatic smallcell carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,moderately differentiated carcinoma metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,moderately-differentiated carcinoma metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,poorly differentiated carcinoma,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,poorly differentiated carcinoma metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,poorly-differentiated carcinoma metastatic,NULL
+Metastatic Histology,"carcinoma, metastatic (8010/6)",8010/6,secondary carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,metastatic moderately differentiated squamous cell carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,metastatic moderately-differentiated squamous cell carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,metastatic poorly differentiated squamous cell carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,metastatic poorly-differentiated squamous cell carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,metastatic squamous cell carcinoma,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,moderately differentiated squamous cell carcinoma metastatic,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,moderately-differentiated squamous cell carcinoma metastatic,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,poorly differentiated squamous cell carcinoma metastatic,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,poorly-differentiated squamous cell carcinoma metastatic,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,squamous cell carcinoma metastatic,NULL
+Metastatic Histology,"squamous cell carcinoma, metastatic (8070/6)",8070/6,"squamous cell carcinoma, metastatic",NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,adenocarcinoma metastatic,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,"adenocarcinoma, metastatic",NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic breast adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic clear cell adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic clear cell renal cell adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic colon adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic colorectal adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic esophageal adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic esophagus adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic high grade adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic high-grade adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic highgrade adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic lung adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic moderately differentiated adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic moderately-differentiated adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic mucinous adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic papillary adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic poorly differentiated adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic poorly-differentiated adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic prostate adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic prostatic adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic rectal adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic renal adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic renal cell adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,metastatic serous adenocarcinoma,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,moderately differentiated adenocarcinoma metastatic,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,moderately-differentiated adenocarcinoma metastatic,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,poorly differentiated adenocarcinoma metastatic,NULL
+Metastatic Histology,"adenocarcinoma, metastatic (8140/6)",8140/6,poorly-differentiated adenocarcinoma metastatic,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine ca,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine cancer,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine carcinoma,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine carcinomas,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine neoplasm,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine tumor,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,neuroendocrine tumour,NULL
+Metastatic Histology,neuroendocrine carcinoma (8246/3),8246/3,poorly differentiated neuroendocrine neoplasm,NULL
+Metastatic Histology,metastatic signet ring cell carcinoma (8490/6),8490/6,krukenberg tumor,NULL
+Metastatic Histology,metastatic signet ring cell carcinoma (8490/6),8490/6,metastatic signet ring cell carcinoma,NULL
+Metastatic Histology,metastasizing leiomyoma (8898/1),8898/1,metastasizing leiomyoma,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,adamantinoma malignant,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,ameloblastoma malignant,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,ameloblastoma metastasizing,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,"ameloblastoma, metastasizing",NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,malignant adamantinoma,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,malignant ameloblastoma,NULL
+Metastatic Histology,"ameloblastoma, metastasizing (9310/3)",9310/3,metastasizing ameloblastoma,NULL
+Metastatic Histology,metastatic angiosarcoma,metastatic angiosarcoma,metastatic angiosarcoma,NULL
+Metastatic Histology,metastatic glioblastoma,metastatic glioblastoma,metastatic glioblastoma,NULL
+Metastatic Histology,metastatic glioblastoma,metastatic glioblastoma,metastatic high grade glioma,NULL
+Metastatic Histology,metastatic leiomyosarcoma,metastatic leiomyosarcoma,metastatic epithelioid leiomyosarcoma,NULL
+Metastatic Histology,metastatic leiomyosarcoma,metastatic leiomyosarcoma,metastatic leiomyosarcoma,NULL
+Metastatic Histology,metastatic melanoma,metastatic melanoma,metastatic melanoma,NULL
+Metastatic Histology,metastatic sarcoma,metastatic sarcoma,metastatic myxoid spindle cell sarcoma,NULL
+Metastatic Histology,metastatic sarcoma,metastatic sarcoma,metastatic sarcoma,NULL
+Metastatic Histology,metastatic sarcoma,metastatic sarcoma,metastatic spindle cell sarcoma,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,benign neoplasm,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,benign tumor,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,benign unclassified tumor,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,neoplasm benign,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,"neoplasm, benign",NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,tumor benign,NULL
+Primary CNS Histology,"neoplasm, benign (8000/0)",8000/0,unclassified tumor benign,NULL
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,blastoma,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,cancer,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,malignancy,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,malignant neoplasm,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,malignant tumor,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,malignant unclassified tumor,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,neoplasm malignant,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,"neoplasm, malignant",TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,tumor malignant,TRUE
+Primary CNS Histology,"neoplasm, malignant (8000/3)",8000/3,unclassified tumor malignant,TRUE
+Primary CNS Histology,"malignant tumor, spindle cell type (8004/3)",8004/3,fusiform cell type malignant tumor,NULL
+Primary CNS Histology,"malignant tumor, spindle cell type (8004/3)",8004/3,malignant tumor fusiform cell type,NULL
+Primary CNS Histology,"malignant tumor, spindle cell type (8004/3)",8004/3,malignant tumor spindle cell type,NULL
+Primary CNS Histology,"malignant tumor, spindle cell type (8004/3)",8004/3,"malignant tumor, spindle cell type",NULL
+Primary CNS Histology,"malignant tumor, spindle cell type (8004/3)",8004/3,spindle cell type malignant tumor,NULL
+Primary CNS Histology,bowen disease (8081/2),8081/2,bowen disease,NULL
+Primary CNS Histology,bowen disease (8081/2),8081/2,bowen type intraepidermal squamous cell carcinoma,NULL
+Primary CNS Histology,bowen disease (8081/2),8081/2,intraepidermal squamous cell carcinoma bowen type,NULL
+Primary CNS Histology,basal cell tumor (8090/1),8090/1,basal cell tumor,NULL
+Primary CNS Histology,basal cell carcinoma (8090/3),8090/3,basal cell carcinoma,NULL
+Primary CNS Histology,basal cell carcinoma (8090/3),8090/3,basal cell carcinoma with adnexal differentiation,NULL
+Primary CNS Histology,basal cell carcinoma (8090/3),8090/3,basal cell epithelioma,NULL
+Primary CNS Histology,basal cell carcinoma (8090/3),8090/3,pigmented basal cell carcinoma,NULL
+Primary CNS Histology,basal cell carcinoma (8090/3),8090/3,rodent ulcer,NULL
+Primary CNS Histology,superficial basal cell carcinoma (8091/3),8091/3,multicentric basal cell carcinoma,NULL
+Primary CNS Histology,superficial basal cell carcinoma (8091/3),8091/3,multifocal superficial basal cell carcinoma,NULL
+Primary CNS Histology,superficial basal cell carcinoma (8091/3),8091/3,superficial basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,basal cell carcinoma desmoplastic type,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,basal cell carcinoma morpheic,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,basal cell carcinoma sarcomatoid,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,desmoplastic type basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,infiltrating basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,infiltrating basal cell carcinoma non-sclerosing,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,infiltrating basal cell carcinoma sclerosing,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,morpheic basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,non-sclerosing infiltrating basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,sarcomatoid basal cell carcinoma,NULL
+Primary CNS Histology,infiltrating basal cell carcinoma (8092/3),8092/3,sclerosing infiltrating basal cell carcinoma,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,basal cell carcinoma fibroepithelial,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,"basal cell carcinoma, fibroepithelial",NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,fibroepithelial basal cell carcinoma,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,fibroepithelial basal cell carcinoma pinkus type,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,fibroepithelioma,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,fibroepithelioma of pinkus type,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,pinkus tumor,NULL
+Primary CNS Histology,"basal cell carcinoma, fibroepithelial (8093/3)",8093/3,pinkus type fibroepithelial basal cell carcinoma,NULL
+Primary CNS Histology,basosquamous carcinoma (8094/3),8094/3,basosquamous carcinoma,NULL
+Primary CNS Histology,basosquamous carcinoma (8094/3),8094/3,mixed basal-squamous cell carcinoma,NULL
+Primary CNS Histology,metatypical carcinoma (8095/3),8095/3,metatypical carcinoma,NULL
+Primary CNS Histology,intraepidermal epithelioma of jadassohn (8096/0),8096/0,intraepidermal epithelioma of jadassohn,NULL
+Primary CNS Histology,"basal cell carcinoma, nodular (8097/3)",8097/3,basal cell carcinoma micronodular,NULL
+Primary CNS Histology,"basal cell carcinoma, nodular (8097/3)",8097/3,basal cell carcinoma nodular,NULL
+Primary CNS Histology,"basal cell carcinoma, nodular (8097/3)",8097/3,"basal cell carcinoma, nodular",NULL
+Primary CNS Histology,"basal cell carcinoma, nodular (8097/3)",8097/3,micronodular basal cell carcinoma,NULL
+Primary CNS Histology,"basal cell carcinoma, nodular (8097/3)",8097/3,nodular basal cell carcinoma,NULL
+Primary CNS Histology,trichoepithelioma (8100/0),8100/0,brooke tumor,NULL
+Primary CNS Histology,trichoepithelioma (8100/0),8100/0,epithelioma adenoides cysticum,NULL
+Primary CNS Histology,trichoepithelioma (8100/0),8100/0,trichoblastoma,NULL
+Primary CNS Histology,trichoepithelioma (8100/0),8100/0,trichoepithelioma,NULL
+Primary CNS Histology,trichoepithelioma (8100/0),8100/0,trichogerminoma,NULL
+Primary CNS Histology,trichoblastic carcinoma (8100/3),8100/3,trichoblastic carcinoma,NULL
+Primary CNS Histology,trichoblastic carcinoma (8100/3),8100/3,trichoblastic carcinosarcoma,NULL
+Primary CNS Histology,trichofolliculoma (8101/0),8101/0,trichofolliculoma,NULL
+Primary CNS Histology,trichilemmoma (8102/0),8102/0,trichilemmoma,NULL
+Primary CNS Histology,trichilemmocarcinoma (8102/3),8102/3,trichilemmal carcinoma,NULL
+Primary CNS Histology,trichilemmocarcinoma (8102/3),8102/3,trichilemmocarcinoma,NULL
+Primary CNS Histology,pilar tumor (8103/0),8103/0,pilar tumor,NULL
+Primary CNS Histology,proliferating trichilemmal cyst (8103/1),8103/1,proliferating trichilemmal cyst,NULL
+Primary CNS Histology,proliferating trichilemmal cyst (8103/1),8103/1,proliferating trichilemmal tumor,NULL
+Primary CNS Histology,pilar sheath acanthoma (8104/0),8104/0,pilar sheath acanthoma,NULL
+Primary CNS Histology,pilar sheath acanthoma (8104/0),8104/0,tumor of the follicular infundibulum,NULL
+Primary CNS Histology,pilomatricoma (8110/0),8110/0,calcifying epithelioma of malherbe,NULL
+Primary CNS Histology,pilomatricoma (8110/0),8110/0,melanocytic matricoma,NULL
+Primary CNS Histology,pilomatricoma (8110/0),8110/0,pilomatricoma,NULL
+Primary CNS Histology,pilomatricoma (8110/0),8110/0,pilomatrixoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,malignant pilomatricoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,malignant pilomatrixoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,matrical carcinoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,pilomatrical carcinoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,pilomatricoma malignant,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,pilomatrix carcinoma,NULL
+Primary CNS Histology,pilomatrical carcinoma (8110/3),8110/3,pilomatrixoma malignant,NULL
+Primary CNS Histology,eccrine dermal cylindroma (8200/0),8200/0,cylindroma of breast,NULL
+Primary CNS Histology,eccrine dermal cylindroma (8200/0),8200/0,cylindroma of skin,NULL
+Primary CNS Histology,eccrine dermal cylindroma (8200/0),8200/0,eccrine dermal cylindroma,NULL
+Primary CNS Histology,eccrine dermal cylindroma (8200/0),8200/0,turban tumor,NULL
+Primary CNS Histology,merkel cell carcinoma (8247/3),8247/3,merkel cell carcinoma,NULL
+Primary CNS Histology,merkel cell carcinoma (8247/3),8247/3,merkel cell tumor,NULL
+Primary CNS Histology,merkel cell carcinoma (8247/3),8247/3,primary cutaneous neuroendocrine carcinoma,NULL
+Primary CNS Histology,chromophobe adenoma (8270/0),8270/0,chromophobe adenoma,NULL
+Primary CNS Histology,chromophobe carcinoma (8270/3),8270/3,chromophobe adenocarcinoma,NULL
+Primary CNS Histology,chromophobe carcinoma (8270/3),8270/3,chromophobe carcinoma,NULL
+Primary CNS Histology,lactotroph adenoma (8271/0),8271/0,lactotroph adenoma,NULL
+Primary CNS Histology,lactotroph adenoma (8271/0),8271/0,prolactinoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,corticotroph adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,ectopic pituitary adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,gonodotroph adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,null cell adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,pituitary adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,pituitary adenoma ectopic,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,plurihormonal adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,somatotroph adenoma,NULL
+Primary CNS Histology,pituitary adenoma (8272/0),8272/0,thyrotroph adenoma,NULL
+Primary CNS Histology,pituitary carcinoma (8272/3),8272/3,pituitary carcinoma,NULL
+Primary CNS Histology,pituitary blastoma (8273/3),8273/3,pituitary blastoma,NULL
+Primary CNS Histology,acidophil adenoma (8280/0),8280/0,acidophil adenoma,NULL
+Primary CNS Histology,acidophil adenoma (8280/0),8280/0,eosinophil adenoma,NULL
+Primary CNS Histology,acidophil carcinoma (8280/3),8280/3,acidophil adenocarcinoma,NULL
+Primary CNS Histology,acidophil carcinoma (8280/3),8280/3,acidophil carcinoma,NULL
+Primary CNS Histology,acidophil carcinoma (8280/3),8280/3,eosinophil adenocarcinoma,NULL
+Primary CNS Histology,acidophil carcinoma (8280/3),8280/3,eosinophil carcinoma,NULL
+Primary CNS Histology,mixed acidophil-basophil adenoma (8281/0),8281/0,mixed acidophil-basophil adenoma,NULL
+Primary CNS Histology,mixed acidophil-basophil carcinoma (8281/3),8281/3,mixed acidophil-basophil carcinoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,follicular adenoma oxyphilic cell,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,hurthle cell adenoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,hurthle cell tumor,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,oncocytic adenoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,oncocytic papillary cystadenoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,oncocytoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,oxyphilic adenoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,oxyphilic cell follicular adenoma,NULL
+Primary CNS Histology,oxyphilic adenoma (8290/0),8290/0,spindle cell oncocytoma,NULL
+Primary CNS Histology,basophil adenoma (8300/0),8300/0,basophil adenoma,NULL
+Primary CNS Histology,basophil adenoma (8300/0),8300/0,mucoid cell adenoma,NULL
+Primary CNS Histology,basophil carcinoma (8300/3),8300/3,basophil adenocarcinoma,NULL
+Primary CNS Histology,basophil carcinoma (8300/3),8300/3,basophil carcinoma,NULL
+Primary CNS Histology,basophil carcinoma (8300/3),8300/3,mucoid cell adenocarcinoma,NULL
+Primary CNS Histology,skin appendage adenoma (8390/0),8390/0,adnexal tumor benign,NULL
+Primary CNS Histology,skin appendage adenoma (8390/0),8390/0,benign adnexal tumor,NULL
+Primary CNS Histology,skin appendage adenoma (8390/0),8390/0,benign skin appendage tumor,NULL
+Primary CNS Histology,skin appendage adenoma (8390/0),8390/0,skin appendage adenoma,NULL
+Primary CNS Histology,skin appendage adenoma (8390/0),8390/0,skin appendage tumor benign,NULL
+Primary CNS Histology,adnexal adenocarcinoma (8390/3),8390/3,adnexal adenocarcinoma,NULL
+Primary CNS Histology,adnexal adenocarcinoma (8390/3),8390/3,adnexal carcinoma,NULL
+Primary CNS Histology,adnexal adenocarcinoma (8390/3),8390/3,skin appendage carcinoma,NULL
+Primary CNS Histology,follicular fibroma (8391/0),8391/0,fibrofolliculoma,NULL
+Primary CNS Histology,follicular fibroma (8391/0),8391/0,follicular fibroma,NULL
+Primary CNS Histology,follicular fibroma (8391/0),8391/0,perifollicular fibroma,NULL
+Primary CNS Histology,follicular fibroma (8391/0),8391/0,spindle cell predominant trichodiscoma,NULL
+Primary CNS Histology,follicular fibroma (8391/0),8391/0,trichodiscoma,NULL
+Primary CNS Histology,syringofibroadenoma (8392/0),8392/0,syringofibroadenoma,NULL
+Primary CNS Histology,sweat gland adenoma (8400/0),8400/0,benign sweat gland tumor,NULL
+Primary CNS Histology,sweat gland adenoma (8400/0),8400/0,sweat gland adenoma,NULL
+Primary CNS Histology,sweat gland adenoma (8400/0),8400/0,sweat gland tumor benign,NULL
+Primary CNS Histology,sweat gland adenoma (8400/0),8400/0,syringadenoma,NULL
+Primary CNS Histology,sweat gland tumor (8400/1),8400/1,sweat gland tumor,NULL
+Primary CNS Histology,sweat gland adenocarcinoma (8400/3),8400/3,malignant sweat gland tumor,NULL
+Primary CNS Histology,sweat gland adenocarcinoma (8400/3),8400/3,sweat gland adenocarcinoma,NULL
+Primary CNS Histology,sweat gland adenocarcinoma (8400/3),8400/3,sweat gland carcinoma,NULL
+Primary CNS Histology,sweat gland adenocarcinoma (8400/3),8400/3,sweat gland tumor malignant,NULL
+Primary CNS Histology,hidradenoma (8402/0),8402/0,clear cell hidradenoma,NULL
+Primary CNS Histology,hidradenoma (8402/0),8402/0,eccrine acrospiroma,NULL
+Primary CNS Histology,hidradenoma (8402/0),8402/0,hidradenoma,NULL
+Primary CNS Histology,hidradenoma (8402/0),8402/0,nodular hidradenoma,NULL
+Primary CNS Histology,hidradenocarcinoma (8402/3),8402/3,hidradenocarcinoma,NULL
+Primary CNS Histology,hidradenocarcinoma (8402/3),8402/3,malignant nodular hidradenoma,NULL
+Primary CNS Histology,hidradenocarcinoma (8402/3),8402/3,nodular hidradenoma malignant,NULL
+Primary CNS Histology,spiradenoma (8403/0),8403/0,eccrine spiradenoma,NULL
+Primary CNS Histology,spiradenoma (8403/0),8403/0,spiradenoma,NULL
+Primary CNS Histology,malignant eccrine spiradenoma (8403/3),8403/3,malignant eccrine spiradenoma,NULL
+Primary CNS Histology,malignant eccrine spiradenoma (8403/3),8403/3,malignant neoplasm arising from pre-existing cylindroma,NULL
+Primary CNS Histology,malignant eccrine spiradenoma (8403/3),8403/3,malignant neoplasm arising from pre-existing spiradenocylindroma,NULL
+Primary CNS Histology,malignant eccrine spiradenoma (8403/3),8403/3,malignant neoplasm arising from pre-existing spiradenoma,NULL
+Primary CNS Histology,hidrocystoma (8404/0),8404/0,eccrine cystadenoma,NULL
+Primary CNS Histology,hidrocystoma (8404/0),8404/0,hidrocystadenoma,NULL
+Primary CNS Histology,hidrocystoma (8404/0),8404/0,hidrocystoma,NULL
+Primary CNS Histology,syringocystadenoma papilliferum (8406/0),8406/0,papillary syringadenoma,NULL
+Primary CNS Histology,syringocystadenoma papilliferum (8406/0),8406/0,papillary syringocystadenoma,NULL
+Primary CNS Histology,syringocystadenoma papilliferum (8406/0),8406/0,sialadenoma papilliferum,NULL
+Primary CNS Histology,syringocystadenoma papilliferum (8406/0),8406/0,syringocystadenoma papilliferum,NULL
+Primary CNS Histology,syringoma (8407/0),8407/0,infiltrating syringomatous adenoma of nipple,NULL
+Primary CNS Histology,syringoma (8407/0),8407/0,syringoma,NULL
+Primary CNS Histology,syringoma (8407/0),8407/0,syringomatous adenoma of nipple,NULL
+Primary CNS Histology,syringoma (8407/0),8407/0,syringomatous tumor of nipple,NULL
+Primary CNS Histology,microcystic adnexal carcinoma (8407/3),8407/3,microcystic adnexal carcinoma,NULL
+Primary CNS Histology,microcystic adnexal carcinoma (8407/3),8407/3,sclerosing sweat duct carcinoma,NULL
+Primary CNS Histology,microcystic adnexal carcinoma (8407/3),8407/3,syringomatous carcinoma,NULL
+Primary CNS Histology,eccrine papillary adenoma (8408/0),8408/0,eccrine papillary adenoma,NULL
+Primary CNS Histology,digital papillary adenocarcinoma (8408/3),8408/3,aggressive digital papillary adenoma,NULL
+Primary CNS Histology,digital papillary adenocarcinoma (8408/3),8408/3,digital papillary adenocarcinoma,NULL
+Primary CNS Histology,digital papillary adenocarcinoma (8408/3),8408/3,eccrine papillary adenocarcinoma,NULL
+Primary CNS Histology,poroma (8409/0),8409/0,apocrine poroma,NULL
+Primary CNS Histology,poroma (8409/0),8409/0,eccrine poroma,NULL
+Primary CNS Histology,poroma (8409/0),8409/0,poroma,NULL
+Primary CNS Histology,porocarcinoma (8409/3),8409/3,eccrine poroma malignant,NULL
+Primary CNS Histology,porocarcinoma (8409/3),8409/3,malignant eccrine poroma,NULL
+Primary CNS Histology,porocarcinoma (8409/3),8409/3,porocarcinoma,NULL
+Primary CNS Histology,sebaceoma (8410/0),8410/0,sebaceoma,NULL
+Primary CNS Histology,sebaceoma (8410/0),8410/0,sebaceous adenoma,NULL
+Primary CNS Histology,sebaceoma (8410/0),8410/0,sebaceous epithelioma,NULL
+Primary CNS Histology,sebaceous carcinoma (8410/3),8410/3,sebaceous adenocarcinoma,NULL
+Primary CNS Histology,sebaceous carcinoma (8410/3),8410/3,sebaceous carcinoma,NULL
+Primary CNS Histology,eccrine adenocarcinoma (8413/3),8413/3,eccrine adenocarcinoma,NULL
+Primary CNS Histology,paraganglioma (8680/3),8680/3,paraganglioma,NULL
+Primary CNS Histology,glomus tumor (8711/0),8711/0,glomus tumor,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,combined nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,conjunctival nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,deep penetrating nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,genital nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,hairy nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,melanocytic nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,meyerson nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,nevus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,nevus spilus,NULL
+Primary CNS Histology,pigmented nevus (8720/0),8720/0,pigmented nevus,NULL
+Primary CNS Histology,malignant melanoma (8720/3),8720/3,malignant melanoma,NULL
+Primary CNS Histology,malignant melanoma (8720/3),8720/3,melanoma,NULL
+Primary CNS Histology,malignant melanoma (8720/3),8720/3,melanoma meningeal,NULL
+Primary CNS Histology,malignant melanoma (8720/3),8720/3,meningeal melanoma,NULL
+Primary CNS Histology,malignant melanoma (8720/3),8720/3,nevoid melanoma,NULL
+Primary CNS Histology,nodular melanoma (8721/3),8721/3,nodular melanoma,NULL
+Primary CNS Histology,balloon cell nevus (8722/0),8722/0,balloon cell nevus,NULL
+Primary CNS Histology,balloon cell melanoma (8722/3),8722/3,balloon cell melanoma,NULL
+Primary CNS Histology,halo nevus (8723/0),8723/0,halo nevus,NULL
+Primary CNS Histology,halo nevus (8723/0),8723/0,regressing nevus,NULL
+Primary CNS Histology,"malignant melanoma, regressing (8723/3)",8723/3,malignant melanoma regressing,NULL
+Primary CNS Histology,"malignant melanoma, regressing (8723/3)",8723/3,"malignant melanoma, regressing",NULL
+Primary CNS Histology,"malignant melanoma, regressing (8723/3)",8723/3,regressing malignant melanoma,NULL
+Primary CNS Histology,neuronevus (8725/0),8725/0,neuronevus,NULL
+Primary CNS Histology,dysplastic nevus (8727/0),8727/0,dysplastic nevus,NULL
+Primary CNS Histology,meningeal melanocytosis (8728/0),8728/0,diffuse melanocytosis,NULL
+Primary CNS Histology,meningeal melanocytosis (8728/0),8728/0,meningeal melanocytosis,NULL
+Primary CNS Histology,meningeal melanocytoma (8728/1),8728/1,meningeal melanocytoma,NULL
+Primary CNS Histology,meningeal melanomatosis (8728/3),8728/3,meningeal melanomatosis,NULL
+Primary CNS Histology,nonpigmented nevus (8730/0),8730/0,achromic nevus,NULL
+Primary CNS Histology,nonpigmented nevus (8730/0),8730/0,nonpigmented nevus,NULL
+Primary CNS Histology,amelanotic melanoma (8730/3),8730/3,amelanotic melanoma,NULL
+Primary CNS Histology,junctional nevus (8740/0),8740/0,intraepidermal nevus,NULL
+Primary CNS Histology,junctional nevus (8740/0),8740/0,junction nevus,NULL
+Primary CNS Histology,junctional nevus (8740/0),8740/0,junctional nevus,NULL
+Primary CNS Histology,malignant melanoma in junctional nevus (8740/3),8740/3,malignant melanoma in junctional nevus,NULL
+Primary CNS Histology,precancerous melanosis (8741/2),8741/2,precancerous melanosis,NULL
+Primary CNS Histology,malignant melanoma in precancerous melanosis (8741/3),8741/3,malignant melanoma in precancerous melanosis,NULL
+Primary CNS Histology,lentiginous melanocytic nevus (8742/0),8742/0,lentiginous melanocytic nevus,NULL
+Primary CNS Histology,lentiginous melanocytic nevus (8742/0),8742/0,lentigo simplex,NULL
+Primary CNS Histology,lentiginous melanocytic nevus (8742/0),8742/0,simple lentigo,NULL
+Primary CNS Histology,lentigo maligna (8742/2),8742/2,hutchinson melanotic freckle,NULL
+Primary CNS Histology,lentigo maligna (8742/2),8742/2,lentigo maligna,NULL
+Primary CNS Histology,lentigo maligna melanoma (8742/3),8742/3,lentigo maligna melanoma,NULL
+Primary CNS Histology,lentigo maligna melanoma (8742/3),8742/3,malignant melanoma in hutchinson melanotic freckle,NULL
+Primary CNS Histology,low cumulative sun damage melanoma (8743/3),8743/3,low cumulative sun damage melanoma,NULL
+Primary CNS Histology,low cumulative sun damage melanoma (8743/3),8743/3,superficial spreading melanoma,NULL
+Primary CNS Histology,acral nevus (8744/0),8744/0,acral nevus,NULL
+Primary CNS Histology,acral melanoma (8744/3),8744/3,acral lentiginous melanoma malignant,NULL
+Primary CNS Histology,acral melanoma (8744/3),8744/3,acral melanoma,NULL
+Primary CNS Histology,acral melanoma (8744/3),8744/3,malignant acral lentiginous melanoma,NULL
+Primary CNS Histology,desmoplastic melanoma (8745/3),8745/3,amelanotic desmoplastic melanoma,NULL
+Primary CNS Histology,desmoplastic melanoma (8745/3),8745/3,desmoplastic melanoma,NULL
+Primary CNS Histology,desmoplastic melanoma (8745/3),8745/3,desmoplastic melanoma amelanotic,NULL
+Primary CNS Histology,desmoplastic melanoma (8745/3),8745/3,malignant neurotropic melanoma,NULL
+Primary CNS Histology,desmoplastic melanoma (8745/3),8745/3,neurotropic melanoma malignant,NULL
+Primary CNS Histology,dermal nevus (8750/0),8750/0,dermal nevus,NULL
+Primary CNS Histology,dermal nevus (8750/0),8750/0,intradermal nevus,NULL
+Primary CNS Histology,dermal nevus (8750/0),8750/0,stromal nevus,NULL
+Primary CNS Histology,compound nevus (8760/0),8760/0,compound nevus,NULL
+Primary CNS Histology,compound nevus (8760/0),8760/0,dermal and epidermal nevus,NULL
+Primary CNS Histology,congenital melanocytic nevus (8761/0),8761/0,congenital melanocytic nevus,NULL
+Primary CNS Histology,giant pigmented nevus (8761/1),8761/1,giant pigmented nevus,NULL
+Primary CNS Histology,giant pigmented nevus (8761/1),8761/1,intermediate and giant congenital nevus,NULL
+Primary CNS Histology,malignant melanoma arising in giant congenital nevus (8761/3),8761/3,malignant melanoma arising in giant congenital nevus,NULL
+Primary CNS Histology,malignant melanoma arising in giant congenital nevus (8761/3),8761/3,malignant melanoma in congenital melanocytic nevus,NULL
+Primary CNS Histology,malignant melanoma arising in giant congenital nevus (8761/3),8761/3,malignant melanoma in giant pigmented nevus,NULL
+Primary CNS Histology,proliferative dermal lesion in congenital nevus (8762/1),8762/1,proliferative dermal lesion in congenital nevus,NULL
+Primary CNS Histology,proliferative dermal lesion in congenital nevus (8762/1),8762/1,proliferative nodule in congenital melanocytic nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,atypical spiz nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,epithelioid and spindle cell nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,juvenile melanoma,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,juvenile nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,pigmented spindle cell nevus of reed,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,pigmented spindle cell spitz nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,spitz nevus,NULL
+Primary CNS Histology,epithelioid and spindle cell nevus (8770/0),8770/0,spiz nevus atypical,NULL
+Primary CNS Histology,malignant spitz tumor (8770/3),8770/3,malignant spitz tumor,NULL
+Primary CNS Histology,malignant spitz tumor (8770/3),8770/3,mixed epithelioid and spindle cell melanoma,NULL
+Primary CNS Histology,malignant spitz tumor (8770/3),8770/3,spitz melanoma,NULL
+Primary CNS Histology,malignant spitz tumor (8770/3),8770/3,spitzoid melanoma,NULL
+Primary CNS Histology,epithelioid cell nevus (8771/0),8771/0,epithelioid cell nevus,NULL
+Primary CNS Histology,spindle cell nevus (8772/0),8772/0,spindle cell nevus,NULL
+Primary CNS Histology,blue nevus (8780/0),8780/0,blue nevus,NULL
+Primary CNS Histology,blue nevus (8780/0),8780/0,jadassohn blue nevus,NULL
+Primary CNS Histology,pigmented epithelioid melanocytoma (8780/1),8780/1,blue nevus epithelioid,NULL
+Primary CNS Histology,pigmented epithelioid melanocytoma (8780/1),8780/1,epithelioid blue nevus,NULL
+Primary CNS Histology,pigmented epithelioid melanocytoma (8780/1),8780/1,pigmented epithelioid melanocytoma,NULL
+Primary CNS Histology,"blue nevus, malignant (8780/3)",8780/3,blue nevus malignant,NULL
+Primary CNS Histology,"blue nevus, malignant (8780/3)",8780/3,"blue nevus, malignant",NULL
+Primary CNS Histology,"blue nevus, malignant (8780/3)",8780/3,malignant blue nevus,NULL
+Primary CNS Histology,"blue nevus, malignant (8780/3)",8780/3,melanoma arising in blue nevus,NULL
+Primary CNS Histology,cellular blue nevus (8790/0),8790/0,cellular blue nevus,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,giant cell sarcoma,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,pleomorphic cell sarcoma,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,pleomorphic cell sarcoma undifferentiated,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,pleomorphic dermal sarcoma,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,pleomorphic sarcoma,NULL
+Primary CNS Histology,giant cell sarcoma (8802/3),8802/3,undifferentiated pleomorphic cell sarcoma,NULL
+Primary CNS Histology,fibrosarcoma (8810/3),8810/3,fibrosarcoma,NULL
+Primary CNS Histology,"solitary fibrous tumor/hemangiopericytoma, grade 1 (8815/0)",8815/0,benign hemangiopericytoma,NULL
+Primary CNS Histology,"solitary fibrous tumor/hemangiopericytoma, grade 1 (8815/0)",8815/0,grade 1 solitary fibrous tumor/hemangiopericytoma,NULL
+Primary CNS Histology,"solitary fibrous tumor/hemangiopericytoma, grade 1 (8815/0)",8815/0,hemangiopericytoma benign,NULL
+Primary CNS Histology,"solitary fibrous tumor/hemangiopericytoma, grade 1 (8815/0)",8815/0,solitary fibrous tumor/hemangiopericytoma grade 1,NULL
+Primary CNS Histology,"solitary fibrous tumor/hemangiopericytoma, grade 1 (8815/0)",8815/0,"solitary fibrous tumor/hemangiopericytoma, grade 1",NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,grade 2 solitary fibrous tumor/hemangiopericytoma,NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,hemangiopericytic meningioma,NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,hemangiopericytoma,NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,localized fibrous tumor,NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,solitary fibrous tumor,NULL
+Primary CNS Histology,solitary fibrous tumor (8815/1),8815/1,solitary fibrous tumor/hemangiopericytoma grade 2,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,grade 3 solitary fibrous tumor/hemangiopericytoma,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,hemangiopericytoma malignant,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,malignant hemangiopericytoma,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,malignant solitary fibrous tumor,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,solitary fibrous tumor malignant,NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,"solitary fibrous tumor, malignant",NULL
+Primary CNS Histology,"solitary fibrous tumor, malignant (8815/3)",8815/3,solitary fibrous tumor/hemangiopericytoma grade 3,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,aggressive fibromatosis,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,desmoid,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,desmoid tumor,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,desmoid type fibromatosis,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,extra-abdominal desmoid,NULL
+Primary CNS Histology,aggressive fibromatosis (8821/1),8821/1,invasive fibroma,NULL
+Primary CNS Histology,sclerotic fibroma (8823/0),8823/0,sclerotic fibroma,NULL
+Primary CNS Histology,myofibroblastoma (8825/0),8825/0,myofibroblastoma,NULL
+Primary CNS Histology,myofibroblastic tumor (8825/1),8825/1,inflammatory myofibroblastic tumor,NULL
+Primary CNS Histology,myofibroblastic tumor (8825/1),8825/1,myofibroblastic tumor,NULL
+Primary CNS Histology,benign fibrous histiocytoma (8830/0),8830/0,benign fibrous histiocytoma,NULL
+Primary CNS Histology,benign fibrous histiocytoma (8830/0),8830/0,epithelioid fibrous histiocytoma,NULL
+Primary CNS Histology,benign fibrous histiocytoma (8830/0),8830/0,fibrous histiocytoma,NULL
+Primary CNS Histology,benign fibrous histiocytoma (8830/0),8830/0,fibroxanthoma,NULL
+Primary CNS Histology,benign fibrous histiocytoma (8830/0),8830/0,xanthofibroma,NULL
+Primary CNS Histology,malignant fibrous histiocytoma (8830/3),8830/3,fibroxanthoma malignant,NULL
+Primary CNS Histology,malignant fibrous histiocytoma (8830/3),8830/3,malignant fibrous histiocytoma,NULL
+Primary CNS Histology,malignant fibrous histiocytoma (8830/3),8830/3,malignant fibroxanthoma,NULL
+Primary CNS Histology,malignant fibrous histiocytoma (8830/3),8830/3,undifferentiated high grade pleomorphic sarcoma of bone,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,cutaneous histiocytoma,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,dermatofibroma,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,dermatofibroma lenticulare,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,pleomorphic fibroma,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,sclerosing hemangioma,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,sclerosing pneumocytoma,NULL
+Primary CNS Histology,dermatofibroma (8832/0),8832/0,subepidermal nodular fibrosis,NULL
+Primary CNS Histology,dermatofibrosarcoma protuberans (8832/1),8832/1,dermatofibrosarcoma,NULL
+Primary CNS Histology,dermatofibrosarcoma protuberans (8832/1),8832/1,dermatofibrosarcoma protuberans,NULL
+Primary CNS Histology,"dermatofibrosarcoma protuberans, fibrosarcomatous (8832/3)",8832/3,dermatofibrosarcoma protuberans fibrosarcomatous,NULL
+Primary CNS Histology,"dermatofibrosarcoma protuberans, fibrosarcomatous (8832/3)",8832/3,"dermatofibrosarcoma protuberans, fibrosarcomatous",NULL
+Primary CNS Histology,"dermatofibrosarcoma protuberans, fibrosarcomatous (8832/3)",8832/3,dermatofibrosarcoma sarcomatous,NULL
+Primary CNS Histology,"dermatofibrosarcoma protuberans, fibrosarcomatous (8832/3)",8832/3,fibrosarcomatous dermatofibrosarcoma protuberans,NULL
+Primary CNS Histology,"dermatofibrosarcoma protuberans, fibrosarcomatous (8832/3)",8832/3,sarcomatous dermatofibrosarcoma,NULL
+Primary CNS Histology,pigmented dermatofibrosarcoma protuberans (8833/1),8833/1,bednar tumor,NULL
+Primary CNS Histology,pigmented dermatofibrosarcoma protuberans (8833/1),8833/1,pigmented dermatofibrosarcoma protuberans,NULL
+Primary CNS Histology,myxoma (8840/0),8840/0,myxoma,NULL
+Primary CNS Histology,lipoma (8850/0),8850/0,lipoma,NULL
+Primary CNS Histology,lipoma (8850/0),8850/0,thymolipoma,NULL
+Primary CNS Histology,liposarcoma (8850/3),8850/3,fibroliposarcoma,NULL
+Primary CNS Histology,liposarcoma (8850/3),8850/3,liposarcoma,NULL
+Primary CNS Histology,angiolipoma (8861/0),8861/0,angiolipoma,NULL
+Primary CNS Histology,hibernoma (8880/0),8880/0,brown fat tumor,NULL
+Primary CNS Histology,hibernoma (8880/0),8880/0,fetal fat cell lipoma,NULL
+Primary CNS Histology,hibernoma (8880/0),8880/0,hibernoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,apoplectic leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,cotyledonoid leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,dissecting leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,fibroid uterus,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,fibromyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,hydropic leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,leiomyofibroma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,leiomyoma apoplectic,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,leiomyoma hydropic,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,lipoleiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,lipomatous leiomyoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,myolipoma,NULL
+Primary CNS Histology,leiomyoma (8890/0),8890/0,plexiform leiomyoma,NULL
+Primary CNS Histology,leiomyosarcoma (8890/3),8890/3,leiomyosarcoma,NULL
+Primary CNS Histology,rhabdomyoma (8900/0),8900/0,rhabdomyoma,NULL
+Primary CNS Histology,rhabdomyosarcoma (8900/3),8900/3,rhabdomyosarcoma,NULL
+Primary CNS Histology,rhabdomyosarcoma (8900/3),8900/3,rhabdosarcoma,NULL
+Primary CNS Histology,pleomorphic adenoma (8940/0),8940/0,chondroid syringoma,NULL
+Primary CNS Histology,pleomorphic adenoma (8940/0),8940/0,mixed tumor,NULL
+Primary CNS Histology,pleomorphic adenoma (8940/0),8940/0,mixed tumor salivary gland type,NULL
+Primary CNS Histology,pleomorphic adenoma (8940/0),8940/0,pleomorphic adenoma,NULL
+Primary CNS Histology,pleomorphic adenoma (8940/0),8940/0,salivary gland type mixed tumor,NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,malignant mesenchymoma,NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,malignant phosphaturic mesenchymal tumor,NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,mesenchymoma malignant,NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,"mesenchymoma, malignant",NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,mixed mesenchymal sarcoma,NULL
+Primary CNS Histology,"mesenchymoma, malignant (8990/3)",8990/3,phosphaturic mesenchymal tumor malignant,NULL
+Primary CNS Histology,"synovial sarcoma, spindle cell (9041/3)",9041/3,monophasic fibrous synovial sarcoma,NULL
+Primary CNS Histology,"synovial sarcoma, spindle cell (9041/3)",9041/3,spindle cell synovial sarcoma,NULL
+Primary CNS Histology,"synovial sarcoma, spindle cell (9041/3)",9041/3,synovial sarcoma monophasic fibrous,NULL
+Primary CNS Histology,"synovial sarcoma, spindle cell (9041/3)",9041/3,synovial sarcoma spindle cell,NULL
+Primary CNS Histology,"synovial sarcoma, spindle cell (9041/3)",9041/3,"synovial sarcoma, spindle cell",NULL
+Primary CNS Histology,"mesothelioma, malignant (9050/3)",9050/3,malignant mesothelioma,NULL
+Primary CNS Histology,"mesothelioma, malignant (9050/3)",9050/3,mesothelioma,NULL
+Primary CNS Histology,"mesothelioma, malignant (9050/3)",9050/3,mesothelioma malignant,NULL
+Primary CNS Histology,"mesothelioma, malignant (9050/3)",9050/3,"mesothelioma, malignant",NULL
+Primary CNS Histology,germinoma (9064/3),9064/3,germ cell tumor,NULL
+Primary CNS Histology,germinoma (9064/3),9064/3,germinoma,NULL
+Primary CNS Histology,embryonal carcinoma (9070/3),9070/3,embryonal adenocarcinoma,NULL
+Primary CNS Histology,embryonal carcinoma (9070/3),9070/3,embryonal carcinoma,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,embryonal carcinoma infantile,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,endodermal sinus tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,hepatoid yolk sac tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,infantile embryonal carcinoma,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,orchioblastoma,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,polyvesicular vitelline tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,post-pubertal type yolk sac tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,pre-pubertal type yolk sac tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,yolk sac tumor,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,yolk sac tumor post-pubertal type,NULL
+Primary CNS Histology,yolk sac tumor (9071/3),9071/3,yolk sac tumor pre-pubertal type,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,adult cystic teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,adult teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,benign teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,cystic teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,differentiated teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,mature teratoma,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,teratoma benign,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,teratoma differentiated,NULL
+Primary CNS Histology,"teratoma, benign (9080/0)",9080/0,"teratoma, benign",NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,germ cell tumor regressed,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,immature teratoma of the lung,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,immature teratoma of the thymus,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,immature teratoma of the thyroid,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,regressed germ cell tumor,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,solid teratoma,NULL
+Primary CNS Histology,teratoma (9080/1),9080/1,teratoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,embryonal teratoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,immature teratoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,immature teratoma malignant,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,malignant immature teratoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,malignant teratoblastoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,malignant teratoma,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,teratoblastoma malignant,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,teratoma malignant,NULL
+Primary CNS Histology,"teratoma, malignant (9080/3)",9080/3,"teratoma, malignant",NULL
+Primary CNS Histology,teratoma with malignant transformation (9084/3),9084/3,dermoid cyst with malignant transformation,NULL
+Primary CNS Histology,teratoma with malignant transformation (9084/3),9084/3,dermoid cyst with secondary tumor,NULL
+Primary CNS Histology,teratoma with malignant transformation (9084/3),9084/3,teratoma with malignant transformation,NULL
+Primary CNS Histology,teratoma with malignant transformation (9084/3),9084/3,teratoma with somatic type malignancies,NULL
+Primary CNS Histology,mixed germ cell tumor (9085/3),9085/3,mixed germ cell tumor,NULL
+Primary CNS Histology,mixed germ cell tumor (9085/3),9085/3,mixed teratoma and seminoma,NULL
+Primary CNS Histology,choriocarcinoma (9100/3),9100/3,choriocarcinoma,NULL
+Primary CNS Histology,choriocarcinoma (9100/3),9100/3,chorioepithelioma,NULL
+Primary CNS Histology,choriocarcinoma (9100/3),9100/3,chorionepithelioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,angioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,cherry hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,chorioangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,glomeruloid hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,hobnail hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,microvenular hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,sinusoidal hemangioma,NULL
+Primary CNS Histology,hemangioma (9120/0),9120/0,spindle cell hemangioma,NULL
+Primary CNS Histology,hemangiosarcoma (9120/3),9120/3,angiosarcoma,NULL
+Primary CNS Histology,hemangiosarcoma (9120/3),9120/3,hemangiosarcoma,NULL
+Primary CNS Histology,epithelioid hemangioendothelioma (9133/3),9133/3,epithelioid hemangioendothelioma,NULL
+Primary CNS Histology,epithelioid hemangioendothelioma (9133/3),9133/3,epithelioid hemangioendothelioma malignant,NULL
+Primary CNS Histology,epithelioid hemangioendothelioma (9133/3),9133/3,intravascular bronchial alveolar tumor,NULL
+Primary CNS Histology,epithelioid hemangioendothelioma (9133/3),9133/3,malignant epithelioid hemangioendothelioma,NULL
+Primary CNS Histology,kaposi sarcoma (9140/3),9140/3,kaposi sarcoma,NULL
+Primary CNS Histology,kaposi sarcoma (9140/3),9140/3,multiple hemorrhagic sarcoma,NULL
+Primary CNS Histology,hemangioblastoma (9161/1),9161/1,angioblastoma,NULL
+Primary CNS Histology,hemangioblastoma (9161/1),9161/1,hemangioblastoma,NULL
+Primary CNS Histology,osteoma (9180/0),9180/0,osteoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,extraskeletal osteosarcoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,osteoblastic sarcoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,osteochondrosarcoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,osteogenic sarcoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,osteosarcoma,NULL
+Primary CNS Histology,osteosarcoma (9180/3),9180/3,osteosarcoma extraskeletal,NULL
+Primary CNS Histology,osteoblastoma (9200/0),9200/0,giant osteoid osteoma,NULL
+Primary CNS Histology,osteoblastoma (9200/0),9200/0,osteoblastoma,NULL
+Primary CNS Histology,osteochondroma (9210/0),9210/0,cartilaginous exostosis,NULL
+Primary CNS Histology,osteochondroma (9210/0),9210/0,ecchondroma,NULL
+Primary CNS Histology,osteochondroma (9210/0),9210/0,osteocartilaginous exostosis,NULL
+Primary CNS Histology,osteochondroma (9210/0),9210/0,osteochondroma,NULL
+Primary CNS Histology,chondroma (9220/0),9220/0,chondroma,NULL
+Primary CNS Histology,chondroma (9220/0),9220/0,enchondroma,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,chondrosarcoma,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,chondrosarcoma grade 2,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,chondrosarcoma grade 3,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,fibrochondrosarcoma,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,grade 2 chondrosarcoma,NULL
+Primary CNS Histology,chondrosarcoma (9220/3),9220/3,grade 3 chondrosarcoma,NULL
+Primary CNS Histology,craniopharyngioma (9350/1),9350/1,craniopharyngioma,NULL
+Primary CNS Histology,craniopharyngioma (9350/1),9350/1,rathke pouch tumor,NULL
+Primary CNS Histology,"craniopharyngioma, adamantinomatous (9351/1)",9351/1,adamantinomatous craniopharyngioma,NULL
+Primary CNS Histology,"craniopharyngioma, adamantinomatous (9351/1)",9351/1,craniopharyngioma adamantinomatous,NULL
+Primary CNS Histology,"craniopharyngioma, adamantinomatous (9351/1)",9351/1,"craniopharyngioma, adamantinomatous",NULL
+Primary CNS Histology,"craniopharyngioma, papillary (9352/1)",9352/1,craniopharyngioma papillary,NULL
+Primary CNS Histology,"craniopharyngioma, papillary (9352/1)",9352/1,"craniopharyngioma, papillary",NULL
+Primary CNS Histology,"craniopharyngioma, papillary (9352/1)",9352/1,papillary craniopharyngioma,NULL
+Primary CNS Histology,pinealoma (9360/1),9360/1,pinealoma,NULL
+Primary CNS Histology,pineocytoma (9361/1),9361/1,pineocytoma,NULL
+Primary CNS Histology,pineoblastoma (9362/3),9362/3,mixed pineal tumor,NULL
+Primary CNS Histology,pineoblastoma (9362/3),9362/3,mixed pineocytoma-pineoblastoma,NULL
+Primary CNS Histology,pineoblastoma (9362/3),9362/3,pineal parenchymal tumor of intermediate differentiation,NULL
+Primary CNS Histology,pineoblastoma (9362/3),9362/3,pineoblastoma,NULL
+Primary CNS Histology,pineoblastoma (9362/3),9362/3,transitional pineal tumor,NULL
+Primary CNS Histology,ewing sarcoma (9364/3),9364/3,ewing sarcoma,NULL
+Primary CNS Histology,ewing sarcoma (9364/3),9364/3,neuroectodermal tumor,NULL
+Primary CNS Histology,ewing sarcoma (9364/3),9364/3,peripheral neuroectodermal tumor,NULL
+Primary CNS Histology,ewing sarcoma (9364/3),9364/3,peripheral primitive neuroectodermal tumor,NULL
+Primary CNS Histology,ewing sarcoma (9364/3),9364/3,ppnet,NULL
+Primary CNS Histology,chordoma (9370/3),9370/3,chordoma,NULL
+Primary CNS Histology,chondroid chordoma (9371/3),9371/3,chondroid chordoma,NULL
+Primary CNS Histology,dedifferentiated chordoma (9372/3),9372/3,dedifferentiated chordoma,NULL
+Primary CNS Histology,"glioma, malignant (9380/3)",9380/3,glioma,TRUE
+Primary CNS Histology,"glioma, malignant (9380/3)",9380/3,glioma malignant,TRUE
+Primary CNS Histology,"glioma, malignant (9380/3)",9380/3,"glioma, malignant",TRUE
+Primary CNS Histology,"glioma, malignant (9380/3)",9380/3,malignant glioma,TRUE
+Primary CNS Histology,gliomatosis cerebri (9381/3),9381/3,gliomatosis cerebri,NULL
+Primary CNS Histology,oligoastrocytoma (9382/3),9382/3,anaplastic oligoastrocytoma,NULL
+Primary CNS Histology,oligoastrocytoma (9382/3),9382/3,mixed glioma,NULL
+Primary CNS Histology,oligoastrocytoma (9382/3),9382/3,oligoastrocytoma,NULL
+Primary CNS Histology,subependymoma (9383/1),9383/1,mixed subependymoma-ependymoma,NULL
+Primary CNS Histology,subependymoma (9383/1),9383/1,subependymal astrocytoma,NULL
+Primary CNS Histology,subependymoma (9383/1),9383/1,subependymal glioma,NULL
+Primary CNS Histology,subependymoma (9383/1),9383/1,subependymoma,NULL
+Primary CNS Histology,subependymal giant cell astrocytoma (9384/1),9384/1,subependymal giant cell astrocytoma,NULL
+Primary CNS Histology,"diffuse midline glioma, h3 k27m-mutant (9385/3)",9385/3,diffuse intrinsic pontine glioma h3 k27m-mutant,NULL
+Primary CNS Histology,"diffuse midline glioma, h3 k27m-mutant (9385/3)",9385/3,diffuse midline glioma h3 k27m-mutant,NULL
+Primary CNS Histology,"diffuse midline glioma, h3 k27m-mutant (9385/3)",9385/3,"diffuse midline glioma, h3 k27m-mutant",NULL
+Primary CNS Histology,"diffuse midline glioma, h3 k27m-mutant (9385/3)",9385/3,h3 k27m-mutant diffuse intrinsic pontine glioma,NULL
+Primary CNS Histology,"diffuse midline glioma, h3 k27m-mutant (9385/3)",9385/3,h3 k27m-mutant diffuse midline glioma,NULL
+Primary CNS Histology,choroid plexus papilloma (9390/0),9390/0,choroid plexus papilloma,NULL
+Primary CNS Histology,atypical choroid plexus papilloma (9390/1),9390/1,atypical choroid plexus papilloma,NULL
+Primary CNS Histology,choroid plexus carcinoma (9390/3),9390/3,anaplastic choroid plexus papilloma,NULL
+Primary CNS Histology,choroid plexus carcinoma (9390/3),9390/3,choroid plexus carcinoma,NULL
+Primary CNS Histology,choroid plexus carcinoma (9390/3),9390/3,choroid plexus papilloma anaplastic,NULL
+Primary CNS Histology,choroid plexus carcinoma (9390/3),9390/3,choroid plexus papilloma malignant,NULL
+Primary CNS Histology,choroid plexus carcinoma (9390/3),9390/3,malignant choroid plexus papilloma,NULL
+Primary CNS Histology,sellar ependymoma (9391/1),9391/1,sellar ependymoma,NULL
+Primary CNS Histology,ependymoma (9391/3),9391/3,cellular ependymoma,NULL
+Primary CNS Histology,ependymoma (9391/3),9391/3,clear cell ependymoma,NULL
+Primary CNS Histology,ependymoma (9391/3),9391/3,ependymoma,NULL
+Primary CNS Histology,ependymoma (9391/3),9391/3,epithelial ependymoma,NULL
+Primary CNS Histology,ependymoma (9391/3),9391/3,tanycytic ependymoma,NULL
+Primary CNS Histology,"ependymoma, anaplastic (9392/3)",9392/3,anaplastic ependymoma,NULL
+Primary CNS Histology,"ependymoma, anaplastic (9392/3)",9392/3,ependymoblastoma,NULL
+Primary CNS Histology,"ependymoma, anaplastic (9392/3)",9392/3,ependymoma anaplastic,NULL
+Primary CNS Histology,"ependymoma, anaplastic (9392/3)",9392/3,"ependymoma, anaplastic",NULL
+Primary CNS Histology,papillary ependymoma (9393/3),9393/3,papillary ependymoma,NULL
+Primary CNS Histology,myxopapillary ependymoma (9394/1),9394/1,myxopapillary ependymoma,NULL
+Primary CNS Histology,papillary tumor of the pineal region (9395/3),9395/3,papillary tumor of the pineal region,NULL
+Primary CNS Histology,"ependymoma, rela fusion-positive (9396/3)",9396/3,ependymoma rela fusion-positive,NULL
+Primary CNS Histology,"ependymoma, rela fusion-positive (9396/3)",9396/3,"ependymoma, rela fusion-positive",NULL
+Primary CNS Histology,"ependymoma, rela fusion-positive (9396/3)",9396/3,rela fusion-positive ependymoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,astrocytic glioma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,astrocytoma low grade,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,astroglioma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,cystic astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,diffuse astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,diffuse astrocytoma idh-mutant,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,diffuse astrocytoma idh-wildtype,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,diffuse astrocytoma low grade,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,idh-mutant diffuse astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,idh-wildtype diffuse astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,low grade astrocytoma,NULL
+Primary CNS Histology,astrocytoma (9400/3),9400/3,low grade diffuse astrocytoma,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,anaplastic astrocytoma,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,astrocytoma anaplastic,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,astrocytoma anaplastic idh-mutant,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,astrocytoma anaplastic idh-wildtype,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,"astrocytoma, anaplastic",NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,idh-mutant anaplastic astrocytoma,NULL
+Primary CNS Histology,"astrocytoma, anaplastic (9401/3)",9401/3,idh-wildtype anaplastic astrocytoma,NULL
+Primary CNS Histology,protoplasmic astrocytoma (9410/3),9410/3,protoplasmic astrocytoma,NULL
+Primary CNS Histology,gemistocytic astrocytoma (9411/3),9411/3,gemistocytc astrocytoma idh-mutant,NULL
+Primary CNS Histology,gemistocytic astrocytoma (9411/3),9411/3,gemistocytic astrocytoma,NULL
+Primary CNS Histology,gemistocytic astrocytoma (9411/3),9411/3,gemistocytoma,NULL
+Primary CNS Histology,gemistocytic astrocytoma (9411/3),9411/3,idh-mutant gemistocytc astrocytoma,NULL
+Primary CNS Histology,desmoplastic infantile astrocytoma (9412/1),9412/1,desmoplastic infantile astrocytoma,NULL
+Primary CNS Histology,desmoplastic infantile astrocytoma (9412/1),9412/1,desmoplastic infantile ganglioglioma,NULL
+Primary CNS Histology,dysembryoplastic neuroepithelial tumor (9413/0),9413/0,dysembryoplastic neuroepithelial tumor,NULL
+Primary CNS Histology,fibrillary astrocytoma (9420/3),9420/3,fibrillary astrocytoma,NULL
+Primary CNS Histology,fibrillary astrocytoma (9420/3),9420/3,fibrous astrocytoma,NULL
+Primary CNS Histology,pilocytic astrocytoma (9421/1),9421/1,juvenile astrocytoma,NULL
+Primary CNS Histology,pilocytic astrocytoma (9421/1),9421/1,pilocytic astrocytoma,NULL
+Primary CNS Histology,pilocytic astrocytoma (9421/1),9421/1,piloid astrocytoma,NULL
+Primary CNS Histology,pilocytic astrocytoma (9421/1),9421/1,spongioblastoma,NULL
+Primary CNS Histology,polar spongioblastoma (9423/3),9423/3,polar spongioblastoma,NULL
+Primary CNS Histology,polar spongioblastoma (9423/3),9423/3,primitive polar spongioblastoma,NULL
+Primary CNS Histology,polar spongioblastoma (9423/3),9423/3,spongioblastoma polare,NULL
+Primary CNS Histology,pleomorphic xanthoastrocytoma (9424/3),9424/3,anaplastic pleomorphic xanthoastrocytoma,NULL
+Primary CNS Histology,pleomorphic xanthoastrocytoma (9424/3),9424/3,pleomorphic xanthoastrocytoma,NULL
+Primary CNS Histology,pilomyxoid astrocytoma (9425/3),9425/3,pilomyxoid astrocytoma,NULL
+Primary CNS Histology,astroblastoma (9430/3),9430/3,astroblastoma,NULL
+Primary CNS Histology,angiocentric glioma (9431/1),9431/1,angiocentric glioma,NULL
+Primary CNS Histology,pituicytoma (9432/1),9432/1,pituicytoma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,diffuse intrinsic pontine glioma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,diffuse midline glioma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,epithelioid glioblastoma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,glioblastoma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,glioblastoma idh-wildtype,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,glioblastoma multiforme,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,glioblastoma primary,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,idh-wildtype glioblastoma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,primary glioblastoma,NULL
+Primary CNS Histology,glioblastoma (9440/3),9440/3,spongioblastoma multiforme,NULL
+Primary CNS Histology,giant cell glioblastoma (9441/3),9441/3,giant cell glioblastoma,NULL
+Primary CNS Histology,giant cell glioblastoma (9441/3),9441/3,monstrocellular sarcoma,NULL
+Primary CNS Histology,gliofibroma (9442/1),9442/1,gliofibroma,NULL
+Primary CNS Histology,gliosarcoma (9442/3),9442/3,glioblastoma with sarcomatous component,NULL
+Primary CNS Histology,gliosarcoma (9442/3),9442/3,gliosarcoma,NULL
+Primary CNS Histology,chordoid glioma (9444/1),9444/1,chordoid glioma,NULL
+Primary CNS Histology,chordoid glioma (9444/1),9444/1,chordoid glioma of third ventricle,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,glioblastoma idh-mutant,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,glioblastoma secondary,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,glioblastoma secondary idh-mutant,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,"glioblastoma, idh-mutant",NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,idh-mutant glioblastoma,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,idh-mutant secondary glioblastoma,NULL
+Primary CNS Histology,"glioblastoma, idh-mutant (9445/3)",9445/3,secondary glioblastoma,NULL
+Primary CNS Histology,oligodendroglioma (9450/3),9450/3,idh-mutant and 1p/19q-codeleted oligodendroglioma,NULL
+Primary CNS Histology,oligodendroglioma (9450/3),9450/3,oligodendroglioma,NULL
+Primary CNS Histology,oligodendroglioma (9450/3),9450/3,oligodendroglioma idh-mutant and 1p/19q-codeleted,NULL
+Primary CNS Histology,"oligodendroglioma, anaplastic (9451/3)",9451/3,anaplastic oligodendroglioma,NULL
+Primary CNS Histology,"oligodendroglioma, anaplastic (9451/3)",9451/3,idh-mutant and 1p/19q codeleted anaplastic oligodendroglioma,NULL
+Primary CNS Histology,"oligodendroglioma, anaplastic (9451/3)",9451/3,oligodendroglioma anaplastic,NULL
+Primary CNS Histology,"oligodendroglioma, anaplastic (9451/3)",9451/3,oligodendroglioma anaplastic idh-mutant and 1p/19q codeleted,NULL
+Primary CNS Histology,"oligodendroglioma, anaplastic (9451/3)",9451/3,"oligodendroglioma, anaplastic",NULL
+Primary CNS Histology,oligodendroblastoma (9460/3),9460/3,oligodendroblastoma,NULL
+Primary CNS Histology,medulloblastoma (9470/3),9470/3,classic medulloblastoma,NULL
+Primary CNS Histology,medulloblastoma (9470/3),9470/3,medulloblastoma,NULL
+Primary CNS Histology,medulloblastoma (9470/3),9470/3,melanotic medulloblastoma,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,circumscribed arachnoidal cerebellar sarcoma,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,desmoplastic medulloblastoma,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,desmoplastic nodular medulloblastoma,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,medulloblastoma shh activated,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,medulloblastoma shh-activated and tp53-wildtype,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,medulloblastoma with extensive nodularity,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,shh activated medulloblastoma,NULL
+Primary CNS Histology,desmoplastic nodular medulloblastoma (9471/3),9471/3,shh-activated and tp53-wildtype medulloblastoma,NULL
+Primary CNS Histology,medullomyoblastoma (9472/3),9472/3,medullomyoblastoma,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,central primitive neuroectodermal tumor,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,cns embryonal tumor,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,cpnet,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,pnet,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,primitive neuroectodermal tumor,NULL
+Primary CNS Histology,cns embryonal tumor (9473/3),9473/3,supratentorial pnet,NULL
+Primary CNS Histology,large cell medulloblastoma (9474/3),9474/3,anaplastic medulloblastoma,NULL
+Primary CNS Histology,large cell medulloblastoma (9474/3),9474/3,large cell medulloblastoma,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,anaplastic type wnt-activated medulloblastoma,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,classic wnt-activated medulloblastoma,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,large cell type wnt-activated medulloblastoma,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,medulloblastoma wnt-activated anaplastic type,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,medulloblastoma wnt-activated classic,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,medulloblastoma wnt-activated large cell type,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,medullobloastoma wnt-activated,NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,"medullobloastoma, wnt-activated",NULL
+Primary CNS Histology,"medullobloastoma, wnt-activated (9475/3)",9475/3,wnt-activated medullobloastoma,NULL
+Primary CNS Histology,"medulloblastoma, shh-activated and tp53-mutant (9476/3)",9476/3,medulloblastoma shh-activated and tp53-mutant,NULL
+Primary CNS Histology,"medulloblastoma, shh-activated and tp53-mutant (9476/3)",9476/3,"medulloblastoma, shh-activated and tp53-mutant",NULL
+Primary CNS Histology,"medulloblastoma, shh-activated and tp53-mutant (9476/3)",9476/3,shh-activated and tp53-mutant medulloblastoma,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,group 3 medulloblastoma,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,group 4 medulloblastoma,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,medulloblastoma group 3,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,medulloblastoma group 4,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,medulloblastoma non-wnt/non-shh,NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,"medulloblastoma, non-wnt/non-shh",NULL
+Primary CNS Histology,"medulloblastoma, non-wnt/non-shh (9477/3)",9477/3,non-wnt/non-shh medulloblastoma,NULL
+Primary CNS Histology,embryonal tumor with multilayered rosettes with c19mc alteration (9478/3),9478/3,embryonal tumor with multilayered rosettes,NULL
+Primary CNS Histology,embryonal tumor with multilayered rosettes with c19mc alteration (9478/3),9478/3,embryonal tumor with multilayered rosettes with c19mc alteration,NULL
+Primary CNS Histology,cerebellar sarcoma (9480/3),9480/3,cerebellar sarcoma,NULL
+Primary CNS Histology,ganglioneuroma (9490/0),9490/0,ganglioneuroma,NULL
+Primary CNS Histology,ganglioneuroblastoma (9490/3),9490/3,cns ganglioneuroblastoma,NULL
+Primary CNS Histology,ganglioneuroblastoma (9490/3),9490/3,ganglioneuroblastoma,NULL
+Primary CNS Histology,gangliocytoma (9492/0),9492/0,gangliocytoma,NULL
+Primary CNS Histology,dysplastic gangliocytoma of cerebellum (lhermitte-duclos) (9493/0),9493/0,dysplastic gangliocytoma of cerebellum (lhermitte-duclos),NULL
+Primary CNS Histology,neuroblastoma (9500/3),9500/3,central neuroblastoma,NULL
+Primary CNS Histology,neuroblastoma (9500/3),9500/3,cns neuroblastoma,NULL
+Primary CNS Histology,neuroblastoma (9500/3),9500/3,neuroblastoma,NULL
+Primary CNS Histology,neuroblastoma (9500/3),9500/3,sympathicoblastoma,NULL
+Primary CNS Histology,medulloepithelioma (9501/3),9501/3,diktyoma malignant,NULL
+Primary CNS Histology,medulloepithelioma (9501/3),9501/3,malignant diktyoma,NULL
+Primary CNS Histology,medulloepithelioma (9501/3),9501/3,medulloepithelioma,NULL
+Primary CNS Histology,ganglioglioma (9505/1),9505/1,ganglioglioma,NULL
+Primary CNS Histology,ganglioglioma (9505/1),9505/1,glioneuroma,NULL
+Primary CNS Histology,ganglioglioma (9505/1),9505/1,neuroastrocytoma,NULL
+Primary CNS Histology,"ganglioglioma, anaplastic (9505/3)",9505/3,anaplastic ganglioglioma,NULL
+Primary CNS Histology,"ganglioglioma, anaplastic (9505/3)",9505/3,ganglioglioma anaplastic,NULL
+Primary CNS Histology,"ganglioglioma, anaplastic (9505/3)",9505/3,"ganglioglioma, anaplastic",NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,central neurocytoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,cerebellar liponeurocytoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,extraventricular neurocytoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,lipomatous medulloblastoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,medullocytoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,neurocytoma,NULL
+Primary CNS Histology,central neurocytoma (9506/1),9506/1,neurolipocytoma,NULL
+Primary CNS Histology,atypical teratoid/rhabdoid tumor (9508/3),9508/3,atypical teratoid/rhabdoid tumor,NULL
+Primary CNS Histology,atypical teratoid/rhabdoid tumor (9508/3),9508/3,cns embryonal tumor with rhabdoid features,NULL
+Primary CNS Histology,papillary glioneuronal tumor (9509/1),9509/1,papillary glioneuronal tumor,NULL
+Primary CNS Histology,papillary glioneuronal tumor (9509/1),9509/1,rosette-forming glioneuronal tumor,NULL
+Primary CNS Histology,retinoblastoma (9510/3),9510/3,retinoblastoma,NULL
+Primary CNS Histology,olfactory neuroblastoma (9522/3),9522/3,esthesioneuroblastoma,NULL
+Primary CNS Histology,olfactory neuroblastoma (9522/3),9522/3,olfactory neuroblastoma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,lymphoplasmacyte-rich meningioma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,meningioma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,meninigoma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,metaplastic meningioma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,microcystic meningioma,NULL
+Primary CNS Histology,meningioma (9530/0),9530/0,secretory meningioma,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,anaplastic meningioma,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,leptomeningeal sarcoma,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,malignant meningioma,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,meningeal sarcoma,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,meningioma anaplastic,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,meningioma malignant,NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,"meningioma, malignant",NULL
+Primary CNS Histology,"meningioma, malignant (9530/3)",9530/3,meningothelial sarcoma,NULL
+Primary CNS Histology,meningothelial meningioma (9531/0),9531/0,endotheliomatous meningioma,NULL
+Primary CNS Histology,meningothelial meningioma (9531/0),9531/0,meningothelial meningioma,NULL
+Primary CNS Histology,meningothelial meningioma (9531/0),9531/0,syncytial meningioma,NULL
+Primary CNS Histology,fibrous meningioma (9532/0),9532/0,fibroblastic meningioma,NULL
+Primary CNS Histology,fibrous meningioma (9532/0),9532/0,fibrous meningioma,NULL
+Primary CNS Histology,psammomatous meningioma (9533/0),9533/0,psammomatous meningioma,NULL
+Primary CNS Histology,angiomatous meningioma (9534/0),9534/0,angiomatous meningioma,NULL
+Primary CNS Histology,transitional meningioma (9537/0),9537/0,mixed meningioma,NULL
+Primary CNS Histology,transitional meningioma (9537/0),9537/0,transitional meningioma,NULL
+Primary CNS Histology,clear cell meningioma (9538/1),9538/1,chordoid meningioma,NULL
+Primary CNS Histology,clear cell meningioma (9538/1),9538/1,clear cell meningioma,NULL
+Primary CNS Histology,papillary meningioma (9538/3),9538/3,papillary meningioma,NULL
+Primary CNS Histology,papillary meningioma (9538/3),9538/3,rhabdoid meningioma,NULL
+Primary CNS Histology,atypical meningioma (9539/1),9539/1,atypical meningioma,NULL
+Primary CNS Histology,neurofibroma (9540/0),9540/0,neurofibroma,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,malignant peripheral nerve sheath tumor,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,melanotic mpnst,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,melanotic psammomatous mpnst,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,mpnst,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,mpnst with glandular differentiation,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,mpnst with mesenchymal differentiation,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,mpnst with perineurial differentiation,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,neurofibrosarcoma,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,neurogenic sarcoma,NULL
+Primary CNS Histology,malignant peripheral nerve sheath tumor (9540/3),9540/3,neurosarcoma,NULL
+Primary CNS Histology,plexiform neurofibroma (9550/0),9550/0,plexiform neurofibroma,NULL
+Primary CNS Histology,plexiform neurofibroma (9550/0),9550/0,plexiform neuroma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,acoustic neuroma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,ancient schwannoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,cellular schwannoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,degenerated schwannoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,neurilemoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,neurinoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,plexiform schwannoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,psammomatous schwannoma,NULL
+Primary CNS Histology,schwannoma (9560/0),9560/0,schwannoma,NULL
+Primary CNS Histology,melanotic schwannoma (9560/1),9560/1,melanotic schwannoma,NULL
+Primary CNS Histology,melanotic schwannoma (9560/1),9560/1,pigmented schwannoma,NULL
+Primary CNS Histology,nerve sheath tumor (9563/0),9563/0,hybrid nerve sheath tumor,NULL
+Primary CNS Histology,nerve sheath tumor (9563/0),9563/0,nerve sheath tumor,NULL
+Primary CNS Histology,neuroma (9570/0),9570/0,neuroma,NULL
+Primary CNS Histology,neuroma (9570/0),9570/0,solitary circumscribed neuroma,NULL
+Primary CNS Histology,perineurioma (9571/0),9571/0,intraneural perineurioma,NULL
+Primary CNS Histology,perineurioma (9571/0),9571/0,perineurioma,NULL
+Primary CNS Histology,perineurioma (9571/0),9571/0,soft tissue perineurioma,NULL
+Primary CNS Histology,"perineurioma, malignant (9571/3)",9571/3,malignant perineurioma,NULL
+Primary CNS Histology,"perineurioma, malignant (9571/3)",9571/3,perineurioma malignant,NULL
+Primary CNS Histology,"perineurioma, malignant (9571/3)",9571/3,"perineurioma, malignant",NULL
+Primary CNS Histology,alveolar soft part sarcoma (9581/3),9581/3,alveolar soft part sarcoma,NULL
+Primary CNS Histology,granular cell tumor of the sellar region (9582/0),9582/0,granular cell tumor of the sellar region,NULL
+Primary CNS Histology,malignant lymphoma (9590/3),9590/3,lymphoma,NULL
+Primary CNS Histology,malignant lymphoma (9590/3),9590/3,malignant lymphoma,NULL
+Primary CNS Histology,malignant lymphoma (9590/3),9590/3,microglioma,NULL
+Primary CNS Histology,primary cutaneous follicle centre lymphoma (9597/3),9597/3,primary cutaneous follicle centre lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,activated b-cell subtype diffuse large b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,anaplastic large b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,b-cell lymphoma unclassifiable with features intermediate between diffuse large b-cell lymphoma and burkitt lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,centroblastic diffuse large b-cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,centroblastic malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,cleaved and noncleaved large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,cleaved large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse centroblastic malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse cleaved large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse histiocytic malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b-cell lymphoma activated b-cell subtype,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b-cell lymphoma associated with chronic inflammation,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b-cell lymphoma germinal centre b-cell subtype,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large b-cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse noncleaved large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,diffuse noncleaved malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,ebv positive diffuse large b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,germinal centre b-cell subtype diffuse large b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,high grade b-cell lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,high grade b-cell lymphoma with myc and bcl2 and/or bcl6 rearrangements,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,histiocytic malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,large b-cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,leg type primary cutaneous dlbcl,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma centroblastic,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma centroblastic diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma histiocytic,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma histiocytic diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large b-cell,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large b-cell diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large b-cell diffuse centroblastic,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell cleaved,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell cleaved and noncleaved,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell cleaved diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell noncleaved,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma large cell noncleaved diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma noncleaved,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,malignant lymphoma noncleaved diffuse,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,noncleaved large cell malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,noncleaved malignant lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,primary cutaneous dlbcl leg type,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,primary diffuse large b-cell lymphoma of the cns,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,vitreoretinal lymphoma,NULL
+Primary CNS Histology,diffuse large b-cell lymphoma (9680/3),9680/3,with features intermediate between diffuse large b-cell lymphoma and burkitt lymphoma unclassifiable b-cell lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,balt lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,bronchus associated lymphoid tissue lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,malt lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,marginal zone b-cell lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,marginal zone lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,monocytoid b-cell lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,mucosa associated lymphoid tissue lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,nodal marginal zone lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,primary choroidal lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,salt lymphoma,NULL
+Primary CNS Histology,marginal zone b-cell lymphoma (9699/3),9699/3,skin-associated lymphoid tissue lymphoma,NULL
+Primary CNS Histology,mycosis fungoides (9700/3),9700/3,granulomatous slack skin,NULL
+Primary CNS Histology,mycosis fungoides (9700/3),9700/3,mycosis fungoides,NULL
+Primary CNS Histology,mycosis fungoides (9700/3),9700/3,pagetoid reticulosis,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,follicular t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,large cell peripheral t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,lennert lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,lymphoepithelioid lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,mature t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,nodal peripheral t-cell lymphoma with t follicular helper phenotype,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,peripheral t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,peripheral t-cell lymphoma large cell,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,peripheral t-cell lymphoma pleomorphic medium and large cell,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,peripheral t-cell lymphoma pleomorphic small cell,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,pleomorphic medium and large cell peripheral t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,pleomorphic small cell peripheral t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,t-cell lymphoma,NULL
+Primary CNS Histology,mature t-cell lymphoma (9702/3),9702/3,t-zone lymphoma,NULL
+Primary CNS Histology,primary cutaneous cd4-positive small/medium t-cell lymphoproliferative disorder (9709/1),9709/1,primary cutaneous cd4-positive small/medium t-cell lymphoma,NULL
+Primary CNS Histology,primary cutaneous cd4-positive small/medium t-cell lymphoproliferative disorder (9709/1),9709/1,primary cutaneous cd4-positive small/medium t-cell lymphoproliferative disorder,NULL
+Primary CNS Histology,cutaneous t-cell lymphoma (9709/3),9709/3,cutaneous lymphoma,NULL
+Primary CNS Histology,cutaneous t-cell lymphoma (9709/3),9709/3,cutaneous t-cell lymphoma,NULL
+Primary CNS Histology,cutaneous t-cell lymphoma (9709/3),9709/3,primary cutaneous acral cd8-positive t-cell lymphoma,NULL
+Primary CNS Histology,cutaneous t-cell lymphoma (9709/3),9709/3,primary cutaneous cd8-positive aggressive epidermotropic cytotoxic t-cell lymphoma,NULL
+Primary CNS Histology,intravascular large b-cell lymphoma (9712/3),9712/3,angioendotheliomatosis,NULL
+Primary CNS Histology,intravascular large b-cell lymphoma (9712/3),9712/3,angiotropic lymphoma,NULL
+Primary CNS Histology,intravascular large b-cell lymphoma (9712/3),9712/3,intravascular b-cell lymphoma,NULL
+Primary CNS Histology,intravascular large b-cell lymphoma (9712/3),9712/3,intravascular large b-cell lymphoma,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,alk positive anaplastic large cell lymphoma,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,anaplastic large cell lymphoma,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,anaplastic large cell lymphoma alk positive,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,anaplastic large cell lymphoma cd30+,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,anaplastic large cell lymphoma t-cell and null-cell type,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,"anaplastic large cell lymphoma, t-cell and null-cell type",NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,cd30+ anaplastic large cell lymphoma,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,large cell (ki-1+) lymphoma,NULL
+Primary CNS Histology,"anaplastic large cell lymphoma, t-cell and null-cell type (9714/3)",9714/3,t-cell and null-cell type anaplastic large cell lymphoma,NULL
+Primary CNS Histology,primary cutaneous cd30+t-cell lymphoproliferative disorder (9718/1),9718/1,lymphomatoid papulosis,NULL
+Primary CNS Histology,primary cutaneous cd30+t-cell lymphoproliferative disorder (9718/1),9718/1,primary cutaneous cd30+t-cell lymphoproliferative disorder,NULL
+Primary CNS Histology,primary cutaneous anaplastic large cell lymphoma (9718/3),9718/3,primary cutaneous anaplastic large cell lymphoma,NULL
+Primary CNS Histology,primary cutaneous anaplastic large cell lymphoma (9718/3),9718/3,primary cutaneous cd30+ large t-cell lymphoma,NULL
+Primary CNS Histology,primary cutaneous gamma-delta t-cell lymphoma (9726/3),9726/3,primary cutaneous gamma-delta t-cell lymphoma,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,plasma cell neoplasm,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,plasma cell tumor,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,plasmacytoma,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,plasmacytoma of bone,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,solitary myeloma,NULL
+Primary CNS Histology,plasmacytoma (9731/3),9731/3,solitary plasmacytoma,NULL
+Primary CNS Histology,plasma cell myeloma (9732/3),9732/3,multiple myeloma,NULL
+Primary CNS Histology,plasma cell myeloma (9732/3),9732/3,myeloma,NULL
+Primary CNS Histology,plasma cell myeloma (9732/3),9732/3,myelomatosis,NULL
+Primary CNS Histology,plasma cell myeloma (9732/3),9732/3,plasma cell myeloma,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,acute progressive histiocytosis x,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,disseminated langerhans cell histiocytosis,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,eosinophilic granuloma,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,hand-schuller-christian disease,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,histiocytosis x,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,langerhans cell granulomatosis,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,langerhans cell histiocytosis disseminated,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,"langerhans cell histiocytosis, disseminated",NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,letterer-siwe disease,NULL
+Primary CNS Histology,"langerhans cell histiocytosis, disseminated (9751/3)",9751/3,nonlipid reticuloendotheliosis,NULL
+Primary CNS Histology,histiocytic sarcoma (9755/3),9755/3,histiocytic sarcoma,NULL
+Primary CNS Histology,histiocytic sarcoma (9755/3),9755/3,true histiocytic lymphoma,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,angiocentric immunoproliferative lesion,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,grade 1 lymphomatoid granulomatosis,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,grade 2 lymphomatoid granulomatosis,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,lymphomatoid granulomatosis,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,lymphomatoid granulomatosis grade 1,NULL
+Primary CNS Histology,angiocentric immunoproliferative lesion (9766/1),9766/1,lymphomatoid granulomatosis grade 2,NULL
+Primary CNS Histology,myeloid sarcoma (9930/3),9930/3,chloroma,NULL
+Primary CNS Histology,myeloid sarcoma (9930/3),9930/3,granulocytic sarcoma,NULL
+Primary CNS Histology,myeloid sarcoma (9930/3),9930/3,myeloid sarcoma,NULL
+Primary CNS Histology,lymphoproliferative disorder (9970/1),9970/1,lymphoproliferative disease,NULL
+Primary CNS Histology,lymphoproliferative disorder (9970/1),9970/1,lymphoproliferative disorder,NULL
+Primary CNS Histology,colloid cyst,colloid cyst,colloid cyst,NULL
+Primary CNS Histology,epidermoid,epidermoid,epidermoid,NULL
+Primary CNS Histology,gliosis,gliosis,gliosis,NULL
+Primary CNS Histology,gliosis-epilepsy,gliosis-epilepsy,gliosis-epilepsy,NULL
+Primary CNS Histology,no evidence of tumor,no evidence of tumor,no evidence of tumor,NULL
+Primary CNS Histology,primary intraocular lymphoma,primary intraocular lymphoma,primary intraocular lymphoma,NULL
+Primary CNS Histology,radiation necrosis,radiation necrosis,radiation necrosis,NULL

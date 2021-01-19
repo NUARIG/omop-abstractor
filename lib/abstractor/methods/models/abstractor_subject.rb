@@ -391,15 +391,7 @@ module Abstractor
                         accepted = true
                         system_accepted = true
                         system_accepted_reason = Abstractor::Enum::ABSTRACTOR_SUGGESTION_SYSTEM_ACCEPTED_REASON_SECTION_MATCH
-                      else
-                        accepted = nil
-                        system_accepted = false
-                        system_rejected = false
                       end
-                    else
-                      accepted = nil
-                      system_accepted = false
-                      system_rejected = false
                     end
                   else
                     if abstractor_abstraction_source.section_required

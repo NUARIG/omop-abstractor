@@ -41,6 +41,7 @@ select  nlc.note_id
 	    , nlc.value_old_normalized
 	    , nlc.value_new_normalized
       , nlc.abstractor_subject_group_name
+      , nlc.value_new_normalized_raw
       , 1 as group
 from nlp_comparisons nlc
 where nlc.predicate = 'has_mgmt_status'
@@ -51,6 +52,7 @@ select  nlc1.note_id
 	    , nlc1.value_old_normalized
 	    , nlc1.value_new_normalized
       , nlc1.abstractor_subject_group_name
+      , nlc1.value_new_normalized_raw
       , 2 as group
 from nlp_comparisons nlc1
 where nlc1.predicate = 'has_mgmt_status'
@@ -81,4 +83,4 @@ and nlc1.stable_identifier_value not in(
 ,'10301739029'
 )
 ) data
-where data.value_new_normalized != 'not applicable'
+--where data.value_new_normalized != 'not applicable'

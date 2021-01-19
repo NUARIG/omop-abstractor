@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_144128) do
+ActiveRecord::Schema.define(version: 2020_12_30_140736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -657,6 +657,69 @@ ActiveRecord::Schema.define(version: 2020_12_15_144128) do
     t.index ["domain_concept_id_1"], name: "idx_fact_relationship_id_1"
     t.index ["domain_concept_id_2"], name: "idx_fact_relationship_id_2"
     t.index ["relationship_concept_id"], name: "idx_fact_relationship_id_3"
+  end
+
+  create_table "icdo3_categories", force: :cascade do |t|
+    t.string "version", null: false
+    t.string "category", null: false
+    t.string "categorizable_type", null: false
+    t.integer "parent_icdo3_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icdo3_categorizations", force: :cascade do |t|
+    t.integer "icdo3_category_id", null: false
+    t.integer "categorizable_id", null: false
+    t.string "categorizable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icdo3_histologies", force: :cascade do |t|
+    t.string "version", null: false
+    t.string "minor_version", null: false
+    t.string "icdo3_code", null: false
+    t.string "icdo3_name", null: false
+    t.string "icdo3_description", null: false
+    t.string "level"
+    t.string "code_reference"
+    t.string "obs"
+    t.string "see_also"
+    t.string "includes"
+    t.string "excludes"
+    t.string "other_text"
+    t.string "category"
+    t.string "subcategory"
+    t.integer "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icdo3_histology_synonyms", force: :cascade do |t|
+    t.integer "icdo3_histology_id", null: false
+    t.string "icdo3_synonym_description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icdo3_site_synonyms", force: :cascade do |t|
+    t.integer "icdo3_site_id", null: false
+    t.string "icdo3_synonym_description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icdo3_sites", force: :cascade do |t|
+    t.string "version", null: false
+    t.string "minor_version", null: false
+    t.string "icdo3_code", null: false
+    t.string "icdo3_name", null: false
+    t.string "icdo3_description", null: false
+    t.string "category"
+    t.string "subcategory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "imaging_exams", force: :cascade do |t|

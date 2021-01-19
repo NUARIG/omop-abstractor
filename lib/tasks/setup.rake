@@ -1,7 +1,10 @@
+# psql -U mbti_data_development_archive  -d mbti_data_development_archive -h localhost -f mbti.sql
 # real data
 # bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
-# bundle exec rake clamp:schemas_clamp
+# bundle exec rake clamp:compare_icdo3
+# bundle exec rake clamp:schemas_clamp_new
+  # bundle exec rake clamp:schemas_clamp
 # bundle exec rake data:create_note_stable_identifier_entires
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline

@@ -76,4 +76,31 @@ and exists(
   and nlc1.abstractor_subject_group_name = asg.name
 )
 ) data
+where data.value_old_normalized = data.value_new_normalized_raw
+or
+(
+ data.value_old_normalized = 'breast (c50)'
+ and
+data.value_new_normalized_raw  = 'breast (c50.9)'
+)
+
+or
+(
+ data.value_old_normalized =  'colon (c18)'
+ and
+data.value_new_normalized_raw  = 'colon (c18.9)'
+)
+or
+(
+ data.value_old_normalized =  'uterus, nos (c55.9)'
+ and
+data.value_new_normalized_raw  = 'uterus (c55.9)'
+)
+or
+(
+ data.value_old_normalized =  'lung, nos (c34.9)'
+ and
+data.value_new_normalized_raw  = 'lung (c34.9)'
+)
 --where data.value_new_normalized != 'not applicable'
+order by data.value_old_normalized

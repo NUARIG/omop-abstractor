@@ -9,12 +9,6 @@ from nlp_comparisons nlc
 where  nlc.predicate = 'has_cancer_histology'
 and nlc.abstractor_abstraction_group_id_new is not null
 
---raw punts
-select abstractor_abstraction_group_id_old, *
-from nlp_comparisons nlc
-where  nlc.predicate = 'has_cancer_histology'
-and nlc.abstractor_abstraction_group_id_new is null
-
 --punts
 select abstractor_abstraction_group_id_old, *
 from nlp_comparisons nlc

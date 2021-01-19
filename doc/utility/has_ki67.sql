@@ -82,4 +82,4 @@ and nlc1.stable_identifier_value not in(
 ,'10301739029'
 )
 ) data
-where data.value_new_normalized != 'not applicable'
+--where data.value_new_normalized != 'not applicable'

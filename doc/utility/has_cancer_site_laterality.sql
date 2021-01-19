@@ -77,3 +77,4 @@ and exists(
 )
 ) data
 --where data.value_new_normalized != 'not applicable'
+where data.value_old_normalized = data.value_new_normalized_raw

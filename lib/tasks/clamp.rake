@@ -622,6 +622,8 @@ namespace :clamp do
       abstractor_object_type: list_object_type,
       preferred_name: 'primary cancer site').first_or_create
 
+    Abstractor::AbstractorAbstractionSchemaPredicateVariant.where(abstractor_abstraction_schema: abstractor_abstraction_schema, value: 'primary').first_or_create
+
     sites = Icdo3Site.by_primary
     sites.each do |site|
       abstractor_object_value = Abstractor::AbstractorObjectValue.where(:value => "#{site.icdo3_name} (#{site.icdo3_code})".downcase, vocabulary_code: site.icdo3_code, vocabulary: 'ICD-O-3.2', vocabulary_version: '2019 Updates to ICD-O-3.2').first_or_create
@@ -646,7 +648,7 @@ namespace :clamp do
     end
 
     abstractor_subject = Abstractor::AbstractorSubject.where(:subject_type => 'NoteStableIdentifier', :abstractor_abstraction_schema => abstractor_abstraction_schema, namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_surgical_pathology.id, anchor: false).first_or_create
-    abstractor_abstraction_source = Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp', section_required: true).first_or_create
+    abstractor_abstraction_source = Abstractor::AbstractorAbstractionSource.where(abstractor_subject: abstractor_subject, from_method: 'note_text', :abstractor_rule_type => name_value_rule, abstractor_abstraction_source_type: source_type_custom_nlp_suggestion, custom_nlp_provider: 'custom_nlp_provider_clamp', section_required: true).first_or_create
     Abstractor::AbstractorAbstractionSourceSection.where(abstractor_abstraction_source: abstractor_abstraction_source, abstractor_section: abstractor_section_specimen).first_or_create
     Abstractor::AbstractorSubjectGroupMember.where(:abstractor_subject => abstractor_subject, :abstractor_subject_group => metastatic_cancer_group, :display_order => 3).first_or_create
 
@@ -2395,6 +2397,68 @@ namespace :clamp do
             elsif abstractor_abstraction_schema.positive_negative_object_type_list?
               named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
               named_entities_values = clamp_document.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == 'positive_negative'  && named_entity.semantic_tag_value_type == 'Value'  }
+
+              if named_entities_names.any?
+                named_entities_names.each do |named_entity_name|
+                  abstractor_abstraction.reload
+                  values = named_entities_values.select { |named_entities_value| named_entity_name.sentence == named_entities_value.sentence }
+                  if values.any?
+                    values.each do |value|
+                      if named_entity_name.sentence.section
+                        section_name = named_entity_name.sentence.section.name
+                      else
+                        section_name = nil
+                      end
+
+                      abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                      abstractor_abstraction,
+                      abstractor_abstraction_source,
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      abstractor_note['source_id'],
+                      abstractor_note['source_type'],
+                      abstractor_note['source_method'],
+                      section_name, #suggestion_source[:section_name]
+                      value.semantic_tag_value,                 #suggestion[:value]
+                      false,                                     #suggestion[:unknown].to_s.to_boolean
+                      false,                                     #suggestion[:not_applicable].to_s.to_boolean
+                      nil,
+                      nil,
+                      false   #suggestion[:negated].to_s.to_boolean
+                      )
+                      suggestions << abstractor_suggestion
+                      suggested = true
+                      if canonical_format?(clamp_document.text[named_entity_name.named_entity_begin..named_entity_name.named_entity_end], clamp_document.text[value.named_entity_begin..value.named_entity_end], clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end])
+                        abstractor_suggestion.accepted = true
+                        abstractor_suggestion.save!
+                      end
+                    end
+                  else
+                    if !named_entity_name.negated?
+                      suggested = true
+                      abstractor_suggestion = abstractor_abstraction.abstractor_subject.suggest(
+                      abstractor_abstraction,
+                      abstractor_abstraction_source,
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:match_value],
+                      clamp_document.text[named_entity_name.sentence.sentence_begin..named_entity_name.sentence.sentence_end], #suggestion_source[:sentence_match_value]
+                      abstractor_note['source_id'],
+                      abstractor_note['source_type'],
+                      abstractor_note['source_method'],
+                      nil, #suggestion_source[:section_name]
+                      nil,                 #suggestion[:value]
+                      true,                                     #suggestion[:unknown].to_s.to_boolean
+                      false,                                     #suggestion[:not_applicable].to_s.to_boolean
+                      nil,
+                      nil,
+                      false   #suggestion[:negated].to_s.to_boolean
+                      )
+                    end
+                  end
+                end
+              end
+            elsif abstractor_abstraction_schema.predicate == 'has_metastatic_cancer_primary_site'
+              named_entities_names = named_entities.select { |named_entity|  named_entity.semantic_tag_value_type == 'Name' }
+              named_entities_values = clamp_document.named_entities.select { |named_entity| named_entity.semantic_tag_attribute == abstractor_abstraction_schema.predicate  && named_entity.semantic_tag_value_type == 'Value' }
 
               if named_entities_names.any?
                 named_entities_names.each do |named_entity_name|

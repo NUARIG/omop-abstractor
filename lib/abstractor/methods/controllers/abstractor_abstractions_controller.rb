@@ -50,6 +50,10 @@ module Abstractor
                 raise "Error processing request to create abstractor suggestion"
               end
             rescue => e
+              error = e
+              Rails.logger.info(e.class)
+              Rails.logger.info(e.message)
+              Rails.logger.info(e.backtrace.join("\n"))
               format.html { render "abstractor_abstractions/edit", layout: false, status: :unprocessable_entity }
             end
           end

@@ -403,7 +403,7 @@ module Abstractor
                   end
                 end
               else
-                if abstractor_abstraction_source.section_required
+                if abstractor_abstraction_source && abstractor_abstraction_source.section_required
                   accepted = false
                   system_accepted = false
                   system_rejected = true

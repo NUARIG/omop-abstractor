@@ -1,5 +1,6 @@
 # psql -U mbti_data_development_archive  -d mbti_data_development_archive -h localhost -f mbti.sql
 # real data
+# bundle exec rake db:migrate
 # bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake clamp:compare_icdo3
@@ -14,6 +15,7 @@
 # bundle exec rake clamp:migrate_calculate_performance
 
 # fake data
+# bundle exec rake db:migrate
 # bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake data:truncate_omop_clinical_data_tables

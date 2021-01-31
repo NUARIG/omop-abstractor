@@ -1,10 +1,10 @@
 # psql -U mbti_data_development_archive  -d mbti_data_development_archive -h localhost -f mbti.sql
 # real data
-# bundle exec rake db:migrate
 # bundle exec rake abstractor:setup:system
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake clamp:compare_icdo3
-# bundle exec rake clamp:schemas_clamp_new
+# bundle exec rake clamp:schemas_oncoset
+  # bundle exec rake clamp:schemas_clamp_new
   # bundle exec rake clamp:schemas_clamp
 # bundle exec rake data:create_note_stable_identifier_entires
 # bundle exec rake suggestor:do_multiple
@@ -15,12 +15,14 @@
 # bundle exec rake clamp:migrate_calculate_performance
 
 # fake data
-# bundle exec rake db:migrate
 # bundle exec rake abstractor:setup:system
+# bundle exec rake clamp:compare_icdo3
 # bundle exec rake setup:truncate_schemas
 # bundle exec rake data:truncate_omop_clinical_data_tables
-# bundle exec rake clamp:schemas_clamp
-# bundle exec rake setup:data
+  # bundle exec rake clamp:schemas_oncoset
+  # bundle exec rake clamp:schemas_clamp
+# bundle exec rake setup:oncoset_data
+  # bundle exec rake setup:data
 # bundle exec rake data:create_note_stable_identifier_entires
 # bundle exec rake suggestor:do_multiple
 # bundle exec rake clamp:run_clamp_pipeline
@@ -1137,6 +1139,53 @@ namespace :setup do
     # note.note_stable_identifier.abstract(namespace_type: Abstractor::AbstractorNamespace.to_s, namespace_id: abstractor_namespace_molecular_pathology.id
   end
 
+  desc "Load Oncoset data"
+  task(oncoset_data: :environment) do |t, args|
+    oncoset_patients = CSV.new(File.open('lib/setup/data/oncoset_patients.csv'), headers: true, col_sep: ",", return_headers: false,  quote_char: "\"")
+
+    oncoset_patients.each_with_index do |oncoset_patient, i|
+      location = Location.where(location_id: 1, address_1: '123 Main Street', address_2: 'Apt, 3F', city: 'New York', state: 'NY' , zip: '10001', county: 'Manhattan').first_or_create
+      person = Person.where(person_source_value: oncoset_patient['empi_nmhc_mrn']).first
+      if person.blank?
+        person = Person.where(person_id: i, gender_concept_id: Concept.genders.first, year_of_birth: 1971, month_of_birth: 12, day_of_birth: 10, birth_datetime: DateTime.parse('12/10/1971'), race_concept_id: Concept.races.first, ethnicity_concept_id: Concept.ethnicities.first, person_source_value: oncoset_patient['empi_nmhc_mrn'], location: location).first_or_create
+        location = Location.where(location_id: 2, address_1: '123 Main St', address_2: '3F', city: 'Chicago', state: 'IL', zip: '60657', county: 'Cook', location_source_value: nil).first_or_create
+        person.adresses.where(location: location).first_or_create
+        person.emails.where(email: 'person1@ohdsi.org').first_or_create
+        person.mrns.where(health_system: 'NMHC',  mrn: oncoset_patient['empi_nmhc_mrn']).first_or_create
+        if person.name
+          person.name.destroy!
+        end
+        person.build_name(first_name: 'Harold', middle_name: nil , last_name: 'Baines' , suffix: 'Mr' , prefix: nil)
+        person.save!
+        person.phone_numbers.where(phone_number: '8471111111').first_or_create
+      end
+
+      #surgical pathology report begin
+      gender_concept = Concept.genders.where(concept_name: 'MALE').first
+      provider = Provider.where(provider_id: 1, provider_name: 'Craig Horbinski', npi: '1730345026', dea: nil, specialty_concept_id: nil, care_site_id: nil, year_of_birth: Date.parse('1/1/1968').year, gender_concept_id: gender_concept.concept_id, provider_source_value: nil, specialty_source_value: nil, specialty_source_concept_id: nil, gender_source_value: nil, gender_source_concept_id: nil).first_or_create
+      procedure_concept = Concept.procedure_concepts.where(concept_code: '39228008').first #Surgical Pathology
+      procedure_type_concept = Concept.procedure_types.where(concept_name: 'Secondary Procedure').first
+      procedure_occurrence = ProcedureOccurrence.where(procedure_occurrence_id: i, person_id: person.person_id, procedure_concept_id: procedure_concept.concept_id, procedure_date: Date.parse(oncoset_patient['collection_date']), procedure_datetime: Date.parse(oncoset_patient['collection_date']), procedure_type_concept_id: procedure_type_concept.concept_id, modifier_concept_id: nil, quantity: 1, provider_id: provider.provider_id, visit_occurrence_id: nil, procedure_source_value:  oncoset_patient['report_identifier'], procedure_source_concept_id: nil, modifier_source_value: nil).first_or_create
+      note_type_concept = Concept.note_types.where(concept_name: 'Pathology report').first
+      note_class_concept = Concept.standard.valid.where(concept_name: 'Pathology procedure note').first
+
+      note_text = oncoset_patient['note_text']
+      note = Note.where(note_id: i, person_id: person.person_id, note_date: Date.parse('1/1/2019'), note_datetime: Date.parse('1/1/2018'), note_type_concept_id: note_type_concept.concept_id, note_class_concept_id: note_class_concept.concept_id, note_title: 'Final Diagnosis', note_text: note_text, encoding_concept_id: 0, language_concept_id: 0, provider_id: provider.provider_id, visit_occurrence_id: nil, note_source_value: nil).first_or_create
+      if note.note_stable_identifier.blank?
+        NoteStableIdentifierFull.where(note_id: note.note_id, stable_identifier_path: 'stable_identifier_path', stable_identifier_value: "#{note.note_id}").first_or_create
+      end
+
+      domain_concept_procedure = Concept.domain_concepts.where(concept_name: 'Procedure').first
+      domain_concept_note = Concept.domain_concepts.where(concept_name: 'Note').first
+      relationship_proc_context_of = Relationship.where(relationship_id: 'Proc context of').first
+      relationship_has_proc_context = Relationship.where(relationship_id: 'Has proc context').first
+      FactRelationship.where(domain_concept_id_1: domain_concept_procedure.concept_id, fact_id_1: procedure_occurrence.procedure_occurrence_id, domain_concept_id_2: domain_concept_note.concept_id, fact_id_2: note.note_id, relationship_concept_id: relationship_proc_context_of.relationship_concept_id).first_or_create
+      FactRelationship.where(domain_concept_id_1: domain_concept_note.concept_id, fact_id_1: note.note_id, domain_concept_id_2: domain_concept_procedure.concept_id, fact_id_2: procedure_occurrence.procedure_occurrence_id, relationship_concept_id: relationship_has_proc_context.relationship_concept_id).first_or_create
+
+      #surgical pathology report end
+    end
+  end
+
   desc 'Truncate schemas'
   task(truncate_schemas: :environment) do  |t, args|
     Abstractor::AbstractorAbstraction.delete_all
@@ -1185,3 +1234,4 @@ end
 
 #clamp dictionary
 # bundle exec rake clamp:clamp_dictionary
+# bundle exec rake clamp:clamp_dictionary_oncoset
